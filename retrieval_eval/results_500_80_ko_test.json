@@ -1,0 +1,30 @@
+[
+  {
+    "method": "BM25",
+    "n_questions": 26,
+    "Recall@5": 0.46474358974358976,
+    "MRR@5": 0.3891025641025641,
+    "nDCG@5": 0.3865550469173995
+  },
+  {
+    "method": "Dense Retrieval (BGE-M3)",
+    "n_questions": 26,
+    "Recall@5": 0.7339743589743589,
+    "MRR@5": 0.592948717948718,
+    "nDCG@5": 0.6011922348373446
+  },
+  {
+    "method": "Hybrid Retrieval (RRF)",
+    "n_questions": 26,
+    "Recall@5": 0.6762820512820512,
+    "MRR@5": 0.47756410256410253,
+    "nDCG@5": 0.5059761662797436
+  },
+  {
+    "method": "Hybrid + Reranker (bge-reranker-v2-m3)",
+    "n_questions": 26,
+    "Recall@5": 0.7371794871794872,
+    "MRR@5": 0.6487179487179487,
+    "nDCG@5": 0.6369302411328879
+  }
+]

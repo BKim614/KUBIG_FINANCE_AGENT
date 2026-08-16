@@ -1,0 +1,29 @@
+{
+  "documents": 21,
+  "web_documents": 13,
+  "pdf_documents": 8,
+  "languages": {
+    "en": 6,
+    "ko": 15
+  },
+  "categories": {
+    "general_finance": 3,
+    "financial_fraud": 2,
+    "bank_account": 4,
+    "smishing": 1,
+    "foreign_exchange": 2,
+    "credit_card": 3,
+    "remittance": 5,
+    "fraud_response": 1
+  },
+  "average_text_length": 19948.95,
+  "total_text_length": 418928,
+  "longest_document": {
+    "id": "PDF001",
+    "length": 277082
+  },
+  "shortest_document": {
+    "id": "WEB013",
+    "length": 503
+  }
+}

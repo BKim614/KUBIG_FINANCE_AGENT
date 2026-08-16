@@ -1,0 +1,14 @@
+[
+  {
+    "doc1": "PDF006",
+    "doc2": "PDF007",
+    "reason": "translation",
+    "evidence": "same organization(서울글로벌센터), same source document (seoulglobalcenter_financial_life_guide), en/ko language pair, matching title (Safe Financial Life / 안전한 금융생활)"
+  },
+  {
+    "doc1": "PDF004",
+    "doc2": "PDF005",
+    "reason": "translation",
+    "evidence": "same organization field, same source document (unknown_foreigner_bank_account_guideline), en/ko language pair, matching title (How Foreigners Can Open a Bank Account in Korea / 외국인의 은행계좌 개설 가이드라인)"
+  }
+]

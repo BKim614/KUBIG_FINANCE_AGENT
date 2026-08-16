@@ -1,0 +1,13 @@
+{
+  "chunk_version": "chunk_300_50",
+  "chunk_size_tokens": 300,
+  "chunk_overlap_tokens": 50,
+  "document_count": 21,
+  "chunk_count": 1096,
+  "avg_chunk_length_chars": 422.16,
+  "max_chunk_length_chars": 1576,
+  "min_chunk_length_chars": 9,
+  "avg_chunk_length_tokens": 238.02,
+  "max_chunk_length_tokens": 299,
+  "min_chunk_length_tokens": 5
+}
