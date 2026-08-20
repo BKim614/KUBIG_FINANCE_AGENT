@@ -3,11 +3,11 @@
   "chunk_size_tokens": 300,
   "chunk_overlap_tokens": 50,
   "document_count": 21,
-  "chunk_count": 1096,
-  "avg_chunk_length_chars": 422.16,
-  "max_chunk_length_chars": 1576,
-  "min_chunk_length_chars": 9,
-  "avg_chunk_length_tokens": 238.02,
-  "max_chunk_length_tokens": 299,
-  "min_chunk_length_tokens": 5
+  "chunk_count": 764,
+  "avg_chunk_length_chars": 672.93,
+  "max_chunk_length_chars": 1491,
+  "min_chunk_length_chars": 2,
+  "avg_chunk_length_tokens": 240.72,
+  "max_chunk_length_tokens": 300,
+  "min_chunk_length_tokens": 2
 }
