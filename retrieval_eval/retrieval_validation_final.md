@@ -10,7 +10,7 @@
 ## 1. Background
 
 기존 `kangminhyeok02/KUBIG_FINANCE`의 400/60 retrieval 평가에서 **gold chunk
-coverage가 60문항 중 약 25~26개(42~43%)에 그치는 문제**가 있었습니다. 원인 분석
+coverage가 60문항 중 약 25-26개(42~43%)에 그치는 문제**가 있었습니다. 원인 분석
 결과 unmatched evidence의 대부분이 **PDF 소스(특히 PDF001)에 집중**되어 있었고,
 Web 소스 evidence는 거의 전부 정상 매칭되었습니다. 즉 문제는 retrieval 알고리즘이
 아니라 (1) PDF corpus 추출 품질, (2) evidence quote와 chunk를 잇는 gold mapping
