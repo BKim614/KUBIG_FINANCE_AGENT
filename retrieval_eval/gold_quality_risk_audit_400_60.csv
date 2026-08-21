@@ -1,0 +1,1595 @@
+question_id,evidence_index,source_file,page,source_quote_match_method,source_quote_match_score,risk_reasons,evaluation_quote,source_quote_raw,current_gold_chunk_ids,classification,recommended_gold_chunk_ids,missing_facts,notes
+ACC_001,0,외국인의 은행계좌 개설 가이드라인_202408.pdf,1,line_window,0.975,B_fuzzy_method;C_table_like;D_boundary_near,"외국인등록증 발급 후 계좌개설을 희망하는 경우 필요 서류: 신분증 – 외국인등록증, 여권, 본국신분증. 「통신사기피해환급법」에 따라 계좌개설 시점에 고객의 금융거래 목적을 확인하기 위한 서류 중 1개 징구.","1. 외국인등록증 발급 후 계좌개설을 희망하는 경우 필요 서류
+신분증 – 외국인등록증, 여권, 본국신분증
+금융거래 목적 확인서류
+•「통신사기피해환급법」에 따라 계좌개설 시점에 고객의 금융거래 목적을 확인하기 위한 서류* 중 1개 징구",PDF005_0001,VALID,PDF005_0001,,RISK
+ACC_003,0,외국인의 은행계좌 개설 가이드라인_202408.pdf,1,line_window,0.974,B_fuzzy_method,"외국인등록증 발급 전 계좌개설을 희망하는 경우 필요 서류: 신분증 - 여권, 본국신분증, 거소확인 증빙서류. 고객확인에 필요한 정보인 주소는 여권으로 확인이 어려워 거소확인 증빙서류를 추가 징구.","2. 외국인등록증 발급 전 계좌개설을 희망하는 경우 필요 서류
+신분증 - 여권, 본국신분증
+거소확인 증빙서류
+• 「특정금융정보법」에 따라 자금세탁행위 및 공중협박자금조달행위를 방지하기 위한 KYC(고객확인제도)가 의무이며, 고객확인에 필요한 정보인 주소는
+여권으로 확인이 어려워 거소확인 증빙서류*를 추가 징구",PDF005_0002,VALID,PDF005_0002,,RISK
+ACC_004,0,kb_transaction_purpose_limit_account_ko.json,,normalized_exact,1.0,C_table_like;D_boundary_near,ATM | 100만원,ATM | 100만원,WEB010_0002;WEB010_0003,VALID,WEB010_0002;WEB010_0003,,RISK
+ACC_005,0,fss_credit_card_guide.json,,normalized_exact,1.0,D_boundary_near,"국내외 겸용카드(VISA, Master Card, AMEX, JCB 등)도 국내뿐만 아니라 해외에서도 사용이 가능하지만 국내전용카드에 비해 연회비가 비싸고 국내 이용에는 차이가 없으므로 해외에서의 카드 사용 계획이 없는 경우에는 국내전용카드를 발급받는 것이 연회비를 절약할 수 있습니다.","국내외 겸용카드(VISA, Master Card, AMEX, JCB 등)도 국내뿐만 아니라 해외에서도 사용이 가능하지만 국내전용카드에 비해 연회비가 비싸고 국내 이용에는 차이가 없으므로 해외에서의 카드 사용 계획이 없는 경우에는 국내전용카드를 발급받는 것이 연회비를 절약할 수 있습니다",WEB002_0007,VALID,WEB002_0007,,RISK
+ACC_006,1,외국인의 은행계좌 개설 가이드라인_202408.pdf,1,normalized_exact,1.0,D_boundary_near,계좌개설 이후 금융거래 목적 확인 시 거래한도 해제하여 거래 가능. 금융거래 목적 확인에 관한 자세한 내용은 영업점으로 문의하여 주시기 바랍니다.,"계좌개설 이후 금융거래 목적 확인 시 거래한도 해제하여 거래 가능
+금융거래 목적 확인에 관한 자세한 내용은 영업점으로 문의하여 주시기 바랍니다",PDF005_0001;PDF005_0002,VALID,PDF005_0001;PDF005_0002,,RISK
+ACC_007,0,외국인의 은행계좌 개설 가이드라인_202408.pdf,1,normalized_exact,1.0,C_table_like;D_boundary_near,"거래 구분 영업점 창구 자동화기기 전자금융, 1일 거래 한도 300만원 100만원 100만원. 전자금융서비스 이용시 사전에 지정한 전자금융 이체한도 내에서만 거래(인출/이체) 가능합니다.","거래 구분 영업점 창구 자동화기기 전자금융
+1일 거래 한도 300만원 100만원 100만원
+※ 전자금융서비스 이용시 사전에 지정한 전자금융 이체한도 내에서만 거래(인출/이체) 가능합니다",PDF005_0001,VALID,PDF005_0001,,RISK
+ACC_007,3,kb_transaction_purpose_limit_account_ko.json,,normalized_exact,1.0,C_table_like,"영업점 | 300만원
+ATM | 100만원
+인터넷뱅킹(앱 포함) | 100만원","영업점 | 300만원
+ATM | 100만원
+인터넷뱅킹(앱 포함) | 100만원",WEB010_0003,VALID,WEB010_0003,,RISK
+ACC_008,0,외국인의 은행계좌 개설 가이드라인_202408.pdf,1,normalized_exact,1.0,D_boundary_near,계좌개설 이후 금융거래 목적 확인 시 거래한도 해제하여 거래 가능. 금융거래 목적 확인에 관한 자세한 내용은 영업점으로 문의하여 주시기 바랍니다.,"계좌개설 이후 금융거래 목적 확인 시 거래한도 해제하여 거래 가능
+금융거래 목적 확인에 관한 자세한 내용은 영업점으로 문의하여 주시기 바랍니다",PDF005_0001;PDF005_0002,VALID,PDF005_0001;PDF005_0002,,RISK
+ACC_009,1,seoul_banking_en.json,,normalized_exact,1.0,D_boundary_near,"A resident foreigner refers to an individual who has been in Korea for more than 6 months, while a non-resident foreigner refers to a person who has been in Korea for less than 6 months.","A resident foreigner refers to an individual who has been in Korea for more than 6 months, while a non-resident foreigner refers to a person who has been in Korea for less than 6 months",WEB003_0001,VALID,WEB003_0001,,RISK
+ACC_010,0,외국인의 은행계좌 개설 가이드라인_202408.pdf,1,normalized_exact,1.0,C_table_like,"한국 거주자로 기재하는 경우 (증빙서류) 외국인등록증, 거주자증명서, 국내거소신고증과 183일 이상 거주사실 가능 서류 (예: 출입국관리기록) 등.","한국 거주자로 기재하는 경우
+(증빙서류) 외국인등록증, 거주자증명서, 국내거소신고증과 183일 이상 거주사실 가능 서류 (예: 출입국관리기록) 등",PDF005_0002,VALID,PDF005_0002,,RISK
+ACC_011,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,21,line_window,0.88,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,"번호표 뽑기, 은행원과 상담, 신청서 작성, 비밀번호 정하기, 발급 확인하기. 4자리 통장 비밀번호와 현금카드 비밀번호를 정합니다.","How to Open an Account 통장 만들기 절차
+Things you need to bring with you
+Let’s take a look
+at how to open an Bring your identification card (passport, alien registration card,
+account.
+or resident registration card), a name seal (replaceable with
+차근차근
+signature) and document proving the purpose of financial
+따라해 볼까요?
+transaction.
+준비물
+신분증(여권, 외국인등록증, 주민등록증 중 하나), 도장(서명),
+금융거래 목적 증빙서류
+Take a ticket and wait for your turn
+Take a number from the ticket dispenser and wait for your num-
+ber to be called or displayed.
+번호표 뽑기
+순번 대기표에서 번호표를 뽑고 안내 표시판에 내 순서가 표시될 때까지
+기다립니다.
+Talk to the teller about opening an account
+Tell your bank teller: “I am here to open an account.” If necessary,
+you can also inform the teller that you would like to apply for
+internet banking and a cash withdrawal card (a card with cash de-
+posit and withdrawal function at ATMs).
+은행원과 상담
+은행직원에게 “통장이나 계좌를 개설하러 왔다”고 말하고 필요할 경우 인
+터넷뱅킹과 현금카드(ATM을 이용해 현금을 입·출금할 수 있는 카드)도
+신청합니다.
+Fill out an account application form
+Fill out an application form according to the instructions given.
+You will need to provide your resident registration number or
+your alien registration card number, your birth date, address, and
+phone number. Be sure to seal (sign) the application.
+신청서 작성
+주민등록번호(외국인등록번호), 생년월일, 주소, 연락처, 날인(서명) 등을
+정확하게 작성합니다.
+Create your PIN
+Create a 4-digit PIN for your account and another PIN for your
+cash withdrawal card.
+비밀번호 정하기
+4자리 통장 비밀번호와 현금카드 비밀번호를 정합니다.
+Confirm your account
+Keep your bankbook and cash withdrawal card in a safe place.
+발급 확인하기
+발급된 통장과 현금카드를 잘 챙깁니다.",PDF001_0027,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0026;PDF001_0027,"순번 대기표에서 번호표를 뽑고 안내 표시판에 내 순서가 표시될 때까지 | or resident registration card), a name seal (replaceable with | You will need to provide your resident registration number or | Take a ticket and wait for your turn | Let’s take a look",RISK
+ACC_012,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,27,line_window,0.9231,A_low_score;B_fuzzy_method,"인터넷뱅킹을 하려면 먼저 신분증(외국인등록증, 여권, 주민등록증 중 하나)을 가지고 은행에 가서 인터넷뱅킹 이용 신청을 해야 합니다.","인터넷뱅킹을 하려면 먼저 신분증(외국인등록
+posits and installment savings.
+증, 여권, 주민등록증 중 하나)을 가지고 은행에
+To sign up for internet banking, you need to go
+to your bank where you already have an account 가서 인터넷뱅킹 이용 신청을 해야 합니다. 처음",PDF001_0038,VALID,PDF001_0038,,RISK
+ACC_013,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,28,line_window,1.0,B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,1일/1회 이체한도 및 자금이체 비밀번호를 설정합니다. 이때 필요한 것이 보안카드나 OTP입니다. 둘 중 하나를 선택해서 사용하면 됩니다.,"How to Sign Up for Internet Banking 인터넷뱅킹 가입 방법
+Visit a bank branch where you have an account - Take a ticket and
+wait for your turn.
+은행 방문 - 번호표를 뽑아 자기 순서를 기다립니다.
+Fill out an application form and create your user ID - Fill out an inter-
+net banking application form as instructed and create your user ID.
+신청서 작성 및 이용자 ID 정하기 - 은행원의 안내에 따라 신청서를 작성하고 인
+터넷뱅킹 접속에 필요한 아이디(ID)를 정합니다
+Set maximum transfer amount and create your PIN for money trans-
+fer - Create your PIN for money transfer authorization and set the one-
+day/one-time maximum transfer amount that can be sent to another
+account. The PIN for money transfer is used when sending money to an-
+other account using internet banking. The one-day maximum amount
+limits how much money you can send from your account in a single day.
+Similarly, the onetime maximum amount limits how much money you
+can send from your account at one time.
+이체한도와 비밀번호 등록 - 1일/1회 이체한도 및 자금이체 비밀번호를 설정합
+니다. 이체한도는 하루 또는 1회에 다른 계좌로 보낼 수 있는 금액의 한도이고, 자
+금이체 비밀번호는 인터넷뱅킹을 이용해 돈을 보낼 때 사용합니다.
+Choose either Security Code Card or OTP - Your password for internet
+banking is used to prevent fraud and other criminal activities involving
+your bank account. You can use either a number on your security code
+card or a code (number) generated by OTP (One-Time Password) as your
+password.
+보안카드나 OTP 중 선택 - 인터넷뱅킹을 이용할 때마다 다른 사람이 본인의 계
+좌에 접근하지 못하도록 비밀번호를 입력해야 합니다. 이때 필요한 것이 보안카
+드나 OTP입니다. 둘 중 하나를 선택해서 사용하면 됩니다.",PDF001_0040,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0040;PDF001_0041,드나 OTP입니다 | 둘 중 하나를 선택해서 사용하면 됩니다 | 드나 OTP입니다. 둘 중 하나를 선택해서 사용하면 됩니다.,RISK
+ACC_014,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,20,normalized_exact,1.0,D_boundary_near,"통장이나 도장, 현금카드 등을 분실할 경우, 즉시 은행에 신고하고 은행의 안내에 따라야 합니다.","통장이나 도장, 현금카드 등을 분실할 경우, 즉시 은행에 신고하고 은행의 안내에 따라야 합니다",PDF001_0025,VALID,PDF001_0025,,RISK
+ACC_015,0,seoul_banking_en.json,,normalized_exact,1.0,C_table_like,Bank’s ATMs: You can use them at any time outside the following time slot: 10:00 PM ~ 8:00 AM .,Bank’s ATMs: You can use them at any time outside the following time slot: 10:00 PM ~ 8:00 AM,WEB003_0001,VALID,WEB003_0001,,RISK
+ACC_016,0,외국인의 은행계좌 개설 가이드라인_202408.pdf,1,line_window,0.9481,B_fuzzy_method;C_table_like,"급여수령: 재직증명서, 근로소득원천징수영수증, 건강보험자격득실확인서(직장가입자용), 소득금액증명원, 근로계약서, 합격증, 퇴직연금 가입 확인서, 최근 3개월 이내 급여명세서, 명함+사원증 등.","재직증명서, 근로소득원천징수영수증, 건강보험자격득실확인서(직장가입자용), 소득금액증명원, 근로계약서, 합격증, 퇴직연금 가입 확인서, 최근 3개월
+급여수령
+이내 급여명세서, 명함+사원증 등",PDF005_0001,VALID,PDF005_0001,,RISK
+ACC_019,0,외국인의 은행계좌 개설 가이드라인_202408.pdf,1,normalized_exact,1.0,C_table_like,대상계좌: 입출금이 자유로운 예금 (금융회사 별 1인당 1계좌).,대상계좌: 입출금이 자유로운 예금 (금융회사 별 1인당 1계좌,PDF005_0001,VALID,PDF005_0001,,RISK
+ACC_021,0,외국인의 은행계좌 개설 가이드라인_202408.pdf,2,line_window,0.8667,A_low_score;B_fuzzy_method;C_table_like,"업무범위: 1. 외국인고객신규(여권 지참 필수), 2. 통장, 체크카드, 온라인뱅킹 신규.","•업무범위
+(디지털 화상 한양대학교지점(9월 이후) 서울 성동구 마조로 22-2, 한양대학교 동문회관
+1. 외국인고객신규(여권 지참 필수)
+상담 센터)
+2. 통장, 체크카드, 온라인뱅킹 신규",PDF005_0004,VALID,PDF005_0004,,RISK
+ACC_022,0,외국인의 은행계좌 개설 가이드라인_202408.pdf,2,normalized_exact,1.0,D_boundary_near,은행 및 지점별로 증빙서류 인정 여부가 일부 상이할 수 있으므로 거래 은행 지점과 협의하여 진행해 주시기 바랍니다.,"은행 및 지점별로 증빙서류 인정 여부가 일부 상이할 수 있으므로 거래 은행
+지점과 협의하여 진행해 주시기 바랍니다",PDF005_0003;PDF005_0004,VALID,PDF005_0003;PDF005_0004,,RISK
+ACC_023,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,62,line_window,0.6494,A_low_score;B_fuzzy_method;D_boundary_near;E_single_gold_overflow,"체크카드·신용카드 비교: 이용한도 체크카드 예금잔액, 신용카드 신용한도 금액. 대금결제 체크카드 물품구매와 동시, 신용카드 구매 후 매월 정해진 결제일. 할부구매 체크카드 불가능, 신용카드 가능.","가혜택이 있는 체크카드와 신용카드가 주로 사
+nomical than using cash. In Korea, check cards
+and credit cards are mainly used in many stores 용되고 있습니다.
+with various additional benefits.
+Comparison: Check Card/Credit Card
+체크카드· 신용카드 비교
+Type Check Card Credit Card
+구분 체크카드 신용카드
+Where to use Member merchants (stores) Member merchants (stores)
+사용 가맹점 신용카드 가맹점 신용카드 가맹점
+Card limit Balance in the connected account Personal credit limit
+이용한도 예금잔액 신용한도 금액
+Payment settlement Immediately upon the purchase On a designated date every month
+대금결제 물품구매와 동시 구매 후 매월 정해진 결제일
+Installment payment No Yes
+할부구매 불가능 가능",PDF001_0099,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0099;PDF001_0100,할부구매 불가능 가능 | 대금결제 물품구매와 동시 구매 후 매월 정해진 결제일 | Installment payment No Yes,RISK
+ACC_023,3,fss_credit_card_guide.json,,normalized_exact,1.0,C_table_like;D_boundary_near,"적용조건 | 할부거래금액 20만원 이상, 할부기간 3개월 이상인 거래 | 할부거래금액 20만원 이상, 할부기간 3개월 이상인 거래","적용조건 | 할부거래금액 20만원 이상, 할부기간 3개월 이상인 거래 | 할부거래금액 20만원 이상, 할부기간 3개월 이상인 거래",WEB002_0008;WEB002_0009,VALID,WEB002_0008;WEB002_0009,,RISK
+ACC_023,4,fss_credit_card_guide.json,,line_window,1.0,B_fuzzy_method;C_table_like;D_boundary_near,"정의 | 할부로 구입(물품 또는 용역)한 날 또는 목적물의 인도 등을 받은 날로부터 7일 이내에 철회(취소)를 요청할 수 있는 권리 | 할부계약 기간 중 잔여할부금을 지급하지 않을 수 있는 권리
+행사성립요건 | 구입물품의 하자 여부에 관계없이 계약 철회 가능 (7일 이내) | 할부로 물품을 구입한 후 그 물품에 하자가 발생하여 계속 이용할 수 없는 경우 할부계약이 무효ㆍ취소 또는 해제된 경우 물품이 도착하지 않은 경우 할부계약 기간 중 가맹점이 부도난 경우","[표: 행사성립요건, 적용조건에 따른 신용카드 할부 철회권과 할부 항변권]
+구분 | 할부 철회권 | 할부 항변권
+정의 | 할부로 구입(물품 또는 용역)한 날 또는 목적물의 인도 등을 받은 날로부터 7일 이내에 철회(취소)를 요청할 수 있는 권리 | 할부계약 기간 중 잔여할부금을 지급하지 않을 수 있는 권리
+행사성립요건 | 구입물품의 하자 여부에 관계없이 계약 철회 가능 (7일 이내) | 할부로 물품을 구입한 후 그 물품에 하자가 발생하여 계속 이용할 수 없는 경우 할부계약이 무효ㆍ취소 또는 해제된 경우 물품이 도착하지 않은 경우 할부계약 기간 중 가맹점이 부도난 경우",WEB002_0008,VALID,WEB002_0008,,RISK
+ACC_024,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,63,line_window,0.9176,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,체크카드는 내 통장에서 사용금액이 바로 결제되므로 통장에 돈이 있어야 사용이 가능합니다. 카드발급 신청 시 사용내역을 핸드폰 문자메시지로 받을 수 있는 ‘사용내역 알림서비스(SMS)’를 신청하는 것이 좋습니다.,"Using a check card involves taking money in- 체크카드는 내 통장에서 사용금액이 바로 결제
+stantly out of your bank account so you have 되므로 통장에 돈이 있어야 사용이 가능합니다.
+to make sure to keep sufficient balance in your
+체크카드는 과소비를 방지할 수 있는 대표적인
+account before using it. A check card is a repre-
+카드이며, 보통 은행에서 통장을 만들 때 체크카
+sentative card that can prevent overspending.
+드 기능을 함께 신청해서 발급받습니다.
+You can apply for a check card when you open a
+savings account at your bank. 체크카드 분실이나 도난으로 부정사용 피해
+In order to prevent illegal use of the check card 가 발생하는 것을 방지하기 위해서는 카드발
+due to loss or theft, you should apply for the
+급 신청 시 사용내역을 핸드폰 문자메시지로 받
+‘short message service (SMS)’ that allows you to
+을 수 있는 ‘사용내역 알림서비스(SMS, short
+receive the usage history via text message when
+message service)’를 신청하는 것이 좋습니다.
+applying for card issuance.
+Financial Wisdom to Learn from Actual Cases 사례로 배우는 금융지혜
+‘A’, a foreign worker, uses a check card. One day, she 외국인 근로자 A씨는 평소 체크카드를 사용합니다. 그
+received text messages that her card had been used 런데 어느 날, 대형마트에서 체크카드가 사용되었다는
+several times at a large retail store. She realized that 문자메시지를 받았습니다. 확인해보니 체크카드를 분
+she had lost her card after reading the messages. 실한 사실을 모르고 있었고, 누군가 이 카드로 물건을
+Someone who had found her card made purchases
+산 것이었습니다. A씨는 '사용내역 알림서비스(SMS,
+with it. But ‘A’ was using the ‘short message service
+short message service)'를 사용하고 있었기에 서둘러
+(SMS)’, so she was able to prevent further damage by
+카드사에 분실신고를 하여 추가 피해를 막을 수 있었습
+promptly reporting the loss to the credit card compa-
+니다.
+ny.
+Useful Tips to You should sign the card in signature line, and when losing the card, report the
+Remember! loss to the card company.
+꼭 주의하세요! You should be careful not to lose your check card, as payment can be made only with signa-
+ture without a password. Make sure to sign your name on the back of the card, and if you lose
+your card, immediately report the loss to the card company through call center so that other
+people cannot use it. (Please see the “Reference 3” (p. 171) for the call center number of card
+company for foreigners only). And, you should take extra care not to lend or transfer your card
+to other persons, as you cannot be compensated by the card company for damage caused by
+lending or transferring the card.
+카드 서명란에 반드시 서명을 하고, 카드 분실 시 카드회사에 분실신고를 합니다.
+체크카드는 비밀번호 없이 서명만으로 결제가 되기 때문에 분실하지 않도록 주의해야 합니다. 카
+드 뒷면에 꼭 서명을 하고, 카드를 잃어버리면 즉시 해당 카드회사 콜센터에 분실신고를 하여 다
+른 사람이 못 쓰게 해야 합니다. (카드회사 외국인 전용 콜센터 번호는 p.171 ‘참고자료 3’ 참조 ).
+그리고 타인에게 카드를 빌려주거나 양도하여 발생한 피해는 카드사에서 보상받을 수 없으므로",PDF001_0101,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0101;PDF001_0102,"people cannot use it | company for foreigners only). And, you should take extra care not to lend or transfer your card | ture without a password. Make sure to sign your name on the back of the card, and if you lose | 카드 서명란에 반드시 서명을 하고, 카드 분실 시 카드회사에 분실신고를 합니다 | Reference 3",RISK
+ACC_025,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,63,line_window,0.9529,B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,"카드 뒷면에 꼭 서명을 하고, 카드를 잃어버리면 즉시 해당 카드회사 콜센터에 분실신고를 하여 다른 사람이 못 쓰게 해야 합니다. 타인에게 카드를 빌려주거나 양도하여 발생한 피해는 카드사에서 보상받을 수 없습니다.","산 것이었습니다. A씨는 '사용내역 알림서비스(SMS,
+with it. But ‘A’ was using the ‘short message service
+short message service)'를 사용하고 있었기에 서둘러
+(SMS)’, so she was able to prevent further damage by
+카드사에 분실신고를 하여 추가 피해를 막을 수 있었습
+promptly reporting the loss to the credit card compa-
+니다.
+ny.
+Useful Tips to You should sign the card in signature line, and when losing the card, report the
+Remember! loss to the card company.
+꼭 주의하세요! You should be careful not to lose your check card, as payment can be made only with signa-
+ture without a password. Make sure to sign your name on the back of the card, and if you lose
+your card, immediately report the loss to the card company through call center so that other
+people cannot use it. (Please see the “Reference 3” (p. 171) for the call center number of card
+company for foreigners only). And, you should take extra care not to lend or transfer your card
+to other persons, as you cannot be compensated by the card company for damage caused by
+lending or transferring the card.
+카드 서명란에 반드시 서명을 하고, 카드 분실 시 카드회사에 분실신고를 합니다.
+체크카드는 비밀번호 없이 서명만으로 결제가 되기 때문에 분실하지 않도록 주의해야 합니다. 카
+드 뒷면에 꼭 서명을 하고, 카드를 잃어버리면 즉시 해당 카드회사 콜센터에 분실신고를 하여 다
+른 사람이 못 쓰게 해야 합니다. (카드회사 외국인 전용 콜센터 번호는 p.171 ‘참고자료 3’ 참조 ).
+그리고 타인에게 카드를 빌려주거나 양도하여 발생한 피해는 카드사에서 보상받을 수 없으므로",PDF001_0103,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0102;PDF001_0103,"사용내역 알림서비스(SMS,
+with it. But  | Remember! loss to the card company. | lending or transferring the card | 꼭 주의하세요! You should be careful not to lose your check card, as payment can be made only with signa- | ture without a password",RISK
+ACC_026,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,64,line_window,0.9341,B_fuzzy_method;D_boundary_near,"신용카드 발급 시에는 한국에서의 거주자격, 직장, 재산, 금융거래 실적 등 다양한 조건을 보기 때문에 직장이 없는 외국인의 경우 발급이 어려울 수 있으므로, 은행 및 카드회사에 신용카드 발급이 가능한지 먼저 확인하는 것이 좋습니다.","As the credit card issuer needs to verify your abil- 사한 후 카드를 발급해 주므로, 신용카드는 체크
+ity to pay for the purchases you make before it 카드에 비해 발급 절차가 까다롭습니다.
+issues a card to you, the credit card issuance pro-
+신용카드 발급 시에는 한국에서의 거주자격, 직
+cedure is more complicated than that of check
+장, 재산, 금융거래 실적 등 다양한 조건을 보
+card.
+기 때문에 직장이 없는 외국인의 경우 발급이 어
+Because the credit card issuer has to evaluate
+your credit risk carefully using personal informa- 려울 수 있으므로, 은행 및 카드회사에 신용카
+tion such as your legal resident status, your place 드 발급이 가능한지 먼저 확인하는 것이 좋습니
+of work, your property ownership, and your
+다. 다만 배우자의 신용으로 가족카드 발급이 가",PDF001_0104,VALID,PDF001_0104,,RISK
+ACC_027,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,65,line_window,0.908,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,"신용카드는 체크카드와 달리 비싼 물건값을 몇 번에 나누어 갚는 할부구매가 가능합니다. 다만, 일반적으로 예금금리보다 높은 할부수수료가 부과되는 경우가 많으므로 반드시 수수료를 확인한 후 사용하는 것이 좋습니다.","Unlike check cards, you can also buy something 신용카드는 체크카드와 달리 비싼 물건값을 한
+and make payments in installment with a credit 번에 내기가 부담스러울 때 몇 번에 나누어 갚는
+card. Installment payments may be an attractive
+할부구매가 가능합니다. 다만, 일반적으로 예금
+option when you do not have enough money
+금리보다 높은 할부수수료가 부과되는 경우가
+to make a purchase or the purchase amount is
+많으므로 반드시 수수료를 확인한 후 사용하는
+too large to pay all at once. However, you should
+remember that fees which are higher than that 것이 좋습니다.
+of savings deposit is imposed on the install- 신용카드도 체크카드와 마찬가지로 분실 시 해
+ment. So, you need to check the fees before you
+당 카드회사에 바로 분실신고를 해야 하며, 신용
+choose an installment payment plan.
+카드 뒷면에 본인의 서명을 해놓아야 카드회사
+If you lose your credit card, you should report it
+로부터 피해를 보상받을 수 있습니다.
+right away to your credit card company as you
+did to the check card issuer. Also, make sure you 한편, 급히 돈이 필요할 때 신용카드회사로부터
+sign on the back of your credit card when you 정해진 금액 내에서 ATM이나 전화로 간편하게
+receive it because your signature will help you
+대출(현금서비스, 카드론)을 받을 수도 있습니
+be compensated for damages by the credit card
+다. 다만, 일반적인 대출보다 금리가 높고 자주
+company.
+이용할 경우 신용도에 나쁜 영향을 주기 때문에
+If you have your own credit card, you can also
+borrow cash (cash advance, card loan) at an 이용하기 전에 꼭 필요한 돈인지 신중히 생각하
+ATM or by phone call up to an amount preset by 는 것이 좋습니다.
+your credit card company. However, you must
+remember that interest rates on cash advances
+are much higher than bank lending rates, and
+whether you really need the money before using
+it, as frequent use will adversely affect your cred-
+it rating.
+Useful Tips to Pay Your Credit Card Bills on Time, so as not to Pay a Late Payment Fee
+Remember! You can use your credit card to buy something even when you don’t have enough money for
+it. But if you don’t manage your credit card spending well, you may not be able to pay your
+꼭 주의하세요!
+credit card debt on time. In such cases, your credit card company will demand a higher inter-
+est rate in the future and the record of overdue payment would adversely affect your credit
+at other financial institutions. So, you should be well informed when issuing credit card. For
+some people, using a check card instead of a credit card may be a good option to spend within
+a preset budget. In addition, using one or two credit cards is also recommended so that you
+do not have to keep track of too many credit cards.
+Adjust the Credit Card Usage Limit.
+If your credit card limit is higher than the appropriate cost of living, you may be under finan-
+cial difficulties due to overspending. It is wise to adjust the card limit considering your income
+and circumstances.
+신용카드 대금을 갚지 못하면 연체이자를 내야 합니다.
+신용카드는 당장 돈이 없을 때 사용할 수 있어 좋지만, 본인이 어느 정도 사용했는지 관리하지 않
+으면 결제일에 카드대금을 못 갚을 수 있습니다. 이 경우 연체이자가 매우 높아 부담이 될 뿐 아
+니라, 카드거래가 정지되거나 금융회사에 연체기록이 남아 대출 등 다른 금융거래까지 불이익을
+받을 수 있습니다. 따라서 신용카드 발급은 신중하게 생각해야 하며, 통장잔액 내에서 사용할 수
+있는 체크카드를 활용하는 것도 좋은 방안입니다. 또한 신용카드는 1~2장 정도면 충분하므로, 불",PDF001_0107,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0107;PDF001_0108,"cial difficulties due to overspending. It is wise to adjust the card limit considering your income | est rate in the future and the record of overdue payment would adversely affect your credit | are much higher than bank lending rates, and | it rating. | In such cases, your credit card company will demand a higher inter-",RISK
+ACC_027,1,fss_credit_card_guide.json,,normalized_exact,1.0,C_table_like;D_boundary_near,"예) A카드사의 경우 2개월, 3개월, 4～5개월, 6～9개월, 10～12개월, 13～18개월, 19～24개월별로 동일한 할부수수료가 부과되므로 6개월 할부보다는 5개월 할부가 수수료 절약 면에서 유리","예) A카드사의 경우 2개월, 3개월, 4～5개월, 6～9개월, 10～12개월, 13～18개월, 19～24개월별로 동일한 할부수수료가 부과되므로 6개월 할부보다는 5개월 할부가 수수료 절약 면에서 유리",WEB002_0008,VALID,WEB002_0008,,RISK
+ACC_028,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,65,line_window,0.8806,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,"현금서비스, 카드론은 일반적인 대출보다 금리가 높고 자주 이용할 경우 신용도에 나쁜 영향을 주기 때문에 이용하기 전에 꼭 필요한 돈인지 신중히 생각하는 것이 좋습니다.","대출(현금서비스, 카드론)을 받을 수도 있습니
+be compensated for damages by the credit card
+다. 다만, 일반적인 대출보다 금리가 높고 자주
+company.
+이용할 경우 신용도에 나쁜 영향을 주기 때문에
+If you have your own credit card, you can also
+borrow cash (cash advance, card loan) at an 이용하기 전에 꼭 필요한 돈인지 신중히 생각하
+ATM or by phone call up to an amount preset by 는 것이 좋습니다.
+your credit card company. However, you must
+remember that interest rates on cash advances
+are much higher than bank lending rates, and
+whether you really need the money before using
+it, as frequent use will adversely affect your cred-
+it rating.
+Useful Tips to Pay Your Credit Card Bills on Time, so as not to Pay a Late Payment Fee
+Remember! You can use your credit card to buy something even when you don’t have enough money for
+it. But if you don’t manage your credit card spending well, you may not be able to pay your
+꼭 주의하세요!
+credit card debt on time. In such cases, your credit card company will demand a higher inter-
+est rate in the future and the record of overdue payment would adversely affect your credit
+at other financial institutions. So, you should be well informed when issuing credit card. For
+some people, using a check card instead of a credit card may be a good option to spend within
+a preset budget. In addition, using one or two credit cards is also recommended so that you
+do not have to keep track of too many credit cards.
+Adjust the Credit Card Usage Limit.
+If your credit card limit is higher than the appropriate cost of living, you may be under finan-
+cial difficulties due to overspending. It is wise to adjust the card limit considering your income
+and circumstances.
+신용카드 대금을 갚지 못하면 연체이자를 내야 합니다.
+신용카드는 당장 돈이 없을 때 사용할 수 있어 좋지만, 본인이 어느 정도 사용했는지 관리하지 않
+으면 결제일에 카드대금을 못 갚을 수 있습니다. 이 경우 연체이자가 매우 높아 부담이 될 뿐 아
+니라, 카드거래가 정지되거나 금융회사에 연체기록이 남아 대출 등 다른 금융거래까지 불이익을
+받을 수 있습니다. 따라서 신용카드 발급은 신중하게 생각해야 하며, 통장잔액 내에서 사용할 수
+있는 체크카드를 활용하는 것도 좋은 방안입니다. 또한 신용카드는 1~2장 정도면 충분하므로, 불",PDF001_0107,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0107;PDF001_0108,"a preset budget. In addition, using one or two credit cards is also recommended so that you | remember that interest rates on cash advances | your credit card company. However, you must | cial difficulties due to overspending. It is wise to adjust the card limit considering your income | and circumstances",RISK
+ACC_030,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,66,line_window,0.973,B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,카드회원의 큰 잘못이 없으면 신고 전 60일까지 다른 사람이 부정 사용한 금액을 카드회사로부터 보상받을 수 있습니다. 카드를 발급받으면 그 즉시 뒷면에 본인 서명을 해야 합니다. 본인 서명이 없으면 카드를 분실했을 때 카드회사나 은행에서 피해 보상을 받기 어려울 수 있습니다.,"발급받아 사용해야 합니다. 이때 카드회원의 큰 잘못이 없으면 신고 전 60일까지 다른 사람이 부정 사용한 금액
+을 카드회사로부터 보상받을 수 있습니다.
+5. Sign on the back of the card
+When you receive a new payment card, make sure you sign on the back of the card. If you don’t
+sign the card and lose it, you may be held liable for charges made with the card and cannot be
+compensated by a credit card company or a bank.
+5. 카드 뒷면에 꼭 서명하세요.
+카드를 발급받으면 그 즉시 뒷면에 본인 서명을 해야 합니다. 본인 서명이 없으면 카드를 분실하거나 잃어버렸
+을 때 카드회사나 은행에서 피해 보상을 받기 어려울 수 있습니다.
+6. Do not lend your card to others.
+You cannot be compensated by the credit card company for damages that occur after you lend or
+transfer your card to another person. You must take special care to keep your card with yourself.
+6. 타인에게 카드를 빌려주지 않습니다.
+카드를 타인에게 빌려주거나 양도 후 발생한 피해는 카드사로부터 보상을 받을 수 없습니다. 본인 카드는 본인",PDF001_0111,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0111;PDF001_0112,본인 카드는 본인 | 카드를 타인에게 빌려주거나 양도 후 발생한 피해는 카드사로부터 보상을 받을 수 없습니다. 본인 카드는 본인,RISK
+ACC_030,2,crefia_creditcard_loss_theft.json,,line_window,1.0,B_fuzzy_method;D_boundary_near,회원은 카드의 분실ㆍ도난시 신고 접수일로부터 60일 전 이후에 발생하는 부정 사용액에 대해 회원의 고의·과실이 있는 경우를 제외하고 보상을 받을 수 있습니다.,"3. 분실・도난시 보상받을 수 있는 금액은 어디까지인가요?
+회원은 카드의 분실ㆍ도난시 신고 접수일로부터 60일 전 이후에 발생하는 부정 사용액에 대해 회원의 고의·과실이 있는 경우를 제외하고 보상을 받을 수 있습니다.",WEB004_0003,VALID,WEB004_0003,,RISK
+ACC_030,3,crefia_creditcard_loss_theft.json,,normalized_exact,1.0,C_table_like;D_boundary_near;E_single_gold_overflow,"카드사는 다음 각 호에 해당하는 경우(분실・도난 신고시점 이후 발생분은 제외한다) 회원에게 그 책임의 전부 또는 일부를 부담하게 할 수 있습니다.
+1. 회원의 고의로 인한 부정사용이 발생한 경우
+2. 카드에 서명을 하지 않은 경우(다음 각목의 경우에 한한다)
+가. 가맹점이 서명을 통해 본인확인을 하려 하였으나 회원 본인의 카드 미서명으로 본인확인을 하지 못한 경우
+나. 회원이 서명을 하였다고 거짓으로 신고한 경우
+3. 회원이 고의 또는 과실로 비밀번호를 누설하는 경우(자기 또는 친족의 생명‧신체에 대한 위해 때문에 비밀번호를 누설한 경우 등 회원의 고의‧과실이 없는 경우는 제외한다)
+4. 카드를 타인(가족, 동거인을 포함한다)에게 양도 또는 담보의 목적으로 제공하는 경우
+5. 회원이 과실로 카드를 노출‧방치한 경우(회원의 카드 노출‧방치로 인해 가족, 동거인이 카드를 사용한 경우도 포함한다)
+6. 회원이 합리적인 이유없이 고의적으로 카드사에 분실‧도난 신고를 지연한 경우","카드사는 다음 각 호에 해당하는 경우(분실・도난 신고시점 이후 발생분은 제외한다) 회원에게 그 책임의 전부 또는 일부를 부담하게 할 수 있습니다.
+1. 회원의 고의로 인한 부정사용이 발생한 경우
+2. 카드에 서명을 하지 않은 경우(다음 각목의 경우에 한한다)
+가. 가맹점이 서명을 통해 본인확인을 하려 하였으나 회원 본인의 카드 미서명으로 본인확인을 하지 못한 경우
+나. 회원이 서명을 하였다고 거짓으로 신고한 경우
+3. 회원이 고의 또는 과실로 비밀번호를 누설하는 경우(자기 또는 친족의 생명‧신체에 대한 위해 때문에 비밀번호를 누설한 경우 등 회원의 고의‧과실이 없는 경우는 제외한다)
+4. 카드를 타인(가족, 동거인을 포함한다)에게 양도 또는 담보의 목적으로 제공하는 경우
+5. 회원이 과실로 카드를 노출‧방치한 경우(회원의 카드 노출‧방치로 인해 가족, 동거인이 카드를 사용한 경우도 포함한다)
+6. 회원이 합리적인 이유없이 고의적으로 카드사에 분실‧도난 신고를 지연한 경우",WEB004_0003,PARTIAL_MULTI_GOLD_FIXABLE,WEB004_0003;WEB004_0004,"5. 회원이 과실로 카드를 노출‧방치한 경우(회원의 카드 노출‧방치로 인해 가족, 동거인이 카드를 사용한 경우도 포함한다) | 6. 회원이 합리적인 이유없이 고의적으로 카드사에 분실‧도난 신고를 지연한 경우 | 회원이 과실로 카드를 노출‧방치한 경우(회원의 카드 노출‧방치로 인해 가족, 동거인이 카드를 사용한 경우도 포함한다) | 회원이 합리적인 이유없이 고의적으로 카드사에 분실‧도난 신고를 지연한 경우",RISK
+REM_001,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,100,line_window,0.9348,B_fuzzy_method;C_table_like,"미국 달러 환율(통화표시 USD)이 1,000원이라면 한국 돈 1,000원을 1$(미국 달러)와 바꿀 수 있다는 의미입니다.","달러 환율(통화표시 USD)이 1,000원이라면 한
+change the US dollar (currency denominated in
+국 돈 1,000원을 1$(미국 달러)와 바꿀 수 있다
+USD) with 1,000 Korean won, it means that you
+는 의미이며, 일본 100엔 환율(통화표시 JPY)
+can exchange 1,000 Korean won with 1 US dollar
+(USD). And if you can exchange 100 Japanese 이 1,000원이라면 한국 돈 1,000원으로 일본 돈
+yen (currency denominated in JPY) with 1,000 100￥과 교환이 가능하다는 의미입니다.",PDF001_0174,VALID,PDF001_0174,,RISK
+REM_003,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,101,line_window,0.8913,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,"‘현찰(외화)을 살 때’, ‘현찰(외화)을 팔 때’, ‘송금할 때’, ‘송금받을 때’, ‘여행자수표’ 등 사용 목적별로 표시된 것을 확인할 수 있습니다.","line. When you check, you will see different types 있으며 ‘현찰(외화)을 살 때(한국 돈을 외국 돈으
+of exchange rates: (1) an exchange rate for buy-
+로 바꿀 때)’, ‘현찰(외화)을 팔 때(외국 돈을 한국
+ing a foreign currency in cash with Korean won
+돈으로 바꿀 때)’, ‘송금할 때(원화를 외화로 바꾸
+(converting Korean won into a foreign currency);
+어 외국으로 보낼 때)’, ‘송금받을 때(외국에서 보
+(2) an exchange rate for selling a foreign curren-
+cy in cash for Korean won (converting a foreign 내온 외화를 원화로 받을 때)’, ‘여행자수표(해외
+currency into Korean won); (3) an exchange rate 여행자가 여행 중에 현금 대신 사용하거나 현금
+for remittance (converting Korean won into a
+으로 교환할 수 있는 수표)’ 등 사용 목적별로 표
+foreign currency to be sent to someone outside
+시된 것을 확인할 수 있습니다.",PDF001_0177,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0176;PDF001_0177,"(converting Korean won into a foreign currency); | When you check, you will see different types 있으며 ‘현찰(외화)을 살 때(한국 돈을 외국 돈으 | of exchange rates: (1) an exchange rate for buy- | 로 바꿀 때)’, ‘현찰(외화)을 팔 때(외국 돈을 한국 | 돈으로 바꿀 때)’, ‘송금할 때(원화를 외화로 바꾸",RISK
+REM_004,0,hana_foreigner_remittance_faq_ko.json,,normalized_exact,1.0,D_boundary_near,A. 사전에 영업점에서 거래외국환은행 지정 등록을 한 경우에 가능합니다.,A. 사전에 영업점에서 거래외국환은행 지정 등록을 한 경우에 가능합니다,WEB009_0001,VALID,WEB009_0001,,RISK
+REM_005,0,sentbe_country_remittance_limits_ko.json,,normalized_exact,1.0,C_table_like;D_boundary_near,"필리핀 | 모바일 윌렛 (Gcash,Paymaya) | 50,000 PHP | - | - |","필리핀 | 모바일 윌렛 (Gcash,Paymaya) | 50,000 PHP",WEB012_0001;WEB012_0002,VALID,WEB012_0001;WEB012_0002,,RISK
+REM_005,1,sentbe_country_remittance_limits_ko.json,,normalized_exact,1.0,C_table_like;D_boundary_near,"필리핀 | 현지 캐시 픽업 | 100,000 PHP | - | - |","필리핀 | 현지 캐시 픽업 | 100,000 PHP",WEB012_0002,VALID,WEB012_0002,,RISK
+REM_006,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,104,line_window,0.9608,B_fuzzy_method,"신분증을 제시하고, 신청인 이름, 신분증(주민등록증, 외국인등록증, 여권)번호, 환전금액 등을 포함한 외화매매신청서를 작성합니다.","신청서 작성 - 외환창구로 가서 신분증을 제시하고, 담당 직원에게 환전을 요
+청 후 신청인 이름, 신분증(주민등록증, 외국인등록증, 여권)번호, 환전금액
+등을 포함한 외화매매신청서를 작성합니다.",PDF001_0181,VALID,PDF001_0181,,RISK
+REM_007,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,105,line_window,0.9138,A_low_score;B_fuzzy_method;D_boundary_near;E_single_gold_overflow,"기한 내 수령하지 않아 환전 시 출금했던 계좌로 재환전 되어 입금되면 환전비용, 환율변동 등으로 인한 손실이 발생할 수 있으니 주의하시기 바랍니다.","preferential exchange rates to their loyal cus- 시기 바랍니다.
+tomers, so you should check whether there are
+any coupons you can use before you visit a bank.
+② S ending Money via Internet Banking and ② 은행의 인터넷뱅킹과 모바일뱅킹을 이용한
+Mobile Banking 환전
+You can apply for foreign currency exchange 인터넷뱅킹 또는 모바일뱅킹(스마트뱅킹)과 같
+using non-face-to-face services such as internet 은 비대면 채널을 통해 환전서비스를 이용할 수
+banking or mobile banking (smart banking) at
+있으며 일반적으로 은행 창구보다 환율을 우대
+more preferential exchange rates than those
+받을 수 있습니다. 환전 신청 후 일정 기간 내에
+of banks. After you apply online for money ex-
+지점을 방문하여 외화를 수령해야 하며, 만약 기
+change, you should visit the pre-designated
+bank branch within a specified period of time to 한 내 수령하지 않아 환전 시 출금했던 계좌로
+claim your money. Unless you claim the money 재환전 되어 입금되면 환전비용, 환율변동 등으
+within the specified period of time, it is automat-
+로 인한 손실이 발생할 수 있으니 주의하시기 바",PDF001_0184,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0183;PDF001_0184,"of banks | change, you should visit the pre-designated | tomers, so you should check whether there are | preferential exchange rates to their loyal cus- 시기 바랍니다 | any coupons you can use before you visit a bank",RISK
+REM_008,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,106,normalized_exact,1.0,D_boundary_near,"환전한 자금을 받을 편리한 장소를 선택하고 환전 목적(여행, 보유), 수령일, 통화종류, 신청금액, 출금계좌, 비밀번호 입력 등을 통해 환전을 신청합니다.","환전한 자금을 받을 편리한 장소
+를 선택하고 환전 목적(여행, 보
+유), 수령일, 통화종류, 신청금액,
+출금계좌, 비밀번호 입력 등을 통
+해 환전을 신청합니다",PDF001_0185,VALID,PDF001_0185,,RISK
+REM_009,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,107,line_window,0.9583,B_fuzzy_method;D_boundary_near,"영수증을 출력하여 지점으로 가면 편리합니다. 신분증(여권, 외국인등록증 등)을 지참하여 방문하고 환전금액을 수령합니다.","- 영수증을 출력하여 지점으로 가면 편리합니다.
+Pick up the purchased currency
+- V isit the bank branch you chose online with an ID (resident/alien
+registration card or passport) and pick up the purchased currency.
+방문 수령
+- 신분증(여권, 외국인등록증 등)을 지참하여 방문하고 환전금액을 수
+령합니다.",PDF001_0186,VALID,PDF001_0186,,RISK
+REM_009,1,kfb_exchange_precautions.json,,normalized_exact,1.0,D_boundary_near,"100만원 이하에 상당하는 환전의 경우 실명확인 증표 없이도 환전이 가능합니다.
+100만원 초과하는 상당액을 환전할 경우 실명확인증표를 가지고 은행을 방문하시면 됩니다.","100만원 이하에 상당하는 환전의 경우 실명확인 증표 없이도 환전이 가능합니다.
+100만원 초과하는 상당액을 환전할 경우 실명확인증표를 가지고 은행을 방문하시면 됩니다",WEB007_0001,VALID,WEB007_0001,,RISK
+REM_010,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,108,line_window,0.974,B_fuzzy_method;D_boundary_near,은행연합회 외환길잡이(http://exchange.kfb.or.kr)에 접속 > 인터넷환전안내 > 은행별 주요통화 인터넷 환전수수료 우대율 비교 또는 은행별 인터넷 환전가능 통화를 조회 합니다.,"You can check the preferential rate of internet ex- 은행별 인터넷 환전수수료 우대율과 환전가능 통화를
+change fees for each bank and the exchangeable 한 번에 조회하여 환전비용이 가장 저렴한 은행을 선택
+currencies, and choose the bank with the lowest ex- 할 수 있습니다.
+change fees.
+▶ Access the Korea Federation of Banks Foreign Ex- ▶ 은행연합회 외환길잡이(http://exchange.kfb.or.kr)
+change Guide (http://exchange.kfb.or.kr) > Internet 에 접속 > 인터넷환전안내 > 은행별 주요통화 인터넷
+currency exchange > Comparison of preferential rates 환전수수료 우대율 비교 또는 은행별 인터넷 환전가능
+for internet exchange fees in major currencies by
+통화를 조회 합니다.",PDF001_0187,VALID,PDF001_0187,,RISK
+REM_011,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,108,line_window,0.9043,A_low_score;B_fuzzy_method;D_boundary_near,"원화를 동남아시아 등의 국가의 화폐로 바로 환전할 경우 환전 수수료가 높고 할인율이 낮은 경우가 많습니다. 따라서 원화를 미국 달러화로 우선 환전한 후, 현지에서 미국 달러화를 현지통화로 다시 환전하는 이중환전이 유리할 수 있습니다.","▶ If you convert Korean won directly to a currency of ▶ 은행에서 원화를 동남아시아 등의 국가의 화폐로 바
+Southeast Asian countries, you have to pay exchange 로 환전할 경우 환전 수수료가 높고 할인율이 낮은 경우
+fees, and the discount rate is often low. Therefore, you
+가 많습니다. 따라서 원화를 미국 달러화로 우선 환전한
+may use the double exchange system under which
+후, 동남아시아 등 현지에서 미국 달러화를 현지통화로
+you first convert Korean won to US Dollars, and then
+다시 환전하는 이중환전이 유리할 수 있습니다.",PDF001_0188,VALID,PDF001_0188,,RISK
+REM_012,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,109,line_window,0.9535,B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,"일반적으로 해외송금을 하기 위해서는 하나의 외국환 은행을 지정하고, 해당 은행을 통해서만 송금해야 합니다.","2. How to Send Money Abroad 2. 해외송금
+Overseas remittance means sending money 한국에서 다른 국가로 돈을 보내는 것을 해외송
+from Korea to another country. It is mainly used 금이라고 합니다. 주로 고향에 있는 가족, 친지
+to send money to family and relatives in your
+등에게 돈을 보낼 때 이용하게 됩니다. 일반적으
+hometown. In general, you need to designate
+로 해외송금을 하기 위해서는 하나의 외국환 은
+one foreign exchange bank for overseas remit-
+행을 지정하고, 해당 은행을 통해서만 송금해야
+tances and send money only through that bank.
+You may send money without any documenta- 합니다.
+tion up to USD50,000 per year, but if you want 연간송금액 5만$(미국 달러) 이하는 별도의 제
+to send more than USD50,000 per year, you will
+출서류 없이 송금할 수 있지만, 5만$ 초과 시 급
+need to give some forms of documentation
+여명세서, 과거 원화환전 금액 등에 대한 입증서
+such as pay stubs, and a record of previous
+류를 제출해야 합니다. 다만, 최근 자금세탁방지
+money exchanges involving Korean won. How-
+ever, as anti-money laundering laws have been 업무가 강화되어 5만$ 이하 송금 시에도 보이스
+strengthened recently, even when transferring 피싱, 가상화폐 불법거래 등이 의심되는 경우 은
+money amounting to less than USD50,000, if
+행에서 급여명세서 등 자금출처 자료를 별도 요
+voice phishing or illegal transactions of virtual
+구할 수 있습니다.
+currency are suspected, the bank may request
+해외송금 절차는 통상 국내은행이 송금신청을
+separate data on the source of the funds, such as
+pay stubs. 접수하면 외국의 중개은행을 통해 해외 현지 은
+After a Korean bank receives a remittance order 행이 최종적으로 돈을 받을 사람에게 전달해주",PDF001_0189,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0189;PDF001_0190,pay stubs. 접수하면 외국의 중개은행을 통해 해외 현지 은 | 접수하면 외국의 중개은행을 통해 해외 현지 은 | After a Korean bank receives a remittance order 행이 최종적으로 돈을 받을 사람에게 전달해주,RISK
+REM_013,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,109,line_window,0.8765,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near,"연간송금액 5만$ 이하는 별도의 제출서류 없이 송금할 수 있지만, 5만$ 이하 송금 시에도 보이스피싱, 가상화폐 불법거래 등이 의심되는 경우 은행에서 급여명세서 등 자금출처 자료를 별도 요구할 수 있습니다.","tion up to USD50,000 per year, but if you want 연간송금액 5만$(미국 달러) 이하는 별도의 제
+to send more than USD50,000 per year, you will
+출서류 없이 송금할 수 있지만, 5만$ 초과 시 급
+need to give some forms of documentation
+여명세서, 과거 원화환전 금액 등에 대한 입증서
+such as pay stubs, and a record of previous
+류를 제출해야 합니다. 다만, 최근 자금세탁방지
+money exchanges involving Korean won. How-
+ever, as anti-money laundering laws have been 업무가 강화되어 5만$ 이하 송금 시에도 보이스
+strengthened recently, even when transferring 피싱, 가상화폐 불법거래 등이 의심되는 경우 은
+money amounting to less than USD50,000, if
+행에서 급여명세서 등 자금출처 자료를 별도 요
+voice phishing or illegal transactions of virtual
+구할 수 있습니다.",PDF001_0189,VALID,PDF001_0189,,RISK
+REM_014,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,109,line_window,0.9091,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,최소 3개 은행을 거치므로 송금까지 보통 1~3일 정도 걸리게 되며 각 단계별 수수료가 발생하는 것이 보통입니다.,"pay stubs. 접수하면 외국의 중개은행을 통해 해외 현지 은
+After a Korean bank receives a remittance order 행이 최종적으로 돈을 받을 사람에게 전달해주
+from a customer, the Korean bank sends the
+는 절차로 진행됩니다. 이와 같이 최소 3개 은행
+requested remittance to a foreign intermedi-
+을 거치므로 송금까지 보통 1~3일 정도 걸리게
+ary, which then forwards the remittance to the
+되며 각 단계별 수수료가 발생하는 것이 보통입
+recipient’s bank on behalf of the Korean bank.
+As such, because at least three different banks 니다.
+are involved in sending the money, the whole
+process can take up to three days and service
+fees are also added each time, the remittance is
+transferred from one bank to another.
+Financial Wisdom to Learn from Actual Cases 사례로 배우는 금융지혜
+Mr. Kim Se Young and his Vietnamese wife have 김모 씨는 베트남 출신 아내와 함께 베트남으로 송금
+unlawfully acted as an intermediary to send money 을 원하는 외국인 근로자 500여 명으로부터 1,400여
+abroad, by receiving a total of 3.6 billion won on 1,400 차례에 걸쳐 36억 원을 대포통장으로 송금받아 베트남
+separate occasions using illegally obtained bank ac- 현지의 일당에게 1만 달러씩 나눠 송금했습니다. 이들
+counts from approximately 500 workers who wanted
+은 100달러당 3,000원가량의 수수료를 받아 모두 1억
+to send money to Vietnam. They allegedly sent the
+800만 원을 챙겼습니다. 이처럼 무등록 사설 브로커가
+money in the amount of 10,000 U.S. dollars at a time
+외국으로 돈을 송금해주는 것을 ‘환치기’라고 하는데, 이
+and distributed the money through their accomplices
+것은 외국환거래법을 위반하는 불법 행위입니다.",PDF001_0190,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0190;PDF001_0191,"to send money to Vietnam. They allegedly sent the | 외국으로 돈을 송금해주는 것을 ‘환치기’라고 하는데, 이 | 800만 원을 챙겼습니다 | 800 | and distributed the money through their accomplices",RISK
+REM_015,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,109,line_window,0.9184,A_low_score;B_fuzzy_method,"무등록 사설 브로커가 외국으로 돈을 송금해주는 것을 ‘환치기’라고 하는데, 이것은 외국환거래법을 위반하는 불법 행위입니다.","800만 원을 챙겼습니다. 이처럼 무등록 사설 브로커가
+money in the amount of 10,000 U.S. dollars at a time
+외국으로 돈을 송금해주는 것을 ‘환치기’라고 하는데, 이
+and distributed the money through their accomplices
+것은 외국환거래법을 위반하는 불법 행위입니다.",PDF001_0191,VALID,PDF001_0191,,RISK
+REM_015,1,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,110,line_window,0.8947,A_low_score;B_fuzzy_method;D_boundary_near,사설 브로커를 통해 해외에 있는 가족에게 송금하는 경우 중간에 돈을 가로채어 사라지는 사고가 많이 발생하고 있으므로 특히 주의하여야 합니다.,"Some foreigners residing in Korea send money 이 같은 수수료를 아끼기 위해 간혹 사설 브로커
+through unauthorized or illegal brokers to save 를 통해 해외에 있는 가족에게 송금하는 경우가
+the remittance fee and fall victim to fraud or
+있는데, 중간에 돈을 가로채어 사라지는 사고가
+scam. You should be noted not to use the unau-
+많이 발생하고 있으므로 특히 주의하여야 합니다.",PDF001_0192,VALID,PDF001_0192,,RISK
+REM_016,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,110,line_window,0.9275,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,은행 직원에게 직접 안내를 받으며 송금업무를 처리하는 것이 안전합니다. 하지만 다른 송금 방식에 비해 수수료가 비싸고 은행 영업시간에만 이용할 수 있다는 단점이 있습니다.,"(1) Sending Money via a Bank Teller (1) 은행 창구를 이용한 해외송금
+If you do not know how to send money abroad, 해외 송금 방법을 잘 알지 못할 경우 은행 창구
+you would be better advised to visit a bank tell- 를 방문하여 은행 직원에게 직접 안내를 받으며
+er, and receive direct instructions from the bank
+송금업무를 처리하는 것이 안전합니다. 하지만
+teller for transfer. However, the fee is higher than
+다른 송금 방식에 비해 수수료가 비싸고 은행 영
+other remittance methods, and in such cases,
+업시간에만 이용할 수 있다는 단점이 있습니다.
+you may send the money only during the bank
+hours. 일반적으로 은행 창구에서 해외로 송금할 경
+The amount of remittance fee usually depends 우 수수료는 금액에 따라 다르지만, 건당 최소
+on the amount of money you send at a bank.
+5,000원~최대 20,000원 내외이며 이외 전신료
+Typically, the amount ranges from 5,000 to
+(건당 약 8,000원 수준), 해외중개 수수료, 해외
+20,000 won per transaction, and the cable
+현지 은행 수수료 등을 부담해야 합니다.
+charge is about 8,000 won per transaction. Bro-
+kerage fee and service fee to be paid to the re-
+cipient’s bank are charged differently depending
+on the bank.
+(2) S ending Money through Internet (2) 은행의 인터넷뱅킹과 모바일뱅킹을
+Banking and Mobile Banking 이용한 해외송금
+You can remit money abroad using internet 은행을 방문하는 번거로움 없이 인터넷뱅킹 또
+banking or mobile banking without bothering
+는 모바일뱅킹을 이용하여 해외송금을 할 수 있
+to visit a bank. In order to use the overseas remit-
+습니다. 인터넷뱅킹 또는 모바일뱅킹을 이용하
+tance service through internet banking or mo-
+여 해외송금서비스를 이용하기 위해서는 신분증
+bile banking, you must visit the branch of your
+trading bank with your ID card (passport, alien (여권, 외국인등록증, 주민등록증)을 가지고 거
+registration card, resident registration card). 래하고자 하는 은행 영업점을 방문해야 합니다.",PDF001_0192,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0192;PDF001_0193,"on the bank. | 는 모바일뱅킹을 이용하여 해외송금을 할 수 있 | 인터넷뱅킹 또는 모바일뱅킹을 이용하 | trading bank with your ID card (passport, alien (여권, 외국인등록증, 주민등록증)을 가지고 거 | on the bank",RISK
+REM_018,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,110,line_window,0.9437,B_fuzzy_method,"인터넷뱅킹 또는 모바일뱅킹을 이용하여 해외송금서비스를 이용하기 위해서는 신분증(여권, 외국인등록증, 주민등록증)을 가지고 거래하고자 하는 은행 영업점을 방문해야 합니다.","는 모바일뱅킹을 이용하여 해외송금을 할 수 있
+to visit a bank. In order to use the overseas remit-
+습니다. 인터넷뱅킹 또는 모바일뱅킹을 이용하
+tance service through internet banking or mo-
+여 해외송금서비스를 이용하기 위해서는 신분증
+bile banking, you must visit the branch of your
+trading bank with your ID card (passport, alien (여권, 외국인등록증, 주민등록증)을 가지고 거
+registration card, resident registration card). 래하고자 하는 은행 영업점을 방문해야 합니다.",PDF001_0193,VALID,PDF001_0193,,RISK
+REM_021,1,sentbe_remittance_refund_ko.json,,normalized_exact,1.0,D_boundary_near,환불 금액은 센트비 월렛으로 반환됩니다.,환불 금액은 센트비 월렛으로 반환됩니다,WEB013_0001,VALID,WEB013_0001,,RISK
+REM_021,2,sentbe_remittance_refund_ko.json,,normalized_exact,1.0,D_boundary_near,송금 수수료 반환 여부는 환불 방식과 상황에 따라 달라질 수 있습니다.,송금 수수료 반환 여부는 환불 방식과 상황에 따라 달라질 수 있습니다,WEB013_0001,VALID,WEB013_0001,,RISK
+REM_022,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,112,line_window,0.942,B_fuzzy_method;C_table_like,"외국인 근로자의 보수 송금: 여권, 고용계약서 또는 재직증명서(은행에서 요청 시), 국내소득입증 서류(5만 불 초과 송금 또는 은행에서 요청 시), 납세사실증명원(개인사업자의 경우).","외국인 근로자의 보수 송금* - Documents proving income in Korea
+- Proof of income in Korea (when sending more than US$50,000 a year or
+requested by a bank)
+- Certificate of Tax Payment (In the case of a self-employed person)
+- 여권
+- 고용계약서 또는 재직증명서(은행에서 요청 시)
+- 국내소득입증 서류(5만 불 초과 송금 또는 은행에서 요청 시)
+- 고용주가 확인한 납세관련 증빙서류 (불법체류자 및 산업연수생의 경우 제외)
+- 납세사실증명원(개인사업자의 경우)",PDF001_0195,VALID,PDF001_0195,,RISK
+REM_023,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,112,line_window,0.9238,A_low_score;B_fuzzy_method;D_boundary_near;E_single_gold_overflow,"수취인 정보: 성명, 주소, 전화번호(지역번호 포함). 전화번호가 누락될 경우 송금지연이 될 수 있습니다. 수취인은행 정보: 은행명(Full Name), 은행주소, 은행코드(SWIFT코드 등), 수취인 계좌번호. 수취인 계좌번호의 예금주명과 수취인 성명이 동일해야 합니다.","송금신청인 정보 성명, 주소, 전화번호(지역번호 포함)
+Recipient’s information Name, address, phone number (including area code)
+수취인 정보 * In most countries, remittance may be delayed if the phone number is omit-
+ted, as money is transferred and deposited into the recipient’s account
+after making contact with the recipient.
+성명, 주소, 전화번호(지역번호 포함)
+* 대부분 국가에서는 수취인과의 유선 연락이 된 후에 수취인 계좌로 입금하기
+때문에 전화번호가 누락될 경우 송금지연이 될 수 있습니다.
+Recipient’s bank information Full bank name, bank address [At least, name of city and province (State in
+수취인은행 정보 U.S., last name in China, etc.), country name required], bank code (SWIFT
+code, etc.), recipient account number
+* The name of the account holder and the name of the recipient in the recip-
+ient’s account number must be the same.
+은행명(Full Name), 은행주소[최소 도시명, 지방명(미국의 주, 중국의 성 등),
+국가명 필요], 은행코드(SWIFT코드 등), 수취인 계좌번호
+* 수취인 계좌번호의 예금주명과 수취인 성명이 동일해야 합니다.",PDF001_0196,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0196;PDF001_0197,"* 수취인 계좌번호의 예금주명과 수취인 성명이 동일해야 합니다. | 국가명 필요], 은행코드(SWIFT코드 등), 수취인 계좌번호 | * 수취인 계좌번호의 예금주명과 수취인 성명이 동일해야 합니다",RISK
+REM_023,2,hana_foreigner_remittance_faq_ko.json,,normalized_exact,1.0,D_boundary_near,"송금 받으실 계좌번호 :
+국내 원화 또는 외화예금 계좌번호
+송금 받으실 분의 영문성명 :
+영문성명
+송금 받으실 분의 전화번호 :
+전화번호","송금 받으실 계좌번호 :
+국내 원화 또는 외화예금 계좌번호
+송금 받으실 분의 영문성명 :
+영문성명
+송금 받으실 분의 전화번호 :
+전화번호",WEB009_0002,VALID,WEB009_0002,,RISK
+REM_024,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,113,line_window,0.9219,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,"온라인통장 신규개설, 출금계좌등록, 전자금융서비스(인터넷뱅킹, 모바일뱅킹) 가입, 거래외국환은행 지정, 외환고객 정보등록, 뱅킹전용 APP설치, 인증서발급 등.","Open a new online account, register an account 온라인통장 신규개설, 출금계좌등록, 전자금융서
+for withdrawal, sign up for electronic financial 비스(인터넷뱅킹, 모바일뱅킹) 가입, 거래외국환은
+services (internet banking, mobile banking), desig- 행 지정, 외환고객 정보등록, 뱅킹전용 APP설치,
+nate your foreign exchange bank, register foreign 인증서발급 등
+exchange customer information, install banking
+exclusive APP, and issue certificate, etc.
+① Sending Remittance Online ① 인터넷뱅킹 해외송금
+To send money online, customers should access 컴퓨터 또는 태블릿 PC 등을 통해 은행 홈페이
+the bank’s website through a computer or tablet
+지에 접속하여 고객이 스스로 해외송금을 처리
+PC and process overseas remittances on their
+하는 방식을 말합니다. 인터넷 해외송금은 은행
+own. When you use internet banking services,
+창구에서 송금하는 것보다 송금수수료가 50%
+you can save the remittance fees of up to 50%.
+이상 절감되는 경우가 많습니다.
+Bank Website for Sending Remittances Online 외화송금 시 은행 홈페이지 화면
+Useful Tips to Enter the correct information for remittance.
+Remember! Remittance does not take place right after you complete your remittance transaction
+꼭 주의하세요! at the bank. In fact, it takes up to three business days to complete the money transfer
+depending on the country to which you send the money.
+Remittance is delivered to the desired recipient only when all of the information
+you have provided such as account number of recipient, transaction bank, branch
+name and name of country is checked as correct. So, make sure you provide correct
+information to avoid any unexpected delay or failure of your remittance resulting
+from the incorrect information.
+송금 관련 정보를 정확하게 입력합니다.
+해외송금을 신청했다고 바로 송금이 이뤄지는 것은 아닙니다. 송금이 완료될 때까지 나라마다 다르
+지만 보통 1~3일 정도 걸립니다.
+그리고 수취인 계좌번호, 거래은행, 지점, 국가명 등 수취인 정보가 정확해야 송금이 정상적으로 이",PDF001_0198,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0198;PDF001_0199,송금이 완료될 때까지 나라마다 다르 | 해외송금을 신청했다고 바로 송금이 이뤄지는 것은 아닙니다. 송금이 완료될 때까지 나라마다 다르 | 3일 | 해외송금을 신청했다고 바로 송금이 이뤄지는 것은 아닙니다 | 송금 관련 정보를 정확하게 입력합니다.,RISK
+REM_026,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,113,line_window,0.9701,B_fuzzy_method;D_boundary_near,"송금이 완료될 때까지 나라마다 다르지만 보통 1~3일 정도 걸립니다. 수취인 계좌번호, 거래은행, 지점, 국가명 등 수취인 정보가 정확해야 송금이 정상적으로 이루어집니다.","해외송금을 신청했다고 바로 송금이 이뤄지는 것은 아닙니다. 송금이 완료될 때까지 나라마다 다르
+지만 보통 1~3일 정도 걸립니다.
+그리고 수취인 계좌번호, 거래은행, 지점, 국가명 등 수취인 정보가 정확해야 송금이 정상적으로 이
+루어집니다. 부정확한 정보로 송금지연 등의 문제가 생기지 않도록 정확하게 정보를 입력하는 것이",PDF001_0199,VALID,PDF001_0199,,RISK
+REM_027,1,sentbe_remittance_refund_ko.json,,normalized_exact,1.0,D_boundary_near,"이 경우 환불은 어렵지만, 센트비는 송금된 금액 회수를 위해 최선을 다해 지원합니다.","이 경우 환불은 어렵지만, 센트비는 송금된 금액 회수를 위해 최선을 다해 지원합니다",WEB013_0001,VALID,WEB013_0001,,RISK
+REM_028,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,122,line_window,0.8068,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near,"빠르면 10분 안에 돈을 주고받을 수 있습니다. 대표적인 송금 전문회사는 웨스턴유니온사와 머니그램입니다. 수수료나 환율 적용에 있어 은행보다 불리할 수 있으므로 잘 비교하고, 서비스 가능 지역을 미리 확인해야 합니다.","the world in less than 10 minutes using a wire 외송금 전문회사의 송금서비스를 통해, 빠르면
+transfer service. The most widely recognized
+10분 안에 돈을 주고받을 수 있습니다. 대표적인
+wire transfer service providers are the Western
+송금 전문회사는 웨스턴유니온사(The Western
+Union Company and MoneyGram. Many domes-
+Union Company)와 머니그램(MoneyGram)이
+tic banks process remittances from wire transfer
+service providers. 있습니다. 국내은행 중 상당수의 은행이 송금 전
+문회사의 송금 업무를 취급하고 있습니다.
+• Banks that process remittances from Western • 웨스턴유니온 취급 은행 : KB국민은행, IBK기업
+Union: KB Kookmin Bank, Industrial Bank of Ko- 은행, KEB하나은행, NH농협은행, 대구은행, 부
+rea, KEB Hana Bank, NH Bank, DGB Daegu Bank 산은행, 카카오은행 등
+and BNK Busan Bank and Kakao Bank, etc.
+• Banks that process remittance from Money- • 머니그램 취급 은행 : 우리은행, 신한은행, 경남
+Gram: Woori Bank, Shinhan Bank and BNK 은행 등
+Gyeongnam Bank, etc.
+Useful Tips to
+You should check the following before using a Wire Transfer Service.
+Remember!
+Sending money through a wire transfer service is fast. However, wire transfer service
+꼭 주의하세요!
+providers usually charge more fees and apply less favorable foreign exchange rates
+than banks. Therefore, make sure you compare service fees and foreign exchange
+rates before you decide to send money using a wire transfer service. In some
+countries and cities, there is no wire transfer service provider that can deliver your
+remittance to the desired person. So, make sure you check the availability of a wire
+transfer service provider in the destination city before you send money.
+송금 전문회사를 이용하기 전에 반드시 확인합니다.
+송금 전문회사를 통한 송금 방법은 돈을 해외로 빠르게 송금할 수 있는 장점이 있으나 송금액에 따라
+수수료나 환율 적용에 있어 은행보다 불리할 수 있으므로, 잘 비교해보아야 합니다. 또한 일부 국가
+나 도시는 송금 전문회사의 가맹점이 없을 수도 있으므로, 서비스 가능 지역을 미리 확인해보아야 합",PDF001_0209;PDF001_0210,VALID,PDF001_0209;PDF001_0210,,RISK
+REM_029,0,bok_forex_payment_methods.json,,normalized_exact,1.0,C_table_like,미화5천불 초과 1만불 이내의 금액을 제3자와 지급등을 하려는 경우,미화5천불 초과 1만불 이내의 금액을 제3자와 지급등을 하려는 경우,WEB001_0006,VALID,WEB001_0006,,RISK
+REM_030,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,125,line_window,0.9016,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,"당일 또는 익일에 송금액을 빠르게 받을 수 있습니다. 소액해외송금업체를 통해 건당 미화 5천 달러 이하, 연간 미화 5만 달러까지 해외송금을 할 수 있습니다.","고, 당일 또는 익일에 송금액을 빠르게 받을 수
+the same day or the next day. You can remit less
+than USD 5,000 per transaction and up to USD 있다는 것입니다. 소액해외송금업체를 통해 건
+50,000 per year through small-sum money trans- 당 미화 5천 달러 이하, 연간 미화 5만 달러까지
+fer service.
+해외송금을 할 수 있습니다.
+However, when using fintech small-sum money
+다만, 핀테크 소액해외송금업체 이용 시 주의사
+transfer service, you have to be sure not to make
+항이 있습니다. 우선, 업체에 따라 송금방식, 수",PDF001_0216,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0216;PDF001_0217,"transfer service, you have to be sure not to make | 항이 있습니다 | 항이 있습니다. 우선, 업체에 따라 송금방식, 수 | 우선, 업체에 따라 송금방식, 수 | 다만, 핀테크 소액해외송금업체 이용 시 주의사",RISK
+REM_030,1,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,126,line_window,0.9348,B_fuzzy_method;D_boundary_near;E_single_gold_overflow,수신자 정보 등 해외송금에 필요한 정보를 정확하게 입력하고 입력된 정보가 맞는지 다시 확인하는 자세가 필요합니다.,"받는 것이 쉽지 않으므로, 수신자 정보 등 해외
+be sure to accurately enter the information re-
+송금에 필요한 정보를 정확하게 입력하고 입력
+quired for overseas remittance, such as recipient
+된 정보가 맞는지 다시 확인하는 자세가 필요합
+information, and double-check that the entered
+information is correct. 니다.
+Handy Tips for Using Financial Services 금융생활 꿀팁
+Check Out our Convenient Personalized 편리한 은행 송금특화 서비스를
+Money Transfer Service! 확인하세요!
+The types of services provided by banks differ from 은행의 송금특화 서비스는 은행별로 제공하는 서비스의
+bank to bank’s special remittance service. 종류가 다릅니다.
+The useful remittance specialized services provided 국내 은행이 제공하고 있는 유용한 송금특화 서비스
+by domestic banks (as of the end of 2021) are as fol- (2021년 말 기준)를 아래와 같이 안내하니 자세한 사항
+lows. For more information, please contact each bank.
+은 각 은행에 문의하고 이용하기 바랍니다.
+▶ Automatic remittance ▶ 자동송금
+If you want to regularly send a certain amount of 수취인에게 매월 일정 금액을 정기적으로 돈을 보내고
+money to a specific recipient every month, you can 자 하는 경우에 이용하면 좋습니다.
+use this service.
+<Example> <예시>
+One-stop services for overseas remittance (Shin- 해외송금일괄처리(신한은행), 정기적해외송금/우
+han Bank), regular overseas remittance/ Woori 리ONE해외송금서비스(우리은행),
+‘ONE’ overseas remittance service (Woori Bank), KB WISE 해외송금(국민은행), JB글로벌자동송금
+KB WISE Overseas Remittance (Kookmin Bank), (전북은행), 해외자동송금서비스(광주은행)
+JB Global Automatic Remittance (Jeonbuk
+Bank), Overseas Automatic Remittance Service
+(Gwangju Bank)
+▶ Overseas remittance without account ▶ 무계좌 해외송금
+This is useful when the recipient does not have a bank 돈을 받는 분(수취인)이 은행계좌가 없거나, 계좌번호를
+account or does not know the account number. 모르는 경우에 이용하면 유용합니다.",PDF001_0218,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0218;PDF001_0219,"KB WISE Overseas Remittance (Kookmin Bank), (전북은행), 해외자동송금서비스(광주은행) | Bank), Overseas Automatic Remittance Service | ‘ONE’ overseas remittance service (Woori Bank), KB WISE 해외송금(국민은행), JB글로벌자동송금 | ▶ Overseas remittance without account ▶ 무계좌 해외송금 | 모르는 경우에 이용하면 유용합니다",RISK
+REM_030,2,sentbe_country_remittance_limits_ko.json,,normalized_exact,1.0,D_boundary_near,"연간 통합 한도는 100,000 USD로 국가, 수취 방법 상관없이 송금한 모든 금액의 총합입니다.","연간 통합 한도는 100,000 USD로 국가, 수취 방법 상관없이 송금한 모든 금액의 총합입니다",WEB012_0001,VALID,WEB012_0001,,RISK
+REM_030,3,sentbe_country_remittance_limits_ko.json,,normalized_exact,1.0,D_boundary_near,모바일 월렛한도는 고객 본인 확인 절차(KYC) 및 수취인의 모바일 월렛 내 인증 레벨에 따라 달라질 수 있습니다.,모바일 월렛한도는 고객 본인 확인 절차(KYC) 및 수취인의 모바일 월렛 내 인증 레벨에 따라 달라질 수 있습니다,WEB012_0001,VALID,WEB012_0001,,RISK
+NOT_001,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,42,line_window,0.9,A_low_score;B_fuzzy_method;D_boundary_near,"정해진 기간 내에 납부하지 못하면 추가요금(연체료)이 부과될 수 있고, 오래 연체하면 전기나 수도 등을 사용하지 못할 수 있으니 납부기간 안에 내야 합니다.","(1) What is a Utility Bill? (1) 공과금이란
+Utility bill refers to a statement of payment to 공과금이란 집에서 사용하는 전기, 가스, 수도
+be made for the electricity, water, and gas you 등의 요금을 말합니다. 한국에서는 본인이 한 달
+consume at home. You have to pay for elec-
+동안 쓴 전기, 수도, 가스 등의 요금을 매달 냅니
+tricity, water and gas, etc. you consume every
+다. 정해진 기간 내에 납부하지 못하면 추가요금
+month. If you fail to make the payment by the
+(연체료)이 부과될 수 있고, 오래 연체하면 전기
+due date, you may have to pay an additional fee
+(late fee), and if you miss your utility payments, 나 수도 등을 사용하지 못할 수 있으니 신경 써
+your electricity and water may even be cut off, 서 납부기간 안에 내야 합니다. 주소가 정확하지",PDF001_0062,VALID,PDF001_0062,,RISK
+NOT_002,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,42,line_window,0.8857,A_low_score;B_fuzzy_method;D_boundary_near,주소가 정확하지 않은 경우 청구서를 받지 못해 공과금을 제때 내지 못하는 경우가 있으므로 주의해야 합니다. 이메일이나 문자로 청구서를 받으면 이런 문제를 예방할 수 있습니다.,"(1) What is a Utility Bill? (1) 공과금이란
+Utility bill refers to a statement of payment to 공과금이란 집에서 사용하는 전기, 가스, 수도
+be made for the electricity, water, and gas you 등의 요금을 말합니다. 한국에서는 본인이 한 달
+consume at home. You have to pay for elec-
+동안 쓴 전기, 수도, 가스 등의 요금을 매달 냅니
+tricity, water and gas, etc. you consume every
+다. 정해진 기간 내에 납부하지 못하면 추가요금
+month. If you fail to make the payment by the
+(연체료)이 부과될 수 있고, 오래 연체하면 전기
+due date, you may have to pay an additional fee
+(late fee), and if you miss your utility payments, 나 수도 등을 사용하지 못할 수 있으니 신경 써
+your electricity and water may even be cut off, 서 납부기간 안에 내야 합니다. 주소가 정확하지
+so you have to be careful. Utility bills mailed to a
+않은 경우 청구서를 받지 못해 공과금을 제때 내
+wrong address will mean a late payment or no
+지 못하는 경우가 있으므로 주의해야 합니다. 이
+payment, so please ensure your mailing address
+메일이나 문자로 청구서를 받으면 이런 문제를
+stays current. You can make payment in a timely
+manner if you receive your bills by email or text 예방할 수 있습니다.",PDF001_0062,VALID,PDF001_0062,,RISK
+NOT_003,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,42,line_window,0.9012,A_low_score;B_fuzzy_method;D_boundary_near,인터넷뱅킹의 경우 본인이 거래하는 은행 홈페이지에 들어가서 ‘공과금’ 메뉴를 클릭하고 내려는 공과금 종류를 선택하면 됩니다. 모바일뱅킹의 경우 은행의 앱(APP)을 실행해서 공과금 항목을 선택합니다.,"터넷뱅킹의 경우 본인이 거래하는 은행 홈페이
+go to your bank’s website, click on “Utility Bill,”
+지에 들어가서 ‘공과금’ 메뉴를 클릭하고 내려는
+and choose the kinds of utility bill you want to
+공과금 종류를 선택하면 됩니다. 모바일뱅킹의
+pay. In the case of mobile banking, you can run
+the bank’s app and choose the utility bill you 경우 은행의 앱(APP)을 실행해서 공과금 항목을
+want to pay. 선택합니다.
+Internet Banking Screen for Utility Bill Mobile Banking Screen for Utility Bill
+인터넷뱅킹 공과금 메뉴 화면 모바일뱅킹 공과금 메뉴 화면",PDF001_0063,VALID,PDF001_0063,,RISK
+NOT_004,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,43,line_window,0.9383,B_fuzzy_method;D_boundary_near,금융결제원에서 운영하는 인터넷 지로 홈페이지(www.giro.or.kr)에서도 공과금을 낼 수 있습니다. 인터넷이나 스마트폰을 이용해 각종 공과금이나 세금을 편리하게 납부할 수 있는 서비스입니다.,"② Payment through Giro on Internet ② 인터넷 지로로 납부하기
+You can visit the Giro homepage (www.giro.or.kr) 금융결제원에서 운영하는 인터넷 지로 홈페이지
+run by the Korea Financial Telecommunications (www.giro.or.kr)에서도 공과금을 낼 수 있습니
+and Clearings Institute. On the Giro homepage,
+다. 인터넷 지로는 금융회사를 방문하지 않고 집
+you can conveniently pay various utility bills
+에서 인터넷이나 스마트폰을 이용해 각종 공과
+or taxes at home using the internet or a smart-
+금이나 세금을 편리하게 납부할 수 있는 서비스
+phone without visiting a financial company.
+입니다.
+③ Automatic Withdrawal ③ 자동이체
+Automatic withdrawal refers to setting up an au- 자동이체는 매달 정해진 날짜에 내 통장에서 공
+tomatic utility payment arrangement with your 과금이 자동으로 인출되게 하는 납부 방법입니
+bank so that the amount due is withdrawn from
+다. 자동이체를 신청하면 매달 공과금을 납부하
+your account on a designated date every month.
+는 일을 반복하지 않아도 되어 편리하지만, 통장
+Automatic withdrawal can be convenient be-
+에 돈이 부족하면 공과금이 연체될 수 있으므로
+cause you do not have to go to your bank to
+make the payment. But make sure you have 통장 잔액을 꼭 확인해야 합니다. 자동이체 신청
+enough money in your account for automatic 은 은행을 방문해서 하거나 인터넷뱅킹 또는 모
+payments, so as not to pay a late fee. You can
+바일뱅킹을 통해 할 수 있습니다.",PDF001_0064,VALID,PDF001_0064,,RISK
+NOT_005,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,43,line_window,0.9014,A_low_score;B_fuzzy_method,자동이체는 매달 정해진 날짜에 내 통장에서 공과금이 자동으로 인출되게 하는 납부 방법입니다. 통장에 돈이 부족하면 공과금이 연체될 수 있으므로 통장 잔액을 꼭 확인해야 합니다.,"입니다.
+③ Automatic Withdrawal ③ 자동이체
+Automatic withdrawal refers to setting up an au- 자동이체는 매달 정해진 날짜에 내 통장에서 공
+tomatic utility payment arrangement with your 과금이 자동으로 인출되게 하는 납부 방법입니
+bank so that the amount due is withdrawn from
+다. 자동이체를 신청하면 매달 공과금을 납부하
+your account on a designated date every month.
+는 일을 반복하지 않아도 되어 편리하지만, 통장
+Automatic withdrawal can be convenient be-
+에 돈이 부족하면 공과금이 연체될 수 있으므로
+cause you do not have to go to your bank to
+make the payment. But make sure you have 통장 잔액을 꼭 확인해야 합니다. 자동이체 신청",PDF001_0064,VALID,PDF001_0064,,RISK
+NOT_006,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,43,line_window,0.8889,A_low_score;B_fuzzy_method;D_boundary_near,자동이체 신청은 은행을 방문해서 하거나 인터넷뱅킹 또는 모바일뱅킹을 통해 할 수 있습니다.,"make the payment. But make sure you have 통장 잔액을 꼭 확인해야 합니다. 자동이체 신청
+enough money in your account for automatic 은 은행을 방문해서 하거나 인터넷뱅킹 또는 모
+payments, so as not to pay a late fee. You can
+바일뱅킹을 통해 할 수 있습니다.
+sign up for automatic withdrawal by visiting a",PDF001_0064,VALID,PDF001_0064,,RISK
+NOT_007,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,44,line_window,0.9474,B_fuzzy_method;D_boundary_near,본인의 인증서로 로그인합니다. 공과금 청구서에 표시된 고객번호나 전자납부번호를 입력합니다.,"Paying Utility Bills on Giro Homepage 인터넷 지로로 공과금 납부하기
+Go to the website for bill pay-
+ment
+- Visit your bank’s homepage
+or Giro homepage (www.giro.
+or.kr).
+홈페이지 방문
+- 은행 홈페이지 또는 인터넷지로 홈
+페이지(www.giro.or.kr)를 방문합
+니다.
+Log in using a certificate
+- Log in with your digital certifi-
+cate.
+인증서 로그인
+- 본 인의 인증서로 로그인합니다.
+Enter customer or Giro number
+- Enter the customer or Giro num-
+ber indicated on the statement
+of utility bills.
+고객번호 또는 전자납부번호 입력
+- 공과금 청구서에 표시된 고객번호
+나 전자납부번호를 입력합니다.",PDF001_0065,VALID,PDF001_0065,,RISK
+NOT_007,1,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,45,line_window,0.9718,B_fuzzy_method,"납부 계좌번호, 계좌 소유주의 주민등록번호 또는 외국인등록증 앞자리 및 계좌 비밀번호를 입력합니다. 계좌정보 입력 후 납부하기를 누르면 납부가 되며 결과를 확인할 수 있습니다.","- 납부 계좌번호, 계좌 소유주의 주민
+등록번호 또는 외국인등록증 앞자
+리 및 계좌 비밀번호를 입력합니다.
+Confirm your payment
+- Enter your account information
+and tap [Payment] to confirm
+your payment.
+납부하고 확인하기
+- 계좌정보 입력 후 납부하기를 누르
+면 납부가 되며 결과를 확인할 수 있
+습니다.",PDF001_0066,VALID,PDF001_0066,,RISK
+NOT_007,2,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,47,line_window,0.9615,B_fuzzy_method;D_boundary_near;E_single_gold_overflow,"지로통지서나 청구서를 분실하면, 요금을 부과하는 업체에 문의해서 지로번호, 전자납부번호 등을 받아 공과금을 납부할 수 있습니다.","office with your Giro bill. Show your statement of 부할 수 있습니다. 우체국 창구에서 집으로 온
+utility bills to the employees at the bank or the
+지로통지서를 보여주며 “공과금을 납부하러 왔
+post office and say “I want to pay my utility bill.”
+다”고 하면 직원이 이를 처리해 줍니다.
+Employees will be happy to assist you.
+Financial Wisdom to Learn from Actual Cases 사례로 배우는 금융지혜
+It was difficult for ‘B’ to visit the bank because she 결혼이주여성 B씨는 회사에 다녀서 은행에 자주 가지
+had a daytime job. One time, she even had to pay a 못합니다. 한번은 공과금 납부기간이 지나서 연체료를
+late fee on her utility bill. So, she signed up for the 내야 했습니다. 그래서 매월 10일에 공과금이 본인 통
+automatic bill payment service at her bank so that the 장에서 빠져나가게 자동이체를 신청했습니다. 그런데
+payment due could be withdrawn on the 10th day of
+어느 날 보니 두 달 치의 공과금이 한꺼번에 빠져나갔
+each month. However, she found out one day that a
+고, 추가로 연체료도 나갔습니다. 알고 보니 통장에 잔
+withdrawal for two months’ bills was made all at once.
+액이 없어서 지난달 공과금이 빠져나가지 못했고, 통장
+There was also a penalty for late payment. She then
+에 잔액이 생기자 두 달 치가 한꺼번에 빠져나간 것이었
+learned that there was no enough money in her ac-
+습니다.
+count during the previous month, and the withdrawal
+was made in the second month when she had enough
+money to cover the bills.
+Handy Tips for Using Financial Services 금융생활 꿀팁
+If you lose your statement of utility bills, 청구서를 분실하면 업체에
+contact the utility company! 문의하세요!
+When you pay your utility bill, make sure you keep 공과금 영수증은 요금을 냈다는 증명이 되기 때문에 챙
+the receipt because it is your proof of payment. If you 겨서 모아 두는 것이 좋습니다. 만약 지로통지서나 청구
+lose the Giro or bill, you can pay the utility bill by con- 서를 분실하면, 요금을 부과하는 업체에 문의해서 지로
+tacting the utility company that charges the fee and 번호, 전자납부번호 등을 받아 공과금을 납부할 수 있습",PDF001_0070,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0069;PDF001_0070,office with your Giro bill | Financial Wisdom to Learn from Actual Cases 사례로 배우는 금융지혜 | late fee on her utility bill | automatic bill payment service at her bank so that the 장에서 빠져나가게 자동이체를 신청했습니다 | 10,RISK
+NOT_008,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,45,line_window,0.9524,B_fuzzy_method,"공과금뿐 아니라 월세, 용돈, 회비 등 주기적으로 돈을 이체할 필요가 있으면 지정한 계좌로 돈을 자동적으로 이체해 주는 자동이체 서비스를 신청하면 편리합니다.","If you transfer money not only for utility bills but 공과금뿐 아니라 월세, 용돈, 회비 등 주기적으로 돈을
+also monthly rent, pocket money, and membership 이체할 필요가 있으면 지정한 계좌로 돈을 자동적으로
+fees periodically, it is convenient to sign up for an 이체해 주는 자동이체 서비스를 신청하면 편리합니다.
+automatic withdrawal service that automatically with- 한편, 주기적이 아니라 특정 날짜에 잊지 않고 돈을 이",PDF001_0066,VALID,PDF001_0066,,RISK
+NOT_009,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,45,line_window,0.8409,A_low_score;B_fuzzy_method,주기적으로 돈을 이체할 필요가 있으면 자동이체 서비스를 신청하면 편리합니다. 주기적이 아니라 특정 날짜에 잊지 않고 돈을 이체할 필요가 있다면 예약해놓은 날짜에 은행이 돈을 이체해 주는 예약이체 서비스도 있습니다.,"If you transfer money not only for utility bills but 공과금뿐 아니라 월세, 용돈, 회비 등 주기적으로 돈을
+also monthly rent, pocket money, and membership 이체할 필요가 있으면 지정한 계좌로 돈을 자동적으로
+fees periodically, it is convenient to sign up for an 이체해 주는 자동이체 서비스를 신청하면 편리합니다.
+automatic withdrawal service that automatically with- 한편, 주기적이 아니라 특정 날짜에 잊지 않고 돈을 이
+draws money from your account and transfers it to a
+체할 필요가 있다면, 고객이 예약해놓은 날짜에 은행이
+designated account. On the other hand, if you need to
+돈을 알아서 이체해 주는 예약이체 서비스도 있습니다.",PDF001_0066,VALID,PDF001_0066,,RISK
+NOT_009,1,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,43,line_window,0.9014,A_low_score;B_fuzzy_method,자동이체는 매달 정해진 날짜에 내 통장에서 공과금이 자동으로 인출되게 하는 납부 방법입니다. 통장에 돈이 부족하면 공과금이 연체될 수 있으므로 통장 잔액을 꼭 확인해야 합니다.,"입니다.
+③ Automatic Withdrawal ③ 자동이체
+Automatic withdrawal refers to setting up an au- 자동이체는 매달 정해진 날짜에 내 통장에서 공
+tomatic utility payment arrangement with your 과금이 자동으로 인출되게 하는 납부 방법입니
+bank so that the amount due is withdrawn from
+다. 자동이체를 신청하면 매달 공과금을 납부하
+your account on a designated date every month.
+는 일을 반복하지 않아도 되어 편리하지만, 통장
+Automatic withdrawal can be convenient be-
+에 돈이 부족하면 공과금이 연체될 수 있으므로
+cause you do not have to go to your bank to
+make the payment. But make sure you have 통장 잔액을 꼭 확인해야 합니다. 자동이체 신청",PDF001_0064,VALID,PDF001_0064,,RISK
+NOT_010,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,46,line_window,0.9487,B_fuzzy_method,"통장이나 카드, 공과금 지로통지서를 준비하고 은행을 방문합니다. 본인이 통장을 가지고 있는 은행이 아닌 다른 은행에 가면 수수료를 내야 할 수 있으니 되도록 거래은행에서 납부하는 것이 좋습니다.","야 합니다. 본인이 통장을 가지고 있는 은행이
+a bank other than your primary bank, you may
+have to pay a fee. So, if you want to save the fee 아닌 다른 은행에 가면 수수료를 내야 할 수 있
+for this machine, visit your primary bank. 으니 되도록 거래은행에서 납부하는 것이 좋습
+니다.
+How to Use a Bill-Paying Machine for Utility Bills 공과금 (자동) 수납기를 통한 납부 방법
+Visit your bank - Visit your bank with your bankbook (or card) and the
+utility bill (“Giro”).
+은행 방문 - 통장이나 카드, 공과금 지로통지서를 준비하고 은행을 방문합니다.",PDF001_0067,VALID,PDF001_0067,,RISK
+NOT_011,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,47,line_window,0.931,B_fuzzy_method;D_boundary_near;E_single_gold_overflow,가까운 은행 창구 또는 우체국에서 공과금을 납부할 수 있습니다. 지로통지서를 보여주며 ‘공과금을 납부하러 왔다’고 하면 직원이 이를 처리해 줍니다.,"⑤ P ayment at a Bank Teller or Post Office ⑤ 은행 창구 또는 우체국 방문 납부
+You can simply go to a nearby bank teller or post 가까운 은행 창구 또는 우체국에서 공과금을 납
+office with your Giro bill. Show your statement of 부할 수 있습니다. 우체국 창구에서 집으로 온
+utility bills to the employees at the bank or the
+지로통지서를 보여주며 “공과금을 납부하러 왔
+post office and say “I want to pay my utility bill.”
+다”고 하면 직원이 이를 처리해 줍니다.
+Employees will be happy to assist you.
+Financial Wisdom to Learn from Actual Cases 사례로 배우는 금융지혜
+It was difficult for ‘B’ to visit the bank because she 결혼이주여성 B씨는 회사에 다녀서 은행에 자주 가지
+had a daytime job. One time, she even had to pay a 못합니다. 한번은 공과금 납부기간이 지나서 연체료를
+late fee on her utility bill. So, she signed up for the 내야 했습니다. 그래서 매월 10일에 공과금이 본인 통
+automatic bill payment service at her bank so that the 장에서 빠져나가게 자동이체를 신청했습니다. 그런데
+payment due could be withdrawn on the 10th day of
+어느 날 보니 두 달 치의 공과금이 한꺼번에 빠져나갔
+each month. However, she found out one day that a
+고, 추가로 연체료도 나갔습니다. 알고 보니 통장에 잔
+withdrawal for two months’ bills was made all at once.
+액이 없어서 지난달 공과금이 빠져나가지 못했고, 통장
+There was also a penalty for late payment. She then
+에 잔액이 생기자 두 달 치가 한꺼번에 빠져나간 것이었
+learned that there was no enough money in her ac-
+습니다.
+count during the previous month, and the withdrawal
+was made in the second month when she had enough
+money to cover the bills.
+Handy Tips for Using Financial Services 금융생활 꿀팁
+If you lose your statement of utility bills, 청구서를 분실하면 업체에
+contact the utility company! 문의하세요!
+When you pay your utility bill, make sure you keep 공과금 영수증은 요금을 냈다는 증명이 되기 때문에 챙
+the receipt because it is your proof of payment. If you 겨서 모아 두는 것이 좋습니다. 만약 지로통지서나 청구
+lose the Giro or bill, you can pay the utility bill by con- 서를 분실하면, 요금을 부과하는 업체에 문의해서 지로
+tacting the utility company that charges the fee and 번호, 전자납부번호 등을 받아 공과금을 납부할 수 있습",PDF001_0069,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0069;PDF001_0070,"count during the previous month, and the withdrawal | If you 겨서 모아 두는 것이 좋습니다 | 만약 지로통지서나 청구 | the receipt because it is your proof of payment | lose the Giro or bill, you can pay the utility bill by con- 서를 분실하면, 요금을 부과하는 업체에 문의해서 지로",RISK
+NOT_012,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,47,line_window,0.9615,B_fuzzy_method;D_boundary_near;E_single_gold_overflow,"지로통지서나 청구서를 분실하면, 요금을 부과하는 업체에 문의해서 지로번호, 전자납부번호 등을 받아 공과금을 납부할 수 있습니다.","office with your Giro bill. Show your statement of 부할 수 있습니다. 우체국 창구에서 집으로 온
+utility bills to the employees at the bank or the
+지로통지서를 보여주며 “공과금을 납부하러 왔
+post office and say “I want to pay my utility bill.”
+다”고 하면 직원이 이를 처리해 줍니다.
+Employees will be happy to assist you.
+Financial Wisdom to Learn from Actual Cases 사례로 배우는 금융지혜
+It was difficult for ‘B’ to visit the bank because she 결혼이주여성 B씨는 회사에 다녀서 은행에 자주 가지
+had a daytime job. One time, she even had to pay a 못합니다. 한번은 공과금 납부기간이 지나서 연체료를
+late fee on her utility bill. So, she signed up for the 내야 했습니다. 그래서 매월 10일에 공과금이 본인 통
+automatic bill payment service at her bank so that the 장에서 빠져나가게 자동이체를 신청했습니다. 그런데
+payment due could be withdrawn on the 10th day of
+어느 날 보니 두 달 치의 공과금이 한꺼번에 빠져나갔
+each month. However, she found out one day that a
+고, 추가로 연체료도 나갔습니다. 알고 보니 통장에 잔
+withdrawal for two months’ bills was made all at once.
+액이 없어서 지난달 공과금이 빠져나가지 못했고, 통장
+There was also a penalty for late payment. She then
+에 잔액이 생기자 두 달 치가 한꺼번에 빠져나간 것이었
+learned that there was no enough money in her ac-
+습니다.
+count during the previous month, and the withdrawal
+was made in the second month when she had enough
+money to cover the bills.
+Handy Tips for Using Financial Services 금융생활 꿀팁
+If you lose your statement of utility bills, 청구서를 분실하면 업체에
+contact the utility company! 문의하세요!
+When you pay your utility bill, make sure you keep 공과금 영수증은 요금을 냈다는 증명이 되기 때문에 챙
+the receipt because it is your proof of payment. If you 겨서 모아 두는 것이 좋습니다. 만약 지로통지서나 청구
+lose the Giro or bill, you can pay the utility bill by con- 서를 분실하면, 요금을 부과하는 업체에 문의해서 지로
+tacting the utility company that charges the fee and 번호, 전자납부번호 등을 받아 공과금을 납부할 수 있습",PDF001_0070,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0069;PDF001_0070,office with your Giro bill | Financial Wisdom to Learn from Actual Cases 사례로 배우는 금융지혜 | late fee on her utility bill | automatic bill payment service at her bank so that the 장에서 빠져나가게 자동이체를 신청했습니다 | 10,RISK
+NOT_013,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,53,line_window,0.9298,A_low_score;B_fuzzy_method;D_boundary_near,정기예금과 정기적금은 기간(만기)이 정해진 상품으로 중간에 돈을 찾으면 이자 손해가 있으므로 가급적 만기까지 계약을 유지하는 것이 좋습니다.,"가장 유리한 상품으로 결정합니다. 일반적으로
+> fixed savings deposit interest rate).
+오프라인 영업점이 있는 은행들보다 인터넷 전
+As interest rates continuously change, you
+문은행의 금리가 높고, 동일한 은행 내에서는 온
+should check regularly and try to choose the
+best savings plan for you. In general, interest 라인 전용상품의 금리가 더 높습니다. 또한 저축
+rates for internet-only banks are higher than that 은행의 금리가 일반적으로 은행 보다 높습니다.
+of banks with offline branches, and among the 정기예금과 정기적금은 기간(만기)이 정해진 상
+products of the same bank, interest rates for on-
+품으로 중간에 돈을 찾으면 이자 손해가 있으므
+line-only products are higher. In addition, the in-
+로 가급적 만기까지 계약을 유지하는 것이 좋습",PDF001_0082,VALID,PDF001_0082,,RISK
+NOT_014,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,52,line_window,0.8933,A_low_score;B_fuzzy_method;D_boundary_near,은행마다 결혼이민자에게 높은 금리를 제공하는 저축상품을 판매하는 경우가 있으므로 가족관계증명서 및 혼인관계증명서 등 필요서류를 가지고 은행에서 상담을 받아 보는 것이 좋습니다.,"1. About Saving Money 1. 저축상품에 대해 알아보기
+Saving money for unexpected events is not easy. 언제 필요할지도 모를 돈을 저축한다는 것이 쉬
+The best way to save money is to make a savings 운 일은 아닙니다. 가장 좋은 방법은 저축 목표
+plan and then save a portion of what you earn
+를 세운 후, 매달 저축할 돈을 미리 빼놓고 돈을
+before spending it. This is because it is not easy
+사용하는 것입니다. 아무래도 쓰고 남은 돈을 저
+to save a certain amount of money every month
+축하게 되면 매달 일정 금액 이상 저축하는 것이
+if you save the remaining money after spending.
+Since a free savings account which allows you to 쉽지 않기 때문입니다. 언제든지 자유롭게 입금
+easily deposit and withdraw money at any time 이나 출금을 할 수 있는 은행의 보통예금은 이자
+provides lower interest, it is recommended to
+가 매우 낮기 때문에 목돈을 모으려면 정기적금
+use a fixed installment savings or fixed deposit
+이나 정기예금을 적절히 활용하는 것이 좋습니
+savings appropriately to save a large amount
+다. 또한, 은행마다 결혼이민자에게 높은 금리를
+of money. In addition, since some banks sell
+savings products that offer high interest rates to 제공하는 저축상품을 판매하는 경우가 있으므로
+marriage immigrants, it is recommended to visit 가족관계증명서 및 혼인관계증명서 등 필요서류
+a bank with necessary documents such as family
+를 가지고 은행에서 상담을 받아 보고, 본인에게
+relationship certificate and marriage certificate,
+유리한 저축상품에 가입하는 것이 좋습니다.",PDF001_0078,VALID,PDF001_0078,,RISK
+NOT_016,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,54,line_window,0.8824,A_low_score;B_fuzzy_method;D_boundary_near,만 65세 이상이라면 이자에 세금이 붙지 않는 ‘비과세 종합저축’에 가입할 수도 있습니다.,"an account holder (extra preferential interest rate). 으로 이용하는 것이 유리합니다. 만약 만 65세 이상이
+Therefore, it is advantageous to use one bank as your 라면 이자에 세금이 붙지 않는 ‘비과세 종합저축’에 가입
+primary bank. If you are over the age of 65 years, you
+할 수도 있습니다.",PDF001_0084,VALID,PDF001_0084,,RISK
+NOT_017,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,55,line_window,0.8974,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,ISA는 수익의 200만~400만 원(소득 수준에 따라)까지 비과세 혜택을 받을 수 있습니다. 의무적으로 3년 이상을 유지해야 비과세 혜택을 받을 수 있고 정기적으로 수수료가 발생할 수 있습니다.,"다면 우선적으로 활용해 보는 것이 좋습니다.
+savings products that offer tax benefits.
+비과세 및 세금 우대 저축상품을 판매하는 대표
+The most common tax-free or tax-favored
+savings accounts are offered by mutual finan- 적인 금융회사에는 신용협동조합, 농업협동조
+cial companies like Credit Union, the National 합, 산림조합 및 수산업협동조합 등 상호금융조
+Agricultural Cooperative Federation, and the
+합이 있습니다. 이러한 금융회사에 조합원으로
+National Federation of Forestries and Fisheries
+가입하면 비과세 및 세금우대 저축상품에 가입
+Cooperatives. If you join as a union member at
+할 수 있습니다.
+one of these financial companies, you can open
+a tax-free or tax-favored savings account. 또한, 근로소득이나 사업소득이 있다면 은행이
+If you are an employee or an entrepreneur, you 나 증권사에서 가입할 수 있는 개인종합자산관
+may sign up for the Individual Savings Account
+리계좌(ISA)를 이용할 수 있습니다. ISA는 수익
+(ISA) and receive tax breaks on income ranging
+의 200만~400만 원(소득 수준에 따라)까지 비
+from 2 million won to 4 million won (depending
+과세 혜택을 받을 수 있습니다. ISA 내에는 예금,
+on your income level). The ISA allows you to
+invest in various kinds of financial products, in- 적금뿐 아니라 펀드 등 다양한 금융상품을 담을
+cluding investment funds, deposits, and install- 수 있는 장점이 있지만 의무적으로 3년 이상을
+ment savings. Because tax benefits are available
+유지해야 비과세 혜택을 받을 수 있고 정기적으
+only if you invest in one of these products for
+로 수수료가 발생할 수 있으므로, 가입 전에 꼼",PDF001_0087,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0086;PDF001_0087,National Federation of Forestries and Fisheries | 할 수 있습니다 | Cooperatives. If you join as a union member at | 합이 있습니다 | 합이 있습니다. 이러한 금융회사에 조합원으로,RISK
+NOT_018,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,55,line_window,0.8806,A_low_score;B_fuzzy_method;D_boundary_near,"주택청약종합저축은 외국인 거주자도 가입이 가능하므로 외국인등록증을 가지고 은행에서 가입하면 됩니다. 다만, 외국인의 경우 연말소득공제 혜택은 받을 수 없습니다.","야 합니다. 주택청약종합저축은 대한민국 국민
+visiting a bank with their alien registration card.
+뿐 아니라 외국인 거주자도 가입이 가능하므로
+However, foreigners are not eligible for tax re-
+외국인등록증을 가지고 은행에서 가입하면 됩
+turn at the end of the year.
+A household with a foreign spouse may be eligi- 니다. 다만, 외국인의 경우 연말소득공제 혜택은
+ble to acquire a right to purchase an apartment 받을 수 없습니다.",PDF001_0087,VALID,PDF001_0087,,RISK
+NOT_019,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,56,line_window,0.96,B_fuzzy_method;C_table_like;D_boundary_near,가입대상: 개인 또는 외국인 거주자(전 금융회사에서 1개 계좌만 가입 가능). 저축금액: 월 2만 원 ~ 50만 원의 금액을 자유롭게 납입.,"Overview of Housing Subscription Savings Account
+주택청약종합저축 개요
+Category Contents
+구분 내용
+Eligibility Korean citizen or foreign resident (Allowed to open only 1 account at all financial companies)
+가입대상 개인 또는 외국인 거주자(전 금융회사에서 1개 계좌만 가입 가능)
+Deposit amount You may deposit the amount between 20,000 and 500,000 won per month at your discretion
+저축금액 월 2만 원 ~ 50만 원의 금액을 자유롭게 납입",PDF001_0089,VALID,PDF001_0089,,RISK
+NOT_020,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,56,normalized_exact,1.0,C_table_like;D_boundary_near,"1순위: 무주택자 & 1년이 지난 계좌로서 매월 정해진 날짜에 월 납입금을 12회 이상 납입 시 (수도권 기준, 투기과열지구 또는 청약과열지역 및 위축지역은 제외).","1순위 : 무주택자 & 1년이 지난 계좌로서 매월 정해진 날짜에 월 납입금을 12회 이상 납입 시
+(수도권 기준, 투기과열지구 또는 청약과열지역 및 위축지역은 제외",PDF001_0089,VALID,PDF001_0089,,RISK
+NOT_021,0,hana_foreigner_remittance_faq_ko.json,,normalized_exact,1.0,C_table_like;D_boundary_near,"A. 외화예금도 예금자보호법에 따라 예금보험공사가 보호합니다.
+보호 한도는 하나은행에 있는 손님의 모든 예금보호 대상 금융상품의 원금과 소정의 이자를 합하여 1인당 ""최고 1억원"" 이며, 1억원을 초과하는 나머지 금액은 보호하지 않습니다.","A. 외화예금도 예금자보호법에 따라 예금보험공사가 보호합니다.
+보호 한도는 하나은행에 있는 손님의 모든 예금보호 대상 금융상품의 원금과 소정의 이자를 합하여 1인당 ""최고 1억원"" 이며, 1억원을 초과하는 나머지 금액은 보호하지 않습니다",WEB009_0003,VALID,WEB009_0003,,RISK
+NOT_022,0,fss_credit_card_guide.json,,normalized_exact,1.0,C_table_like;D_boundary_near,"카드사는 회원이 적립해둔 포인트의 소멸시효가 도래하여 포인트를 소멸시키는 경우, 소멸예정 포인트, 소멸시기 등 포인트 소멸과 관련된 내용을 소멸 6개월 전부터 매월 이용대금명세서 등을 통해 회원에게 통지해 드립니다. 동 내용은 카드사의 홈페이지를 통해서도 확인하실 수 있습니다. 평소에 이용대금명세서 및 카드사 홈페이지 등을 통해 소멸 예정 포인트가 있는지 여부를 확인하시고 포인트가 소멸되기 전에 이를 사용하시거나 기부 등에 활용하시기 바랍니다.","카드사는 회원이 적립해둔 포인트의 소멸시효가 도래하여 포인트를 소멸시키는 경우, 소멸예정 포인트, 소멸시기 등 포인트 소멸과 관련된 내용을 소멸 6개월 전부터 매월 이용대금명세서 등을 통해 회원에게 통지해 드립니다. 동 내용은 카드사의 홈페이지를 통해서도 확인하실 수 있습니다. 평소에 이용대금명세서 및 카드사 홈페이지 등을 통해 소멸 예정 포인트가 있는지 여부를 확인하시고 포인트가 소멸되기 전에 이를 사용하시거나 기부 등에 활용하시기 바랍니다",WEB002_0023,VALID,WEB002_0023,,RISK
+NOT_023,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,68,line_window,0.9342,B_fuzzy_method;C_table_like;D_boundary_near,외국인도 국민건강보험 가입자나 피부양자로 등록되어 있으면 국가바우처 혜택을 받을 수 있습니다. 국민행복카드 발급 후 바우처 서비스는 반드시 별도로 신청하여야 혜택을 받을 수 있습니다.,"switch the cards to children’s cards and register the 페이지에서 생년월일을 등록하면 할인 혜택을 받을 수
+date of birth on the website within 10 days. 있습니다.
+▶ Different discount rates apply for teenagers (aged
+▶ 청소년 요금은 만 13세~18세,
+between 13 and 18 years) and children (aged between
+어린이 요금은 만 6세~12세에 적용됩니다.
+6 and 12 years).
+(2) A ssistance for Pregnancy, (2) 임신·출산·육아 지원과 소비생활 혜택
+Childbirth, and Childcare
+① National Happiness Card ① 국민행복카드
+National Happiness Card is an exclusive card 국민행복카드는 국가바우처 서비스 혜택을 받기
+issued to grant government voucher. A gov- 위한 전용 카드입니다. 국가바우처란, 국가가 복
+ernment voucher refers to the system under
+지대상자에게 직접 현금이나 서비스, 물품 등을
+which the government provides a voucher that
+제공하는 대신, 정해진 이용처에서 서비스(또는
+can purchase service (or goods) at a designated
+물품)로 교환할 수 있는 이용권을 제공하는 것을
+place instead of directly giving cash, services,
+or goods to the welfare recipients. Foreign res- 말합니다. 외국인도 국민건강보험 가입자나 피
+idents can be eligible for financial assistance 부양자로 등록되어 있으면 국가바우처 혜택을
+(government assistance) if they are registered as
+받을 수 있습니다.
+a member or a dependent of a member of the
+국가바우처는 카드 형태로만 제공되므로 국민행
+national health insurance plan.
+복카드를 먼저 발급받아야 하는데, 가까운 은행,
+Since you can use the government voucher only
+with a card, you must first receive the National 우체국, 농협, 신용카드사 영업점을 방문하시거
+Happiness Card. You can apply for issuance at 나, 홈페이지, 콜센터를 통해 발급신청이 가능합
+the branches of a nearby bank, post office, Non-
+니다.
+ghyup (NH), or credit card company, or on the
+한 가지 주의할 점은 국민행복카드 발급 후 바우
+website or through call center.
+처 서비스는 반드시 별도로 신청하여야 혜택을
+But you should be noted that after being issued
+the National Happiness Card, you must sepa- 받을 수 있으며, 각 서비스 제공기관에 따라 신",PDF001_0115;PDF001_0116,VALID,PDF001_0115;PDF001_0116,,RISK
+NOT_023,1,fss_credit_card_guide.json,,normalized_exact,1.0,D_boundary_near,동 카드 이용금액 중 정부에서 지원해주기로 한 항목의 이용금액은 카드결제대금에서 자동으로 차감 청구되는 방식으로 정부로부터 보조금이 지원됩니다.,동 카드 이용금액 중 정부에서 지원해주기로 한 항목의 이용금액은 카드결제대금에서 자동으로 차감 청구되는 방식으로 정부로부터 보조금이 지원됩니다,WEB002_0005,VALID,WEB002_0005,,RISK
+NOT_024,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,68,line_window,0.9079,A_low_score;B_fuzzy_method;D_boundary_near;E_single_gold_overflow,"주소지 관할 행정복지센터를 방문하거나, 국민행복카드 홈페이지(www.voucher.go.kr)에서 제공하는 ‘내게 맞는 바우처 찾기’를 통해 본인에게 적합한 바우처 서비스를 확인합니다.","or goods to the welfare recipients. Foreign res- 말합니다. 외국인도 국민건강보험 가입자나 피
+idents can be eligible for financial assistance 부양자로 등록되어 있으면 국가바우처 혜택을
+(government assistance) if they are registered as
+받을 수 있습니다.
+a member or a dependent of a member of the
+국가바우처는 카드 형태로만 제공되므로 국민행
+national health insurance plan.
+복카드를 먼저 발급받아야 하는데, 가까운 은행,
+Since you can use the government voucher only
+with a card, you must first receive the National 우체국, 농협, 신용카드사 영업점을 방문하시거
+Happiness Card. You can apply for issuance at 나, 홈페이지, 콜센터를 통해 발급신청이 가능합
+the branches of a nearby bank, post office, Non-
+니다.
+ghyup (NH), or credit card company, or on the
+한 가지 주의할 점은 국민행복카드 발급 후 바우
+website or through call center.
+처 서비스는 반드시 별도로 신청하여야 혜택을
+But you should be noted that after being issued
+the National Happiness Card, you must sepa- 받을 수 있으며, 각 서비스 제공기관에 따라 신
+rately apply for the issuance of a government 청 방법과 증빙서류가 각각 다르다는 것 입니다.
+voucher, and each service provider may request 자세한 내용은 주소지 관할 행정복지센터(읍·면
+a different application method and supporting
+사무소, 동 주민센터)를 방문하거나, 국민행복카
+documents.
+드 홈페이지(www.voucher.go.kr)에서 제공하는
+For more information, visit the Community Ser-
+“내게 맞는 바우처 찾기”를 통해 본인에게 적합
+vice Center (Community center for Eup/Myeon
+office, and Dong) in your jurisdiction or access 한 바우처 서비스를 확인하고, 안내된 신청 방법",PDF001_0116,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0115;PDF001_0116,외국인도 국민건강보험 가입자나 피 | Foreign res- 말합니다 | or goods to the welfare recipients | idents can be eligible for financial assistance 부양자로 등록되어 있으면 국가바우처 혜택을 | or goods to the welfare recipients. Foreign res- 말합니다. 외국인도 국민건강보험 가입자나 피,RISK
+NOT_025,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,70,line_window,0.9016,A_low_score;B_fuzzy_method;C_table_like,임신 1회당 100만 원 (국민행복카드) 지원(다태아 임산부는 140만 원 지원). 국민건강보험공단 지사 또는 전담 카드 영업점 등에서 온라인 또는 방문 신청.,"국민건강보험 임신·출산 임신 1회당 100만 원 (국민행복카드) 국민건강보험공단 지사 또는
+진료비 지원 지원(다태아 임산부는 140만 원 지원) 전담 카드 영업점 등에서 온라인
+또는 방문 신청",PDF001_0119,VALID,PDF001_0119,,RISK
+NOT_026,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,70,line_window,0.8485,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near,청소년 산모 임신·출산 의료비 지원: 임신 1회 당 120만 원 범위 내. 사회서비스 전자바우처 포털(www.socialservice.or.kr)을 이용한 온라인 신청.,"청소년 산모 임신·출산 임신 1회 당 120만 원 범위 내. 임신부가 사회서비스 전자바우처
+의료비 지원 산부인과 병·의원에서 임신 및 출산과 관련하여 포털(www.socialservice.or.kr)을
+진료 받은 급여 또는 비급여 의료비 이용한 온라인 신청",PDF001_0119,VALID,PDF001_0119,,RISK
+NOT_027,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,70,line_window,0.7969,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near,"기저귀 지원: 64,000원 per month. 기저귀 + 조제분유 지원: 150,000원 per month. 영아의 주민등록주소지 관할 보건소 또는 주민센터 방문.","Infant diaper and formula • Diaper support: 64,000 won per month Visit a public health center or
+milk powder support • Diaper + formula milk powder support: community center that has
+150,000 won per month jurisdiction over the infant’s
+residential address
+기저귀·조제분유 지원 •기저귀 지원 : 월 64,000원 영아의 주민등록주소지 관할
+•기저귀+조제분유 지원 : 월 15만 원 보건소 또는 주민센터 방문
+Energy voucher • Single-person household: 96,500 won Visit the Community Service
+• Two-person household: 136,500 won Center (Community Center) in
+• Households of three or more persons: the place of residence based on
+170,500 won resident registration card
+• Families of four or more persons:
+191,000 won
+에너지바우처 지원 •1인 가구 : 96,500원 주민등록상 거주지",PDF001_0120,VALID,PDF001_0120,,RISK
+NOT_027,1,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,68,line_window,0.9342,B_fuzzy_method;C_table_like;D_boundary_near,외국인도 국민건강보험 가입자나 피부양자로 등록되어 있으면 국가바우처 혜택을 받을 수 있습니다. 국민행복카드 발급 후 바우처 서비스는 반드시 별도로 신청하여야 혜택을 받을 수 있습니다.,"switch the cards to children’s cards and register the 페이지에서 생년월일을 등록하면 할인 혜택을 받을 수
+date of birth on the website within 10 days. 있습니다.
+▶ Different discount rates apply for teenagers (aged
+▶ 청소년 요금은 만 13세~18세,
+between 13 and 18 years) and children (aged between
+어린이 요금은 만 6세~12세에 적용됩니다.
+6 and 12 years).
+(2) A ssistance for Pregnancy, (2) 임신·출산·육아 지원과 소비생활 혜택
+Childbirth, and Childcare
+① National Happiness Card ① 국민행복카드
+National Happiness Card is an exclusive card 국민행복카드는 국가바우처 서비스 혜택을 받기
+issued to grant government voucher. A gov- 위한 전용 카드입니다. 국가바우처란, 국가가 복
+ernment voucher refers to the system under
+지대상자에게 직접 현금이나 서비스, 물품 등을
+which the government provides a voucher that
+제공하는 대신, 정해진 이용처에서 서비스(또는
+can purchase service (or goods) at a designated
+물품)로 교환할 수 있는 이용권을 제공하는 것을
+place instead of directly giving cash, services,
+or goods to the welfare recipients. Foreign res- 말합니다. 외국인도 국민건강보험 가입자나 피
+idents can be eligible for financial assistance 부양자로 등록되어 있으면 국가바우처 혜택을
+(government assistance) if they are registered as
+받을 수 있습니다.
+a member or a dependent of a member of the
+국가바우처는 카드 형태로만 제공되므로 국민행
+national health insurance plan.
+복카드를 먼저 발급받아야 하는데, 가까운 은행,
+Since you can use the government voucher only
+with a card, you must first receive the National 우체국, 농협, 신용카드사 영업점을 방문하시거
+Happiness Card. You can apply for issuance at 나, 홈페이지, 콜센터를 통해 발급신청이 가능합
+the branches of a nearby bank, post office, Non-
+니다.
+ghyup (NH), or credit card company, or on the
+한 가지 주의할 점은 국민행복카드 발급 후 바우
+website or through call center.
+처 서비스는 반드시 별도로 신청하여야 혜택을
+But you should be noted that after being issued
+the National Happiness Card, you must sepa- 받을 수 있으며, 각 서비스 제공기관에 따라 신",PDF001_0115;PDF001_0116,VALID,PDF001_0115;PDF001_0116,,RISK
+NOT_028,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,70,line_window,0.913,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near,"에너지바우처 지원: 1인 가구 96,500원, 2인 가구 136,500원, 3인 이상 가구 170,500원, 4인 이상 가구 191,000원. 주민등록상 거주지 행정복지센터 방문.","Energy voucher • Single-person household: 96,500 won Visit the Community Service
+• Two-person household: 136,500 won Center (Community Center) in
+• Households of three or more persons: the place of residence based on
+170,500 won resident registration card
+• Families of four or more persons:
+191,000 won
+에너지바우처 지원 •1인 가구 : 96,500원 주민등록상 거주지
+•2인 가구 : 136,500원 행정복지센터(주민센터) 방문
+•3인 이상 가구 : 170,500원
+•4인 이상 가구 : 191,000원",PDF001_0120,VALID,PDF001_0120,,RISK
+NOT_029,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,71,line_window,0.8901,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near,첫 만남 이용권 지원: 생애 초기 아동양육에 따른 경제적 부담 경감을 위해 국민행복카드 바우처포인트(200만 원) 지급. 아동의 주민등록상 주소지 행정복지센터(주민센터) 또는 복지로(www.bokjiro.go.kr) 온라인 신청.,"First meeting pass support • Voucher points (2 million won) for the Apply online at the Administra-
+National Happiness Card to alleviate the tive Welfare Center (community
+financial burden of raising children in the center) that has jurisdiction over
+early stages of life the infant’s residential address
+or (www.bokjiro.go.kr)
+첫 만남 이용권 지원 • 생애 초기 아동양육에 따른 경제적 아동의 주민등록상 주소지
+부담 경감을 위해 국민행복카드 행정복지센터(주민센터)
+바우처포인트(200만 원) 지급 또는 복지로
+(www.bokjiro.go.kr)온라인 신청",PDF001_0122,VALID,PDF001_0122,,RISK
+NOT_030,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,72,line_window,0.8618,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near,지역화폐카드는 사용금액의 최소 5% ~ 최대 약 30%까지 자치단체에서 카드사용자에게 현금을 지원하는 방식입니다. 자치단체별로 1인당 월간 이용한도가 정해져 있고 예산이 소진될 경우 혜택을 받을 수 없습니다. 자세한 안내는 내고장알리미(www.laiis.go.kr) 홈페이지를 통해 확인할 수 있습니다.,"② Local-Currency Card ② 지역화폐카드
+Local currency refers to a means of payment that 지역화폐란, 지방자치단체에서 자체적으로 발행
+is issued by local governments for the circulation 해 관할구역 내에 소재한 가맹점에서만 사용이
+and use only at the member stores located with-
+가능하도록 한 지급수단을 말합니다. 발행방식
+in a concerned jurisdiction. It is issued in three
+은 크게 종이 형태의 지류형, 카드형, 모바일형
+types; paper currency, card, and mobile curren-
+3가지 방식으로 발행되고 있습니다. 지역화폐는
+cy. You can use local currency within the balance
+of a card issued. You can apply for issuance after 지역화폐카드를 발급받아 잔액 범위 내에서 사
+installing the local currency app provided by 용이 가능합니다. 발급신청은 주소지 관할 도청,
+the local governments such as provincial office,
+시청, 군청에서 제공하는 지역화폐 앱 설치 후
+city hall, or county office having jurisdiction over
+발급 신청하거나, 지방자치단체와 협약된 은행
+your address, or apply for issuance at a bank
+을 통해 발급 신청을 하면 됩니다.
+which signed contract with a local government.
+When you use the local card, the local govern- 지역화폐카드는 사용금액의 최소 5% ~ 최대 약
+ments provide cash to card users up to a mini- 30%까지 자치단체에서 카드사용자에게 현금을
+mum of 5% to a maximum of about 30% of the
+지원하는 방식이므로 지역화폐카드만 잘 사용
+amount you used. Each municipality has set a
+해도 큰 혜택을 받을 수 있습니다. 자치단체별로
+limit for a monthly usage per person, and if the
+1인당 월간 이용한도가 정해져 있고 예산이 소
+budget runs out, you cannot be able to receive
+the support. Accordingly, you can install the 진될 경우 혜택을 받을 수 없습니다. 따라서 주
+local currency app provided by the provincial 소지 관할 도청, 시청, 군청에서 제공하는 지역
+office, city hall, or county office having jurisdic-
+화폐 앱을 설치한 후, 1인당 월간 이용한도 범
+tion over your address, and then use the card by
+위 내에서 자동 충전기능을 활용하는 것도 좋은
+automatically charging the amount within the
+방법이 될 수 있습니다. 지방자치단체별 지역화
+monthly usage limit per person. For more infor-
+폐 발행 방식, 할인 혜택, 구매 한도, 사용가맹점,
+mation on how to issue local currency by local
+governments, discount benefits, purchase limit, 카드발급 은행 등 자세한 안내는 내고장알리미
+franchise stores, card issuing banks, etc., please (www.laiis.go.kr) 홈페이지(‘내 고장 소개’>’지
+access the Local Administration Integrated Infor-
+역사랑 상품권’)를 통해 확인할 수 있습니다.",PDF001_0123;PDF001_0124,VALID,PDF001_0123;PDF001_0124,,RISK
+NOT_030,2,fss_credit_card_guide.json,,normalized_exact,1.0,D_boundary_near,"단, 전월 사용금액 산정시 할인적용을 받은 금액은 사용실적에서 제외하는 경우도 있으므로 이를 꼼꼼히 살펴보고 본인의 실적조건 충족 여부를 판단해야 합니다.","단, 전월 사용금액 산정시 할인적용을 받은 금액은 사용실적에서 제외하는 경우도 있으므로 이를 꼼꼼히 살펴보고 본인의 실적조건 충족 여부를 판단해야 합니다",WEB002_0006,VALID,WEB002_0006,,RISK
+FRD_001,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,137,line_window,0.8966,A_low_score;B_fuzzy_method;D_boundary_near;E_single_gold_overflow,"사기범이 검찰, 경찰, 금융감독원 등 공공기관 및 금융회사를 사칭합니다. 공공기관 및 금융회사의 전화번호가 발신번호 창에 나타나도록 조작합니다.","① Impersonation: Scammers pretend to be ① 기관 사칭 : 사기범이 검찰, 경찰, 금융감독원
+government organizations such as the prose- 등 공공기관 및 금융회사를 사칭합니다.
+cutors’ office, the police, an FSS employee, or an
+employee of a financial firm.
+② Psychological pressure: Scammers apply ② 심리적 압박 : 개인정보 유출, 범죄사건 연루,
+psychological pressure by telling you made-up
+자녀납치 등 거짓 사실로 피해자를 심리적으로
+stories like, “Your information has been stolen,”
+압박합니다.
+or “You are involved in a crime,” or “Your child has
+been kidnapped.”
+③ Manipulation of caller ID: Scammers ma- ③ 발신번호 조작 : 공공기관 및 금융회사의 전화
+nipulate the caller ID on your phone to display 번호가 발신번호 창에 나타나도록 조작합니다.",PDF001_0237,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0236;PDF001_0237,"① Impersonation: Scammers pretend to be ① 기관 사칭 : 사기범이 검찰, 경찰, 금융감독원",RISK
+FRD_002,0,crefia_creditcard_loss_theft.json,,line_window,1.0,B_fuzzy_method;C_table_like;D_boundary_near,카드의 분실ㆍ도난 사실을 알게 되는 즉시 해당 신용카드사에 신고를 하셔야 합니다.,"2. 분실・도난 시 이렇게 행동하세요.
+카드의 분실ㆍ도난 사실을 알게 되는 즉시 해당 신용카드사에 신고를 하셔야 합니다.",WEB004_0001;WEB004_0002,VALID,WEB004_0001;WEB004_0002,,RISK
+FRD_003,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,138,line_window,0.9636,B_fuzzy_method,"ATM을 이용하여 세금, 보험료 등을 환급해 준다거나 계좌 안전조치를 취해주겠다면서 ATM으로 유인하는 경우 절대로 응하면 안 됩니다.","② A caller who asks you to go to an ATM is ② ATM(현금자동입출금기)으로 유인하면
+voice phishing scammer. 100% 보이스 피싱
+It is a scam if the caller asks you to go to an ATM ATM을 이용하여 세금, 보험료 등을 환급해 준다
+for refund of tax or insurance premium. Please 거나 계좌 안전조치를 취해주겠다면서 ATM으로
+keep in mind that you should never follow such
+유인하는 경우 절대로 응하면 안 됩니다.",PDF001_0239,VALID,PDF001_0239,,RISK
+FRD_004,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,139,line_window,0.9492,B_fuzzy_method;D_boundary_near,섣불리 금융거래 정보를 알려주거나 입금부터 하지 말고 먼저 자녀의 친구나 선생님 등에게 연락하여 자녀가 납치된 것이 맞는지부터 확인해야 합니다.,"If the caller tells you that your child has been 자녀의 친구, 선생님, 지인 등의 연락처를 미리
+kidnapped, check on your child first. You should
+알아두는 것이 좋습니다. 섣불리 금융거래 정보
+always have the contact information of your
+를 알려주거나 입금부터 하지 말고 먼저 자녀의
+child’s friends, teachers and acquaintance avail-
+친구나 선생님 등에게 연락하여 자녀가 납치된
+able for situations like this. Never give your per-
+sonal financial information or transfer money. 것이 맞는지부터 확인해야 합니다.
+First check whether your child is safe by calling
+friends and teachers of your child.
+④ C heck whether it is true even when ④ 개인·금융정보거래를 미리 알고 접근하는
+scammers call you with your personal 경우에도 내용의 사실 여부를 확인
+and financial information transactions.
+Recently, scammers might often contact you 최근 개인·금융거래 정보를 미리 알고 접근하는",PDF001_0240,VALID,PDF001_0240,,RISK
+FRD_005,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,139,line_window,0.9143,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,"개인·금융거래 정보를 미리 알고 접근하는 경우 직접 해당 기관 또는 금융회사의 대표전화로 연락하여 전화, 문자메시지, 인터넷 메신저 내용의 사실 여부를 반드시 확인해야 합니다.","Recently, scammers might often contact you 최근 개인·금융거래 정보를 미리 알고 접근하는
+by obtaining your personal and financial trans-
+경우가 많으므로 이런 경우 직접 해당 기관 또는
+action information in advance. In such cases,
+금융회사의 대표전화로 연락하여 전화, 문자메
+you should hang up and first call the institu-
+시지, 인터넷 메신저 내용의 사실 여부를 반드시
+tion where the caller claims to work and check
+whether the institution calls you or sends text 확인해야 합니다
+messages or SMS.
+⑤ I f you become the victim, promptly ⑤ 피해를 당한 경우 신속히 지급정지를 요청
+request a suspension of payment.
+If you fall to the victim of voice phishing, call 보이스 피싱을 당한 경우 경찰청 콜센터( ☎112)
+the National Police Agency call center ( ☎112) 또는 금융회사 콜센터를 통해 신속히 사기 계좌",PDF001_0240,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0240;PDF001_0241,the National Police Agency call center ( ☎112) 또는 금융회사 콜센터를 통해 신속히 사기 계좌,RISK
+FRD_006,0,fss_voice_phishing_response.json,,normalized_exact,1.0,D_boundary_near,입금 금융회사 또는 송금 금융회사콜센터에 즉시전화하여 피해신고 및 계좌 지급정지 *신청,입금 금융회사 또는 송금 금융회사콜센터에 즉시전화하여 피해신고 및 계좌 지급정지 *신청,WEB008_0001,VALID,WEB008_0001,,RISK
+FRD_007,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,141,line_window,0.8824,A_low_score;B_fuzzy_method;D_boundary_near;E_single_gold_overflow,"인터넷 사이트, SNS 등을 통해 ATM에서 인출·송금을 해주면 일정 금액을 준다는 광고를 보고 지원하였다가 자신도 모르게 보이스 피싱 범죄에 가담하는 사례가 많습니다. 다른 사람의 부탁 등을 받고 타인의 카드나 통장을 이용하여 현금을 인출하거나 무통장 입금 등을 대신해주는 것은 불법입니다.","Many people are unknowingly engaging in the 인터넷 사이트, SNS 등을 통해 ATM에서 인출·
+voice phishing scam after applying for a job of 송금을 해주면 일정 금액을 준다는 광고를 보고
+withdrawing from an ATM or remitting it again,
+지원을 하였다가 자신도 모르게 보이스 피싱 범
+seeing the advertisement on an internet site
+죄에 가담하는 사례가 많습니다. 이렇게 다른 사
+or SNS, etc. It is illegal to withdraw cash using
+람의 부탁 등을 받고 타인의 카드나 통장을 이용
+card or passbook of another person, or to make
+a deposit without a passbook at the request of 하여 현금을 인출하거나 무통장 입금 등을 대신
+another person. 해주는 것은 불법입니다.
+There are cases where foreigners who are not fa-
+국내법을 잘 모르는 외국인이 보이스 피싱 피해
+miliar with Korean laws were arrested for trying
+금을 인출·전달하려다 검거되어 사법당국의 처
+to withdraw or deliver the money derived from
+벌을 받고 일정 기간 교정시설에 수감된 후 강제
+voice phishing scam, were punished by the ju-
+dicial authorities, and were imprisoned in a cor- 출국된 사례도 있으므로 억울하게 보이스 피싱
+rectional facility for a certain period of time and 범죄에 연루되지 않도록 주의가 필요합니다.
+then forcibly deported. You should be careful
+not to be falsely engaged in such voice phishing
+scams.
+Financial Wisdom to Learn from Actual Cases 사례로 배우는 금융지혜
+Mr. A saw a job advertisement published in a local A씨는 지역 생활정보지에 나온 구인광고를 보고 택배
+newspaper and started to withdraw and deliver a 무인보관함에 보관된 다량의 현금카드로 현금을 인출
+large amount of cash using payment cards stored in 하여 전달하는 일을 하게 되었습니다. 그런데 알고 보니
+the unmanned delivery box. However, it turned out 이를 지시한 곳은 보이스 피싱 범죄 조직이었고, 전달한",PDF001_0243,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0243;PDF001_0244,"Mr. A saw a job advertisement published in a local A씨는 지역 생활정보지에 나온 구인광고를 보고 택배 | 그런데 알고 보니 | A saw a job advertisement published in a local A씨는 지역 생활정보지에 나온 구인광고를 보고 택배 | large amount of cash using payment cards stored in 하여 전달하는 일을 하게 되었습니다 | However, it turned out 이를 지시한 곳은 보이스 피싱 범죄 조직이었고, 전달한",RISK
+FRD_008,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,143,line_window,0.9206,A_low_score;B_fuzzy_method;D_boundary_near;E_single_gold_overflow,"친구, 가족 등을 사칭하면서 핸드폰 고장, 분실 등으로 연락이 안 된다면서 돈을 요구하는 메시지가 오면 메시지 대화를 중단하고 유선통화 등으로 직접 확인합니다.","(5) Preventing Messenger Phishing (5) 메신저 피싱 예방 요령
+① I f you receive a text message that asks ① 친구, 가족 등을 사칭하면서 핸드폰 고장,
+you to send money impersonating a 분실 등으로 연락이 안 된다면서 돈을
+friend or family member and saying they
+요구하는 메시지가 오면 메시지 대화를
+cannot be contacted due to a lost or
+중단하고 유선통화 등으로 직접 확인합니다.
+broken cell phone, you should hang up
+the phone and call the person and check
+if the sender is someone you know.
+② You should not install or click suspicious ② 출처가 불분명한 앱 설치 또는 URL 주소는
+App or URL. 클릭하지 않습니다.
+③ I f you receive a text message that asks ③ 신분증 및 개인정보를 요구하는 메시지가
+you to provide ID card and personal 오면 무조건 거절합니다.
+information, you should refuse to follow
+the request.
+④ I f you receive a text message asking for ④ 신용점수 상향, 저금리 대출 전환, 대출
+money for the reasons of upgrading 수수료 명목으로 금전을 요구하는 메시지가",PDF001_0247,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0247;PDF001_0248,"money for the reasons of upgrading 수수료 명목으로 금전을 요구하는 메시지가 | ④ I f you receive a text message asking for ④ 신용점수 상향, 저금리 대출 전환, 대출",RISK
+FRD_009,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,143,line_window,0.8936,A_low_score;B_fuzzy_method;D_boundary_near;E_single_gold_overflow,"출처가 불분명한 앱 설치 또는 URL 주소는 클릭하지 않습니다. 신분증 및 개인정보를 요구하는 메시지가 오면 무조건 거절합니다. 신용점수 상향, 저금리 대출 전환, 대출 수수료 명목으로 금전을 요구하는 메시지가 오면 무조건 거절합니다.","(5) Preventing Messenger Phishing (5) 메신저 피싱 예방 요령
+① I f you receive a text message that asks ① 친구, 가족 등을 사칭하면서 핸드폰 고장,
+you to send money impersonating a 분실 등으로 연락이 안 된다면서 돈을
+friend or family member and saying they
+요구하는 메시지가 오면 메시지 대화를
+cannot be contacted due to a lost or
+중단하고 유선통화 등으로 직접 확인합니다.
+broken cell phone, you should hang up
+the phone and call the person and check
+if the sender is someone you know.
+② You should not install or click suspicious ② 출처가 불분명한 앱 설치 또는 URL 주소는
+App or URL. 클릭하지 않습니다.
+③ I f you receive a text message that asks ③ 신분증 및 개인정보를 요구하는 메시지가
+you to provide ID card and personal 오면 무조건 거절합니다.
+information, you should refuse to follow
+the request.
+④ I f you receive a text message asking for ④ 신용점수 상향, 저금리 대출 전환, 대출
+money for the reasons of upgrading 수수료 명목으로 금전을 요구하는 메시지가
+credit rating, converting to low-interest
+오면 무조건 거절합니다.",PDF001_0248,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0247;PDF001_0248,"broken cell phone, you should hang up | ② You should not install or click suspicious ② 출처가 불분명한 앱 설치 또는 URL 주소는 | the phone and call the person and check | 중단하고 유선통화 등으로 직접 확인합니다 | 중단하고 유선통화 등으로 직접 확인합니다.",RISK
+FRD_010,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,143,line_window,0.8857,A_low_score;B_fuzzy_method,사용하지 않은 신용카드 결제 문자는 문자메시지의 업체가 아닌 해당 카드사에 확인합니다.,"⑤ I f you receive a text message of payment ⑤ 사용하지 않은 신용카드 결제 문자는
+of unused credit card, you can check with 문자메시지의 업체가 아닌 해당 카드사에
+the credit card company, not the text 확인합니다.",PDF001_0248,VALID,PDF001_0248,,RISK
+FRD_011,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,142,line_window,0.9231,A_low_score;B_fuzzy_method;D_boundary_near;E_single_gold_overflow,"금융회사 또는 금융감독원에서 보내는 공지사항(보안 승급, 정보 유출 피해 확인 등)인 것처럼 문자메시지를 발송하여 피싱 사이트로 유도한 후 금융거래정보를 입력하게 하고, 동 정보로 피해자 명의의 대출 등을 받아 돈을 가로챕니다.","Scammers often try to trick you by sending you 금융회사 또는 금융감독원에서 보내는 공지사
+a fake text message and web address as if they
+항(보안 승급, 정보 유출 피해 확인 등)인 것처럼
+were sent by the financial companies or the Fi-
+문자메시지를 발송하여 피싱 사이트로 유도한
+nancial Supervisory Service. If you click on it, it
+후 금융거래정보를 입력하게 하고, 동 정보로 피
+will then take you to a fake homepage and ask
+you to give personal information. The scammers 해자 명의의 대출 등을 받아 돈을 가로챕니다.
+swindle the money by taking loans in the name
+of victims using the personal information pro-
+vided by the victims.
+② Urgently request to send money or ② “엄마, 나 딸인데” 등 자녀를 사칭한
+personal information through text 문자메시지로 긴급 자금을 요청하거나
+messages impersonating a child, saying
+개인정보를 요구
+“Mom, this is your daughter”
+Scammers send a text message impersonating 자녀를 사칭한 문자메시지를 보내 긴급 자금을
+a child to request the victim to urgently send 요청하거나, 신분증·신용카드 사진을 전송받아
+money, or a picture of an ID card or credit card
+은행 계좌를 개설한 후 피해자 명의로 은행대출,",PDF001_0245,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0245;PDF001_0246,"of victims using the personal information pro- | Scammers send a text message impersonating 자녀를 사칭한 문자메시지를 보내 긴급 자금을 | vided by the victims. | 은행 계좌를 개설한 후 피해자 명의로 은행대출, | a child to request the victim to urgently send 요청하거나, 신분증·신용카드 사진을 전송받아",RISK
+FRD_012,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,142,line_window,0.9459,B_fuzzy_method;D_boundary_near,"자녀를 사칭한 문자메시지를 보내 긴급 자금을 요청하거나, 신분증·신용카드 사진을 전송받아 은행 계좌를 개설한 후 피해자 명의로 은행대출, 카드론 및 약관대출 등을 받아 돈을 가로챕니다.","personal information through text 문자메시지로 긴급 자금을 요청하거나
+messages impersonating a child, saying
+개인정보를 요구
+“Mom, this is your daughter”
+Scammers send a text message impersonating 자녀를 사칭한 문자메시지를 보내 긴급 자금을
+a child to request the victim to urgently send 요청하거나, 신분증·신용카드 사진을 전송받아
+money, or a picture of an ID card or credit card
+은행 계좌를 개설한 후 피해자 명의로 은행대출,
+to open a bank account, and then they swindle
+카드론 및 약관대출 등을 받아 돈을 가로챕니다.",PDF001_0246,VALID,PDF001_0246,,RISK
+FRD_013,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,144,line_window,0.8468,A_low_score;B_fuzzy_method;D_boundary_near,파밍이란 컴퓨터나 휴대전화를 악성코드에 감염시켜 사용자가 가짜 인터넷뱅킹 사이트에 접속하도록 설정하고 금융거래정보 입력을 유도하는 수법입니다. 공공기관이나 금융회사는 전체 보안카드번호 등을 요구하지 않으므로 이를 요구하는 경우 절대 입력하여서는 안 됩니다.,"Pharming refers to a cyberattack infecting a 파밍이란 컴퓨터나 휴대전화를 악성코드에 감염
+computer or mobile phone with a malicious pro- 시켜 사용자가 가짜 인터넷뱅킹 사이트에 접속
+gram, setting the user to access a fake internet
+하도록 설정하고, 이를 모르는 사용자가 가짜 홈
+banking site, and inducing the user who does
+페이지에 아이디와 비밀번호, 보안카드번호 등
+not know it to enter financial information such
+금융거래정보 입력하도록 유도하는 수법을 말합
+as ID, password, and security card number on
+the fake website. As the legitimate websites of fi- 니다. 금융회사, 공공기관 등에서는 개인의 금융
+nancial companies and public institutions never 거래정보를 요구하지 않으므로 절대로 관련 정
+ask for financial information, you should never
+보를 입력해서는 안 되며, 사기범이 이렇게 얻은
+enter the relevant financial information and
+개인의 금융거래정보를 이용하여 돈을 가로챌
+when you see this, it is a scam and you should
+수 있으므로 각별히 주의하여야 합니다.
+simply close the site.
+(2) Preventing Pharming (2) 파밍 예방 요령
+① A s the legitimate websites of financial ① 공공기관이나 금융회사는 전체 보안카드번호
+companies and public institutions never
+등을 요구하지 않으므로 이를 요구하는 경우
+ask for security code, you should never
+절대 입력하여서는 안 됩니다.",PDF001_0249,VALID,PDF001_0249,,RISK
+FRD_014,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,146,line_window,0.8857,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,"스미싱에 이용되는 문자메시지 내용으로는 청첩장, 돌잔치, 무료쿠폰, 우편물 반송 등이 있으며, 경찰출석요구서, 교통범칙금 조회, 국민건강보험공단 무료 암 검진, 카드대금 조회 등 유형이 다양하므로 의심이 가는 경우에는 해당 메시지를 클릭하지 않는 것이 좋습니다.","install malicious programs (apps) or make phone 피해를 입히는 금융사기입니다. 스미싱에 이용
+calls, and then steal personal information and 되는 문자메시지 내용으로는 청첩장, 돌잔치, 무
+micropayment information stored in the mobile
+료쿠폰, 우편물 반송 등이 있으며, 이 밖에도 경
+phone. This scam sends a text message com-
+찰출석요구서, 교통범칙금 조회, 국민건강보험
+monly disguised as an invitation for a wedding
+공단 무료 암 검진, 카드대금 조회 등 유형이 다
+or birthday party, a free coupon, or a notification
+of returned mail. Smishing also takes place in 양하므로 의심이 가는 경우에는 해당 메시지를
+other forms such as a summon from the police, 클릭하지 않는 것이 좋습니다.
+traffic citation inquiry, a free cancer examination
+offer from the National Health Insurance Corpo-
+ration, or a notification of credit card payment. If
+the message looks suspicious, do not click on it.
+(4) Preventing Smishing (4) 스미싱 예방 요령
+① You should not click on an internet ① 택배 조회, 명절 인사, 모바일 상품권·승차권·
+address (URL) or phone number whose 공연예매권 증정 등의 문자 속에 출처가
+source is not confirmed in text messages
+확인되지 않은 인터넷주소(URL) 또는
+disguised as an invitation for delivery
+전화번호를 클릭하면 안 됩니다.",PDF001_0254,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0254;PDF001_0255,"① You should not click on an internet ① 택배 조회, 명절 인사, 모바일 상품권·승차권· | disguised as an invitation for delivery | 전화번호를 클릭하면 안 됩니다. | address (URL) or phone number whose 공연예매권 증정 등의 문자 속에 출처가 | 확인되지 않은 인터넷주소(URL) 또는",RISK
+FRD_016,0,스미싱예방및대응가이드.pdf,24,line_window,0.9804,B_fuzzy_method,평소 휴대전화 소액결제 서비스를 이용하지 않는 사용자라면 ‘소액 결제 차단 서비스’에 가입하여 휴대폰으로 자동 결제되는 소액 결제 피해를 예방할 수 있습니다. 소액결제 한도를 조절할 수 있으므로 사용자의 결제 습관에 따라 이용 범위를 설정할 수 있습니다.,"평소 휴대전화 소액결제 서비스를 이용하지 않는 사용자라면
+‘소액 결제 차단 서비스’에 가입하여 휴대폰으로 자동 결제되는
+소액 결제 피해를 예방할 수 있습니다. 소액결제 서비스를 차단하지
+않고 소액결제 한도를 조절할 수 있으므로 사용자의 결제 습관에
+따라 소액결제 서비스 이용 범위를 설정할 수 있습니다.",PDF009_0026,VALID,PDF009_0026,,RISK
+FRD_018,0,스미싱예방및대응가이드.pdf,20,normalized_exact,1.0,D_boundary_near,문자메시지에 포함되어 있는 인터넷주소(URL)을 단순히 클릭을 한다고 해서 악성코드에 감염되는 것은 아닙니다. 인터넷주소 클릭한 후 다운로드 된 APK 파일로 악성앱이 설치될 경우 스마트폰이 악성코드에 감염됩니다.,"문자메시지에 포함되어 있는 인터넷주소(URL)을 단순히 클릭을
+한다고 해서 악성코드에 감염되는 것은 아닙니다. 인터넷주소 클릭
+한 후 다운로드 된 APK 파일로 악성앱이 설치될 경우 스마트폰이
+악성코드에 감염됩니다",PDF009_0022,VALID,PDF009_0022,,RISK
+FRD_019,0,스미싱예방및대응가이드.pdf,21,line_window,0.985,B_fuzzy_method;D_boundary_near,"설치하려는 애플리케이션의 기능과 다른 과도한 접근 권한을 요구한다면 주의해야합니다. 예를 들어 게임 애플리케이션이 통화 내역, 문자 및 통화 기능, 저장소 조회 등 필요 이상의 권한을 요구하는 경우 악성앱을 의심할 수 있습니다. 공식 애플리케이션 마켓에서 설치한 앱이라도 요구하는 접근 권한을 확인하고 설치를 진행해야 합니다.","설치하려는 애플리케이션의 기능과 다른 과도한 접근 권한을
+요구한다면 주의해야합니다. 예를 들어 게임 애플리케이션이 통화
+내역, 문자 및 통화 기능, 저장소 조회 등 필요 이상의 권한을
+요구하는 경우 악성앱을 의심할 수 있습니다.
+공식 애플리케이션 마켓에서 설치한 앱이라도 사용자들의 정보
+수집을 위해 과도한 정보를 요구하는 경우가 있기 때문에 요구하는
+접근 권한을 확인하고 설치를 진행해야 합니다.",PDF009_0023,VALID,PDF009_0023,,RISK
+FRD_020,0,스미싱예방및대응가이드.pdf,29,line_window,0.9856,B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,"악성앱에 감염되었던 스마트폰으로 모바일 금융서비스를 이용했다면 공인인증서, 보안카드 등 금융거래에 필요한 정보를 폐기하고 재발급을 받아야 2차 피해를 예방할 수 있습니다. 악성앱이 주소록을 조회하여 다른 사람에게 유사한 내용의 스미싱을 발송하는 등 2차 피해가 발생할 수 있으므로 주변 지인들에게 스미싱 피해 사실을 알려야합니다.","악성앱에 감염되었던 스마트폰으로 모바일 금융서비스를 이용했
+다면 공인인증서, 보안카드 등 금융거래에 필요한 정보가 유출되었
+을 가능성이 존재합니다. 따라서 해당 정보를 폐기하고 재발급을
+받아야 유출된 금융 정보로 인한 2차 피해가 발생하는 것을 예방할
+수 있습니다.
+스마트폰에 공인인증서가 저장되어 있지 않았더라도 보안카드
+등 금융 거래에 필요한 정보를 사진첩, 메모장에 기록했다면 폐기
+처분하고 재발급을 받아야 합니다.
+5. 2차 피해 예방하기
+해커는 악성코드에 감염된 스마트폰을 새로운 사이버범죄 도구로
+사용합니다. 악성앱이 주소록을 조회하여 다른 사람에게 유사한
+내용의 스미싱을 발송하는 등 2차 피해가 발생할 수 있으므로
+주변 지인들에게 스미싱 피해 사실을 알려야합니다. 또한 특정
+악성앱에는 전화 수신 및 문자메시지 수신을 차단하는 기능을 포함
+하고 있어 악성앱 삭제 방법을 확인 후 삭제를 해야 추가적인 2차
+피해를 예방할 수 있습니다.",PDF009_0031,VALID,PDF009_0031,,RISK
+FRD_021,0,사기 예방 백과사전(개정일 26.06.08).pdf,69,line_window,0.9385,B_fuzzy_method;C_table_like;D_boundary_near,"범정부 합동 전기통신금융사기 통합대응단 1394 (금융사기 통합신고센터), 경찰청 112 (금융사기 피해신고), 금융감독원 1332 (피해금 환급 등 피해 구제 문의).","범정부 합동 전기통신금융사기 통합대응단 1394 (금융사기 통합신고센터) 파인 - 제도권 금융회사 있는 서비스입니다.
+경찰청 112 (금융사기 피해신고) 조회
+금융감독원 1332 (피해금 환급 등 피해 구제 문의)",PDF008_0095,VALID,PDF008_0095,,RISK
+FRD_022,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,151,line_window,0.8987,A_low_score;B_fuzzy_method;D_boundary_near,"대출신청 시 ‘전산비’, ‘보증료’ 등의 명목으로 돈을 요구하는 경우 대출사기일 가능성이 높으므로 절대 응하면 안 됩니다. 대출을 알선하는 전화나 문자 메시지는 모두 스팸으로 신고하여 사전에 차단합니다.","(2) Preventing Loan Fraud (2) 대출빙자 금융사기 예방 요령
+① You should block the phone number or ① 대출을 알선하는 전화나 문자 메시지는 모두
+text message of scammers who brokers 스팸으로 신고하여 사전에 차단합니다.
+the loan as a spam.
+② I f a person asks you to pay a guarantee ② 대출신청 시 ‘전산비’, ‘보증료’ 등의 명목으로
+fee or data processing fee before apply- 돈을 요구하는 경우 대출사기일 가능성이
+ing for a loan, the person is most likely a
+높으므로 절대 응하면 안 됩니다.",PDF001_0262,VALID,PDF001_0262,,RISK
+FRD_023,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,150,line_window,1.0,B_fuzzy_method;D_boundary_near,"대출을 위해 통장사본, 체크카드, 휴대전화가 필요하다면서 보내달라고 요구합니다.","가입하기 위한 보증료가 필요하다고 하거나, 신
+not good enough for a loan. They claim the fee is
+용불량 정보 삭제를 위한 전산비용 등 각종 비용
+needed to guarantee a loan. They also say they
+need to collect data processing fee to delete a 을 요구합니다.
+bad credit history.
+④ S cammers ask you to send personal ④ 휴대전화, 통장사본, 체크카드 등을
+information.
+보내달라고 합니다.
+Scammers ask you to send your phone number,
+대출을 위해 통장사본, 체크카드, 휴대전화가 필
+a photo copy of your bankbook and your check
+요하다면서 보내달라고 요구합니다. 본인 명의",PDF001_0261,VALID,PDF001_0261,,RISK
+FRD_023,1,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,151,line_window,0.8125,A_low_score;B_fuzzy_method;D_boundary_near,본인 명의의 통장과 휴대폰이 금융사기에 활용될 수 있으니 절대 응해서는 안 됩니다.,"phone number may be used as part of the finan- 의 통장과 휴대폰이 금융사기에 활용될 수 있으
+cial scam so you should never give such informa- 니 절대 응해서는 안 됩니다.",PDF001_0262,VALID,PDF001_0262,,RISK
+FRD_024,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,152,line_window,0.899,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,"보이스 피싱 사기이용계좌의 명의인은 해당 계좌의 지급정지, 인터넷뱅킹, 모바일뱅킹 등의 전자금융거래 제한, 1년 이상 신규 통장개설 제한 등 여러 가지 불이익을 받습니다. 대포통장뿐 아니라 체크카드와 현금카드의 양도 및 대여도 모두 불법입니다.","and used the illegally obtained bank accounts 집·활용하고 있어 본인도 모르게 대포통장 명의인
+(fraudulent accounts) through various fraudu- 이 될 수 있으므로 각별한 주의가 필요합니다.
+lent means, so you should be careful to prevent
+보이스 피싱 사기이용계좌의 명의인은 해당 계
+your bank account from being unknowingly
+좌의 지급정지, 인터넷뱅킹, 모바일뱅킹 등의 전
+used by scammers for illegal acts.
+자금융거래 제한, 1년 이상 신규 통장개설 제한
+The holder of the account used for the voice
+phishing scam can be subject to various dis- 등 여러 가지 불이익을 받습니다. 또한 대포통장
+advantages, such as suspension of payment, 양수도·대여 시 최대 징역 5년, 벌금 3천만 원의
+restrictions on electronic financial transactions
+부과 대상이 되고 범죄의 인식 정도에 따라 사기
+such as internet banking and mobile banking,
+죄, 사기방조죄 등으로 형사처벌 대상이 됩니다.
+and restrictions on opening new accounts for
+대포통장뿐 아니라 체크카드와 현금카드의 양도
+more than one year. And for a person who trans-
+fers or lends his or her bank account to another 및 대여도 모두 불법입니다.",PDF001_0264,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0264;PDF001_0265,"죄, 사기방조죄 등으로 형사처벌 대상이 됩니다. | such as internet banking and mobile banking, | And for a person who trans- | fers or lends his or her bank account to another 및 대여도 모두 불법입니다. | 5년",RISK
+FRD_025,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,154,line_window,0.9146,A_low_score;B_fuzzy_method;D_boundary_near,본인도 모르는 돈이 이체된 후 출처가 불분명한 전화번호로 전화가 와서 재이체 또는 현금으로 인출 후 전달해줄 것을 요구하는 경우 즉시 거절하고 바로 해당 송금 은행에 연락하여 착오송금 사실을 전달합니다.,"금의 재이체 또는 현금인출을 요구합니다.
+the money.
+(2) P reventing Financial Fraud Using
+(2) 대포통장 금융사기 예방 요령
+Illegally Obtained Bank Account
+① A s it is illegal to lend or transfer a bank ① 통장 대여·양도나 본인 계좌를 통해 금융사기
+account, or to transfer or withdraw mon-
+자금의 이체·현금인출은 불법이므로 무조건
+ey derived from financial fraud from your
+거절합니다.
+account, you should refuse it uncondi-
+tionally.
+② I f money you do not know is deposited ② 본인도 모르는 돈이 이체된 후 출처가
+into your account and you receive a call
+불분명한 전화번호로 전화가 와서 재이체
+from a phone number you don’t know
+또는 현금으로 인출 후 전달해줄 것을
+who ask you to re-transfer or withdraw it
+요구하는 경우 즉시 거절하고 바로 해당
+in cash, you should immediately refuse
+it and contact the relevant remittance 송금 은행에 연락하여 착오송금 사실을
+bank immediately to inform you of the 전달합니다.",PDF001_0270,VALID,PDF001_0270,,RISK
+FRD_026,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,154,line_window,0.9394,B_fuzzy_method;D_boundary_near,"정식채용 이전 단계에서 신분증 사본, 통장 계좌번호 등을 요구하면 무조건 거절합니다.","③ I f you are requested to provide a copy of ③ 정식채용 이전 단계에서 신분증 사본, 통장
+your ID card or account number before
+계좌번호 등을 요구하면 무조건 거절합니다.",PDF001_0270,VALID,PDF001_0270,,RISK
+FRD_027,0,사기 예방 백과사전(개정일 26.06.08).pdf,69,line_window,0.8919,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near,"금융감독원 개인정보 노출자 사고예방시스템: 개인정보가 노출된 사람이 등록되면, 다른 사람이 그 사람의 이름으로 계좌, 신용카드, 오픈뱅킹 등을 만들지 못하도록 막아 주는 서비스입니다.","4 금융감독원 개인정보가 노출된 사람이 등록되면,
+하나은행 1588-1111, 1599-1111 전북은행 1588-4477
+개인정보 노출자 다른 사람이 그 사람의 이름으로 계좌,
+IBK기업은행 1566-2566, 1588-2588 BNK경남은행 1600-8585, 1588-8585 사고예방시스템 신용카드, 오픈뱅킹 등을 만들지 못하도록
+막아 주는 서비스입니다.
+KB국민은행 1588-9999, 1599-9999, 케이뱅크 1522-1000
+1644-9999
+5 한국정보통신진흥협회 누군가 내 이름으로 휴대폰을 새로 만들거나,
+한국씨티은행 1588-7000 카카오뱅크 1599-3333 명의도용된 내 이름을 다른 사람 이름으로 바꾸려고 하면,
+휴대전화 개설 그 사실을 문자로 알려 주는 서비스입니다.
+토스뱅크 1661-7654
+여부 조회 (Msafer)
+134 사기 예방 백과사전 금융사기 피해를 막는 데 도움이 되는 서비스 135",PDF008_0096,VALID,PDF008_0096,,RISK
+FRD_027,1,fss_voice_phishing_response.json,,normalized_exact,1.0,D_boundary_near,한국정보통신진흥협회 명의도용방지 서비스 (www.msafer.or.kr)접속,한국정보통신진흥협회 명의도용방지 서비스 (www.msafer.or.kr)접속,WEB008_0001;WEB008_0002,VALID,WEB008_0001;WEB008_0002,,RISK
+FRD_028,0,FINANCIAL_GUIDE_BOOK_FOR_FOREIG_ERS_IN_KOREA.pdf,156,line_window,0.8941,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,고액일당을 보장하며 고의사고 유발 등의 불법적인 행위를 요구하는 경우 보험사기를 의심하고 거절하세요. 보험사기를 제안받거나 보험사기 피해를 당했다고 생각된다면 금융감독원 또는 보험회사에 신고합니다.,"(2) Preventing Insurance Fraud (2) 보험사기 예방 요령
+① I f someone guarantees a high daily wage ① 고액일당을 보장하며 고의사고 유발 등의
+and request you to be engaging in an 불법적인 행위를 요구하는 경우 보험사기를
+illegal act such as intentional accident, if
+의심하고 거절하세요.
+you are suspicious insurance fraud, you
+should reject it.
+② I f you claim insurance money by no- ② 소액이라도 보험회사에 사실과 다르게
+tifying the insurance company of an 사고내용을 알려 보험금을 청구하는
+accident contrary to the fact, even if it
+행위는 보험사기입니다. ‘이 정도 금액은
+is a small amount, it falls under insur-
+괜찮겠지’하는 생각은 버리세요.
+ance fraud. You should never think that
+a “Small amount of money will not be
+caught.”
+③ I f you consider that you have been of- ③ 보험사기를 제안받거나 보험사기 피해를
+fered insurance fraud or have suffered
+당했다고 생각된다면 금융감독원 또는
+from insurance fraud, you should report
+보험회사에 신고합니다.",PDF001_0275,PARTIAL_MULTI_GOLD_FIXABLE,PDF001_0274;PDF001_0275,(2) Preventing Insurance Fraud (2) 보험사기 예방 요령 | ① I f someone guarantees a high daily wage ① 고액일당을 보장하며 고의사고 유발 등의,RISK
+FRD_029,0,사기 예방 백과사전(개정일 26.06.08).pdf,14,normalized_exact,1.0,D_boundary_near,"가족의 목소리를 들려주거나, 얼굴이 나온 영상을 보여 줘도 바로 믿지 마세요. 딥페이크로 만든 가짜 음성이나 영상일 수도 있습니다. 먼저 가족에게 직접 전화해 안전을 확인하고, 연락이 닿지 않는다면 즉시 경찰에 신고하세요.","가족의 목소리를 들려주거나, 얼굴이 나온 영상을 보여 줘도 바로 믿지
+마세요. 딥페이크로 만든 가짜 음성이나 영상일 수도 있습니다.
+먼저 가족에게 직접 전화해 안전을 확인하고, 연락이 닿지 않는다면
+즉시 경찰에 신고하세요",PDF008_0018,VALID,PDF008_0018,,RISK
+FRD_030,0,사기 예방 백과사전(개정일 26.06.08).pdf,13,line_window,0.8936,A_low_score;B_fuzzy_method;C_table_like;D_boundary_near;E_single_gold_overflow,"해외에서 물건을 주문한 적이 없던 F씨는 문자에 적힌 번호로 전화를 걸었습니다. 상대방은 자신을 세관 직원이라고 소개하며 ‘세금 납부확인증’을 보내 왔고, 휴대폰 화면에 ‘원격 제어 중’이라는 표시가 떠 있는 것을 발견했습니다. F씨는 바로 전화를 끊고, 인터넷에서 세관 전화번호를 찾아 직접 걸었습니다. 확인해 보니 아까 통화한 세관 직원은 가짜였습니다.","드립니다”라는 전화를 받았습니다. 해외에서 물건을 주문한 적이 없던 F씨는 이상하게 생각하고 문자에
+적힌 번호로 전화를 걸었습니다.
+전화를 건 사람은 자신을 OO은행 직원 E씨라고 소개했습니다.
+그는 “빚이 있는 분들도 신용점수를 조금만 올리면 마이너스 통장을 “해외에서 주문한 적이 없는데 무슨 세금이냐”고 묻자, 상대방은
+만들 수 있다”며 D씨를 설득했습니다. 며칠 뒤, E씨는 ‘특별한 방법’이라며 자신을 세관 직원이라고 소개하며 ‘세금 납부확인증’이라는 서류를
+새로운 제안을 했습니다. “알고 있는 대출 업체에서 대출을 받은 뒤 바로 보내 왔습니다. F씨는 그럴듯한 문서를 보고 잠시 안심했지만, 곧 휴대폰
+갚으면 신용점수가 오른다”는 것이었습니다. 화면에 ‘원격 제어 • 중’이라는 표시가 떠 있는 것을 발견했습니다.
+D씨는 의심스러웠지만, 대출 업체가 유명한 곳이라 안심하고 이상하다고 느낀 F씨는 바로 전화를 끊고, 인터넷에서 세관 •• 전화번호를
+900만 원을 대출받았습니다. 며칠 후 E씨는 “일주일 뒤 제가 알려 드리는 찾아 직접 걸었습니다. 확인해 보니, 아까 통화한 세관 직원은 가짜였고,
+계좌로 돈을 보내면 신용점수가 오른다”고 말했고, D씨는 그의 지시에 따라 그때 휴대폰이 해킹될 뻔한 것이었습니다. 다행히 F씨가 빨리 전화를 끊은
+돈을 이체했습니다. 그러나 그 계좌는 대포통장이었고, E씨는 보이스피싱 덕분에, 개인정보가 새어 나가는 것을 막을 수 있었습니다.
+사기범이었습니다. D씨는 뒤늦게 경찰에 신고했지만, 이미 돈은 사라진
+• 원격 제어: 멀리 떨어진 곳에 있는 사람이 다른 사람의 컴퓨터나 휴대폰에
+뒤였습니다.",PDF008_0015,PARTIAL_MULTI_GOLD_FIXABLE,PDF008_0015;PDF008_0016,"사기범이었습니다. D씨는 뒤늦게 경찰에 신고했지만, 이미 돈은 사라진 | 그러나 그 계좌는 대포통장이었고, E씨는 보이스피싱 덕분에, 개인정보가 새어 나가는 것을 막을 수 있었습니다 | 900만 원을 대출받았습니다. 며칠 후 E씨는 “일주일 뒤 제가 알려 드리는 찾아 직접 걸었습니다. 확인해 보니, 아까 통화한 세관 직원은 가짜였고, | 돈을 이체했습니다. 그러나 그 계좌는 대포통장이었고, E씨는 보이스피싱 덕분에, 개인정보가 새어 나가는 것을 막을 수 있었습니다. | 돈을 이체했습니다",RISK
+FRD_030,2,fss_voice_phishing_response.json,,normalized_exact,1.0,D_boundary_near,입금 금융회사 또는 송금 금융회사콜센터에 즉시전화하여 피해신고 및 계좌 지급정지 *신청,입금 금융회사 또는 송금 금융회사콜센터에 즉시전화하여 피해신고 및 계좌 지급정지 *신청,WEB008_0001,VALID,WEB008_0001,,RISK
+ACC_020,0,외국인의 은행계좌 개설 가이드라인_202408.pdf,2,normalized_exact,1.0,,"거래가능 신분증: 외국인등록증, 영주증, 국내거소신고증 (출입국사실증명 제출 필요).","거래가능 신분증:
+외국인등록증, 영주증, 국내거소신고증
+(출입국사실증명 제출 필요",PDF005_0004,VALID,PDF005_0004,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+ACC_006,0,외국인의 은행계좌 개설 가이드라인_202408.pdf,1,normalized_exact,1.0,,증빙서류 미비시 인출·이체 한도가 제한된 ‘금융거래 한도계좌’로 개설.,증빙서류 미비시 인출·이체 한도가 제한된 ‘금융거래 한도계좌’로 개설,PDF005_0001,VALID,PDF005_0001,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+REM_017,1,wirebarley_foreigner_passport_remittance_2026_en.json,,normalized_exact,1.0,,"Even if you are already a WireBarley member, if you are a foreign national, you must complete passport verification again.","Even if you are already a WireBarley member, if you are a foreign national, you must complete passport verification again",WEB011_0001,VALID,WEB011_0001,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+REM_015,3,bok_forex_payment_methods.json,,normalized_exact,1.0,,환치기는 제도권 밖에서 이루어지는 거래 특성상 탈세 및 기타 불법자금거래에 이용될 소지가 큼,환치기는 제도권 밖에서 이루어지는 거래 특성상 탈세 및 기타 불법자금거래에 이용될 소지가 큼,WEB001_0012,VALID,WEB001_0012,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+REM_015,2,bok_forex_payment_methods.json,,normalized_exact,1.0,,외국환 은행을 거치지 않고도 외화를 해외로 유출입한 것과 같은 효과를 나타내는 방법,외국환 은행을 거치지 않고도 외화를 해외로 유출입한 것과 같은 효과를 나타내는 방법,WEB001_0012,VALID,WEB001_0012,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+ACC_023,1,fss_credit_card_guide.json,,normalized_exact,1.0,,할부로 결제하면 철회권과 항변권의 행사가 가능하여 제품의 하자 등 소비자에게 발생할 수 있는 불이익을 예방할 수 있습니다.,할부로 결제하면 철회권과 항변권의 행사가 가능하여 제품의 하자 등 소비자에게 발생할 수 있는 불이익을 예방할 수 있습니다,WEB002_0008,VALID,WEB002_0008,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+REM_025,0,kfb_remittance_overseas_students.json,,normalized_exact,1.0,,"해외유학생이란 6개월 이상 외국의 교육기관, 연수기관 등에서 공부하거나 연구목적으로 해외에 체재하는 사람을 말합니다.","해외유학생이란 6개월 이상 외국의 교육기관, 연수기관 등에서 공부하거나 연구목적으로 해외에 체재하는 사람을 말합니다",WEB006_0001,VALID,WEB006_0001,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+ACC_007,2,kb_transaction_purpose_limit_account_ko.json,,normalized_exact,1.0,,"입출금이 자유로운 예금통장 개설 시, 증빙서류 등을 통해 목적 확인이 되지 않는 경우 「금융거래 한도계좌」로 개설 됩니다.","입출금이 자유로운 예금통장 개설 시, 증빙서류 등을 통해 목적 확인이 되지 않는 경우 「금융거래 한도계좌」로 개설 됩니다",WEB010_0002,VALID,WEB010_0002,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+REM_021,0,sentbe_remittance_refund_ko.json,,normalized_exact,1.0,,고객의 귀책 사유 없이 지정 계좌에 입금한 날로부터 15일 이내에 송금 처리가 완료되지 않은 경우,고객의 귀책 사유 없이 지정 계좌에 입금한 날로부터 15일 이내에 송금 처리가 완료되지 않은 경우,WEB013_0001,VALID,WEB013_0001,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+FRD_009,1,fss_voice_phishing_response.json,,normalized_exact,1.0,,휴대전화 초기화나 악성앱 삭제(초기화 전까지 휴대전화 전원을 끄거나 비행기모드 전환),휴대전화 초기화나 악성앱 삭제(초기화 전까지 휴대전화 전원을 끄거나 비행기모드 전환,WEB008_0001,VALID,WEB008_0001,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+FRD_023,3,fss_voice_phishing_response.json,,normalized_exact,1.0,,금융결제원 계좌정보통합관리서비스(www.payinfo.or.kr) 접속,금융결제원 계좌정보통합관리서비스(www.payinfo.or.kr) 접속,WEB008_0001,VALID,WEB008_0001,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+ACC_007,1,kb_transaction_purpose_limit_account_ko.json,,normalized_exact,1.0,,"아르바이트비 수령 | 고용주의 사업자등록증 사본, 근로계약서, 급여명세표 등","아르바이트비 수령 | 고용주의 사업자등록증 사본, 근로계약서, 급여명세표 등",WEB010_0001,VALID,WEB010_0001,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+REM_017,2,wirebarley_foreigner_passport_remittance_2026_en.json,,normalized_exact,1.0,,Expired passports cannot be verified.,Expired passports cannot be verified,WEB011_0001,VALID,WEB011_0001,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+REM_004,1,hana_foreigner_remittance_faq_ko.json,,normalized_exact,1.0,,이용할 매체별로 사전에 영업점에서 등록 절차가 필요합니다.,이용할 매체별로 사전에 영업점에서 등록 절차가 필요합니다,WEB009_0001,VALID,WEB009_0001,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+FRD_027,2,fss_voice_phishing_response.json,,normalized_exact,1.0,,"가입제한 서비스 메뉴 클릭하여, 본인명의 휴대전화 신규개설 차단","가입제한 서비스 메뉴 클릭하여, 본인명의 휴대전화 신규개설 차단",WEB008_0002,VALID,WEB008_0002,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+ACC_002,0,seoul_banking_en.json,,normalized_exact,1.0,,"Required Documents | Application form (including photo) Residence card, plus a document ascertaining your income (e.g. employment certificate, tax invoice, etc) if requested ※ Different banks or credit card companies may require different documents.","Required Documents | Application form (including photo) Residence card, plus a document ascertaining your income (e.g. employment certificate, tax invoice, etc) if requested ※ Different banks or credit card companies may require different documents",WEB003_0003,VALID,WEB003_0003,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+REM_025,2,kfb_remittance_overseas_students.json,,normalized_exact,1.0,,또한 매 연도별 로 외국 교육기관의 장이 발급한 재학증명서또는 성적증명서 와 같이 재학사실을 입증할 수 있는 서류를 은행에 제출하여야 합니다.,또한 매 연도별 로 외국 교육기관의 장이 발급한 재학증명서또는 성적증명서 와 같이 재학사실을 입증할 수 있는 서류를 은행에 제출하여야 합니다,WEB006_0001,VALID,WEB006_0001,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+ACC_018,0,외국인의 은행계좌 개설 가이드라인_202408.pdf,1,normalized_exact,1.0,,"사업자금: 사업관련 거래계약서, 거래처 급여명세표 등.","사업자금 사업관련 거래계약서, 거래처 급여명세표 등",PDF005_0001,VALID,PDF005_0001,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+FRD_030,1,fss_voice_phishing_response.json,,normalized_exact,1.0,,휴대전화 초기화나 악성앱 삭제(초기화 전까지 휴대전화 전원을 끄거나 비행기모드 전환),휴대전화 초기화나 악성앱 삭제(초기화 전까지 휴대전화 전원을 끄거나 비행기모드 전환,WEB008_0001,VALID,WEB008_0001,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"
+REM_017,0,wirebarley_foreigner_passport_remittance_2026_en.json,,normalized_exact,1.0,,"Therefore, from January 1 2026, a passport verification will be required in order to use international remittance services.","Therefore, from January 1 2026, a passport verification will be required in order to use international remittance services",WEB011_0001,VALID,WEB011_0001,,"LOW_RISK_SANITY_SAMPLE(seed=42, n=20)"

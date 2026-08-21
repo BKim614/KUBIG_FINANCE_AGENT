@@ -1,0 +1,38 @@
+{
+  "before": {
+    "hybrid": {
+      "method": "Hybrid Retrieval (RRF)",
+      "n_questions": 40,
+      "Recall@5": 0.6741666666666666,
+      "Hit@5": 0.725,
+      "MRR@5": 0.5208333333333333,
+      "nDCG@5": 0.5252026972513127
+    },
+    "reranker": {
+      "method": "Hybrid + Reranker (bge-reranker-v2-m3)",
+      "n_questions": 40,
+      "Recall@5": 0.7958333333333333,
+      "Hit@5": 0.825,
+      "MRR@5": 0.6341666666666667,
+      "nDCG@5": 0.6333752688134164
+    }
+  },
+  "after": {
+    "hybrid": {
+      "method": "Hybrid Retrieval (RRF)",
+      "n_questions": 40,
+      "Recall@5": 0.6741666666666666,
+      "Hit@5": 0.725,
+      "MRR@5": 0.5208333333333333,
+      "nDCG@5": 0.5252026972513127
+    },
+    "reranker": {
+      "method": "Hybrid + Reranker (bge-reranker-v2-m3)",
+      "n_questions": 40,
+      "Recall@5": 0.7958333333333333,
+      "Hit@5": 0.825,
+      "MRR@5": 0.6341666666666667,
+      "nDCG@5": 0.6333752688134164
+    }
+  }
+}

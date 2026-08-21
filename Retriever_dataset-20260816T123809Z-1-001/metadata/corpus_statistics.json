@@ -16,8 +16,8 @@
     "remittance": 5,
     "fraud_response": 1
   },
-  "average_text_length": 21932.43,
-  "total_text_length": 460581,
+  "average_text_length": 20204.76,
+  "total_text_length": 424300,
   "longest_document": {
     "id": "PDF001",
     "length": 282116

@@ -1,0 +1,54 @@
+{
+  "chunk_size": "400_60",
+  "n_chunks": 563,
+  "n_questions": 80,
+  "candidate_k": 20,
+  "diagnostic_k": 50,
+  "final_k": 5,
+  "retrieval_results": [
+    {
+      "method": "BM25",
+      "n_questions": 80,
+      "Recall@20": 0.7385416666666667,
+      "Hit@20": 0.775,
+      "MRR@20": 0.4136977707749766,
+      "Recall@50": 0.9208333333333334
+    },
+    {
+      "method": "Dense Retrieval (BGE-M3)",
+      "n_questions": 80,
+      "Recall@20": 0.871875,
+      "Hit@20": 0.9,
+      "MRR@20": 0.5426846353573327,
+      "Recall@50": 0.925
+    },
+    {
+      "method": "Hybrid Retrieval (RRF)",
+      "n_questions": 80,
+      "Recall@20": 0.9427083333333334,
+      "Hit@20": 0.975,
+      "MRR@20": 0.5003593108280608,
+      "Recall@50": 0.971875
+    }
+  ],
+  "final_ranking_results": [
+    {
+      "method": "Hybrid Retrieval (RRF)",
+      "n_questions": 80,
+      "Recall@5": 0.6770833333333333,
+      "Hit@5": 0.725,
+      "MRR@5": 0.47145833333333337,
+      "nDCG@5": 0.4981120218359002
+    },
+    {
+      "method": "Hybrid + Reranker (bge-reranker-v2-m3)",
+      "n_questions": 80,
+      "Recall@5": 0.8125,
+      "Hit@5": 0.85,
+      "MRR@5": 0.7158333333333333,
+      "nDCG@5": 0.6970493679913806
+    }
+  ],
+  "split": "validation",
+  "language": "ko"
+}

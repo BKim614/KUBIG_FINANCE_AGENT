@@ -32,7 +32,7 @@ CHUNKS_DIR = DATASET_DIR / "chunks"
 METADATA_DIR = DATASET_DIR / "metadata"
 EVAL_PATH = KUBIG_DIR / "rag_evaluation_dataset.jsonl"
 ROOT_EVAL_PATH = PROJECT_DIR / "rag_evaluation_dataset.jsonl"
-RAW_PDF_DIR = PROJECT_DIR / "data" / "raw"
+RAW_PDF_DIR = PROJECT_DIR / "data" / "raw" / "pdf"
 
 CHUNK_VARIANTS = {
     "300_50": (300, 50),
@@ -41,6 +41,14 @@ CHUNK_VARIANTS = {
 }
 SPLIT_SEED = "finagent-80-40-v1"
 VALIDATION_PER_STRATUM = {"easy": 6, "medium": 10, "hard": 4}
+
+# PDF002 ("Guide to Leading a Safe Life in Seoul") is a 43-page general safety
+# guide; only the financial-fraud/phishing section (pages 17-19, 1-indexed) was
+# originally curated for this corpus. Without this filter, extract_pdf_pages()
+# would pull in unrelated content (traffic safety, etc.) from all 43 pages.
+PDF_PAGE_FILTERS: dict[str, set[int]] = {
+    "PDF002": {17, 18, 19},
+}
 
 COMPACT_RE = re.compile(r"[^0-9A-Za-z가-힣]+")
 PAGE_MARKER_RE = re.compile(r"\[Page (\d+)\]\n")
@@ -210,23 +218,36 @@ def resolve_pdf_path(source_file: str) -> Path:
     return matches[0]
 
 
-def extract_pdf_pages(path: Path) -> list[str]:
+def extract_pdf_pages(path: Path, page_filter: set[int] | None = None) -> list[tuple[int, str]]:
+    """Returns a list of (1-indexed page number, page text) pairs.
+
+    ``page_filter``, when given, is a set of 1-indexed page numbers to keep
+    (pdfplumber's own ``pdf.pages`` list is 0-indexed, so page N corresponds
+    to ``pdf.pages[N - 1]``). Original page numbers are preserved as-is (not
+    renumbered) so that evidence ``page`` fields keep referring to the same
+    physical PDF page.
+    """
     import pdfplumber
 
-    pages: list[str] = []
+    pages: list[tuple[int, str]] = []
     with pdfplumber.open(path) as pdf:
-        for page in pdf.pages:
+        for zero_indexed, page in enumerate(pdf.pages):
+            page_number = zero_indexed + 1
+            if page_filter is not None and page_number not in page_filter:
+                continue
             text = page.extract_text() or ""
             text = "\n".join(line.rstrip() for line in text.splitlines()).strip()
-            pages.append(text)
+            pages.append((page_number, text))
     return pages
 
 
-def build_pdf_document_text(pages: Sequence[str]) -> tuple[str, dict[int, tuple[int, int]]]:
+def build_pdf_document_text(
+    pages: Sequence[tuple[int, str]]
+) -> tuple[str, dict[int, tuple[int, int]]]:
     parts: list[str] = []
     page_spans: dict[int, tuple[int, int]] = {}
     cursor = 0
-    for page_number, page_text in enumerate(pages, start=1):
+    for page_number, page_text in pages:
         if parts:
             parts.append("\n\n")
             cursor += 2
@@ -258,7 +279,8 @@ def rebuild_documents(documents: list[dict]) -> tuple[list[dict], dict[str, dict
         updated = dict(document)
         if document["source_type"] == "pdf":
             source_path = resolve_pdf_path(document["source_file"])
-            pages = extract_pdf_pages(source_path)
+            page_filter = PDF_PAGE_FILTERS.get(document["id"])
+            pages = extract_pdf_pages(source_path, page_filter=page_filter)
             updated["text"], page_spans[document["id"]] = build_pdf_document_text(pages)
         else:
             page_spans[document["id"]] = {}

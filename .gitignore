@@ -1,5 +1,13 @@
 retrieval_eval/.venv/
 retrieval_eval/cache/
+**/retrieval_eval/cache/
 __pycache__/
+**/__pycache__/
 *.pyc
 .claude/
+.DS_Store
+.env
+.env.*
+*.pem
+*credential*
+*secret*

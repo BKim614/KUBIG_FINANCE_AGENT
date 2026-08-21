@@ -1,0 +1,16 @@
+{
+  "note": "400/60 2x2 matrix: Youhan/Final x Validation80/Test40. Youhan/Validation is a REPORTED result only (test_korean_only.md, no backing JSON artifact found anywhere in the youhan repo's git history). The other 3 cells are freshly executed with byte-identical eval_retrieval.py.",
+  "Youhan_Validation80_REPORTED_ONLY": {
+    "source": "test_korean_only.md (found at project root, outside all repo clones; not present in KUBIG_FINANCE_youhan git history)",
+    "n_chunks": 606,
+    "n_questions": 80,
+    "BM25": {"Recall@20": 0.726, "Hit@20": 0.762, "MRR@20": 0.407, "Recall@50": 0.896},
+    "Dense": {"Recall@20": 0.831, "Hit@20": 0.863, "MRR@20": 0.517, "Recall@50": 0.909},
+    "Hybrid": {"Recall@20": 0.915, "Hit@20": 0.950, "MRR@20": 0.486, "Recall@50": 0.966},
+    "Hybrid_final": {"Recall@5": 0.661, "Hit@5": 0.713, "MRR@5": 0.460, "nDCG@5": 0.484},
+    "Reranker_final": {"Recall@5": 0.784, "Hit@5": 0.825, "MRR@5": 0.703, "nDCG@5": 0.679}
+  },
+  "Youhan_Test40_EXECUTED": "see comparison_youhan/retrieval_eval/results_400_60_ko_test.json",
+  "Final_Validation80_EXECUTED": "see results_400_60_ko_validation.json",
+  "Final_Test40_EXECUTED": "see results_400_60_ko_test.json (from prior step)"
+}

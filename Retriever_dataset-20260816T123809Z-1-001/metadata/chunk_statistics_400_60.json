@@ -3,11 +3,11 @@
   "chunk_size_tokens": 400,
   "chunk_overlap_tokens": 60,
   "document_count": 21,
-  "chunk_count": 606,
-  "avg_chunk_length_chars": 822.67,
+  "chunk_count": 563,
+  "avg_chunk_length_chars": 820.48,
   "max_chunk_length_chars": 1977,
   "min_chunk_length_chars": 2,
-  "avg_chunk_length_tokens": 294.74,
+  "avg_chunk_length_tokens": 301.09,
   "max_chunk_length_tokens": 400,
   "min_chunk_length_tokens": 2
 }
