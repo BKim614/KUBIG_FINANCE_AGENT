@@ -207,20 +207,6 @@ nDCG@5(0.697 vs 0.633)에서 Test가 뚜렷이 낮습니다. Validation과 Test�
   버전 그대로 보존, 재검증되지 않음)
 - 다국어(cross-lingual) retrieval 전략 검토
 - 팀 대상 최종 발표/보고서 작성
-- 이번 작업으로 손상되었던 `test1.md`의 §5(400/60 결과 표)를 최신 수치로 갱신하는
-  것(이번 단계에서는 원본 그대로 복구만 수행, 내용 갱신은 하지 않음)
-
-## 참고: `test1.md` 손상 및 향후 주의사항
-
-`retrieval_eval/eval_retrieval.py`는 `--report` 옵션을 지정하지 않으면 기본
-경로로 `test1.md`(`DEFAULT_REPORT_PATH = ROOT_DIR / "test1.md"`, 29번째 줄)를
-사용하며, `write_markdown_report()` 함수 내부의 `path.write_text(...)`
-(512번째 줄)가 **기존 파일을 완전히 덮어씁니다**(append 아님). 이 때문에 이전
-평가 실행에서 `test1.md`(원래 154줄, 3개 chunk 크기 결과 전부 포함)가 마지막
-실행 결과 하나만 남긴 채 28줄로 축소된 사고가 있었습니다. **향후 evaluation을
-실행할 때는 반드시 `--report <다른 경로>`를 지정하여 `test1.md`를 실수로
-덮어쓰지 않도록 해야 합니다.**
-
 ---
 
 ## Appendix — Source Artifacts
