@@ -148,6 +148,38 @@ JSON 파일(`comparison_youhan/retrieval_eval/results_400_60_ko_test.json`,
 `retrieval_eval/results_400_60_ko_validation.json`,
 `retrieval_eval/results_400_60_ko_test.json`)을 직접 읽어 확인한 값입니다.
 
+## Final Korean Retrieval Architecture
+
+§7까지는 최종 Top-5 생성에 Hybrid(RRF) 후보만 사용했기 때문에, candidate 단계에서
+더 높은 성능을 보인 Dense를 동일한 reranker에 직접 연결했을 때의 결과는 알 수
+없었습니다. 최종 한국어 architecture를 결정하기 위해 **동일한 Final Test 40문항,
+400/60 corpus(563 chunks), gold labels, candidate top-20, final top-5 및
+`BAAI/bge-reranker-v2-m3`** 조건에서 아래 두 pipeline을 추가 비교했습니다.
+
+| Pipeline | Recall@20 | Hit@20 | MRR@20 | Recall@5 | Hit@5 | MRR@5 | nDCG@5 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Dense → Reranker | 0.9333 | 0.9500 | 0.6244 | 0.7792 | 0.8250 | 0.6446 | 0.6376 |
+| Hybrid(RRF) → Reranker | 0.9125 | 0.9250 | 0.5415 | 0.7958 | 0.8250 | 0.6342 | 0.6334 |
+
+Query-level candidate hit 비교에서는 Dense-only 2건, Hybrid-only 1건, 둘 다 hit
+36건, 둘 다 miss 1건이었습니다. Reranker 이후 first-gold rank는 Dense 우위 2건,
+Hybrid 우위 2건, 동일 36건으로 어느 쪽도 일관된 rank 우위를 보이지 않았습니다.
+
+Hybrid는 evidence **Recall@5가 0.0167 높지만 Hit@5는 0.825로 동일**합니다. 반면
+Dense는 candidate **Recall@20·Hit@20·MRR@20이 모두 높고**, 최종 **MRR@5와
+nDCG@5도 소폭 높습니다**. BM25가 Dense를 보완한 사례가 1건 존재하지만, 반대로
+Hybrid에서 Dense의 gold 후보를 잃은 사례가 2건이므로 BM25의 complementary signal은
+존재하되 현재 Test 40에서는 일관된 순이익으로 보기 어렵습니다.
+
+따라서 이는 큰 성능 격차를 뜻하는 결론은 아니지만, 현재 지표와 pipeline 단순성을
+함께 고려한 최종 한국어 retrieval architecture는 다음과 같습니다.
+
+> **BGE-M3 Dense → Top-20 → bge-reranker-v2-m3 → Top-5**
+
+상세 결과와 question-level 분석은
+`retrieval_eval/dense_vs_hybrid_reranker_test.md`, full-precision 결과는
+`retrieval_eval/results_400_60_dense_vs_hybrid_reranker_test.json`에 기록했습니다.
+
 ## 8. Interpretation
 
 ### 8.1 Youhan → Final, 동일 Test(40)에서의 변화
@@ -194,19 +226,29 @@ nDCG@5(0.697 vs 0.633)에서 Test가 뚜렷이 낮습니다. Validation과 Test�
 ## 9. Recommended Final Configuration
 
 - **Chunk setting: 400 tokens / 60 overlap (BGE-M3 tokenizer), 563 chunks**
-- **최종 성능 지표로는 Final/Test(40, held-out) 값을 사용할 것을 권장**:
-  Hybrid + Reranker — Recall@5 **0.7958**, Hit@5 **0.825**, MRR@5 **0.6342**,
-  nDCG@5 **0.6334** (출처: `retrieval_eval/results_400_60_ko_test.json`)
+- **최종 한국어 pipeline: BGE-M3 Dense top-20 → bge-reranker-v2-m3 → top-5**
+- Final/Test(40, held-out) 기준 Dense → Reranker 성능: Recall@5 **0.7792**,
+  Hit@5 **0.825**, MRR@5 **0.6446**, nDCG@5 **0.6376** (출처:
+  `retrieval_eval/results_400_60_dense_vs_hybrid_reranker_test.json`)
+- Hybrid → Reranker의 Recall@5는 **0.7958**로 더 높지만, Hit@5가 동일하고 Dense가
+  candidate 지표와 최종 MRR/nDCG에서 우세하며 BM25/RRF가 추가하는 복잡도를 함께
+  고려해 Dense → Reranker를 최종 baseline으로 선택합니다.
 - Validation(80) 수치는 chunk 크기 비교나 파이프라인 튜닝 참고용으로만 사용하고,
   대표 성능으로 인용하지 않을 것을 권장(§8.3 근거).
 
 ## 10. Remaining Work (아직 하지 않은 것)
 
-- 영어(EN) query pipeline 평가 — 이번 검증은 한국어(`ko`) 질의로만 수행됨
+- 한국어 baseline은 **BGE-M3 Dense → Reranker**로 확정
+- 영어(EN) query에서는 아래 retrieval 신호를 별도로 비교·fusion하여 lexical/sparse
+  signal이 Dense를 실제로 보완하는지 평가 예정:
+  - English → Korean translation → Nori BM25
+  - English → BGE-M3 Sparse
+  - English → BGE-M3 Dense
 - 300/50·500/80 chunk 버전에 대한 이번 단계의 gold boundary 재검증(현재는 youhan
   버전 그대로 보존, 재검증되지 않음)
 - 다국어(cross-lingual) retrieval 전략 검토
 - 팀 대상 최종 발표/보고서 작성
+
 ---
 
 ## Appendix — Source Artifacts
@@ -232,6 +274,8 @@ nDCG@5(0.697 vs 0.633)에서 Test가 뚜렷이 낮습니다. Validation과 Test�
 | `retrieval_eval/results_400_60_ko_validation.json` | Final/Validation80 실행 결과 |
 | `retrieval_eval/results_400_60_gold_before_after_comparison.json` | gold 보정 전/후 성능 비교 |
 | `retrieval_eval/results_400_60_2x2_matrix.json` | 2×2 매트릭스 정리본 |
+| `retrieval_eval/dense_vs_hybrid_reranker_test.md` | Final/Test40 Dense→Reranker vs Hybrid→Reranker 상세 비교 및 architecture 결정 |
+| `retrieval_eval/results_400_60_dense_vs_hybrid_reranker_test.json` | 위 architecture 비교의 full-precision 지표 및 question-level 결과 |
 | `retrieval_eval/results_300_50_ko_test.json`, `results_500_80_ko_test.json`, `unmatched_evidence_*.json` | youhan 버전 보존(이번 단계 미변경, 42~43% 시절 gold 기준 stale 값 포함 가능) |
 | `retrieval_eval/final_data_validation.md` | STEP 1~8 데이터 재생성·검증 상세 기록(이전 단계 산출물) |
 | `retrieval_eval/compare_gold_before_after.py` | gold 보정 전/후 비교 스크립트 |
