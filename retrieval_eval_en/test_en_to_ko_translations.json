@@ -1,0 +1,941 @@
+{
+  "experiment": "Final English Retrieval Evaluation — Sealed Test40 translations",
+  "scope": "test only; Validation80 not translated or evaluated in this run",
+  "translation_configuration": {
+    "model": "facebook/nllb-200-distilled-600M",
+    "revision": "f8d333a098d19b4fd9a8b18f94170487ad3f821d",
+    "license": "CC-BY-NC-4.0",
+    "transformers_version": "4.46.3",
+    "torch_version": "2.8.0",
+    "source_language": "eng_Latn",
+    "target_language": "kor_Hang",
+    "device": "mps",
+    "input_max_length": 256,
+    "max_new_tokens": 128,
+    "num_beams": 4,
+    "do_sample": false,
+    "early_stopping": true,
+    "batch_size": 8
+  },
+  "provenance": {
+    "dataset_sha256": "d1cbd62fe9b4db19c435b78cbc18128dade14fc7b17cd2be55864e79e25e7f6d",
+    "test_question_count": 40,
+    "validation_question_count_processed": 0,
+    "architecture_frozen_before_translation": true
+  },
+  "translations": [
+    {
+      "question_id": "ACC_006",
+      "split": "test",
+      "question_en": "I could not prepare documents showing why I need the account. Will the bank refuse to open it, or can it be opened first with lower limits on transfers and withdrawals?",
+      "translated_ko": "은행이 이 계좌를 열지 않겠습니까? 아니면 이전과 철수 제한이 더 낮아서 먼저 열 수 있을까요?",
+      "reference_question_ko": "통장을 왜 만드는지 보여 줄 서류를 준비하지 못했어요. 아예 만들 수 없는 건가요, 아니면 처음에는 보내거나 찾을 수 있는 금액이 적은 통장으로 만들어지나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "계좌 목적 증빙서류와 제한계좌 설명이 심각하게 누락·왜곡됨"
+      ]
+    },
+    {
+      "question_id": "ACC_008",
+      "split": "test",
+      "question_en": "My account was opened with a low transfer limit because I had no supporting documents at the time. I can now provide an employment certificate. Can the bank remove the limit after reviewing it?",
+      "translated_ko": "제 계좌 는 환불 한계 제한 을 낮게 열었읍니다. 그 당시 에 증거 인 서류 는 없었기 때문 입니다. 이제 고용 인증을 제출 할 수 있습니다. 은행 은 그 한계 제한 을 검토 한 후 제거 할 수 있습니까?",
+      "reference_question_ko": "통장을 만들 때는 증명할 서류가 없어서 이체 한도가 낮게 잡혔어요. 지금은 재직증명서를 낼 수 있는데, 은행에서 확인받으면 한도를 풀 수 있나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "이체한도/재직증명 용어가 부정확하지만 해제 intent는 보존됨"
+      ]
+    },
+    {
+      "question_id": "ACC_010",
+      "split": "test",
+      "question_en": "The bank has asked me to prove that I have lived in Korea for at least 183 days. Is my residence card enough, and what records can I use?",
+      "translated_ko": "은행 은 적어도 183 일 동안 한국 에서 살았다는 것을 증명 해 달라고 요청 했습니다. 거주권 카드 는 충분 합니까? 어떤 기록 을 사용할 수 있습니까?",
+      "reference_question_ko": "은행에서 한국에 183일 이상 살았다는 걸 증명해 달라고 합니다. 체류카드만으로 되는지, 어떤 자료를 보여 줄 수 있나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [
+          "183"
+        ],
+        "numbers_translated": [
+          "183"
+        ],
+        "numbers_reference": [
+          "183"
+        ],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "ACC_015",
+      "split": "test",
+      "question_en": "I tried to send a deposit at an ATM at 11 p.m., but the machine said the service was unavailable. I am not sure whether it was broken or simply outside operating hours. When should I try again?",
+      "translated_ko": "저는 오후 11시 에 ATM 에 예금 을 보내려고 했지만, 기계 는 서비스 가 제공 되지 않았다고 했습니다. 그 서비스 가 깨졌는지 아니면 단순히 운영 시간 밖 에 있었는지 확실 하지 않습니다. 언제 다시 시도 해야 합니까?",
+      "reference_question_ko": "밤 11시에 ATM으로 보증금을 보내려 했는데 이용할 수 없다는 화면이 떴어요. 기계가 고장 난 건지 원래 그 시간에는 안 되는 건지 모르겠어요. 몇 시에 다시 가면 될까요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [
+          "ATM"
+        ],
+        "numbers_en": [
+          "11"
+        ],
+        "numbers_translated": [
+          "11"
+        ],
+        "numbers_reference": [
+          "11"
+        ],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "ATM 보증금/송금 표현이 부정확하지만 시간 질문은 보존됨"
+      ]
+    },
+    {
+      "question_id": "ACC_016",
+      "split": "test",
+      "question_en": "My employer asked me to open an account for my salary. I heard the bank may not accept an old pay statement. What should I keep in mind when preparing it?",
+      "translated_ko": "고용주 는 내 급여 를 위한 계좌 를 열어 달라고 했습니다. 은행 은 오래된 급여 지표 를 받아들이지 않을 수 있다고 들었어요. 그 를 준비 할 때 무엇 을 염두 에 두어야 합니까?",
+      "reference_question_ko": "회사에서 월급 받을 통장을 만들라고 해서 은행에 가려고 해요. 급여명세서는 너무 오래된 걸 가져가면 안 된다고 들었는데, 준비할 때 주의할 점이 있을까요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "ACC_017",
+      "split": "test",
+      "question_en": "I am choosing a transit card in Korea. What is the difference between topping up in advance and paying later through a card bill?",
+      "translated_ko": "저는 한국에서 환승 카드를 선택하고 있습니다. 미리 지불하고 나중에 카드 청구서를 통해 지불하는 것의 차이점은 무엇입니까?",
+      "reference_question_ko": "한국에서 쓸 교통카드를 고르고 있어요. 미리 충전해서 쓰는 카드와, 먼저 이용하고 나중에 카드값으로 내는 카드는 어떻게 다른가요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "ACC_021",
+      "split": "test",
+      "question_en": "I want to apply for an account, debit card, and online banking at Shinhan Bank's video consultation center. Do I still need my passport if I have a residence card?",
+      "translated_ko": "신한 은행의 비디오 컨설팅 센터에서 계좌, 직불 카드 및 온라인 은행을 신청하고 싶습니다. 주민등록 카드를 가지고 있으면 여전히 여권을 필요로합니까?",
+      "reference_question_ko": "신한은행 화상상담센터에서 통장과 체크카드, 온라인뱅킹까지 한 번에 신청하려고 해요. 체류카드가 있어도 여권을 꼭 가져가야 하나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "체류카드가 주민등록 카드로 오역되고 체크카드 용어가 부정확함"
+      ]
+    },
+    {
+      "question_id": "ACC_023",
+      "split": "test",
+      "question_en": "I want to pay for a KRW 300,000 electronic device over three months. I also want the option to stop the remaining installments if the item never arrives or has a problem. Can I do that with a debit card?",
+      "translated_ko": "저는 3개월 동안 KRW 300,000의 전자 장치를 지불하고, 물품이 도착하지 않거나 문제가 있는 경우 남은 임금을 중단할 수 있는 옵션도 갖고 싶습니다.",
+      "reference_question_ko": "30만 원짜리 전자제품을 석 달 할부로 사려고 해요. 물건이 안 오거나 문제가 생기면 남은 할부금을 멈출 수 있는 카드로 결제하고 싶은데, 체크카드로도 가능한가요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [
+          "KRW"
+        ],
+        "numbers_en": [
+          "300,000"
+        ],
+        "numbers_translated": [
+          "3",
+          "300,000"
+        ],
+        "numbers_reference": [
+          "30"
+        ],
+        "numeric_surface_mismatch_vs_reference": true
+      },
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "체크카드 가능 여부라는 핵심 상품 비교 질문이 누락됨"
+      ]
+    },
+    {
+      "question_id": "ACC_026",
+      "split": "test",
+      "question_en": "I do not have a job in Korea yet. Can I still get a credit card, what will the issuer consider, and where should I ask about eligibility?",
+      "translated_ko": "저는 아직 한국에서 일하지 않습니다. 저는 여전히 신용카드를 받을 수 있을까요? 발행자가 무엇을 고려할 것인가?",
+      "reference_question_ko": "한국에서 아직 직장이 없는데 신용카드를 만들 수 있을까요? 카드회사는 어떤 조건을 보고, 신청할 수 있는지는 어디에 물어봐야 하나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "신청 문의처 질문이 누락됨"
+      ]
+    },
+    {
+      "question_id": "ACC_030",
+      "split": "test",
+      "question_en": "I lost my wallet and reported all the cards in it at once. How can I confirm that the report went through? If I later find unauthorized charges, can losses from the 60 days before the report be covered?",
+      "translated_ko": "저는 지갑을 잃었고, 그 안에 있는 모든 카드를 한꺼번에 신고했습니다. 어떻게 보고서가 통과되었는지 확인할 수 있을까요? 나중에 허가되지 않은 수수료를 발견하면 보고서 전 60일 동안의 손실이 커버될 수 있을까요?",
+      "reference_question_ko": "지갑을 잃어버려서 안에 있던 카드 여러 장을 한꺼번에 분실신고했어요. 접수가 제대로 됐는지는 어떻게 확인하나요? 나중에 부정 사용이 발견되면 신고하기 전 60일 동안의 피해도 보상받을 수 있나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [
+          "60"
+        ],
+        "numbers_translated": [
+          "60"
+        ],
+        "numbers_reference": [
+          "60"
+        ],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "REM_003",
+      "split": "test",
+      "question_en": "When sending money to an account abroad and when buying banknotes for travel, should I use the same number on the bank's rate board? Which entries should I distinguish?",
+      "translated_ko": "외국 에 있는 계좌 에 돈을 보내거나 여행 에 필요한 지폐 를 구입 할 때, 은행 의 금전 표 에 같은 번호 를 사용 해야 합니까? 어떤 항목 을 구별 해야 합니까?",
+      "reference_question_ko": "본국 계좌로 돈을 보낼 때와 여행용 지폐를 살 때 은행 화면의 같은 숫자를 보면 되나요? 어떤 항목을 따로 확인해야 하나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "환율표와 송금/현찰 항목 용어가 부정확함"
+      ]
+    },
+    {
+      "question_id": "REM_009",
+      "split": "test",
+      "question_en": "I exchanged KRW 1.5 million in an app and now need to collect it at the selected branch. Is ID required for this amount, which forms of ID are accepted, and is there anything I can bring to save time?",
+      "translated_ko": "저는 앱에서 150만 KRW를 교환했고, 이제 선택된 지점에서 수집해야 합니다. 이 금액에 대한 신분증이 필요하고, 어떤 신분증 형태가 받아들여지고, 시간을 절약하기 위해 가져올 수 있는 것이 있나요?",
+      "reference_question_ko": "앱으로 150만 원어치를 환전했고 이제 지정한 지점에서 찾으려고 해요. 이 금액이면 신분증이 꼭 필요한가요? 가져갈 수 있는 신분증과 대기 시간을 줄이는 데 도움이 되는 준비물도 궁금해요.",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [
+          "KRW"
+        ],
+        "numbers_en": [
+          "1.5"
+        ],
+        "numbers_translated": [
+          "150"
+        ],
+        "numbers_reference": [
+          "150"
+        ],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "REM_012",
+      "split": "test",
+      "question_en": "I want to send part of my Korean earnings regularly to my family's account abroad. Can I choose a different bank each time, or must I designate one bank?",
+      "translated_ko": "한국에서 벌어들인 수입의 일부분을 정기적으로 외국에 있는 가족 계좌로 보내고 싶습니다.",
+      "reference_question_ko": "한국에서 번 돈을 본국 가족 계좌로 정기적으로 보내려고 해요. 그때마다 다른 은행을 골라도 되나요, 아니면 한 곳을 정해 두어야 하나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "거래 은행을 매번 바꿀 수 있는지/지정해야 하는지 질문이 누락됨"
+      ]
+    },
+    {
+      "question_id": "REM_014",
+      "split": "test",
+      "question_en": "I sent money from a Korean bank to my account abroad, but it did not arrive immediately. How long does it usually take, and why can several charges be added besides the amount sent?",
+      "translated_ko": "한국 의 은행 에서 해외 에 있는 내 계좌 로 돈을 보냈지만, 즉시 도착 하지 않았습니다. 보통 몇 시간 이 걸립니다. 왜 송금금 이외 에 여러 가지 수수료가 추가 될 수 있습니까?",
+      "reference_question_ko": "한국 은행에서 본국 계좌로 돈을 보냈는데 바로 들어오지 않았어요. 보통 며칠이나 걸리며, 보낸 금액 외에 비용이 여러 번 붙는 이유는 무엇인가요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "며칠이 몇 시간으로 바뀌어 송금 소요기간 조건이 왜곡됨"
+      ]
+    },
+    {
+      "question_id": "REM_016",
+      "split": "test",
+      "question_en": "I am unfamiliar with sending money home and want help from a bank employee. What is the benefit of using a teller, and what are the time and cost disadvantages?",
+      "translated_ko": "돈 을 집으로 보내는 것 은 익숙 하지 않고 은행 직원 에게 도움 을 요청 합니다. 현금 기자를 사용 하는 것 은 어떤 유익 이 있으며, 시간 과 비용 의 단점 은 무엇 입니까?",
+      "reference_question_ko": "본국으로 돈을 보내는 방법이 익숙하지 않아 직원에게 직접 부탁하려고 해요. 창구에서 하면 좋은 점은 무엇이고, 시간과 비용 면에서는 어떤 불편이 있나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "은행 창구가 현금 기자로 오역됨"
+      ]
+    },
+    {
+      "question_id": "REM_017",
+      "split": "test",
+      "question_en": "My remittance app says foreign customers will need to verify their passports again in 2026. When does the new rule take effect, and are any passports ineligible?",
+      "translated_ko": "내 송금 앱은 외국 고객들이 2026년에 다시 여권을 확인해야 한다고 합니다. 새 규칙이 언제부터 시행될까요?",
+      "reference_question_ko": "쓰고 있던 송금 앱에서 2026년부터 외국인 회원도 여권 인증을 다시 해야 한다는 알림이 왔어요. 언제부터 적용되고, 인증이 안 되는 여권도 있나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [
+          "2026"
+        ],
+        "numbers_translated": [
+          "2026"
+        ],
+        "numbers_reference": [
+          "2026"
+        ],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "인증 불가 여권 조건이 누락됨"
+      ]
+    },
+    {
+      "question_id": "REM_020",
+      "split": "test",
+      "question_en": "I received a form at the bank to send money home. Do I need to write my family member's name, address, and bank details in English, and which fields are required?",
+      "translated_ko": "돈 을 집으로 보내기 위해 은행 에서 서류 를 받았습니다. 가족 의 이름, 주소, 은행 정보 를 영어 로 써야 합니까? 어떤 필드 들 을 써야 합니까?",
+      "reference_question_ko": "은행 창구에서 본국으로 돈을 보내려고 신청서를 받았어요. 가족의 이름과 주소, 현지 은행 정보는 영어로 써야 하나요? 어느 항목까지 적어야 하는지도 궁금해요.",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "REM_023",
+      "split": "test",
+      "question_en": "My family abroad and I need to send money to each other. What recipient and bank details do I need when sending to them, and what should I give them when they send money to my Hana Bank account?",
+      "translated_ko": "해외에 있는 가족들과 저는 서로 돈을 보내야 합니다. 그들에게 보내는 데 있어서 어떤 수신자와 은행 정보가 필요하며, 그들이 내 하나 은행 계좌에 돈을 보낼 때 무엇을 줄 수 있을까요?",
+      "reference_question_ko": "한국에 있는 저와 본국 가족이 서로 돈을 보내야 해요. 제가 보낼 때 필요한 가족과 현지 은행 정보는 무엇인가요? 반대로 가족이 제 하나은행 계좌로 보낼 때는 제가 어떤 정보를 알려 줘야 하나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "REM_027",
+      "split": "test",
+      "question_en": "After sending money to my family through SentBe, I realized that one digit of the account number was wrong. The app says the transfer is already complete. Can I still cancel it or get the money back?",
+      "translated_ko": "SentBe를 통해 가족에게 돈을 보낸 후, 계정 번호의 한 자릿수가 잘못되었다는 것을 깨달았습니다. 앱은 이전이 이미 완료되었다고 말합니다. 여전히 돈을 취소하거나 돌려받을 수 있습니까?",
+      "reference_question_ko": "센트비로 본국 가족에게 돈을 보낸 뒤에 계좌번호 한 자리를 잘못 쓴 걸 알았어요. 앱에는 이미 송금이 끝났다고 나오는데, 지금이라도 취소하거나 돌려받을 수 있나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [
+          "SentBe"
+        ],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "REM_029",
+      "split": "test",
+      "question_en": "I work for a small trading company in Korea and was asked to send USD 8,000 to a third party not named in the contract. Which authority must be notified about this payment?",
+      "translated_ko": "저는 한국에 있는 작은 거래회사에서 일하고 있으며 계약에 언급되지 않은 제3자에게 8,000달러를 보내야 한다고 요청받았습니다. 이 지불에 대해 어느 기관에 알려야 할까요?",
+      "reference_question_ko": "한국의 작은 무역회사에서 일하는데 계약서에 없는 제3자에게 미화 8천 달러를 보내 달라는 요청을 받았어요. 이런 지급은 어느 기관에 알려야 하나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [
+          "8,000"
+        ],
+        "numbers_translated": [
+          "3",
+          "8,000"
+        ],
+        "numbers_reference": [
+          "3",
+          "8"
+        ],
+        "numeric_surface_mismatch_vs_reference": true
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "NOT_003",
+      "split": "test",
+      "question_en": "I need to pay my electricity bill but cannot visit a bank. Which menu should I look for on my bank's website or app?",
+      "translated_ko": "전력 청구서를 지불해야 하지만 은행을 방문할 수 없습니다. 은행의 웹사이트나 앱에서 어떤 메뉴를 검색해야 할까요?",
+      "reference_question_ko": "전기요금을 내야 하는데 은행에 갈 시간이 없어요. 거래하는 은행의 웹사이트나 앱에서 어떤 메뉴를 찾으면 되나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "NOT_004",
+      "split": "test",
+      "question_en": "My bill says I can pay through Internet Giro. Who runs the site, and what can I pay there besides utility bills?",
+      "translated_ko": "내 청구서는 인터넷 지로를 통해 지불할 수 있고 사이트를 운영하는 사람은 누구이며",
+      "reference_question_ko": "고지서에 인터넷 지로로 낼 수 있다고 쓰여 있어요. 이 사이트는 어디에서 운영하고, 공과금 말고도 어떤 돈을 낼 수 있나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "문장이 중단되어 운영기관 이후의 납부 가능 항목 질문이 누락됨"
+      ]
+    },
+    {
+      "question_id": "NOT_005",
+      "split": "test",
+      "question_en": "I was told I can have my water bill deducted automatically on the same date each month. It sounds convenient, but what should I check before the payment is taken?",
+      "translated_ko": "저는 물 청구서를 매달 같은 날짜에 자동으로 수감할 수 있다고 들었습니다. 편리하게 들리지만, 지불이 이루어지기 전에 무엇을 확인해야 할까요?",
+      "reference_question_ko": "수도요금을 매달 같은 날 자동으로 빠져나가게 하라는 안내를 받았어요. 편하긴 하지만 돈이 빠져나가기 전에 꼭 확인해야 할 게 있나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "자동이체가 자동 수감으로 오역됨"
+      ]
+    },
+    {
+      "question_id": "NOT_007",
+      "split": "test",
+      "question_en": "I want to pay a Korean utility bill through Internet Giro. Which number from the bill and which account details do I need, and should I check anything after payment?",
+      "translated_ko": "저는 인터넷 지로를 통해 한국 공용품 청구서를 지불하고 싶습니다. 청구서에서 어떤 번호와 계정 세부사항이 필요하고, 지불 후 어떤 것을 확인해야합니까?",
+      "reference_question_ko": "한국어로 된 공과금 고지서를 인터넷 지로에서 내려 해요. 고지서의 어떤 번호와 계좌 정보를 입력해야 하나요? 납부가 끝난 뒤 확인할 것도 있나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "NOT_013",
+      "split": "test",
+      "question_en": "I heard I could lose money if I close a time deposit before it matures. Does that reduce the principal, or just the interest I receive?",
+      "translated_ko": "임시 보증금을 채용하기 전에 결제하면 돈을 잃을 수 있다고 들었어요. 그게 원금을 줄여주나요? 아니면 제가 받는 금리를 줄여주나요?",
+      "reference_question_ko": "정기예금을 만기 전에 깨면 손해라고 들었어요. 원금이 줄어드는 건가요, 아니면 받을 이자가 줄어드는 건가요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "정기예금/중도해지 용어가 심하게 어색하지만 원금·이자 질문은 보존됨"
+      ]
+    },
+    {
+      "question_id": "NOT_017",
+      "split": "test",
+      "question_en": "The ISA guide lists a tax-free allowance and a required holding period. How much qualifies, how long must I keep the account, and are there any extra costs?",
+      "translated_ko": "ISA 가이드 에는 세금 면제 과 의무적 인 보유 기간이 나열 되어 있습니다. 얼마나 많은 금액이 자격을 갖춰야 하며, 얼마나 오랫동안 계좌를 보관해야 하며, 추가 비용은 있습니까?",
+      "reference_question_ko": "ISA 안내문을 보니 세금 혜택을 받는 금액과 꼭 유지해야 하는 기간이 따로 있네요. 얼마까지 혜택을 받고 몇 년 동안 유지해야 하나요? 추가로 드는 비용도 있나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [
+          "ISA"
+        ],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "NOT_019",
+      "split": "test",
+      "question_en": "I heard there is a monthly deposit limit for housing subscription savings accounts. How much can I deposit each month, and how many accounts can one person have?",
+      "translated_ko": "주택 가입 저축 계좌에 월별 예금 제한이 있다고 들었습니다. 한 달에 얼마나 많은 예금을 할 수 있고, 한 사람이 얼마나 많은 계좌를 가질 수 있습니까?",
+      "reference_question_ko": "주택청약통장에 매달 넣을 수 있는 금액이 정해져 있다고 들었어요. 한 달에 얼마까지 넣을 수 있고, 한 사람이 몇 개까지 만들 수 있나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "NOT_024",
+      "split": "test",
+      "question_en": "I thought benefits were added automatically after getting a National Happiness Card, but each program has its own application and documents. Where can I check which benefits I qualify for?",
+      "translated_ko": "저는 국민행복카드를 받은 후 혜택이 자동으로 추가되는 것 같았지만, 각 프로그램은 자신의 신청서와 서류를 가지고 있습니다. 제가 어떤 혜택을 받을 자격이 있는지 어디서 확인할 수 있을까요?",
+      "reference_question_ko": "국민행복카드만 만들면 지원금이 자동으로 들어오는 줄 알았는데, 서비스마다 신청 방법과 서류가 다르다고 하네요. 제가 받을 수 있는 지원은 어디에서 확인하면 되나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "NOT_029",
+      "split": "test",
+      "question_en": "I heard that a First Meeting Voucher can be added to the National Happiness Card after a baby is born. How much is provided, and where can I apply in person or online?",
+      "translated_ko": "아이 를 낳은 후 국가 행복 카드 에 첫 회담 엽록증 을 추가 할 수 있다는 것 을 들었습니다. 얼마나 많은 금액 을 제공 할 수 있으며, 어디서 직접 또는 온라인 으로 신청 할 수 있습니까?",
+      "reference_question_ko": "아기가 태어나면 국민행복카드로 첫만남이용권을 받을 수 있다고 들었어요. 얼마가 들어오고, 방문 신청과 온라인 신청은 각각 어디에서 하나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "첫만남이용권이 첫 회담 엽록증으로 심각하게 오역됨"
+      ]
+    },
+    {
+      "question_id": "NOT_030",
+      "split": "test",
+      "question_en": "I am choosing between a local-currency card and a regular credit card. The local card offers support worth 5% to 30% of spending, while the credit card requires a minimum spend in the previous month. What limits and conditions should I check for each?",
+      "translated_ko": "저는 지역 통화 카드와 일반 신용 카드 사이에서 선택하고 있습니다. 지역 카드에는 지출의 5%에서 30% 정도의 지원이 제공되며, 신용 카드에는 전 달의 최소한의 지출이 필요합니다. 각각의 한계와 조건에 대해 무엇을 확인해야합니까?",
+      "reference_question_ko": "지역화폐카드와 일반 신용카드 중 무엇을 쓸지 고민 중이에요. 지역화폐는 사용액의 5~30%를 지원하고, 신용카드는 지난달 실적을 채워야 혜택이 있다고 하네요. 두 카드에서 각각 어떤 한도와 조건을 확인해야 하나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [
+          "5",
+          "30"
+        ],
+        "numbers_translated": [
+          "5",
+          "30"
+        ],
+        "numbers_reference": [
+          "5",
+          "30"
+        ],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "FRD_003",
+      "split": "test",
+      "question_en": "Someone called saying I could get a tax refund and told me to stay on the line while I went to an ATM. I am at the ATM now. Should I follow their instructions?",
+      "translated_ko": "누군가 전화해서 세금 환불을 받을 수 있다고 했어요. ATM에 갔을 때 라인을 유지하라고 했어요. 지금 ATM에 있어요. 그들의 지시를 따라야 할까요?",
+      "reference_question_ko": "세금을 돌려받게 해 주겠다며 통화를 끊지 말고 ATM으로 가라고 했어요. 지금 ATM 앞인데, 상대가 시키는 대로 조작해도 될까요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [
+          "ATM",
+          "ATM"
+        ],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "FRD_004",
+      "split": "test",
+      "question_en": "A caller says they have my child, plays what sounds like my child's voice, and demands money immediately. What should I verify before sending anything?",
+      "translated_ko": "전화가 내 아이를 가지고 있다고 하고, 내 아이의 목소리처럼 들리는 소리를 들려주고, 즉시 돈을 요구합니다.",
+      "reference_question_ko": "아이를 데리고 있다며 전화로 아이 목소리까지 들려주고 빨리 돈을 보내라고 해요. 송금하기 전에 무엇부터 확인해야 하나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "송금 전 확인 방법이라는 핵심 질문이 누락됨"
+      ]
+    },
+    {
+      "question_id": "FRD_006",
+      "split": "test",
+      "question_en": "I trusted a suspicious call, sent money, and gave out personal information. Who should I contact now, and what should I ask them to do to stop the transfer?",
+      "translated_ko": "저는 의심스러운 전화를 믿었고, 돈을 보내었고, 개인 정보를 배포했습니다. 이제 누구와 연락해야 하며, 이송을 막기 위해 무엇을 해야 할까요?",
+      "reference_question_ko": "수상한 전화를 믿고 돈을 보낸 데다 개인정보도 알려 줬어요. 지금 어디에 연락해야 하고, 보낸 돈이 빠져나가지 않게 어떤 조치를 요청해야 하나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "FRD_009",
+      "split": "test",
+      "question_en": "I installed an app from a text offering a low-interest loan. Now they want an ID photo and an upfront fee. What are the warning signs, what should I stop doing, and what should I do with my phone?",
+      "translated_ko": "저자금 대출을 제공하는 문자 앱을 설치했습니다. 이제 주민등록 사진과 사전 수수료가 필요합니다. 경고 신호는 무엇이며, 무엇을 그만 두어야 하며, 휴대폰은 어떻게 해야 할까요?",
+      "reference_question_ko": "이자가 싼 대출을 해 준다는 문자 링크를 눌러 앱을 설치했어요. 이제 신분증 사진과 수수료까지 보내라고 합니다. 뭐가 수상한 건지, 지금 당장 무엇을 멈추고 휴대폰은 어떻게 해야 하는지 알고 싶어요.",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "신분증 사진이 주민등록 사진으로 좁혀짐"
+      ]
+    },
+    {
+      "question_id": "FRD_015",
+      "split": "test",
+      "question_en": "My phone started acting strangely after I installed an app from a delivery-text link. Should I turn it off first, and is deleting the app enough or do I need to reset the phone?",
+      "translated_ko": "내 전화는 배달 텍스트 링크에서 앱을 설치한 후 이상하게 동작하기 시작했습니다. 먼저 그것을 끄고 앱을 삭제하는 것이 충분합니까? 아니면 전화를 재설정해야합니까?",
+      "reference_question_ko": "택배 문자의 링크를 눌러 앱을 설치한 뒤 휴대폰이 이상해졌어요. 일단 전원을 꺼야 하나요? 앱만 지우면 되는지, 휴대폰을 초기화해야 하는지도 모르겠어요.",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "FRD_016",
+      "split": "test",
+      "question_en": "I never use mobile carrier billing. Can I block it for free to prevent charges from malicious text links, and where do I set that up?",
+      "translated_ko": "저는 모바일 통신사 결제를 사용하지 않습니다. 악성 문자 링크에 대한 수수료를 막기 위해 무료로 차단할 수 있을까요?",
+      "reference_question_ko": "휴대폰 소액결제를 전혀 쓰지 않아요. 문자 링크 때문에 결제되는 일을 막으려면 무료로 차단할 수 있나요? 어디에서 설정하면 되나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "차단 설정 위치 질문이 누락됨"
+      ]
+    },
+    {
+      "question_id": "FRD_020",
+      "split": "test",
+      "question_en": "I installed an app from a text link and then used my banking app. Besides deleting the suspicious app, what else should I do to protect my financial information and my contacts?",
+      "translated_ko": "저는 문자 링크에서 앱을 설치하고 은행 앱을 사용했습니다. 의심스러운 앱을 삭제하는 것 외에도 제 금융 정보와 연락처를 보호하기 위해 어떻게 해야 할까요?",
+      "reference_question_ko": "문자 링크를 통해 앱을 설치한 뒤 평소처럼 은행 앱도 썼어요. 수상한 앱을 지우는 것 말고, 금융정보와 연락처에 있는 사람들을 보호하려면 또 무엇을 해야 하나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "FRD_021",
+      "split": "test",
+      "question_en": "After sending money, I found three numbers for help: 1394, 112, and 1332. What is each number for, and which one should I call?",
+      "translated_ko": "돈 을 보낸 후, 도움 을 요청 하는 세 개의 번호 를 찾았습니다. 1394, 112, 1332. 각 번호 는 무엇 을 의미 하며, 어느 번호 를 호출 해야 합니까?",
+      "reference_question_ko": "돈을 보낸 뒤 신고할 곳을 찾았더니 1394, 112, 1332가 모두 나와요. 어디부터 전화해야 할지 모르겠는데, 각 번호는 어떤 경우에 쓰나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [
+          "1394",
+          "112",
+          "1332"
+        ],
+        "numbers_translated": [
+          "1394",
+          "112",
+          "1332"
+        ],
+        "numbers_reference": [
+          "1394",
+          "112",
+          "1332"
+        ],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    },
+    {
+      "question_id": "FRD_025",
+      "split": "test",
+      "question_en": "Money I do not recognize appeared in my account, and a stranger says it was a mistake and wants it back in cash. Should I withdraw it and return it directly?",
+      "translated_ko": "내가 알아보지 못한 돈이 내 계좌에 나타났고, 낯선 사람이 실수였다고 말해서 현금으로 돌려주고 싶으니까요.",
+      "reference_question_ko": "모르는 돈이 통장에 들어온 뒤 낯선 사람이 실수로 보냈다며 현금으로 돌려 달라고 해요. 제가 바로 찾아서 줘도 되나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "현금으로 바로 돌려줘도 되는지라는 핵심 판단 질문이 누락됨"
+      ]
+    },
+    {
+      "question_id": "FRD_028",
+      "split": "test",
+      "question_en": "Someone offered me money to cause a traffic accident deliberately and split the insurance payout. Should I refuse, and where can I report it?",
+      "translated_ko": "누군가가 의도적으로 교통사고를 일으켜 보험금을 분배할 수 있는 돈을 제안했습니다. 내가 거절해야 하며, 어디서 신고할 수 있을까요?",
+      "reference_question_ko": "큰돈을 벌 수 있다며 일부러 교통사고를 내고 보험금을 나누자는 제안을 받았어요. 바로 거절해야 하나요? 어디에 신고할 수 있나요?",
+      "automatic_checks": {
+        "empty": false,
+        "contains_hangul": true,
+        "latin_words_remaining": [],
+        "numbers_en": [],
+        "numbers_translated": [],
+        "numbers_reference": [],
+        "numeric_surface_mismatch_vs_reference": false
+      },
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ]
+    }
+  ],
+  "quality_audit": {
+    "method": "Sealed Test40 번역을 paired question.ko와 전수 대조한 수동 sanity audit; 번역 출력 수정/재생성 없음",
+    "counts": {
+      "LOW": 21,
+      "MEDIUM": 11,
+      "HIGH": 8
+    },
+    "empty_translation_count": 0,
+    "no_hangul_count": 0,
+    "high_risk_question_ids": [
+      "ACC_006",
+      "ACC_023",
+      "REM_012",
+      "REM_014",
+      "NOT_004",
+      "NOT_029",
+      "FRD_004",
+      "FRD_025"
+    ],
+    "medium_risk_question_ids": [
+      "ACC_008",
+      "ACC_015",
+      "ACC_021",
+      "ACC_026",
+      "REM_003",
+      "REM_016",
+      "REM_017",
+      "NOT_005",
+      "NOT_013",
+      "FRD_009",
+      "FRD_016"
+    ],
+    "interpretation": "번역 위험도는 결과 해석용이며 retrieval 결과를 보고 번역을 수정하거나 재생성하지 않았다."
+  }
+}

@@ -1,0 +1,6759 @@
+{
+  "experiment": "Final English Retrieval Evaluation — Sealed Test40",
+  "fixed_architecture": {
+    "dense_quota": 15,
+    "nori_quota": 5,
+    "candidate_k": 20,
+    "final_k": 5,
+    "rule": "Dense ranks 1–15, unseen Nori ranks 1–5, unseen Dense ranks 16–20 until exactly 20; no RRF/weights/tuning",
+    "reranker_query": "original question.en"
+  },
+  "configuration": {
+    "corpus": "Final 400/60",
+    "n_chunks": 563,
+    "split": "test",
+    "n_questions": 40,
+    "validation_questions_used_for_retrieval_or_reranking": 0,
+    "dense_model": "BAAI/bge-m3",
+    "reranker_model": "BAAI/bge-reranker-v2-m3",
+    "metric_implementation": "retrieval_eval/eval_retrieval.py evidence-group-aware metrics"
+  },
+  "translation_config": {
+    "model": "facebook/nllb-200-distilled-600M",
+    "revision": "f8d333a098d19b4fd9a8b18f94170487ad3f821d",
+    "license": "CC-BY-NC-4.0",
+    "transformers_version": "4.46.3",
+    "torch_version": "2.8.0",
+    "source_language": "eng_Latn",
+    "target_language": "kor_Hang",
+    "device": "mps",
+    "input_max_length": 256,
+    "max_new_tokens": 128,
+    "num_beams": 4,
+    "do_sample": false,
+    "early_stopping": true,
+    "batch_size": 8
+  },
+  "translation_audit": {
+    "method": "Sealed Test40 번역을 paired question.ko와 전수 대조한 수동 sanity audit; 번역 출력 수정/재생성 없음",
+    "counts": {
+      "LOW": 21,
+      "MEDIUM": 11,
+      "HIGH": 8
+    },
+    "empty_translation_count": 0,
+    "no_hangul_count": 0,
+    "high_risk_question_ids": [
+      "ACC_006",
+      "ACC_023",
+      "REM_012",
+      "REM_014",
+      "NOT_004",
+      "NOT_029",
+      "FRD_004",
+      "FRD_025"
+    ],
+    "medium_risk_question_ids": [
+      "ACC_008",
+      "ACC_015",
+      "ACC_021",
+      "ACC_026",
+      "REM_003",
+      "REM_016",
+      "REM_017",
+      "NOT_005",
+      "NOT_013",
+      "FRD_009",
+      "FRD_016"
+    ],
+    "interpretation": "번역 위험도는 결과 해석용이며 retrieval 결과를 보고 번역을 수정하거나 재생성하지 않았다."
+  },
+  "nori_config": {
+    "source": "retrieval_eval_en/nori_index_config.json",
+    "elasticsearch_version": "8.17.0",
+    "plugin": "analysis-nori 8.17.0",
+    "index_count": 563,
+    "analyzer_probe_tokens": [
+      "주택",
+      "청약",
+      "통장",
+      "과",
+      "외국인",
+      "외국",
+      "인",
+      "등록증",
+      "등록",
+      "증"
+    ],
+    "settings_and_mapping": {
+      "settings": {
+        "number_of_shards": 1,
+        "number_of_replicas": 0,
+        "analysis": {
+          "tokenizer": {
+            "kubig_nori_tokenizer": {
+              "type": "nori_tokenizer",
+              "decompound_mode": "mixed",
+              "discard_punctuation": true
+            }
+          },
+          "analyzer": {
+            "kubig_nori": {
+              "type": "custom",
+              "tokenizer": "kubig_nori_tokenizer",
+              "filter": [
+                "lowercase"
+              ]
+            }
+          }
+        },
+        "similarity": {
+          "kubig_bm25": {
+            "type": "BM25",
+            "k1": 1.2,
+            "b": 0.75,
+            "discount_overlaps": true
+          }
+        }
+      },
+      "mappings": {
+        "properties": {
+          "chunk_id": {
+            "type": "keyword"
+          },
+          "text": {
+            "type": "text",
+            "analyzer": "kubig_nori",
+            "search_analyzer": "kubig_nori",
+            "similarity": "kubig_bm25"
+          },
+          "doc_id": {
+            "type": "keyword"
+          },
+          "page_start": {
+            "type": "integer"
+          },
+          "page_end": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  },
+  "dense_provenance": {
+    "prior_artifact": "retrieval_eval_en/results_400_60_en_dense_reranker_test.json",
+    "exact_top20_match_count": 40,
+    "candidate_and_reranker_metric_exact_match": true,
+    "cache_sha256": "4320086ce98c11a882d45f67c3cb80a82d4f7c2e89de349f7a358ece977b11c6"
+  },
+  "metrics": {
+    "dense_candidate": {
+      "method": "English Dense only",
+      "n_questions": 40,
+      "Recall@20": 0.8958333333333334,
+      "Hit@20": 0.95,
+      "MRR@20": 0.5649214429361489
+    },
+    "dense_reranker": {
+      "method": "English Dense only -> Reranker",
+      "n_questions": 40,
+      "Recall@5": 0.8,
+      "Hit@5": 0.875,
+      "MRR@5": 0.68625,
+      "nDCG@5": 0.6543365887277413
+    },
+    "fusion_candidate": {
+      "method": "Dense15 + Actual Translated Nori5",
+      "n_questions": 40,
+      "Recall@20": 0.9125,
+      "Hit@20": 0.95,
+      "MRR@20": 0.5647008547008547
+    },
+    "fusion_reranker": {
+      "method": "Dense15 + Nori5 -> Reranker",
+      "n_questions": 40,
+      "Recall@5": 0.8,
+      "Hit@5": 0.875,
+      "MRR@5": 0.69875,
+      "nDCG@5": 0.6635633448884548
+    },
+    "delta_fusion_minus_dense": {
+      "Recall@20": 0.016666666666666607,
+      "Hit@20": 0.0,
+      "MRR@20": -0.00022058823529413907,
+      "Recall@5": 0.0,
+      "Hit@5": 0.0,
+      "MRR@5": 0.012499999999999956,
+      "nDCG@5": 0.009226756160713556
+    }
+  },
+  "candidate_transitions": {
+    "improved": {
+      "count": 0,
+      "question_ids": []
+    },
+    "worsened": {
+      "count": 1,
+      "question_ids": [
+        "ACC_010"
+      ]
+    },
+    "same": {
+      "count": 39,
+      "question_ids": [
+        "ACC_006",
+        "ACC_008",
+        "ACC_015",
+        "ACC_016",
+        "ACC_017",
+        "ACC_021",
+        "ACC_023",
+        "ACC_026",
+        "ACC_030",
+        "REM_003",
+        "REM_009",
+        "REM_012",
+        "REM_014",
+        "REM_016",
+        "REM_017",
+        "REM_020",
+        "REM_023",
+        "REM_027",
+        "REM_029",
+        "NOT_003",
+        "NOT_004",
+        "NOT_005",
+        "NOT_007",
+        "NOT_013",
+        "NOT_017",
+        "NOT_019",
+        "NOT_024",
+        "NOT_029",
+        "NOT_030",
+        "FRD_003",
+        "FRD_004",
+        "FRD_006",
+        "FRD_009",
+        "FRD_015",
+        "FRD_016",
+        "FRD_020",
+        "FRD_021",
+        "FRD_025",
+        "FRD_028"
+      ]
+    },
+    "dense_miss_to_fusion_hit": {
+      "count": 0,
+      "question_ids": []
+    },
+    "dense_hit_to_fusion_miss": {
+      "count": 0,
+      "question_ids": []
+    }
+  },
+  "reranker_transitions": {
+    "improved": {
+      "count": 1,
+      "question_ids": [
+        "REM_003"
+      ]
+    },
+    "worsened": {
+      "count": 0,
+      "question_ids": []
+    },
+    "same": {
+      "count": 39,
+      "question_ids": [
+        "ACC_006",
+        "ACC_008",
+        "ACC_010",
+        "ACC_015",
+        "ACC_016",
+        "ACC_017",
+        "ACC_021",
+        "ACC_023",
+        "ACC_026",
+        "ACC_030",
+        "REM_009",
+        "REM_012",
+        "REM_014",
+        "REM_016",
+        "REM_017",
+        "REM_020",
+        "REM_023",
+        "REM_027",
+        "REM_029",
+        "NOT_003",
+        "NOT_004",
+        "NOT_005",
+        "NOT_007",
+        "NOT_013",
+        "NOT_017",
+        "NOT_019",
+        "NOT_024",
+        "NOT_029",
+        "NOT_030",
+        "FRD_003",
+        "FRD_004",
+        "FRD_006",
+        "FRD_009",
+        "FRD_015",
+        "FRD_016",
+        "FRD_020",
+        "FRD_021",
+        "FRD_025",
+        "FRD_028"
+      ]
+    },
+    "dense_miss_to_fusion_hit": {
+      "count": 0,
+      "question_ids": []
+    },
+    "dense_hit_to_fusion_miss": {
+      "count": 0,
+      "question_ids": []
+    }
+  },
+  "nori_contribution": {
+    "dense_miss_recovered_candidate_count": 0,
+    "dense_miss_recovered_candidate_ids": [],
+    "recovered_and_reranker_top5_count": 0,
+    "recovered_and_reranker_top5_ids": [],
+    "dense_candidate_lost_ids": [],
+    "dense_final_hit_lost_ids": [],
+    "added_success_details": []
+  },
+  "translation_risk_analysis": {
+    "LOW": {
+      "count": 21,
+      "nori_gold_top5_count": 4,
+      "fusion_candidate_hit_count": 21,
+      "fusion_reranker_hit_count": 19,
+      "nori_added_candidate_ids": [],
+      "nori_added_final_ids": []
+    },
+    "MEDIUM": {
+      "count": 11,
+      "nori_gold_top5_count": 3,
+      "fusion_candidate_hit_count": 9,
+      "fusion_reranker_hit_count": 9,
+      "nori_added_candidate_ids": [],
+      "nori_added_final_ids": []
+    },
+    "HIGH": {
+      "count": 8,
+      "nori_gold_top5_count": 2,
+      "fusion_candidate_hit_count": 8,
+      "fusion_reranker_hit_count": 7,
+      "nori_added_candidate_ids": [],
+      "nori_added_final_ids": []
+    }
+  },
+  "validation_test_comparison": {
+    "validation80": {
+      "dense": {
+        "method": "Dense only -> Reranker",
+        "n_questions": 80,
+        "Recall@20": 0.828125,
+        "Hit@20": 0.8625,
+        "MRR@20": 0.4905981691919192,
+        "Recall@5": 0.7197916666666667,
+        "Hit@5": 0.7875,
+        "MRR@5": 0.6439583333333333,
+        "nDCG@5": 0.6270605594712331
+      },
+      "dense15_nori5": {
+        "method": "Dense Top-15 + Nori Top-5 -> Reranker",
+        "n_questions": 80,
+        "Recall@20": 0.875,
+        "Hit@20": 0.9125,
+        "MRR@20": 0.49367721330956627,
+        "Recall@5": 0.7572916666666667,
+        "Hit@5": 0.825,
+        "MRR@5": 0.67375,
+        "nDCG@5": 0.655541348394361
+      }
+    },
+    "test40": {
+      "dense": {
+        "method": "English Dense only -> Reranker",
+        "n_questions": 40,
+        "Recall@20": 0.8958333333333334,
+        "Hit@20": 0.95,
+        "MRR@20": 0.5649214429361489,
+        "Recall@5": 0.8,
+        "Hit@5": 0.875,
+        "MRR@5": 0.68625,
+        "nDCG@5": 0.6543365887277413
+      },
+      "dense15_nori5": {
+        "method": "Dense15 + Nori5 -> Reranker",
+        "n_questions": 40,
+        "Recall@20": 0.9125,
+        "Hit@20": 0.95,
+        "MRR@20": 0.5647008547008547,
+        "Recall@5": 0.8,
+        "Hit@5": 0.875,
+        "MRR@5": 0.69875,
+        "nDCG@5": 0.6635633448884548
+      }
+    }
+  },
+  "query_details": [
+    {
+      "question_id": "ACC_006",
+      "question_en": "I could not prepare documents showing why I need the account. Will the bank refuse to open it, or can it be opened first with lower limits on transfers and withdrawals?",
+      "translated_ko": "은행이 이 계좌를 열지 않겠습니까? 아니면 이전과 철수 제한이 더 낮아서 먼저 열 수 있을까요?",
+      "reference_question_ko": "통장을 왜 만드는지 보여 줄 서류를 준비하지 못했어요. 아예 만들 수 없는 건가요, 아니면 처음에는 보내거나 찾을 수 있는 금액이 적은 통장으로 만들어지나요?",
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "계좌 목적 증빙서류와 제한계좌 설명이 심각하게 누락·왜곡됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF005_0001",
+        "PDF005_0002"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0023",
+          "score": 0.6779077053070068
+        },
+        {
+          "chunk_id": "PDF005_0001",
+          "score": 0.6577255725860596
+        },
+        {
+          "chunk_id": "PDF004_0001",
+          "score": 0.6257757544517517
+        },
+        {
+          "chunk_id": "WEB010_0003",
+          "score": 0.6210976839065552
+        },
+        {
+          "chunk_id": "WEB003_0001",
+          "score": 0.6097573041915894
+        },
+        {
+          "chunk_id": "PDF001_0026",
+          "score": 0.6091496348381042
+        },
+        {
+          "chunk_id": "PDF004_0004",
+          "score": 0.6053839325904846
+        },
+        {
+          "chunk_id": "PDF001_0031",
+          "score": 0.6043681502342224
+        },
+        {
+          "chunk_id": "PDF001_0270",
+          "score": 0.598325788974762
+        },
+        {
+          "chunk_id": "PDF001_0109",
+          "score": 0.5953284502029419
+        },
+        {
+          "chunk_id": "PDF004_0002",
+          "score": 0.5910285711288452
+        },
+        {
+          "chunk_id": "PDF005_0003",
+          "score": 0.5907050967216492
+        },
+        {
+          "chunk_id": "PDF001_0195",
+          "score": 0.5880544185638428
+        },
+        {
+          "chunk_id": "PDF001_0027",
+          "score": 0.5866047143936157
+        },
+        {
+          "chunk_id": "PDF001_0025",
+          "score": 0.5838391780853271
+        },
+        {
+          "chunk_id": "PDF001_0077",
+          "score": 0.58210688829422
+        },
+        {
+          "chunk_id": "PDF006_0003",
+          "score": 0.5812401175498962
+        },
+        {
+          "chunk_id": "PDF001_0181",
+          "score": 0.5799573659896851
+        },
+        {
+          "chunk_id": "PDF005_0002",
+          "score": 0.5798463225364685
+        },
+        {
+          "chunk_id": "PDF001_0196",
+          "score": 0.5787605047225952
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0045",
+          "score": 22.412836
+        },
+        {
+          "chunk_id": "PDF008_0065",
+          "score": 19.872782
+        },
+        {
+          "chunk_id": "PDF008_0060",
+          "score": 19.725473
+        },
+        {
+          "chunk_id": "PDF008_0055",
+          "score": 19.384932
+        },
+        {
+          "chunk_id": "PDF008_0089",
+          "score": 18.9047
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0023",
+        "PDF005_0001",
+        "PDF004_0001",
+        "WEB010_0003",
+        "WEB003_0001",
+        "PDF001_0026",
+        "PDF004_0004",
+        "PDF001_0031",
+        "PDF001_0270",
+        "PDF001_0109",
+        "PDF004_0002",
+        "PDF005_0003",
+        "PDF001_0195",
+        "PDF001_0027",
+        "PDF001_0025",
+        "PDF008_0045",
+        "PDF008_0065",
+        "PDF008_0060",
+        "PDF008_0055",
+        "PDF008_0089"
+      ],
+      "dense_reranked_top5": [
+        "PDF004_0004",
+        "PDF004_0001",
+        "PDF001_0023",
+        "WEB003_0001",
+        "PDF006_0003"
+      ],
+      "fusion_reranked_top5": [
+        "PDF004_0004",
+        "PDF004_0001",
+        "PDF001_0023",
+        "WEB003_0001",
+        "PDF005_0003"
+      ],
+      "dense_candidate_first_gold_rank": 2,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 2,
+      "dense_reranker_first_gold_rank": null,
+      "fusion_reranker_first_gold_rank": null
+    },
+    {
+      "question_id": "ACC_008",
+      "question_en": "My account was opened with a low transfer limit because I had no supporting documents at the time. I can now provide an employment certificate. Can the bank remove the limit after reviewing it?",
+      "translated_ko": "제 계좌 는 환불 한계 제한 을 낮게 열었읍니다. 그 당시 에 증거 인 서류 는 없었기 때문 입니다. 이제 고용 인증을 제출 할 수 있습니다. 은행 은 그 한계 제한 을 검토 한 후 제거 할 수 있습니까?",
+      "reference_question_ko": "통장을 만들 때는 증명할 서류가 없어서 이체 한도가 낮게 잡혔어요. 지금은 재직증명서를 낼 수 있는데, 은행에서 확인받으면 한도를 풀 수 있나요?",
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "이체한도/재직증명 용어가 부정확하지만 해제 intent는 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF005_0001",
+        "PDF005_0002"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0229",
+          "score": 0.5944492816925049
+        },
+        {
+          "chunk_id": "PDF005_0001",
+          "score": 0.5910801291465759
+        },
+        {
+          "chunk_id": "PDF005_0003",
+          "score": 0.5901029109954834
+        },
+        {
+          "chunk_id": "PDF004_0004",
+          "score": 0.5898551940917969
+        },
+        {
+          "chunk_id": "WEB010_0002",
+          "score": 0.5844263434410095
+        },
+        {
+          "chunk_id": "WEB010_0003",
+          "score": 0.5776601433753967
+        },
+        {
+          "chunk_id": "PDF004_0002",
+          "score": 0.5771766901016235
+        },
+        {
+          "chunk_id": "PDF001_0195",
+          "score": 0.574661910533905
+        },
+        {
+          "chunk_id": "PDF001_0196",
+          "score": 0.5722170472145081
+        },
+        {
+          "chunk_id": "PDF001_0023",
+          "score": 0.5661314725875854
+        },
+        {
+          "chunk_id": "PDF005_0002",
+          "score": 0.5618821382522583
+        },
+        {
+          "chunk_id": "PDF001_0105",
+          "score": 0.5618128180503845
+        },
+        {
+          "chunk_id": "PDF001_0109",
+          "score": 0.5612277388572693
+        },
+        {
+          "chunk_id": "WEB007_0001",
+          "score": 0.5609692335128784
+        },
+        {
+          "chunk_id": "PDF006_0003",
+          "score": 0.5584882497787476
+        },
+        {
+          "chunk_id": "PDF001_0031",
+          "score": 0.5580551624298096
+        },
+        {
+          "chunk_id": "PDF008_0015",
+          "score": 0.5538148283958435
+        },
+        {
+          "chunk_id": "PDF004_0001",
+          "score": 0.5520484447479248
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.5520316958427429
+        },
+        {
+          "chunk_id": "PDF001_0266",
+          "score": 0.5503050684928894
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "WEB009_0005",
+          "score": 37.270535
+        },
+        {
+          "chunk_id": "PDF009_0016",
+          "score": 35.509487
+        },
+        {
+          "chunk_id": "PDF001_0005",
+          "score": 34.33684
+        },
+        {
+          "chunk_id": "PDF008_0025",
+          "score": 32.769928
+        },
+        {
+          "chunk_id": "PDF005_0003",
+          "score": 32.477036
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0229",
+        "PDF005_0001",
+        "PDF005_0003",
+        "PDF004_0004",
+        "WEB010_0002",
+        "WEB010_0003",
+        "PDF004_0002",
+        "PDF001_0195",
+        "PDF001_0196",
+        "PDF001_0023",
+        "PDF005_0002",
+        "PDF001_0105",
+        "PDF001_0109",
+        "WEB007_0001",
+        "PDF006_0003",
+        "WEB009_0005",
+        "PDF009_0016",
+        "PDF001_0005",
+        "PDF008_0025",
+        "PDF001_0031"
+      ],
+      "dense_reranked_top5": [
+        "PDF004_0004",
+        "PDF005_0003",
+        "PDF005_0001",
+        "PDF006_0003",
+        "PDF004_0002"
+      ],
+      "fusion_reranked_top5": [
+        "PDF004_0004",
+        "PDF005_0003",
+        "PDF005_0001",
+        "PDF006_0003",
+        "PDF004_0002"
+      ],
+      "dense_candidate_first_gold_rank": 2,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 2,
+      "dense_reranker_first_gold_rank": 3,
+      "fusion_reranker_first_gold_rank": 3
+    },
+    {
+      "question_id": "ACC_010",
+      "question_en": "The bank has asked me to prove that I have lived in Korea for at least 183 days. Is my residence card enough, and what records can I use?",
+      "translated_ko": "은행 은 적어도 183 일 동안 한국 에서 살았다는 것을 증명 해 달라고 요청 했습니다. 거주권 카드 는 충분 합니까? 어떤 기록 을 사용할 수 있습니까?",
+      "reference_question_ko": "은행에서 한국에 183일 이상 살았다는 걸 증명해 달라고 합니다. 체류카드만으로 되는지, 어떤 자료를 보여 줄 수 있나요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF005_0002"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF004_0005",
+          "score": 0.6855370402336121
+        },
+        {
+          "chunk_id": "PDF004_0002",
+          "score": 0.6842025518417358
+        },
+        {
+          "chunk_id": "WEB003_0001",
+          "score": 0.680748462677002
+        },
+        {
+          "chunk_id": "PDF004_0003",
+          "score": 0.6705251932144165
+        },
+        {
+          "chunk_id": "PDF004_0001",
+          "score": 0.6673201322555542
+        },
+        {
+          "chunk_id": "PDF001_0003",
+          "score": 0.6512138247489929
+        },
+        {
+          "chunk_id": "PDF006_0003",
+          "score": 0.6419365406036377
+        },
+        {
+          "chunk_id": "PDF001_0195",
+          "score": 0.6329257488250732
+        },
+        {
+          "chunk_id": "PDF001_0105",
+          "score": 0.6269919872283936
+        },
+        {
+          "chunk_id": "WEB003_0002",
+          "score": 0.6249030828475952
+        },
+        {
+          "chunk_id": "PDF001_0004",
+          "score": 0.6233619451522827
+        },
+        {
+          "chunk_id": "PDF004_0004",
+          "score": 0.6205936670303345
+        },
+        {
+          "chunk_id": "WEB011_0001",
+          "score": 0.6119129061698914
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.6081934571266174
+        },
+        {
+          "chunk_id": "WEB003_0003",
+          "score": 0.603521466255188
+        },
+        {
+          "chunk_id": "PDF006_0005",
+          "score": 0.5972557663917542
+        },
+        {
+          "chunk_id": "PDF005_0002",
+          "score": 0.5953862071037292
+        },
+        {
+          "chunk_id": "PDF001_0138",
+          "score": 0.5950247049331665
+        },
+        {
+          "chunk_id": "PDF001_0079",
+          "score": 0.5891221761703491
+        },
+        {
+          "chunk_id": "PDF006_0004",
+          "score": 0.5800961256027222
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF001_0109",
+          "score": 32.11698
+        },
+        {
+          "chunk_id": "PDF005_0003",
+          "score": 32.054394
+        },
+        {
+          "chunk_id": "PDF008_0058",
+          "score": 30.556372
+        },
+        {
+          "chunk_id": "PDF008_0086",
+          "score": 29.98876
+        },
+        {
+          "chunk_id": "PDF005_0002",
+          "score": 29.650845
+        }
+      ],
+      "fused_top20": [
+        "PDF004_0005",
+        "PDF004_0002",
+        "WEB003_0001",
+        "PDF004_0003",
+        "PDF004_0001",
+        "PDF001_0003",
+        "PDF006_0003",
+        "PDF001_0195",
+        "PDF001_0105",
+        "WEB003_0002",
+        "PDF001_0004",
+        "PDF004_0004",
+        "WEB011_0001",
+        "PDF001_0014",
+        "WEB003_0003",
+        "PDF001_0109",
+        "PDF005_0003",
+        "PDF008_0058",
+        "PDF008_0086",
+        "PDF005_0002"
+      ],
+      "dense_reranked_top5": [
+        "PDF004_0002",
+        "PDF004_0004",
+        "PDF005_0002",
+        "PDF004_0005",
+        "WEB003_0001"
+      ],
+      "fusion_reranked_top5": [
+        "PDF004_0002",
+        "PDF004_0004",
+        "PDF005_0002",
+        "PDF004_0005",
+        "PDF005_0003"
+      ],
+      "dense_candidate_first_gold_rank": 17,
+      "nori_first_gold_rank": 5,
+      "fusion_candidate_first_gold_rank": 20,
+      "dense_reranker_first_gold_rank": 3,
+      "fusion_reranker_first_gold_rank": 3
+    },
+    {
+      "question_id": "ACC_015",
+      "question_en": "I tried to send a deposit at an ATM at 11 p.m., but the machine said the service was unavailable. I am not sure whether it was broken or simply outside operating hours. When should I try again?",
+      "translated_ko": "저는 오후 11시 에 ATM 에 예금 을 보내려고 했지만, 기계 는 서비스 가 제공 되지 않았다고 했습니다. 그 서비스 가 깨졌는지 아니면 단순히 운영 시간 밖 에 있었는지 확실 하지 않습니다. 언제 다시 시도 해야 합니까?",
+      "reference_question_ko": "밤 11시에 ATM으로 보증금을 보내려 했는데 이용할 수 없다는 화면이 떴어요. 기계가 고장 난 건지 원래 그 시간에는 안 되는 건지 모르겠어요. 몇 시에 다시 가면 될까요?",
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "ATM 보증금/송금 표현이 부정확하지만 시간 질문은 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "WEB003_0001"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0044",
+          "score": 0.6171498894691467
+        },
+        {
+          "chunk_id": "PDF001_0031",
+          "score": 0.6080689430236816
+        },
+        {
+          "chunk_id": "PDF001_0028",
+          "score": 0.5959935188293457
+        },
+        {
+          "chunk_id": "PDF001_0030",
+          "score": 0.5951001644134521
+        },
+        {
+          "chunk_id": "PDF001_0034",
+          "score": 0.5950570702552795
+        },
+        {
+          "chunk_id": "PDF001_0055",
+          "score": 0.5915180444717407
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.589849591255188
+        },
+        {
+          "chunk_id": "PDF001_0029",
+          "score": 0.5858443379402161
+        },
+        {
+          "chunk_id": "WEB010_0003",
+          "score": 0.5779953002929688
+        },
+        {
+          "chunk_id": "PDF001_0066",
+          "score": 0.5755171775817871
+        },
+        {
+          "chunk_id": "PDF001_0033",
+          "score": 0.5751388072967529
+        },
+        {
+          "chunk_id": "PDF001_0035",
+          "score": 0.5751379728317261
+        },
+        {
+          "chunk_id": "PDF001_0184",
+          "score": 0.5695675611495972
+        },
+        {
+          "chunk_id": "PDF001_0052",
+          "score": 0.5675809979438782
+        },
+        {
+          "chunk_id": "PDF001_0102",
+          "score": 0.5667667388916016
+        },
+        {
+          "chunk_id": "PDF001_0070",
+          "score": 0.5660828351974487
+        },
+        {
+          "chunk_id": "PDF001_0218",
+          "score": 0.5652158856391907
+        },
+        {
+          "chunk_id": "PDF001_0032",
+          "score": 0.5617529153823853
+        },
+        {
+          "chunk_id": "PDF001_0046",
+          "score": 0.560299277305603
+        },
+        {
+          "chunk_id": "WEB003_0003",
+          "score": 0.557654082775116
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0026",
+          "score": 49.931232
+        },
+        {
+          "chunk_id": "PDF008_0008",
+          "score": 48.07889
+        },
+        {
+          "chunk_id": "PDF008_0015",
+          "score": 47.00936
+        },
+        {
+          "chunk_id": "PDF008_0086",
+          "score": 44.84363
+        },
+        {
+          "chunk_id": "PDF008_0013",
+          "score": 43.87693
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0044",
+        "PDF001_0031",
+        "PDF001_0028",
+        "PDF001_0030",
+        "PDF001_0034",
+        "PDF001_0055",
+        "PDF001_0014",
+        "PDF001_0029",
+        "WEB010_0003",
+        "PDF001_0066",
+        "PDF001_0033",
+        "PDF001_0035",
+        "PDF001_0184",
+        "PDF001_0052",
+        "PDF001_0102",
+        "PDF008_0026",
+        "PDF008_0008",
+        "PDF008_0015",
+        "PDF008_0086",
+        "PDF008_0013"
+      ],
+      "dense_reranked_top5": [
+        "WEB003_0003",
+        "PDF001_0029",
+        "PDF001_0028",
+        "PDF001_0030",
+        "PDF001_0034"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0029",
+        "PDF001_0028",
+        "PDF001_0030",
+        "PDF001_0034",
+        "PDF001_0031"
+      ],
+      "dense_candidate_first_gold_rank": null,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": null,
+      "dense_reranker_first_gold_rank": null,
+      "fusion_reranker_first_gold_rank": null
+    },
+    {
+      "question_id": "ACC_016",
+      "question_en": "My employer asked me to open an account for my salary. I heard the bank may not accept an old pay statement. What should I keep in mind when preparing it?",
+      "translated_ko": "고용주 는 내 급여 를 위한 계좌 를 열어 달라고 했습니다. 은행 은 오래된 급여 지표 를 받아들이지 않을 수 있다고 들었어요. 그 를 준비 할 때 무엇 을 염두 에 두어야 합니까?",
+      "reference_question_ko": "회사에서 월급 받을 통장을 만들라고 해서 은행에 가려고 해요. 급여명세서는 너무 오래된 걸 가져가면 안 된다고 들었는데, 준비할 때 주의할 점이 있을까요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF005_0001"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0023",
+          "score": 0.6126505136489868
+        },
+        {
+          "chunk_id": "PDF005_0001",
+          "score": 0.5961629152297974
+        },
+        {
+          "chunk_id": "PDF001_0270",
+          "score": 0.5919954180717468
+        },
+        {
+          "chunk_id": "WEB010_0002",
+          "score": 0.5794714689254761
+        },
+        {
+          "chunk_id": "PDF001_0084",
+          "score": 0.568413257598877
+        },
+        {
+          "chunk_id": "WEB003_0001",
+          "score": 0.5680068135261536
+        },
+        {
+          "chunk_id": "PDF001_0026",
+          "score": 0.5603336691856384
+        },
+        {
+          "chunk_id": "PDF004_0001",
+          "score": 0.5569958686828613
+        },
+        {
+          "chunk_id": "PDF001_0195",
+          "score": 0.5523381233215332
+        },
+        {
+          "chunk_id": "PDF001_0024",
+          "score": 0.5520014762878418
+        },
+        {
+          "chunk_id": "PDF001_0052",
+          "score": 0.5517034530639648
+        },
+        {
+          "chunk_id": "PDF008_0088",
+          "score": 0.5495112538337708
+        },
+        {
+          "chunk_id": "PDF001_0085",
+          "score": 0.5491617918014526
+        },
+        {
+          "chunk_id": "PDF001_0108",
+          "score": 0.5469654202461243
+        },
+        {
+          "chunk_id": "PDF001_0027",
+          "score": 0.5468354225158691
+        },
+        {
+          "chunk_id": "PDF005_0003",
+          "score": 0.5443116426467896
+        },
+        {
+          "chunk_id": "PDF001_0028",
+          "score": 0.5424871444702148
+        },
+        {
+          "chunk_id": "PDF001_0005",
+          "score": 0.5416786670684814
+        },
+        {
+          "chunk_id": "PDF001_0271",
+          "score": 0.5405005216598511
+        },
+        {
+          "chunk_id": "PDF001_0044",
+          "score": 0.540492057800293
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF005_0003",
+          "score": 36.98708
+        },
+        {
+          "chunk_id": "PDF008_0051",
+          "score": 35.805054
+        },
+        {
+          "chunk_id": "PDF008_0045",
+          "score": 34.32646
+        },
+        {
+          "chunk_id": "PDF008_0038",
+          "score": 33.57833
+        },
+        {
+          "chunk_id": "PDF008_0058",
+          "score": 33.27114
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0023",
+        "PDF005_0001",
+        "PDF001_0270",
+        "WEB010_0002",
+        "PDF001_0084",
+        "WEB003_0001",
+        "PDF001_0026",
+        "PDF004_0001",
+        "PDF001_0195",
+        "PDF001_0024",
+        "PDF001_0052",
+        "PDF008_0088",
+        "PDF001_0085",
+        "PDF001_0108",
+        "PDF001_0027",
+        "PDF005_0003",
+        "PDF008_0051",
+        "PDF008_0045",
+        "PDF008_0038",
+        "PDF008_0058"
+      ],
+      "dense_reranked_top5": [
+        "PDF004_0001",
+        "PDF005_0003",
+        "PDF001_0023",
+        "PDF005_0001",
+        "PDF001_0026"
+      ],
+      "fusion_reranked_top5": [
+        "PDF004_0001",
+        "PDF005_0003",
+        "PDF001_0023",
+        "PDF005_0001",
+        "PDF001_0026"
+      ],
+      "dense_candidate_first_gold_rank": 2,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 2,
+      "dense_reranker_first_gold_rank": 4,
+      "fusion_reranker_first_gold_rank": 4
+    },
+    {
+      "question_id": "ACC_017",
+      "question_en": "I am choosing a transit card in Korea. What is the difference between topping up in advance and paying later through a card bill?",
+      "translated_ko": "저는 한국에서 환승 카드를 선택하고 있습니다. 미리 지불하고 나중에 카드 청구서를 통해 지불하는 것의 차이점은 무엇입니까?",
+      "reference_question_ko": "한국에서 쓸 교통카드를 고르고 있어요. 미리 충전해서 쓰는 카드와, 먼저 이용하고 나중에 카드값으로 내는 카드는 어떻게 다른가요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "WEB005_0004"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0113",
+          "score": 0.6893057823181152
+        },
+        {
+          "chunk_id": "PDF001_0104",
+          "score": 0.6670083403587341
+        },
+        {
+          "chunk_id": "PDF001_0099",
+          "score": 0.6303305625915527
+        },
+        {
+          "chunk_id": "WEB002_0004",
+          "score": 0.6152757406234741
+        },
+        {
+          "chunk_id": "PDF001_0108",
+          "score": 0.6126843094825745
+        },
+        {
+          "chunk_id": "PDF006_0003",
+          "score": 0.6041403412818909
+        },
+        {
+          "chunk_id": "PDF001_0105",
+          "score": 0.6008045077323914
+        },
+        {
+          "chunk_id": "WEB005_0004",
+          "score": 0.5998063683509827
+        },
+        {
+          "chunk_id": "WEB002_0029",
+          "score": 0.5902190208435059
+        },
+        {
+          "chunk_id": "WEB002_0010",
+          "score": 0.5877320170402527
+        },
+        {
+          "chunk_id": "WEB005_0006",
+          "score": 0.5876154899597168
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.5863133072853088
+        },
+        {
+          "chunk_id": "PDF001_0107",
+          "score": 0.584408164024353
+        },
+        {
+          "chunk_id": "WEB002_0002",
+          "score": 0.5821102857589722
+        },
+        {
+          "chunk_id": "WEB005_0002",
+          "score": 0.5766922235488892
+        },
+        {
+          "chunk_id": "PDF001_0114",
+          "score": 0.575520396232605
+        },
+        {
+          "chunk_id": "WEB002_0005",
+          "score": 0.5701051950454712
+        },
+        {
+          "chunk_id": "WEB005_0005",
+          "score": 0.5697961449623108
+        },
+        {
+          "chunk_id": "WEB001_0009",
+          "score": 0.5673477649688721
+        },
+        {
+          "chunk_id": "PDF001_0100",
+          "score": 0.5656892657279968
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF001_0113",
+          "score": 32.844982
+        },
+        {
+          "chunk_id": "WEB002_0002",
+          "score": 31.1624
+        },
+        {
+          "chunk_id": "WEB005_0002",
+          "score": 30.930496
+        },
+        {
+          "chunk_id": "WEB002_0012",
+          "score": 30.30517
+        },
+        {
+          "chunk_id": "WEB002_0024",
+          "score": 28.212687
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0113",
+        "PDF001_0104",
+        "PDF001_0099",
+        "WEB002_0004",
+        "PDF001_0108",
+        "PDF006_0003",
+        "PDF001_0105",
+        "WEB005_0004",
+        "WEB002_0029",
+        "WEB002_0010",
+        "WEB005_0006",
+        "PDF001_0014",
+        "PDF001_0107",
+        "WEB002_0002",
+        "WEB005_0002",
+        "WEB002_0012",
+        "WEB002_0024",
+        "PDF001_0114",
+        "WEB002_0005",
+        "WEB005_0005"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0113",
+        "WEB005_0004",
+        "PDF001_0104",
+        "WEB002_0004",
+        "PDF006_0003"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0113",
+        "WEB005_0004",
+        "PDF001_0104",
+        "WEB002_0004",
+        "PDF006_0003"
+      ],
+      "dense_candidate_first_gold_rank": 8,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 8,
+      "dense_reranker_first_gold_rank": 2,
+      "fusion_reranker_first_gold_rank": 2
+    },
+    {
+      "question_id": "ACC_021",
+      "question_en": "I want to apply for an account, debit card, and online banking at Shinhan Bank's video consultation center. Do I still need my passport if I have a residence card?",
+      "translated_ko": "신한 은행의 비디오 컨설팅 센터에서 계좌, 직불 카드 및 온라인 은행을 신청하고 싶습니다. 주민등록 카드를 가지고 있으면 여전히 여권을 필요로합니까?",
+      "reference_question_ko": "신한은행 화상상담센터에서 통장과 체크카드, 온라인뱅킹까지 한 번에 신청하려고 해요. 체류카드가 있어도 여권을 꼭 가져가야 하나요?",
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "체류카드가 주민등록 카드로 오역되고 체크카드 용어가 부정확함"
+      ],
+      "gold_chunk_ids": [
+        "PDF005_0004"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF004_0005",
+          "score": 0.6276131272315979
+        },
+        {
+          "chunk_id": "PDF001_0039",
+          "score": 0.6231493949890137
+        },
+        {
+          "chunk_id": "PDF006_0004",
+          "score": 0.6161936521530151
+        },
+        {
+          "chunk_id": "PDF006_0003",
+          "score": 0.5955038070678711
+        },
+        {
+          "chunk_id": "PDF001_0195",
+          "score": 0.5915567874908447
+        },
+        {
+          "chunk_id": "PDF004_0003",
+          "score": 0.5874042510986328
+        },
+        {
+          "chunk_id": "PDF006_0005",
+          "score": 0.5813299417495728
+        },
+        {
+          "chunk_id": "WEB003_0003",
+          "score": 0.5723754167556763
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.5717434287071228
+        },
+        {
+          "chunk_id": "PDF001_0186",
+          "score": 0.5712197422981262
+        },
+        {
+          "chunk_id": "PDF004_0002",
+          "score": 0.5704632997512817
+        },
+        {
+          "chunk_id": "PDF004_0006",
+          "score": 0.5703041553497314
+        },
+        {
+          "chunk_id": "WEB003_0001",
+          "score": 0.5682823657989502
+        },
+        {
+          "chunk_id": "PDF001_0048",
+          "score": 0.5669749975204468
+        },
+        {
+          "chunk_id": "PDF001_0196",
+          "score": 0.5650759935379028
+        },
+        {
+          "chunk_id": "PDF004_0001",
+          "score": 0.5641011595726013
+        },
+        {
+          "chunk_id": "PDF001_0015",
+          "score": 0.5623927712440491
+        },
+        {
+          "chunk_id": "WEB011_0001",
+          "score": 0.561786413192749
+        },
+        {
+          "chunk_id": "PDF005_0002",
+          "score": 0.5573575496673584
+        },
+        {
+          "chunk_id": "PDF001_0072",
+          "score": 0.5537232756614685
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF007_0004",
+          "score": 32.854527
+        },
+        {
+          "chunk_id": "PDF001_0125",
+          "score": 32.264706
+        },
+        {
+          "chunk_id": "PDF007_0003",
+          "score": 29.345112
+        },
+        {
+          "chunk_id": "WEB002_0004",
+          "score": 29.335215
+        },
+        {
+          "chunk_id": "WEB005_0004",
+          "score": 28.856665
+        }
+      ],
+      "fused_top20": [
+        "PDF004_0005",
+        "PDF001_0039",
+        "PDF006_0004",
+        "PDF006_0003",
+        "PDF001_0195",
+        "PDF004_0003",
+        "PDF006_0005",
+        "WEB003_0003",
+        "PDF001_0014",
+        "PDF001_0186",
+        "PDF004_0002",
+        "PDF004_0006",
+        "WEB003_0001",
+        "PDF001_0048",
+        "PDF001_0196",
+        "PDF007_0004",
+        "PDF001_0125",
+        "PDF007_0003",
+        "WEB002_0004",
+        "WEB005_0004"
+      ],
+      "dense_reranked_top5": [
+        "PDF004_0005",
+        "PDF004_0006",
+        "PDF006_0004",
+        "PDF004_0002",
+        "PDF001_0039"
+      ],
+      "fusion_reranked_top5": [
+        "PDF004_0005",
+        "PDF004_0006",
+        "PDF006_0004",
+        "PDF004_0002",
+        "PDF001_0039"
+      ],
+      "dense_candidate_first_gold_rank": null,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": null,
+      "dense_reranker_first_gold_rank": null,
+      "fusion_reranker_first_gold_rank": null
+    },
+    {
+      "question_id": "ACC_023",
+      "question_en": "I want to pay for a KRW 300,000 electronic device over three months. I also want the option to stop the remaining installments if the item never arrives or has a problem. Can I do that with a debit card?",
+      "translated_ko": "저는 3개월 동안 KRW 300,000의 전자 장치를 지불하고, 물품이 도착하지 않거나 문제가 있는 경우 남은 임금을 중단할 수 있는 옵션도 갖고 싶습니다.",
+      "reference_question_ko": "30만 원짜리 전자제품을 석 달 할부로 사려고 해요. 물건이 안 오거나 문제가 생기면 남은 할부금을 멈출 수 있는 카드로 결제하고 싶은데, 체크카드로도 가능한가요?",
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "체크카드 가능 여부라는 핵심 상품 비교 질문이 누락됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0099",
+        "PDF001_0100",
+        "WEB002_0008",
+        "WEB002_0009"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "WEB002_0008",
+          "score": 0.6250773668289185
+        },
+        {
+          "chunk_id": "PDF001_0107",
+          "score": 0.6242144703865051
+        },
+        {
+          "chunk_id": "PDF001_0100",
+          "score": 0.6231541633605957
+        },
+        {
+          "chunk_id": "PDF001_0104",
+          "score": 0.6116601228713989
+        },
+        {
+          "chunk_id": "WEB002_0009",
+          "score": 0.6086853742599487
+        },
+        {
+          "chunk_id": "PDF001_0099",
+          "score": 0.6003816723823547
+        },
+        {
+          "chunk_id": "WEB002_0017",
+          "score": 0.5856087803840637
+        },
+        {
+          "chunk_id": "PDF001_0108",
+          "score": 0.5839837789535522
+        },
+        {
+          "chunk_id": "WEB002_0028",
+          "score": 0.5837169885635376
+        },
+        {
+          "chunk_id": "PDF001_0109",
+          "score": 0.5823962688446045
+        },
+        {
+          "chunk_id": "WEB002_0007",
+          "score": 0.5742812752723694
+        },
+        {
+          "chunk_id": "WEB002_0011",
+          "score": 0.570210337638855
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.569875955581665
+        },
+        {
+          "chunk_id": "WEB002_0026",
+          "score": 0.5685834288597107
+        },
+        {
+          "chunk_id": "WEB012_0003",
+          "score": 0.5668632984161377
+        },
+        {
+          "chunk_id": "PDF001_0126",
+          "score": 0.562985897064209
+        },
+        {
+          "chunk_id": "PDF001_0105",
+          "score": 0.5611029267311096
+        },
+        {
+          "chunk_id": "WEB005_0006",
+          "score": 0.5596482753753662
+        },
+        {
+          "chunk_id": "WEB002_0012",
+          "score": 0.5566479563713074
+        },
+        {
+          "chunk_id": "WEB002_0010",
+          "score": 0.5563890933990479
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "WEB002_0008",
+          "score": 35.57931
+        },
+        {
+          "chunk_id": "WEB002_0012",
+          "score": 35.29123
+        },
+        {
+          "chunk_id": "WEB002_0009",
+          "score": 30.645437
+        },
+        {
+          "chunk_id": "WEB012_0001",
+          "score": 30.536095
+        },
+        {
+          "chunk_id": "WEB002_0027",
+          "score": 26.472736
+        }
+      ],
+      "fused_top20": [
+        "WEB002_0008",
+        "PDF001_0107",
+        "PDF001_0100",
+        "PDF001_0104",
+        "WEB002_0009",
+        "PDF001_0099",
+        "WEB002_0017",
+        "PDF001_0108",
+        "WEB002_0028",
+        "PDF001_0109",
+        "WEB002_0007",
+        "WEB002_0011",
+        "PDF001_0014",
+        "WEB002_0026",
+        "WEB012_0003",
+        "WEB002_0012",
+        "WEB012_0001",
+        "WEB002_0027",
+        "PDF001_0126",
+        "PDF001_0105"
+      ],
+      "dense_reranked_top5": [
+        "WEB002_0008",
+        "WEB002_0009",
+        "PDF001_0099",
+        "PDF001_0107",
+        "WEB002_0007"
+      ],
+      "fusion_reranked_top5": [
+        "WEB002_0008",
+        "WEB002_0009",
+        "PDF001_0099",
+        "PDF001_0107",
+        "WEB002_0007"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": 1,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "ACC_026",
+      "question_en": "I do not have a job in Korea yet. Can I still get a credit card, what will the issuer consider, and where should I ask about eligibility?",
+      "translated_ko": "저는 아직 한국에서 일하지 않습니다. 저는 여전히 신용카드를 받을 수 있을까요? 발행자가 무엇을 고려할 것인가?",
+      "reference_question_ko": "한국에서 아직 직장이 없는데 신용카드를 만들 수 있을까요? 카드회사는 어떤 조건을 보고, 신청할 수 있는지는 어디에 물어봐야 하나요?",
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "신청 문의처 질문이 누락됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0104"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0105",
+          "score": 0.6947879195213318
+        },
+        {
+          "chunk_id": "PDF001_0104",
+          "score": 0.6627167463302612
+        },
+        {
+          "chunk_id": "WEB003_0001",
+          "score": 0.630396842956543
+        },
+        {
+          "chunk_id": "PDF004_0001",
+          "score": 0.6252545118331909
+        },
+        {
+          "chunk_id": "PDF001_0019",
+          "score": 0.622444748878479
+        },
+        {
+          "chunk_id": "PDF001_0003",
+          "score": 0.6207476854324341
+        },
+        {
+          "chunk_id": "PDF001_0015",
+          "score": 0.616484522819519
+        },
+        {
+          "chunk_id": "PDF001_0099",
+          "score": 0.6096867322921753
+        },
+        {
+          "chunk_id": "PDF001_0195",
+          "score": 0.6041001081466675
+        },
+        {
+          "chunk_id": "PDF004_0003",
+          "score": 0.6019617319107056
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.5923430323600769
+        },
+        {
+          "chunk_id": "WEB003_0003",
+          "score": 0.5914759039878845
+        },
+        {
+          "chunk_id": "PDF001_0004",
+          "score": 0.5904560089111328
+        },
+        {
+          "chunk_id": "PDF001_0116",
+          "score": 0.5851008296012878
+        },
+        {
+          "chunk_id": "PDF001_0113",
+          "score": 0.5831679701805115
+        },
+        {
+          "chunk_id": "PDF001_0173",
+          "score": 0.5817432403564453
+        },
+        {
+          "chunk_id": "WEB011_0002",
+          "score": 0.5814996957778931
+        },
+        {
+          "chunk_id": "PDF001_0072",
+          "score": 0.5814473032951355
+        },
+        {
+          "chunk_id": "PDF004_0005",
+          "score": 0.579126238822937
+        },
+        {
+          "chunk_id": "WEB002_0002",
+          "score": 0.5766541957855225
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "WEB002_0010",
+          "score": 27.973476
+        },
+        {
+          "chunk_id": "WEB002_0011",
+          "score": 26.585684
+        },
+        {
+          "chunk_id": "WEB002_0021",
+          "score": 26.07484
+        },
+        {
+          "chunk_id": "WEB002_0018",
+          "score": 25.826632
+        },
+        {
+          "chunk_id": "WEB002_0019",
+          "score": 25.763414
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0105",
+        "PDF001_0104",
+        "WEB003_0001",
+        "PDF004_0001",
+        "PDF001_0019",
+        "PDF001_0003",
+        "PDF001_0015",
+        "PDF001_0099",
+        "PDF001_0195",
+        "PDF004_0003",
+        "PDF001_0014",
+        "WEB003_0003",
+        "PDF001_0004",
+        "PDF001_0116",
+        "PDF001_0113",
+        "WEB002_0010",
+        "WEB002_0011",
+        "WEB002_0021",
+        "WEB002_0018",
+        "WEB002_0019"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0104",
+        "PDF001_0105",
+        "WEB003_0003",
+        "PDF001_0099",
+        "PDF001_0113"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0104",
+        "PDF001_0105",
+        "WEB003_0003",
+        "PDF001_0099",
+        "PDF001_0113"
+      ],
+      "dense_candidate_first_gold_rank": 2,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 2,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "ACC_030",
+      "question_en": "I lost my wallet and reported all the cards in it at once. How can I confirm that the report went through? If I later find unauthorized charges, can losses from the 60 days before the report be covered?",
+      "translated_ko": "저는 지갑을 잃었고, 그 안에 있는 모든 카드를 한꺼번에 신고했습니다. 어떻게 보고서가 통과되었는지 확인할 수 있을까요? 나중에 허가되지 않은 수수료를 발견하면 보고서 전 60일 동안의 손실이 커버될 수 있을까요?",
+      "reference_question_ko": "지갑을 잃어버려서 안에 있던 카드 여러 장을 한꺼번에 분실신고했어요. 접수가 제대로 됐는지는 어떻게 확인하나요? 나중에 부정 사용이 발견되면 신고하기 전 60일 동안의 피해도 보상받을 수 있나요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0111",
+        "PDF001_0112",
+        "WEB004_0002",
+        "WEB004_0003",
+        "WEB004_0004"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0111",
+          "score": 0.6993032097816467
+        },
+        {
+          "chunk_id": "PDF001_0102",
+          "score": 0.6662994623184204
+        },
+        {
+          "chunk_id": "PDF001_0070",
+          "score": 0.6590415239334106
+        },
+        {
+          "chunk_id": "PDF001_0103",
+          "score": 0.6404089331626892
+        },
+        {
+          "chunk_id": "WEB004_0003",
+          "score": 0.6341907978057861
+        },
+        {
+          "chunk_id": "WEB002_0021",
+          "score": 0.6329346299171448
+        },
+        {
+          "chunk_id": "WEB004_0002",
+          "score": 0.6224132180213928
+        },
+        {
+          "chunk_id": "PDF001_0101",
+          "score": 0.6219125390052795
+        },
+        {
+          "chunk_id": "WEB004_0004",
+          "score": 0.6216326951980591
+        },
+        {
+          "chunk_id": "PDF001_0252",
+          "score": 0.6189432740211487
+        },
+        {
+          "chunk_id": "PDF001_0110",
+          "score": 0.6183208227157593
+        },
+        {
+          "chunk_id": "PDF001_0044",
+          "score": 0.6145300269126892
+        },
+        {
+          "chunk_id": "WEB002_0018",
+          "score": 0.6126193404197693
+        },
+        {
+          "chunk_id": "WEB002_0011",
+          "score": 0.6095795631408691
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.6093651056289673
+        },
+        {
+          "chunk_id": "PDF001_0025",
+          "score": 0.6052643656730652
+        },
+        {
+          "chunk_id": "PDF001_0106",
+          "score": 0.6017894744873047
+        },
+        {
+          "chunk_id": "PDF001_0107",
+          "score": 0.6001513600349426
+        },
+        {
+          "chunk_id": "WEB002_0020",
+          "score": 0.5976717472076416
+        },
+        {
+          "chunk_id": "PDF001_0270",
+          "score": 0.5949881076812744
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0016",
+          "score": 47.400246
+        },
+        {
+          "chunk_id": "PDF008_0056",
+          "score": 46.978237
+        },
+        {
+          "chunk_id": "WEB002_0019",
+          "score": 46.05361
+        },
+        {
+          "chunk_id": "PDF008_0076",
+          "score": 45.864582
+        },
+        {
+          "chunk_id": "WEB002_0018",
+          "score": 45.229557
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0111",
+        "PDF001_0102",
+        "PDF001_0070",
+        "PDF001_0103",
+        "WEB004_0003",
+        "WEB002_0021",
+        "WEB004_0002",
+        "PDF001_0101",
+        "WEB004_0004",
+        "PDF001_0252",
+        "PDF001_0110",
+        "PDF001_0044",
+        "WEB002_0018",
+        "WEB002_0011",
+        "PDF001_0014",
+        "PDF008_0016",
+        "PDF008_0056",
+        "WEB002_0019",
+        "PDF008_0076",
+        "PDF001_0025"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0111",
+        "WEB002_0021",
+        "WEB004_0003",
+        "PDF001_0110",
+        "WEB004_0002"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0111",
+        "WEB002_0021",
+        "WEB004_0003",
+        "PDF001_0110",
+        "WEB004_0002"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "REM_003",
+      "question_en": "When sending money to an account abroad and when buying banknotes for travel, should I use the same number on the bank's rate board? Which entries should I distinguish?",
+      "translated_ko": "외국 에 있는 계좌 에 돈을 보내거나 여행 에 필요한 지폐 를 구입 할 때, 은행 의 금전 표 에 같은 번호 를 사용 해야 합니까? 어떤 항목 을 구별 해야 합니까?",
+      "reference_question_ko": "본국 계좌로 돈을 보낼 때와 여행용 지폐를 살 때 은행 화면의 같은 숫자를 보면 되나요? 어떤 항목을 따로 확인해야 하나요?",
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "환율표와 송금/현찰 항목 용어가 부정확함"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0176",
+        "PDF001_0177"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0183",
+          "score": 0.6391753554344177
+        },
+        {
+          "chunk_id": "PDF001_0177",
+          "score": 0.6386547088623047
+        },
+        {
+          "chunk_id": "PDF001_0178",
+          "score": 0.6360000371932983
+        },
+        {
+          "chunk_id": "WEB002_0020",
+          "score": 0.6343359351158142
+        },
+        {
+          "chunk_id": "PDF001_0194",
+          "score": 0.6309560537338257
+        },
+        {
+          "chunk_id": "PDF001_0016",
+          "score": 0.6299120783805847
+        },
+        {
+          "chunk_id": "PDF001_0174",
+          "score": 0.629056453704834
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.626329779624939
+        },
+        {
+          "chunk_id": "PDF001_0206",
+          "score": 0.6235542893409729
+        },
+        {
+          "chunk_id": "WEB002_0002",
+          "score": 0.62321937084198
+        },
+        {
+          "chunk_id": "PDF001_0171",
+          "score": 0.622925877571106
+        },
+        {
+          "chunk_id": "PDF001_0010",
+          "score": 0.622141420841217
+        },
+        {
+          "chunk_id": "PDF001_0179",
+          "score": 0.6218706965446472
+        },
+        {
+          "chunk_id": "PDF001_0181",
+          "score": 0.6208025217056274
+        },
+        {
+          "chunk_id": "PDF001_0031",
+          "score": 0.6182025671005249
+        },
+        {
+          "chunk_id": "PDF001_0175",
+          "score": 0.6159476041793823
+        },
+        {
+          "chunk_id": "PDF001_0193",
+          "score": 0.6133894920349121
+        },
+        {
+          "chunk_id": "PDF001_0022",
+          "score": 0.6129636764526367
+        },
+        {
+          "chunk_id": "PDF001_0197",
+          "score": 0.607914388179779
+        },
+        {
+          "chunk_id": "PDF001_0227",
+          "score": 0.6069856882095337
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0042",
+          "score": 38.940628
+        },
+        {
+          "chunk_id": "PDF001_0051",
+          "score": 33.49115
+        },
+        {
+          "chunk_id": "PDF001_0077",
+          "score": 32.561222
+        },
+        {
+          "chunk_id": "PDF008_0051",
+          "score": 32.52895
+        },
+        {
+          "chunk_id": "PDF008_0010",
+          "score": 32.117603
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0183",
+        "PDF001_0177",
+        "PDF001_0178",
+        "WEB002_0020",
+        "PDF001_0194",
+        "PDF001_0016",
+        "PDF001_0174",
+        "PDF001_0014",
+        "PDF001_0206",
+        "WEB002_0002",
+        "PDF001_0171",
+        "PDF001_0010",
+        "PDF001_0179",
+        "PDF001_0181",
+        "PDF001_0031",
+        "PDF008_0042",
+        "PDF001_0051",
+        "PDF001_0077",
+        "PDF008_0051",
+        "PDF008_0010"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0197",
+        "PDF001_0177",
+        "PDF001_0175",
+        "PDF001_0178",
+        "PDF001_0022"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0177",
+        "PDF001_0178",
+        "PDF001_0194",
+        "PDF001_0051",
+        "PDF001_0183"
+      ],
+      "dense_candidate_first_gold_rank": 2,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 2,
+      "dense_reranker_first_gold_rank": 2,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "REM_009",
+      "question_en": "I exchanged KRW 1.5 million in an app and now need to collect it at the selected branch. Is ID required for this amount, which forms of ID are accepted, and is there anything I can bring to save time?",
+      "translated_ko": "저는 앱에서 150만 KRW를 교환했고, 이제 선택된 지점에서 수집해야 합니다. 이 금액에 대한 신분증이 필요하고, 어떤 신분증 형태가 받아들여지고, 시간을 절약하기 위해 가져올 수 있는 것이 있나요?",
+      "reference_question_ko": "앱으로 150만 원어치를 환전했고 이제 지정한 지점에서 찾으려고 해요. 이 금액이면 신분증이 꼭 필요한가요? 가져갈 수 있는 신분증과 대기 시간을 줄이는 데 도움이 되는 준비물도 궁금해요.",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0186",
+        "WEB007_0001"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.6581525802612305
+        },
+        {
+          "chunk_id": "PDF001_0181",
+          "score": 0.6329887509346008
+        },
+        {
+          "chunk_id": "WEB012_0003",
+          "score": 0.6236817836761475
+        },
+        {
+          "chunk_id": "PDF001_0183",
+          "score": 0.6166067123413086
+        },
+        {
+          "chunk_id": "PDF001_0182",
+          "score": 0.6160942316055298
+        },
+        {
+          "chunk_id": "WEB007_0001",
+          "score": 0.6081699132919312
+        },
+        {
+          "chunk_id": "PDF001_0186",
+          "score": 0.6037672758102417
+        },
+        {
+          "chunk_id": "WEB003_0002",
+          "score": 0.6036194562911987
+        },
+        {
+          "chunk_id": "PDF001_0180",
+          "score": 0.5997636914253235
+        },
+        {
+          "chunk_id": "WEB012_0004",
+          "score": 0.5992696285247803
+        },
+        {
+          "chunk_id": "PDF001_0031",
+          "score": 0.598703920841217
+        },
+        {
+          "chunk_id": "PDF001_0030",
+          "score": 0.5957174301147461
+        },
+        {
+          "chunk_id": "PDF001_0179",
+          "score": 0.5911819338798523
+        },
+        {
+          "chunk_id": "PDF001_0197",
+          "score": 0.5900397300720215
+        },
+        {
+          "chunk_id": "PDF001_0016",
+          "score": 0.5899957418441772
+        },
+        {
+          "chunk_id": "PDF001_0212",
+          "score": 0.5884899497032166
+        },
+        {
+          "chunk_id": "PDF001_0185",
+          "score": 0.5862979292869568
+        },
+        {
+          "chunk_id": "PDF001_0195",
+          "score": 0.5836008787155151
+        },
+        {
+          "chunk_id": "PDF006_0004",
+          "score": 0.5811350345611572
+        },
+        {
+          "chunk_id": "PDF006_0003",
+          "score": 0.5793425440788269
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF005_0001",
+          "score": 44.13503
+        },
+        {
+          "chunk_id": "PDF005_0002",
+          "score": 42.67676
+        },
+        {
+          "chunk_id": "PDF008_0063",
+          "score": 41.706814
+        },
+        {
+          "chunk_id": "PDF001_0232",
+          "score": 40.8116
+        },
+        {
+          "chunk_id": "PDF009_0023",
+          "score": 40.630093
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0014",
+        "PDF001_0181",
+        "WEB012_0003",
+        "PDF001_0183",
+        "PDF001_0182",
+        "WEB007_0001",
+        "PDF001_0186",
+        "WEB003_0002",
+        "PDF001_0180",
+        "WEB012_0004",
+        "PDF001_0031",
+        "PDF001_0030",
+        "PDF001_0179",
+        "PDF001_0197",
+        "PDF001_0016",
+        "PDF005_0001",
+        "PDF005_0002",
+        "PDF008_0063",
+        "PDF001_0232",
+        "PDF009_0023"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0186",
+        "PDF001_0212",
+        "PDF001_0182",
+        "PDF001_0183",
+        "WEB003_0002"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0186",
+        "PDF001_0182",
+        "PDF001_0183",
+        "WEB003_0002",
+        "PDF001_0180"
+      ],
+      "dense_candidate_first_gold_rank": 6,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 6,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "REM_012",
+      "question_en": "I want to send part of my Korean earnings regularly to my family's account abroad. Can I choose a different bank each time, or must I designate one bank?",
+      "translated_ko": "한국에서 벌어들인 수입의 일부분을 정기적으로 외국에 있는 가족 계좌로 보내고 싶습니다.",
+      "reference_question_ko": "한국에서 번 돈을 본국 가족 계좌로 정기적으로 보내려고 해요. 그때마다 다른 은행을 골라도 되나요, 아니면 한 곳을 정해 두어야 하나요?",
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "거래 은행을 매번 바꿀 수 있는지/지정해야 하는지 질문이 누락됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0189",
+        "PDF001_0190"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0173",
+          "score": 0.7285759449005127
+        },
+        {
+          "chunk_id": "PDF001_0019",
+          "score": 0.70610511302948
+        },
+        {
+          "chunk_id": "PDF001_0190",
+          "score": 0.6936892867088318
+        },
+        {
+          "chunk_id": "PDF001_0018",
+          "score": 0.6848759651184082
+        },
+        {
+          "chunk_id": "WEB003_0001",
+          "score": 0.6820909380912781
+        },
+        {
+          "chunk_id": "PDF001_0221",
+          "score": 0.6780194044113159
+        },
+        {
+          "chunk_id": "PDF001_0189",
+          "score": 0.6768196225166321
+        },
+        {
+          "chunk_id": "PDF001_0192",
+          "score": 0.6718991994857788
+        },
+        {
+          "chunk_id": "WEB003_0002",
+          "score": 0.6654123663902283
+        },
+        {
+          "chunk_id": "PDF001_0219",
+          "score": 0.6641297340393066
+        },
+        {
+          "chunk_id": "WEB003_0003",
+          "score": 0.6576133370399475
+        },
+        {
+          "chunk_id": "PDF001_0175",
+          "score": 0.6556284427642822
+        },
+        {
+          "chunk_id": "PDF001_0003",
+          "score": 0.6543881893157959
+        },
+        {
+          "chunk_id": "PDF001_0188",
+          "score": 0.6526255011558533
+        },
+        {
+          "chunk_id": "PDF001_0015",
+          "score": 0.6495485901832581
+        },
+        {
+          "chunk_id": "PDF001_0004",
+          "score": 0.6494271755218506
+        },
+        {
+          "chunk_id": "PDF006_0003",
+          "score": 0.6472434997558594
+        },
+        {
+          "chunk_id": "PDF001_0022",
+          "score": 0.6425938010215759
+        },
+        {
+          "chunk_id": "PDF001_0172",
+          "score": 0.6425141096115112
+        },
+        {
+          "chunk_id": "PDF004_0001",
+          "score": 0.6377024054527283
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF001_0005",
+          "score": 21.182371
+        },
+        {
+          "chunk_id": "WEB001_0013",
+          "score": 17.734241
+        },
+        {
+          "chunk_id": "PDF001_0006",
+          "score": 17.171495
+        },
+        {
+          "chunk_id": "PDF008_0074",
+          "score": 16.574242
+        },
+        {
+          "chunk_id": "WEB001_0008",
+          "score": 16.520441
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0173",
+        "PDF001_0019",
+        "PDF001_0190",
+        "PDF001_0018",
+        "WEB003_0001",
+        "PDF001_0221",
+        "PDF001_0189",
+        "PDF001_0192",
+        "WEB003_0002",
+        "PDF001_0219",
+        "WEB003_0003",
+        "PDF001_0175",
+        "PDF001_0003",
+        "PDF001_0188",
+        "PDF001_0015",
+        "PDF001_0005",
+        "WEB001_0013",
+        "PDF001_0006",
+        "PDF008_0074",
+        "WEB001_0008"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0189",
+        "PDF001_0019",
+        "PDF001_0173",
+        "WEB003_0001",
+        "PDF001_0175"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0189",
+        "PDF001_0019",
+        "PDF001_0173",
+        "WEB003_0001",
+        "PDF001_0175"
+      ],
+      "dense_candidate_first_gold_rank": 3,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 3,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "REM_014",
+      "question_en": "I sent money from a Korean bank to my account abroad, but it did not arrive immediately. How long does it usually take, and why can several charges be added besides the amount sent?",
+      "translated_ko": "한국 의 은행 에서 해외 에 있는 내 계좌 로 돈을 보냈지만, 즉시 도착 하지 않았습니다. 보통 몇 시간 이 걸립니다. 왜 송금금 이외 에 여러 가지 수수료가 추가 될 수 있습니까?",
+      "reference_question_ko": "한국 은행에서 본국 계좌로 돈을 보냈는데 바로 들어오지 않았어요. 보통 며칠이나 걸리며, 보낸 금액 외에 비용이 여러 번 붙는 이유는 무엇인가요?",
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "며칠이 몇 시간으로 바뀌어 송금 소요기간 조건이 왜곡됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0190",
+        "PDF001_0191"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0190",
+          "score": 0.737540602684021
+        },
+        {
+          "chunk_id": "PDF001_0192",
+          "score": 0.7218943238258362
+        },
+        {
+          "chunk_id": "PDF001_0173",
+          "score": 0.6971190571784973
+        },
+        {
+          "chunk_id": "PDF001_0189",
+          "score": 0.6841434240341187
+        },
+        {
+          "chunk_id": "WEB003_0002",
+          "score": 0.6837295293807983
+        },
+        {
+          "chunk_id": "PDF001_0184",
+          "score": 0.6835713982582092
+        },
+        {
+          "chunk_id": "WEB003_0003",
+          "score": 0.6740062236785889
+        },
+        {
+          "chunk_id": "PDF001_0221",
+          "score": 0.6695612668991089
+        },
+        {
+          "chunk_id": "PDF001_0175",
+          "score": 0.6684373617172241
+        },
+        {
+          "chunk_id": "WEB003_0001",
+          "score": 0.6632707118988037
+        },
+        {
+          "chunk_id": "PDF001_0172",
+          "score": 0.6580291986465454
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.6541049480438232
+        },
+        {
+          "chunk_id": "PDF006_0003",
+          "score": 0.6511135101318359
+        },
+        {
+          "chunk_id": "PDF001_0206",
+          "score": 0.6471185684204102
+        },
+        {
+          "chunk_id": "PDF001_0055",
+          "score": 0.6467434763908386
+        },
+        {
+          "chunk_id": "PDF001_0199",
+          "score": 0.6425284743309021
+        },
+        {
+          "chunk_id": "PDF001_0219",
+          "score": 0.6416441202163696
+        },
+        {
+          "chunk_id": "PDF001_0177",
+          "score": 0.6383073329925537
+        },
+        {
+          "chunk_id": "PDF001_0193",
+          "score": 0.635278582572937
+        },
+        {
+          "chunk_id": "WEB009_0006",
+          "score": 0.6347479820251465
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0056",
+          "score": 43.51936
+        },
+        {
+          "chunk_id": "PDF008_0057",
+          "score": 42.76943
+        },
+        {
+          "chunk_id": "PDF007_0003",
+          "score": 41.05253
+        },
+        {
+          "chunk_id": "PDF001_0199",
+          "score": 40.599537
+        },
+        {
+          "chunk_id": "WEB009_0003",
+          "score": 39.898346
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0190",
+        "PDF001_0192",
+        "PDF001_0173",
+        "PDF001_0189",
+        "WEB003_0002",
+        "PDF001_0184",
+        "WEB003_0003",
+        "PDF001_0221",
+        "PDF001_0175",
+        "WEB003_0001",
+        "PDF001_0172",
+        "PDF001_0014",
+        "PDF006_0003",
+        "PDF001_0206",
+        "PDF001_0055",
+        "PDF008_0056",
+        "PDF008_0057",
+        "PDF007_0003",
+        "PDF001_0199",
+        "WEB009_0003"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0190",
+        "PDF001_0192",
+        "PDF006_0003",
+        "PDF001_0173",
+        "PDF001_0189"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0190",
+        "PDF001_0192",
+        "PDF006_0003",
+        "PDF001_0173",
+        "PDF001_0189"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "REM_016",
+      "question_en": "I am unfamiliar with sending money home and want help from a bank employee. What is the benefit of using a teller, and what are the time and cost disadvantages?",
+      "translated_ko": "돈 을 집으로 보내는 것 은 익숙 하지 않고 은행 직원 에게 도움 을 요청 합니다. 현금 기자를 사용 하는 것 은 어떤 유익 이 있으며, 시간 과 비용 의 단점 은 무엇 입니까?",
+      "reference_question_ko": "본국으로 돈을 보내는 방법이 익숙하지 않아 직원에게 직접 부탁하려고 해요. 창구에서 하면 좋은 점은 무엇이고, 시간과 비용 면에서는 어떤 불편이 있나요?",
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "은행 창구가 현금 기자로 오역됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0192",
+        "PDF001_0193"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0028",
+          "score": 0.6541142463684082
+        },
+        {
+          "chunk_id": "PDF001_0029",
+          "score": 0.6375726461410522
+        },
+        {
+          "chunk_id": "PDF001_0192",
+          "score": 0.626361072063446
+        },
+        {
+          "chunk_id": "PDF001_0022",
+          "score": 0.6202839612960815
+        },
+        {
+          "chunk_id": "PDF001_0181",
+          "score": 0.6192607879638672
+        },
+        {
+          "chunk_id": "PDF001_0071",
+          "score": 0.6149892807006836
+        },
+        {
+          "chunk_id": "PDF001_0210",
+          "score": 0.609810471534729
+        },
+        {
+          "chunk_id": "PDF001_0173",
+          "score": 0.6088764667510986
+        },
+        {
+          "chunk_id": "PDF001_0183",
+          "score": 0.6081066727638245
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.605765700340271
+        },
+        {
+          "chunk_id": "PDF001_0031",
+          "score": 0.5962276458740234
+        },
+        {
+          "chunk_id": "PDF001_0215",
+          "score": 0.5949532389640808
+        },
+        {
+          "chunk_id": "PDF001_0072",
+          "score": 0.5920463800430298
+        },
+        {
+          "chunk_id": "PDF001_0005",
+          "score": 0.5918055176734924
+        },
+        {
+          "chunk_id": "PDF001_0266",
+          "score": 0.5883622765541077
+        },
+        {
+          "chunk_id": "PDF001_0052",
+          "score": 0.587286651134491
+        },
+        {
+          "chunk_id": "PDF008_0015",
+          "score": 0.5857647061347961
+        },
+        {
+          "chunk_id": "PDF001_0228",
+          "score": 0.5853430032730103
+        },
+        {
+          "chunk_id": "PDF001_0219",
+          "score": 0.5852821469306946
+        },
+        {
+          "chunk_id": "PDF001_0172",
+          "score": 0.5839750170707703
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF001_0005",
+          "score": 31.125343
+        },
+        {
+          "chunk_id": "PDF008_0090",
+          "score": 30.677782
+        },
+        {
+          "chunk_id": "PDF008_0063",
+          "score": 29.25415
+        },
+        {
+          "chunk_id": "PDF001_0192",
+          "score": 29.145075
+        },
+        {
+          "chunk_id": "PDF008_0010",
+          "score": 28.016932
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0028",
+        "PDF001_0029",
+        "PDF001_0192",
+        "PDF001_0022",
+        "PDF001_0181",
+        "PDF001_0071",
+        "PDF001_0210",
+        "PDF001_0173",
+        "PDF001_0183",
+        "PDF001_0014",
+        "PDF001_0031",
+        "PDF001_0215",
+        "PDF001_0072",
+        "PDF001_0005",
+        "PDF001_0266",
+        "PDF008_0090",
+        "PDF008_0063",
+        "PDF008_0010",
+        "PDF001_0052",
+        "PDF008_0015"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0028",
+        "PDF001_0192",
+        "PDF001_0029",
+        "PDF001_0183",
+        "PDF001_0181"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0028",
+        "PDF001_0192",
+        "PDF001_0029",
+        "PDF001_0183",
+        "PDF001_0181"
+      ],
+      "dense_candidate_first_gold_rank": 3,
+      "nori_first_gold_rank": 4,
+      "fusion_candidate_first_gold_rank": 3,
+      "dense_reranker_first_gold_rank": 2,
+      "fusion_reranker_first_gold_rank": 2
+    },
+    {
+      "question_id": "REM_017",
+      "question_en": "My remittance app says foreign customers will need to verify their passports again in 2026. When does the new rule take effect, and are any passports ineligible?",
+      "translated_ko": "내 송금 앱은 외국 고객들이 2026년에 다시 여권을 확인해야 한다고 합니다. 새 규칙이 언제부터 시행될까요?",
+      "reference_question_ko": "쓰고 있던 송금 앱에서 2026년부터 외국인 회원도 여권 인증을 다시 해야 한다는 알림이 왔어요. 언제부터 적용되고, 인증이 안 되는 여권도 있나요?",
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "인증 불가 여권 조건이 누락됨"
+      ],
+      "gold_chunk_ids": [
+        "WEB011_0001"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "WEB011_0001",
+          "score": 0.736773669719696
+        },
+        {
+          "chunk_id": "WEB011_0002",
+          "score": 0.654443621635437
+        },
+        {
+          "chunk_id": "PDF001_0195",
+          "score": 0.6205061674118042
+        },
+        {
+          "chunk_id": "PDF006_0004",
+          "score": 0.586295485496521
+        },
+        {
+          "chunk_id": "PDF001_0196",
+          "score": 0.5779904127120972
+        },
+        {
+          "chunk_id": "WEB010_0001",
+          "score": 0.5553088188171387
+        },
+        {
+          "chunk_id": "WEB002_0019",
+          "score": 0.5498182773590088
+        },
+        {
+          "chunk_id": "PDF006_0003",
+          "score": 0.5439208149909973
+        },
+        {
+          "chunk_id": "PDF001_0004",
+          "score": 0.5405744314193726
+        },
+        {
+          "chunk_id": "WEB009_0001",
+          "score": 0.5399183034896851
+        },
+        {
+          "chunk_id": "PDF004_0005",
+          "score": 0.5358073115348816
+        },
+        {
+          "chunk_id": "PDF001_0145",
+          "score": 0.5341416597366333
+        },
+        {
+          "chunk_id": "PDF001_0218",
+          "score": 0.5322070121765137
+        },
+        {
+          "chunk_id": "PDF001_0088",
+          "score": 0.5316262245178223
+        },
+        {
+          "chunk_id": "PDF001_0316",
+          "score": 0.5313540101051331
+        },
+        {
+          "chunk_id": "PDF001_0048",
+          "score": 0.5302226543426514
+        },
+        {
+          "chunk_id": "PDF001_0194",
+          "score": 0.5300257802009583
+        },
+        {
+          "chunk_id": "PDF005_0002",
+          "score": 0.5290716886520386
+        },
+        {
+          "chunk_id": "PDF001_0180",
+          "score": 0.5289034843444824
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.5282483696937561
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0087",
+          "score": 27.852337
+        },
+        {
+          "chunk_id": "PDF008_0021",
+          "score": 21.708645
+        },
+        {
+          "chunk_id": "PDF008_0088",
+          "score": 21.381226
+        },
+        {
+          "chunk_id": "PDF001_0195",
+          "score": 20.668646
+        },
+        {
+          "chunk_id": "PDF008_0051",
+          "score": 20.653934
+        }
+      ],
+      "fused_top20": [
+        "WEB011_0001",
+        "WEB011_0002",
+        "PDF001_0195",
+        "PDF006_0004",
+        "PDF001_0196",
+        "WEB010_0001",
+        "WEB002_0019",
+        "PDF006_0003",
+        "PDF001_0004",
+        "WEB009_0001",
+        "PDF004_0005",
+        "PDF001_0145",
+        "PDF001_0218",
+        "PDF001_0088",
+        "PDF001_0316",
+        "PDF008_0087",
+        "PDF008_0021",
+        "PDF008_0088",
+        "PDF008_0051",
+        "PDF001_0048"
+      ],
+      "dense_reranked_top5": [
+        "WEB011_0001",
+        "PDF001_0195",
+        "WEB011_0002",
+        "PDF001_0194",
+        "PDF001_0196"
+      ],
+      "fusion_reranked_top5": [
+        "WEB011_0001",
+        "PDF001_0195",
+        "WEB011_0002",
+        "PDF001_0196",
+        "PDF006_0004"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "REM_020",
+      "question_en": "I received a form at the bank to send money home. Do I need to write my family member's name, address, and bank details in English, and which fields are required?",
+      "translated_ko": "돈 을 집으로 보내기 위해 은행 에서 서류 를 받았습니다. 가족 의 이름, 주소, 은행 정보 를 영어 로 써야 합니까? 어떤 필드 들 을 써야 합니까?",
+      "reference_question_ko": "은행 창구에서 본국으로 돈을 보내려고 신청서를 받았어요. 가족의 이름과 주소, 현지 은행 정보는 영어로 써야 하나요? 어느 항목까지 적어야 하는지도 궁금해요.",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0194"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0196",
+          "score": 0.6367694139480591
+        },
+        {
+          "chunk_id": "PDF001_0197",
+          "score": 0.6357022523880005
+        },
+        {
+          "chunk_id": "PDF001_0208",
+          "score": 0.6097995638847351
+        },
+        {
+          "chunk_id": "PDF004_0005",
+          "score": 0.606879711151123
+        },
+        {
+          "chunk_id": "PDF001_0181",
+          "score": 0.6058728694915771
+        },
+        {
+          "chunk_id": "PDF001_0201",
+          "score": 0.602495551109314
+        },
+        {
+          "chunk_id": "PDF001_0203",
+          "score": 0.6018534898757935
+        },
+        {
+          "chunk_id": "PDF001_0195",
+          "score": 0.5971217155456543
+        },
+        {
+          "chunk_id": "PDF001_0194",
+          "score": 0.5953667163848877
+        },
+        {
+          "chunk_id": "PDF001_0052",
+          "score": 0.5936160087585449
+        },
+        {
+          "chunk_id": "PDF001_0035",
+          "score": 0.5935062766075134
+        },
+        {
+          "chunk_id": "PDF001_0172",
+          "score": 0.5934809446334839
+        },
+        {
+          "chunk_id": "PDF001_0226",
+          "score": 0.587588369846344
+        },
+        {
+          "chunk_id": "PDF006_0004",
+          "score": 0.5833261013031006
+        },
+        {
+          "chunk_id": "PDF001_0212",
+          "score": 0.5832477807998657
+        },
+        {
+          "chunk_id": "PDF001_0173",
+          "score": 0.5831952095031738
+        },
+        {
+          "chunk_id": "PDF001_0182",
+          "score": 0.5813583731651306
+        },
+        {
+          "chunk_id": "PDF001_0027",
+          "score": 0.5796189308166504
+        },
+        {
+          "chunk_id": "PDF005_0002",
+          "score": 0.5792343616485596
+        },
+        {
+          "chunk_id": "WEB003_0003",
+          "score": 0.5787941217422485
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0008",
+          "score": 28.75865
+        },
+        {
+          "chunk_id": "PDF001_0018",
+          "score": 28.405321
+        },
+        {
+          "chunk_id": "PDF008_0003",
+          "score": 25.541504
+        },
+        {
+          "chunk_id": "PDF008_0020",
+          "score": 25.293886
+        },
+        {
+          "chunk_id": "PDF008_0019",
+          "score": 24.753399
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0196",
+        "PDF001_0197",
+        "PDF001_0208",
+        "PDF004_0005",
+        "PDF001_0181",
+        "PDF001_0201",
+        "PDF001_0203",
+        "PDF001_0195",
+        "PDF001_0194",
+        "PDF001_0052",
+        "PDF001_0035",
+        "PDF001_0172",
+        "PDF001_0226",
+        "PDF006_0004",
+        "PDF001_0212",
+        "PDF008_0008",
+        "PDF001_0018",
+        "PDF008_0003",
+        "PDF008_0020",
+        "PDF008_0019"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0194",
+        "PDF001_0196",
+        "PDF001_0201",
+        "WEB003_0003",
+        "PDF001_0208"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0194",
+        "PDF001_0196",
+        "PDF001_0201",
+        "PDF001_0208",
+        "PDF001_0197"
+      ],
+      "dense_candidate_first_gold_rank": 9,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 9,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "REM_023",
+      "question_en": "My family abroad and I need to send money to each other. What recipient and bank details do I need when sending to them, and what should I give them when they send money to my Hana Bank account?",
+      "translated_ko": "해외에 있는 가족들과 저는 서로 돈을 보내야 합니다. 그들에게 보내는 데 있어서 어떤 수신자와 은행 정보가 필요하며, 그들이 내 하나 은행 계좌에 돈을 보낼 때 무엇을 줄 수 있을까요?",
+      "reference_question_ko": "한국에 있는 저와 본국 가족이 서로 돈을 보내야 해요. 제가 보낼 때 필요한 가족과 현지 은행 정보는 무엇인가요? 반대로 가족이 제 하나은행 계좌로 보낼 때는 제가 어떤 정보를 알려 줘야 하나요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0196",
+        "PDF001_0197",
+        "WEB009_0002"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "WEB003_0003",
+          "score": 0.6724136471748352
+        },
+        {
+          "chunk_id": "PDF001_0212",
+          "score": 0.6686110496520996
+        },
+        {
+          "chunk_id": "WEB003_0002",
+          "score": 0.6635299921035767
+        },
+        {
+          "chunk_id": "PDF001_0222",
+          "score": 0.6634153127670288
+        },
+        {
+          "chunk_id": "PDF001_0197",
+          "score": 0.6612655520439148
+        },
+        {
+          "chunk_id": "PDF001_0173",
+          "score": 0.6440111398696899
+        },
+        {
+          "chunk_id": "PDF001_0194",
+          "score": 0.6380336284637451
+        },
+        {
+          "chunk_id": "PDF001_0181",
+          "score": 0.6358262300491333
+        },
+        {
+          "chunk_id": "PDF001_0189",
+          "score": 0.6339050531387329
+        },
+        {
+          "chunk_id": "PDF001_0190",
+          "score": 0.6331801414489746
+        },
+        {
+          "chunk_id": "PDF001_0183",
+          "score": 0.6264545917510986
+        },
+        {
+          "chunk_id": "PDF001_0196",
+          "score": 0.625442624092102
+        },
+        {
+          "chunk_id": "PDF001_0208",
+          "score": 0.6247101426124573
+        },
+        {
+          "chunk_id": "PDF001_0201",
+          "score": 0.6216595768928528
+        },
+        {
+          "chunk_id": "PDF001_0207",
+          "score": 0.621416449546814
+        },
+        {
+          "chunk_id": "PDF001_0203",
+          "score": 0.6206570863723755
+        },
+        {
+          "chunk_id": "PDF001_0202",
+          "score": 0.6187570095062256
+        },
+        {
+          "chunk_id": "PDF001_0022",
+          "score": 0.6171094179153442
+        },
+        {
+          "chunk_id": "PDF001_0192",
+          "score": 0.6170071363449097
+        },
+        {
+          "chunk_id": "PDF001_0211",
+          "score": 0.6143545508384705
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0008",
+          "score": 47.405624
+        },
+        {
+          "chunk_id": "PDF001_0175",
+          "score": 47.152637
+        },
+        {
+          "chunk_id": "PDF001_0005",
+          "score": 45.91475
+        },
+        {
+          "chunk_id": "PDF008_0049",
+          "score": 44.13618
+        },
+        {
+          "chunk_id": "PDF008_0093",
+          "score": 43.427433
+        }
+      ],
+      "fused_top20": [
+        "WEB003_0003",
+        "PDF001_0212",
+        "WEB003_0002",
+        "PDF001_0222",
+        "PDF001_0197",
+        "PDF001_0173",
+        "PDF001_0194",
+        "PDF001_0181",
+        "PDF001_0189",
+        "PDF001_0190",
+        "PDF001_0183",
+        "PDF001_0196",
+        "PDF001_0208",
+        "PDF001_0201",
+        "PDF001_0207",
+        "PDF008_0008",
+        "PDF001_0175",
+        "PDF001_0005",
+        "PDF008_0049",
+        "PDF008_0093"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0222",
+        "PDF001_0197",
+        "PDF001_0196",
+        "PDF001_0201",
+        "PDF001_0208"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0222",
+        "PDF001_0197",
+        "PDF001_0196",
+        "PDF001_0201",
+        "PDF001_0208"
+      ],
+      "dense_candidate_first_gold_rank": 5,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 5,
+      "dense_reranker_first_gold_rank": 2,
+      "fusion_reranker_first_gold_rank": 2
+    },
+    {
+      "question_id": "REM_027",
+      "question_en": "After sending money to my family through SentBe, I realized that one digit of the account number was wrong. The app says the transfer is already complete. Can I still cancel it or get the money back?",
+      "translated_ko": "SentBe를 통해 가족에게 돈을 보낸 후, 계정 번호의 한 자릿수가 잘못되었다는 것을 깨달았습니다. 앱은 이전이 이미 완료되었다고 말합니다. 여전히 돈을 취소하거나 돌려받을 수 있습니까?",
+      "reference_question_ko": "센트비로 본국 가족에게 돈을 보낸 뒤에 계좌번호 한 자리를 잘못 쓴 걸 알았어요. 앱에는 이미 송금이 끝났다고 나오는데, 지금이라도 취소하거나 돌려받을 수 있나요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "WEB013_0001"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "WEB013_0001",
+          "score": 0.6698889136314392
+        },
+        {
+          "chunk_id": "PDF001_0052",
+          "score": 0.6493303775787354
+        },
+        {
+          "chunk_id": "PDF001_0055",
+          "score": 0.6442856788635254
+        },
+        {
+          "chunk_id": "PDF001_0035",
+          "score": 0.6309812068939209
+        },
+        {
+          "chunk_id": "PDF001_0218",
+          "score": 0.6159071326255798
+        },
+        {
+          "chunk_id": "PDF001_0270",
+          "score": 0.6102438569068909
+        },
+        {
+          "chunk_id": "PDF001_0199",
+          "score": 0.5983525514602661
+        },
+        {
+          "chunk_id": "PDF001_0051",
+          "score": 0.5945727229118347
+        },
+        {
+          "chunk_id": "PDF001_0056",
+          "score": 0.5870742797851562
+        },
+        {
+          "chunk_id": "PDF001_0241",
+          "score": 0.5862575173377991
+        },
+        {
+          "chunk_id": "PDF001_0033",
+          "score": 0.5810921788215637
+        },
+        {
+          "chunk_id": "PDF001_0066",
+          "score": 0.5794703364372253
+        },
+        {
+          "chunk_id": "PDF008_0059",
+          "score": 0.5777387619018555
+        },
+        {
+          "chunk_id": "PDF008_0031",
+          "score": 0.5776323676109314
+        },
+        {
+          "chunk_id": "PDF001_0197",
+          "score": 0.575704038143158
+        },
+        {
+          "chunk_id": "PDF001_0102",
+          "score": 0.5715945959091187
+        },
+        {
+          "chunk_id": "PDF008_0015",
+          "score": 0.565782368183136
+        },
+        {
+          "chunk_id": "PDF001_0247",
+          "score": 0.5639281272888184
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.5621707439422607
+        },
+        {
+          "chunk_id": "PDF001_0172",
+          "score": 0.5601351261138916
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0047",
+          "score": 42.795753
+        },
+        {
+          "chunk_id": "PDF008_0092",
+          "score": 41.26577
+        },
+        {
+          "chunk_id": "PDF001_0055",
+          "score": 38.99273
+        },
+        {
+          "chunk_id": "PDF008_0016",
+          "score": 38.020638
+        },
+        {
+          "chunk_id": "PDF008_0045",
+          "score": 37.860085
+        }
+      ],
+      "fused_top20": [
+        "WEB013_0001",
+        "PDF001_0052",
+        "PDF001_0055",
+        "PDF001_0035",
+        "PDF001_0218",
+        "PDF001_0270",
+        "PDF001_0199",
+        "PDF001_0051",
+        "PDF001_0056",
+        "PDF001_0241",
+        "PDF001_0033",
+        "PDF001_0066",
+        "PDF008_0059",
+        "PDF008_0031",
+        "PDF001_0197",
+        "PDF008_0047",
+        "PDF008_0092",
+        "PDF008_0016",
+        "PDF008_0045",
+        "PDF001_0102"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0055",
+        "WEB013_0001",
+        "PDF001_0052",
+        "PDF001_0035",
+        "PDF001_0218"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0055",
+        "WEB013_0001",
+        "PDF001_0052",
+        "PDF001_0035",
+        "PDF001_0218"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 2,
+      "fusion_reranker_first_gold_rank": 2
+    },
+    {
+      "question_id": "REM_029",
+      "question_en": "I work for a small trading company in Korea and was asked to send USD 8,000 to a third party not named in the contract. Which authority must be notified about this payment?",
+      "translated_ko": "저는 한국에 있는 작은 거래회사에서 일하고 있으며 계약에 언급되지 않은 제3자에게 8,000달러를 보내야 한다고 요청받았습니다. 이 지불에 대해 어느 기관에 알려야 할까요?",
+      "reference_question_ko": "한국의 작은 무역회사에서 일하는데 계약서에 없는 제3자에게 미화 8천 달러를 보내 달라는 요청을 받았어요. 이런 지급은 어느 기관에 알려야 하나요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "WEB001_0006"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0190",
+          "score": 0.6431542634963989
+        },
+        {
+          "chunk_id": "WEB001_0005",
+          "score": 0.6026490330696106
+        },
+        {
+          "chunk_id": "PDF001_0191",
+          "score": 0.602057695388794
+        },
+        {
+          "chunk_id": "PDF001_0192",
+          "score": 0.6005005240440369
+        },
+        {
+          "chunk_id": "WEB001_0007",
+          "score": 0.5961107611656189
+        },
+        {
+          "chunk_id": "WEB001_0006",
+          "score": 0.5924398899078369
+        },
+        {
+          "chunk_id": "PDF001_0189",
+          "score": 0.5909321904182434
+        },
+        {
+          "chunk_id": "PDF001_0173",
+          "score": 0.5900705456733704
+        },
+        {
+          "chunk_id": "WEB003_0002",
+          "score": 0.5809892416000366
+        },
+        {
+          "chunk_id": "PDF001_0172",
+          "score": 0.5756803750991821
+        },
+        {
+          "chunk_id": "WEB001_0013",
+          "score": 0.5705621838569641
+        },
+        {
+          "chunk_id": "PDF004_0002",
+          "score": 0.5601189136505127
+        },
+        {
+          "chunk_id": "PDF001_0004",
+          "score": 0.5583533644676208
+        },
+        {
+          "chunk_id": "WEB001_0012",
+          "score": 0.5575650334358215
+        },
+        {
+          "chunk_id": "WEB003_0003",
+          "score": 0.5549407601356506
+        },
+        {
+          "chunk_id": "PDF001_0276",
+          "score": 0.5528932213783264
+        },
+        {
+          "chunk_id": "PDF008_0015",
+          "score": 0.5527681112289429
+        },
+        {
+          "chunk_id": "PDF001_0196",
+          "score": 0.5513091683387756
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.5485877990722656
+        },
+        {
+          "chunk_id": "PDF001_0233",
+          "score": 0.5482155084609985
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0045",
+          "score": 39.827095
+        },
+        {
+          "chunk_id": "PDF008_0070",
+          "score": 37.71181
+        },
+        {
+          "chunk_id": "WEB001_0013",
+          "score": 37.182133
+        },
+        {
+          "chunk_id": "WEB009_0004",
+          "score": 36.155956
+        },
+        {
+          "chunk_id": "PDF008_0043",
+          "score": 36.08674
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0190",
+        "WEB001_0005",
+        "PDF001_0191",
+        "PDF001_0192",
+        "WEB001_0007",
+        "WEB001_0006",
+        "PDF001_0189",
+        "PDF001_0173",
+        "WEB003_0002",
+        "PDF001_0172",
+        "WEB001_0013",
+        "PDF004_0002",
+        "PDF001_0004",
+        "WEB001_0012",
+        "WEB003_0003",
+        "PDF008_0045",
+        "PDF008_0070",
+        "WEB009_0004",
+        "PDF008_0043",
+        "PDF001_0276"
+      ],
+      "dense_reranked_top5": [
+        "WEB001_0007",
+        "WEB003_0002",
+        "PDF001_0189",
+        "WEB001_0006",
+        "PDF001_0192"
+      ],
+      "fusion_reranked_top5": [
+        "WEB001_0007",
+        "WEB003_0002",
+        "PDF001_0189",
+        "WEB001_0006",
+        "PDF001_0192"
+      ],
+      "dense_candidate_first_gold_rank": 6,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 6,
+      "dense_reranker_first_gold_rank": 4,
+      "fusion_reranker_first_gold_rank": 4
+    },
+    {
+      "question_id": "NOT_003",
+      "question_en": "I need to pay my electricity bill but cannot visit a bank. Which menu should I look for on my bank's website or app?",
+      "translated_ko": "전력 청구서를 지불해야 하지만 은행을 방문할 수 없습니다. 은행의 웹사이트나 앱에서 어떤 메뉴를 검색해야 할까요?",
+      "reference_question_ko": "전기요금을 내야 하는데 은행에 갈 시간이 없어요. 거래하는 은행의 웹사이트나 앱에서 어떤 메뉴를 찾으면 되나요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0063"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0063",
+          "score": 0.6922273635864258
+        },
+        {
+          "chunk_id": "PDF001_0072",
+          "score": 0.6363105177879333
+        },
+        {
+          "chunk_id": "PDF006_0003",
+          "score": 0.635140061378479
+        },
+        {
+          "chunk_id": "PDF001_0013",
+          "score": 0.6348775625228882
+        },
+        {
+          "chunk_id": "PDF001_0065",
+          "score": 0.6248633861541748
+        },
+        {
+          "chunk_id": "PDF001_0038",
+          "score": 0.6219940781593323
+        },
+        {
+          "chunk_id": "PDF001_0057",
+          "score": 0.6155725121498108
+        },
+        {
+          "chunk_id": "PDF006_0005",
+          "score": 0.6153648495674133
+        },
+        {
+          "chunk_id": "PDF001_0007",
+          "score": 0.6134570837020874
+        },
+        {
+          "chunk_id": "PDF001_0020",
+          "score": 0.6086556911468506
+        },
+        {
+          "chunk_id": "PDF001_0069",
+          "score": 0.6016303300857544
+        },
+        {
+          "chunk_id": "PDF006_0004",
+          "score": 0.5926619172096252
+        },
+        {
+          "chunk_id": "PDF001_0071",
+          "score": 0.5922529697418213
+        },
+        {
+          "chunk_id": "PDF001_0050",
+          "score": 0.5870060920715332
+        },
+        {
+          "chunk_id": "PDF001_0046",
+          "score": 0.5862265229225159
+        },
+        {
+          "chunk_id": "PDF007_0005",
+          "score": 0.585824728012085
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.5815509557723999
+        },
+        {
+          "chunk_id": "PDF001_0062",
+          "score": 0.5815289616584778
+        },
+        {
+          "chunk_id": "PDF001_0064",
+          "score": 0.5802801251411438
+        },
+        {
+          "chunk_id": "PDF001_0015",
+          "score": 0.5798391699790955
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0070",
+          "score": 33.303524
+        },
+        {
+          "chunk_id": "PDF001_0061",
+          "score": 31.474398
+        },
+        {
+          "chunk_id": "PDF007_0003",
+          "score": 26.666307
+        },
+        {
+          "chunk_id": "PDF001_0062",
+          "score": 26.622217
+        },
+        {
+          "chunk_id": "PDF009_0025",
+          "score": 24.48356
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0063",
+        "PDF001_0072",
+        "PDF006_0003",
+        "PDF001_0013",
+        "PDF001_0065",
+        "PDF001_0038",
+        "PDF001_0057",
+        "PDF006_0005",
+        "PDF001_0007",
+        "PDF001_0020",
+        "PDF001_0069",
+        "PDF006_0004",
+        "PDF001_0071",
+        "PDF001_0050",
+        "PDF001_0046",
+        "PDF008_0070",
+        "PDF001_0061",
+        "PDF007_0003",
+        "PDF001_0062",
+        "PDF009_0025"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0063",
+        "PDF006_0004",
+        "PDF001_0065",
+        "PDF006_0005",
+        "PDF001_0062"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0063",
+        "PDF006_0004",
+        "PDF001_0065",
+        "PDF006_0005",
+        "PDF001_0062"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "NOT_004",
+      "question_en": "My bill says I can pay through Internet Giro. Who runs the site, and what can I pay there besides utility bills?",
+      "translated_ko": "내 청구서는 인터넷 지로를 통해 지불할 수 있고 사이트를 운영하는 사람은 누구이며",
+      "reference_question_ko": "고지서에 인터넷 지로로 낼 수 있다고 쓰여 있어요. 이 사이트는 어디에서 운영하고, 공과금 말고도 어떤 돈을 낼 수 있나요?",
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "문장이 중단되어 운영기관 이후의 납부 가능 항목 질문이 누락됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0064"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0065",
+          "score": 0.6964974403381348
+        },
+        {
+          "chunk_id": "PDF001_0064",
+          "score": 0.6717579364776611
+        },
+        {
+          "chunk_id": "PDF006_0005",
+          "score": 0.6626472473144531
+        },
+        {
+          "chunk_id": "PDF001_0073",
+          "score": 0.6586904525756836
+        },
+        {
+          "chunk_id": "PDF006_0004",
+          "score": 0.597896158695221
+        },
+        {
+          "chunk_id": "PDF001_0070",
+          "score": 0.5515599846839905
+        },
+        {
+          "chunk_id": "PDF001_0068",
+          "score": 0.5505946278572083
+        },
+        {
+          "chunk_id": "PDF001_0063",
+          "score": 0.536973237991333
+        },
+        {
+          "chunk_id": "PDF001_0067",
+          "score": 0.5357303023338318
+        },
+        {
+          "chunk_id": "PDF006_0003",
+          "score": 0.5309878587722778
+        },
+        {
+          "chunk_id": "PDF001_0072",
+          "score": 0.5273699760437012
+        },
+        {
+          "chunk_id": "PDF001_0038",
+          "score": 0.5229039192199707
+        },
+        {
+          "chunk_id": "PDF007_0005",
+          "score": 0.5161993503570557
+        },
+        {
+          "chunk_id": "PDF001_0069",
+          "score": 0.5147435665130615
+        },
+        {
+          "chunk_id": "PDF001_0062",
+          "score": 0.5040587186813354
+        },
+        {
+          "chunk_id": "PDF001_0193",
+          "score": 0.49973830580711365
+        },
+        {
+          "chunk_id": "PDF001_0061",
+          "score": 0.49544692039489746
+        },
+        {
+          "chunk_id": "PDF001_0040",
+          "score": 0.4933401644229889
+        },
+        {
+          "chunk_id": "PDF001_0202",
+          "score": 0.49217909574508667
+        },
+        {
+          "chunk_id": "PDF007_0003",
+          "score": 0.4832822382450104
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF007_0003",
+          "score": 31.040993
+        },
+        {
+          "chunk_id": "PDF001_0064",
+          "score": 27.04644
+        },
+        {
+          "chunk_id": "PDF001_0067",
+          "score": 24.543182
+        },
+        {
+          "chunk_id": "PDF001_0061",
+          "score": 23.2169
+        },
+        {
+          "chunk_id": "PDF008_0083",
+          "score": 22.654629
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0065",
+        "PDF001_0064",
+        "PDF006_0005",
+        "PDF001_0073",
+        "PDF006_0004",
+        "PDF001_0070",
+        "PDF001_0068",
+        "PDF001_0063",
+        "PDF001_0067",
+        "PDF006_0003",
+        "PDF001_0072",
+        "PDF001_0038",
+        "PDF007_0005",
+        "PDF001_0069",
+        "PDF001_0062",
+        "PDF007_0003",
+        "PDF001_0061",
+        "PDF008_0083",
+        "PDF001_0193",
+        "PDF001_0040"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0064",
+        "PDF001_0073",
+        "PDF001_0072",
+        "PDF001_0065",
+        "PDF006_0004"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0064",
+        "PDF001_0073",
+        "PDF001_0072",
+        "PDF001_0065",
+        "PDF006_0004"
+      ],
+      "dense_candidate_first_gold_rank": 2,
+      "nori_first_gold_rank": 2,
+      "fusion_candidate_first_gold_rank": 2,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "NOT_005",
+      "question_en": "I was told I can have my water bill deducted automatically on the same date each month. It sounds convenient, but what should I check before the payment is taken?",
+      "translated_ko": "저는 물 청구서를 매달 같은 날짜에 자동으로 수감할 수 있다고 들었습니다. 편리하게 들리지만, 지불이 이루어지기 전에 무엇을 확인해야 할까요?",
+      "reference_question_ko": "수도요금을 매달 같은 날 자동으로 빠져나가게 하라는 안내를 받았어요. 편하긴 하지만 돈이 빠져나가기 전에 꼭 확인해야 할 게 있나요?",
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "자동이체가 자동 수감으로 오역됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0064"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0061",
+          "score": 0.6445634961128235
+        },
+        {
+          "chunk_id": "PDF001_0062",
+          "score": 0.6230056881904602
+        },
+        {
+          "chunk_id": "PDF001_0069",
+          "score": 0.6138187646865845
+        },
+        {
+          "chunk_id": "PDF001_0070",
+          "score": 0.6073580980300903
+        },
+        {
+          "chunk_id": "PDF001_0066",
+          "score": 0.6070117950439453
+        },
+        {
+          "chunk_id": "PDF001_0067",
+          "score": 0.5792497992515564
+        },
+        {
+          "chunk_id": "WEB002_0010",
+          "score": 0.5640162825584412
+        },
+        {
+          "chunk_id": "PDF001_0064",
+          "score": 0.5620481371879578
+        },
+        {
+          "chunk_id": "WEB002_0012",
+          "score": 0.5613523721694946
+        },
+        {
+          "chunk_id": "PDF001_0108",
+          "score": 0.5602321028709412
+        },
+        {
+          "chunk_id": "PDF001_0110",
+          "score": 0.5528538823127747
+        },
+        {
+          "chunk_id": "WEB002_0011",
+          "score": 0.5525765419006348
+        },
+        {
+          "chunk_id": "WEB002_0015",
+          "score": 0.550541341304779
+        },
+        {
+          "chunk_id": "WEB002_0004",
+          "score": 0.5504066348075867
+        },
+        {
+          "chunk_id": "PDF001_0033",
+          "score": 0.5477392673492432
+        },
+        {
+          "chunk_id": "PDF001_0155",
+          "score": 0.5458147525787354
+        },
+        {
+          "chunk_id": "PDF001_0107",
+          "score": 0.5395007729530334
+        },
+        {
+          "chunk_id": "WEB002_0023",
+          "score": 0.5365473628044128
+        },
+        {
+          "chunk_id": "PDF001_0031",
+          "score": 0.5363193154335022
+        },
+        {
+          "chunk_id": "PDF001_0187",
+          "score": 0.5362333059310913
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF001_0064",
+          "score": 41.639744
+        },
+        {
+          "chunk_id": "PDF001_0061",
+          "score": 41.424812
+        },
+        {
+          "chunk_id": "PDF001_0066",
+          "score": 33.276665
+        },
+        {
+          "chunk_id": "PDF001_0062",
+          "score": 32.534584
+        },
+        {
+          "chunk_id": "PDF008_0089",
+          "score": 29.440056
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0061",
+        "PDF001_0062",
+        "PDF001_0069",
+        "PDF001_0070",
+        "PDF001_0066",
+        "PDF001_0067",
+        "WEB002_0010",
+        "PDF001_0064",
+        "WEB002_0012",
+        "PDF001_0108",
+        "PDF001_0110",
+        "WEB002_0011",
+        "WEB002_0015",
+        "WEB002_0004",
+        "PDF001_0033",
+        "PDF008_0089",
+        "PDF001_0155",
+        "PDF001_0107",
+        "WEB002_0023",
+        "PDF001_0031"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0064",
+        "PDF001_0066",
+        "PDF001_0061",
+        "PDF001_0069",
+        "PDF001_0062"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0064",
+        "PDF001_0066",
+        "PDF001_0061",
+        "PDF001_0069",
+        "PDF001_0062"
+      ],
+      "dense_candidate_first_gold_rank": 8,
+      "nori_first_gold_rank": 1,
+      "fusion_candidate_first_gold_rank": 8,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "NOT_007",
+      "question_en": "I want to pay a Korean utility bill through Internet Giro. Which number from the bill and which account details do I need, and should I check anything after payment?",
+      "translated_ko": "저는 인터넷 지로를 통해 한국 공용품 청구서를 지불하고 싶습니다. 청구서에서 어떤 번호와 계정 세부사항이 필요하고, 지불 후 어떤 것을 확인해야합니까?",
+      "reference_question_ko": "한국어로 된 공과금 고지서를 인터넷 지로에서 내려 해요. 고지서의 어떤 번호와 계좌 정보를 입력해야 하나요? 납부가 끝난 뒤 확인할 것도 있나요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0065",
+        "PDF001_0066",
+        "PDF001_0069",
+        "PDF001_0070"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF006_0005",
+          "score": 0.765489935874939
+        },
+        {
+          "chunk_id": "PDF006_0004",
+          "score": 0.7099063992500305
+        },
+        {
+          "chunk_id": "PDF001_0065",
+          "score": 0.6917145252227783
+        },
+        {
+          "chunk_id": "PDF006_0003",
+          "score": 0.6841294169425964
+        },
+        {
+          "chunk_id": "PDF001_0064",
+          "score": 0.644929051399231
+        },
+        {
+          "chunk_id": "PDF001_0072",
+          "score": 0.6247268915176392
+        },
+        {
+          "chunk_id": "PDF001_0073",
+          "score": 0.614216685295105
+        },
+        {
+          "chunk_id": "PDF001_0070",
+          "score": 0.6125732660293579
+        },
+        {
+          "chunk_id": "PDF001_0013",
+          "score": 0.6095831990242004
+        },
+        {
+          "chunk_id": "PDF001_0015",
+          "score": 0.6059513092041016
+        },
+        {
+          "chunk_id": "PDF004_0005",
+          "score": 0.5996272563934326
+        },
+        {
+          "chunk_id": "WEB003_0003",
+          "score": 0.5943681597709656
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.5939334034919739
+        },
+        {
+          "chunk_id": "PDF001_0178",
+          "score": 0.5910126566886902
+        },
+        {
+          "chunk_id": "PDF001_0007",
+          "score": 0.5894632339477539
+        },
+        {
+          "chunk_id": "PDF001_0068",
+          "score": 0.5873011946678162
+        },
+        {
+          "chunk_id": "PDF006_0002",
+          "score": 0.582507848739624
+        },
+        {
+          "chunk_id": "PDF001_0039",
+          "score": 0.5808010101318359
+        },
+        {
+          "chunk_id": "PDF004_0003",
+          "score": 0.577551543712616
+        },
+        {
+          "chunk_id": "PDF007_0005",
+          "score": 0.5763381123542786
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF001_0061",
+          "score": 43.56521
+        },
+        {
+          "chunk_id": "PDF007_0003",
+          "score": 42.26557
+        },
+        {
+          "chunk_id": "WEB002_0024",
+          "score": 38.337784
+        },
+        {
+          "chunk_id": "PDF001_0062",
+          "score": 37.17899
+        },
+        {
+          "chunk_id": "PDF001_0065",
+          "score": 35.653122
+        }
+      ],
+      "fused_top20": [
+        "PDF006_0005",
+        "PDF006_0004",
+        "PDF001_0065",
+        "PDF006_0003",
+        "PDF001_0064",
+        "PDF001_0072",
+        "PDF001_0073",
+        "PDF001_0070",
+        "PDF001_0013",
+        "PDF001_0015",
+        "PDF004_0005",
+        "WEB003_0003",
+        "PDF001_0014",
+        "PDF001_0178",
+        "PDF001_0007",
+        "PDF001_0061",
+        "PDF007_0003",
+        "WEB002_0024",
+        "PDF001_0062",
+        "PDF001_0068"
+      ],
+      "dense_reranked_top5": [
+        "PDF006_0005",
+        "PDF006_0003",
+        "PDF006_0004",
+        "PDF001_0064",
+        "PDF001_0065"
+      ],
+      "fusion_reranked_top5": [
+        "PDF006_0005",
+        "PDF006_0003",
+        "PDF006_0004",
+        "PDF001_0064",
+        "PDF001_0065"
+      ],
+      "dense_candidate_first_gold_rank": 3,
+      "nori_first_gold_rank": 5,
+      "fusion_candidate_first_gold_rank": 3,
+      "dense_reranker_first_gold_rank": 5,
+      "fusion_reranker_first_gold_rank": 5
+    },
+    {
+      "question_id": "NOT_013",
+      "question_en": "I heard I could lose money if I close a time deposit before it matures. Does that reduce the principal, or just the interest I receive?",
+      "translated_ko": "임시 보증금을 채용하기 전에 결제하면 돈을 잃을 수 있다고 들었어요. 그게 원금을 줄여주나요? 아니면 제가 받는 금리를 줄여주나요?",
+      "reference_question_ko": "정기예금을 만기 전에 깨면 손해라고 들었어요. 원금이 줄어드는 건가요, 아니면 받을 이자가 줄어드는 건가요?",
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "정기예금/중도해지 용어가 심하게 어색하지만 원금·이자 질문은 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0082"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0085",
+          "score": 0.5939554572105408
+        },
+        {
+          "chunk_id": "PDF001_0082",
+          "score": 0.5558388829231262
+        },
+        {
+          "chunk_id": "PDF001_0090",
+          "score": 0.5509624481201172
+        },
+        {
+          "chunk_id": "PDF001_0091",
+          "score": 0.5205779075622559
+        },
+        {
+          "chunk_id": "PDF001_0094",
+          "score": 0.5173589587211609
+        },
+        {
+          "chunk_id": "PDF001_0083",
+          "score": 0.5157894492149353
+        },
+        {
+          "chunk_id": "PDF001_0093",
+          "score": 0.5127624273300171
+        },
+        {
+          "chunk_id": "PDF001_0092",
+          "score": 0.5087071657180786
+        },
+        {
+          "chunk_id": "PDF001_0044",
+          "score": 0.502726674079895
+        },
+        {
+          "chunk_id": "PDF001_0266",
+          "score": 0.5016933679580688
+        },
+        {
+          "chunk_id": "PDF001_0076",
+          "score": 0.4992724061012268
+        },
+        {
+          "chunk_id": "PDF001_0031",
+          "score": 0.4965803623199463
+        },
+        {
+          "chunk_id": "PDF008_0073",
+          "score": 0.49633628129959106
+        },
+        {
+          "chunk_id": "PDF001_0081",
+          "score": 0.49610787630081177
+        },
+        {
+          "chunk_id": "PDF001_0084",
+          "score": 0.49503862857818604
+        },
+        {
+          "chunk_id": "PDF001_0175",
+          "score": 0.4924089014530182
+        },
+        {
+          "chunk_id": "PDF001_0132",
+          "score": 0.4896196126937866
+        },
+        {
+          "chunk_id": "PDF001_0184",
+          "score": 0.48881062865257263
+        },
+        {
+          "chunk_id": "PDF001_0024",
+          "score": 0.48727914690971375
+        },
+        {
+          "chunk_id": "PDF001_0263",
+          "score": 0.4829724431037903
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF001_0075",
+          "score": 36.53442
+        },
+        {
+          "chunk_id": "PDF001_0231",
+          "score": 35.21156
+        },
+        {
+          "chunk_id": "PDF008_0072",
+          "score": 29.637032
+        },
+        {
+          "chunk_id": "PDF008_0053",
+          "score": 28.55272
+        },
+        {
+          "chunk_id": "PDF008_0043",
+          "score": 27.909943
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0085",
+        "PDF001_0082",
+        "PDF001_0090",
+        "PDF001_0091",
+        "PDF001_0094",
+        "PDF001_0083",
+        "PDF001_0093",
+        "PDF001_0092",
+        "PDF001_0044",
+        "PDF001_0266",
+        "PDF001_0076",
+        "PDF001_0031",
+        "PDF008_0073",
+        "PDF001_0081",
+        "PDF001_0084",
+        "PDF001_0075",
+        "PDF001_0231",
+        "PDF008_0072",
+        "PDF008_0053",
+        "PDF008_0043"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0082",
+        "PDF001_0090",
+        "PDF001_0081",
+        "PDF001_0085",
+        "PDF001_0093"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0082",
+        "PDF001_0090",
+        "PDF001_0081",
+        "PDF001_0085",
+        "PDF001_0093"
+      ],
+      "dense_candidate_first_gold_rank": 2,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 2,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "NOT_017",
+      "question_en": "The ISA guide lists a tax-free allowance and a required holding period. How much qualifies, how long must I keep the account, and are there any extra costs?",
+      "translated_ko": "ISA 가이드 에는 세금 면제 과 의무적 인 보유 기간이 나열 되어 있습니다. 얼마나 많은 금액이 자격을 갖춰야 하며, 얼마나 오랫동안 계좌를 보관해야 하며, 추가 비용은 있습니까?",
+      "reference_question_ko": "ISA 안내문을 보니 세금 혜택을 받는 금액과 꼭 유지해야 하는 기간이 따로 있네요. 얼마까지 혜택을 받고 몇 년 동안 유지해야 하나요? 추가로 드는 비용도 있나요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0086",
+        "PDF001_0087"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0087",
+          "score": 0.6957461833953857
+        },
+        {
+          "chunk_id": "PDF001_0093",
+          "score": 0.6229733228683472
+        },
+        {
+          "chunk_id": "PDF001_0085",
+          "score": 0.6058069467544556
+        },
+        {
+          "chunk_id": "PDF001_0086",
+          "score": 0.5918616056442261
+        },
+        {
+          "chunk_id": "PDF001_0080",
+          "score": 0.5662996768951416
+        },
+        {
+          "chunk_id": "PDF001_0081",
+          "score": 0.5583071112632751
+        },
+        {
+          "chunk_id": "PDF001_0076",
+          "score": 0.5577528476715088
+        },
+        {
+          "chunk_id": "PDF001_0089",
+          "score": 0.5460598468780518
+        },
+        {
+          "chunk_id": "PDF001_0092",
+          "score": 0.5444267988204956
+        },
+        {
+          "chunk_id": "PDF001_0084",
+          "score": 0.5414994955062866
+        },
+        {
+          "chunk_id": "WEB002_0011",
+          "score": 0.5404406189918518
+        },
+        {
+          "chunk_id": "PDF001_0077",
+          "score": 0.5402068495750427
+        },
+        {
+          "chunk_id": "PDF001_0082",
+          "score": 0.5387086868286133
+        },
+        {
+          "chunk_id": "WEB007_0001",
+          "score": 0.5366849899291992
+        },
+        {
+          "chunk_id": "PDF001_0166",
+          "score": 0.5364763736724854
+        },
+        {
+          "chunk_id": "WEB002_0015",
+          "score": 0.5305456519126892
+        },
+        {
+          "chunk_id": "PDF001_0088",
+          "score": 0.5295425653457642
+        },
+        {
+          "chunk_id": "PDF001_0070",
+          "score": 0.5292103290557861
+        },
+        {
+          "chunk_id": "WEB002_0006",
+          "score": 0.5274105668067932
+        },
+        {
+          "chunk_id": "WEB002_0008",
+          "score": 0.527292788028717
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "WEB002_0032",
+          "score": 34.29937
+        },
+        {
+          "chunk_id": "PDF008_0008",
+          "score": 31.540186
+        },
+        {
+          "chunk_id": "WEB009_0005",
+          "score": 31.291424
+        },
+        {
+          "chunk_id": "WEB002_0017",
+          "score": 30.119759
+        },
+        {
+          "chunk_id": "WEB002_0009",
+          "score": 29.17846
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0087",
+        "PDF001_0093",
+        "PDF001_0085",
+        "PDF001_0086",
+        "PDF001_0080",
+        "PDF001_0081",
+        "PDF001_0076",
+        "PDF001_0089",
+        "PDF001_0092",
+        "PDF001_0084",
+        "WEB002_0011",
+        "PDF001_0077",
+        "PDF001_0082",
+        "WEB007_0001",
+        "PDF001_0166",
+        "WEB002_0032",
+        "PDF008_0008",
+        "WEB009_0005",
+        "WEB002_0017",
+        "WEB002_0009"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0087",
+        "PDF001_0086",
+        "PDF001_0093",
+        "PDF001_0092",
+        "PDF001_0085"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0087",
+        "PDF001_0086",
+        "PDF001_0093",
+        "PDF001_0092",
+        "PDF001_0085"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "NOT_019",
+      "question_en": "I heard there is a monthly deposit limit for housing subscription savings accounts. How much can I deposit each month, and how many accounts can one person have?",
+      "translated_ko": "주택 가입 저축 계좌에 월별 예금 제한이 있다고 들었습니다. 한 달에 얼마나 많은 예금을 할 수 있고, 한 사람이 얼마나 많은 계좌를 가질 수 있습니까?",
+      "reference_question_ko": "주택청약통장에 매달 넣을 수 있는 금액이 정해져 있다고 들었어요. 한 달에 얼마까지 넣을 수 있고, 한 사람이 몇 개까지 만들 수 있나요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0089"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0089",
+          "score": 0.7434564232826233
+        },
+        {
+          "chunk_id": "PDF001_0077",
+          "score": 0.6460959911346436
+        },
+        {
+          "chunk_id": "PDF001_0093",
+          "score": 0.6358749866485596
+        },
+        {
+          "chunk_id": "PDF001_0076",
+          "score": 0.628677487373352
+        },
+        {
+          "chunk_id": "PDF001_0087",
+          "score": 0.6080642342567444
+        },
+        {
+          "chunk_id": "PDF001_0080",
+          "score": 0.5743809938430786
+        },
+        {
+          "chunk_id": "PDF001_0074",
+          "score": 0.5738176703453064
+        },
+        {
+          "chunk_id": "PDF001_0081",
+          "score": 0.572627067565918
+        },
+        {
+          "chunk_id": "PDF001_0090",
+          "score": 0.5639287233352661
+        },
+        {
+          "chunk_id": "PDF001_0094",
+          "score": 0.5560877323150635
+        },
+        {
+          "chunk_id": "PDF001_0085",
+          "score": 0.5524858832359314
+        },
+        {
+          "chunk_id": "PDF001_0083",
+          "score": 0.5516020059585571
+        },
+        {
+          "chunk_id": "PDF001_0266",
+          "score": 0.5351236462593079
+        },
+        {
+          "chunk_id": "PDF001_0088",
+          "score": 0.5287641882896423
+        },
+        {
+          "chunk_id": "PDF001_0265",
+          "score": 0.5284642577171326
+        },
+        {
+          "chunk_id": "PDF001_0082",
+          "score": 0.527574360370636
+        },
+        {
+          "chunk_id": "WEB010_0002",
+          "score": 0.5247113108634949
+        },
+        {
+          "chunk_id": "PDF001_0031",
+          "score": 0.52294921875
+        },
+        {
+          "chunk_id": "PDF001_0008",
+          "score": 0.521926760673523
+        },
+        {
+          "chunk_id": "PDF008_0081",
+          "score": 0.5210469961166382
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF001_0093",
+          "score": 37.70458
+        },
+        {
+          "chunk_id": "PDF008_0074",
+          "score": 35.609604
+        },
+        {
+          "chunk_id": "PDF001_0005",
+          "score": 33.9856
+        },
+        {
+          "chunk_id": "PDF008_0008",
+          "score": 32.34065
+        },
+        {
+          "chunk_id": "PDF001_0090",
+          "score": 32.237015
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0089",
+        "PDF001_0077",
+        "PDF001_0093",
+        "PDF001_0076",
+        "PDF001_0087",
+        "PDF001_0080",
+        "PDF001_0074",
+        "PDF001_0081",
+        "PDF001_0090",
+        "PDF001_0094",
+        "PDF001_0085",
+        "PDF001_0083",
+        "PDF001_0266",
+        "PDF001_0088",
+        "PDF001_0265",
+        "PDF008_0074",
+        "PDF001_0005",
+        "PDF008_0008",
+        "PDF001_0082",
+        "WEB010_0002"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0089",
+        "PDF001_0093",
+        "PDF001_0087",
+        "PDF001_0076",
+        "PDF001_0081"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0089",
+        "PDF001_0093",
+        "PDF001_0087",
+        "PDF001_0076",
+        "PDF001_0081"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "NOT_024",
+      "question_en": "I thought benefits were added automatically after getting a National Happiness Card, but each program has its own application and documents. Where can I check which benefits I qualify for?",
+      "translated_ko": "저는 국민행복카드를 받은 후 혜택이 자동으로 추가되는 것 같았지만, 각 프로그램은 자신의 신청서와 서류를 가지고 있습니다. 제가 어떤 혜택을 받을 자격이 있는지 어디서 확인할 수 있을까요?",
+      "reference_question_ko": "국민행복카드만 만들면 지원금이 자동으로 들어오는 줄 알았는데, 서비스마다 신청 방법과 서류가 다르다고 하네요. 제가 받을 수 있는 지원은 어디에서 확인하면 되나요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0115",
+        "PDF001_0116"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0118",
+          "score": 0.6931396722793579
+        },
+        {
+          "chunk_id": "PDF001_0116",
+          "score": 0.6643469333648682
+        },
+        {
+          "chunk_id": "PDF001_0125",
+          "score": 0.6368110179901123
+        },
+        {
+          "chunk_id": "PDF001_0126",
+          "score": 0.611987292766571
+        },
+        {
+          "chunk_id": "PDF001_0122",
+          "score": 0.6106255054473877
+        },
+        {
+          "chunk_id": "PDF001_0117",
+          "score": 0.6065239310264587
+        },
+        {
+          "chunk_id": "PDF001_0115",
+          "score": 0.6040738224983215
+        },
+        {
+          "chunk_id": "WEB005_0006",
+          "score": 0.5990008115768433
+        },
+        {
+          "chunk_id": "WEB002_0006",
+          "score": 0.5969122052192688
+        },
+        {
+          "chunk_id": "WEB002_0004",
+          "score": 0.5939604640007019
+        },
+        {
+          "chunk_id": "WEB005_0003",
+          "score": 0.5891850590705872
+        },
+        {
+          "chunk_id": "WEB002_0003",
+          "score": 0.5828936696052551
+        },
+        {
+          "chunk_id": "WEB005_0004",
+          "score": 0.5713315606117249
+        },
+        {
+          "chunk_id": "PDF001_0146",
+          "score": 0.5590981245040894
+        },
+        {
+          "chunk_id": "WEB002_0024",
+          "score": 0.557765007019043
+        },
+        {
+          "chunk_id": "PDF001_0145",
+          "score": 0.5567551255226135
+        },
+        {
+          "chunk_id": "PDF001_0105",
+          "score": 0.5547174215316772
+        },
+        {
+          "chunk_id": "PDF001_0119",
+          "score": 0.5541861057281494
+        },
+        {
+          "chunk_id": "WEB002_0005",
+          "score": 0.5522885322570801
+        },
+        {
+          "chunk_id": "PDF001_0008",
+          "score": 0.5506752133369446
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF001_0116",
+          "score": 44.131134
+        },
+        {
+          "chunk_id": "PDF001_0125",
+          "score": 41.447475
+        },
+        {
+          "chunk_id": "PDF008_0015",
+          "score": 38.9283
+        },
+        {
+          "chunk_id": "PDF001_0115",
+          "score": 38.585308
+        },
+        {
+          "chunk_id": "WEB002_0010",
+          "score": 37.490746
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0118",
+        "PDF001_0116",
+        "PDF001_0125",
+        "PDF001_0126",
+        "PDF001_0122",
+        "PDF001_0117",
+        "PDF001_0115",
+        "WEB005_0006",
+        "WEB002_0006",
+        "WEB002_0004",
+        "WEB005_0003",
+        "WEB002_0003",
+        "WEB005_0004",
+        "PDF001_0146",
+        "WEB002_0024",
+        "PDF008_0015",
+        "WEB002_0010",
+        "PDF001_0145",
+        "PDF001_0105",
+        "PDF001_0119"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0116",
+        "PDF001_0125",
+        "PDF001_0115",
+        "PDF001_0122",
+        "PDF001_0118"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0116",
+        "PDF001_0125",
+        "PDF001_0115",
+        "PDF001_0122",
+        "PDF001_0118"
+      ],
+      "dense_candidate_first_gold_rank": 2,
+      "nori_first_gold_rank": 1,
+      "fusion_candidate_first_gold_rank": 2,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "NOT_029",
+      "question_en": "I heard that a First Meeting Voucher can be added to the National Happiness Card after a baby is born. How much is provided, and where can I apply in person or online?",
+      "translated_ko": "아이 를 낳은 후 국가 행복 카드 에 첫 회담 엽록증 을 추가 할 수 있다는 것 을 들었습니다. 얼마나 많은 금액 을 제공 할 수 있으며, 어디서 직접 또는 온라인 으로 신청 할 수 있습니까?",
+      "reference_question_ko": "아기가 태어나면 국민행복카드로 첫만남이용권을 받을 수 있다고 들었어요. 얼마가 들어오고, 방문 신청과 온라인 신청은 각각 어디에서 하나요?",
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "첫만남이용권이 첫 회담 엽록증으로 심각하게 오역됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0122"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0122",
+          "score": 0.7099191546440125
+        },
+        {
+          "chunk_id": "PDF001_0119",
+          "score": 0.6721820831298828
+        },
+        {
+          "chunk_id": "PDF001_0116",
+          "score": 0.6691145896911621
+        },
+        {
+          "chunk_id": "PDF001_0115",
+          "score": 0.6474045515060425
+        },
+        {
+          "chunk_id": "PDF001_0118",
+          "score": 0.6435863375663757
+        },
+        {
+          "chunk_id": "PDF001_0125",
+          "score": 0.629852294921875
+        },
+        {
+          "chunk_id": "PDF001_0121",
+          "score": 0.6296756863594055
+        },
+        {
+          "chunk_id": "PDF001_0120",
+          "score": 0.6125664710998535
+        },
+        {
+          "chunk_id": "WEB005_0006",
+          "score": 0.6044868230819702
+        },
+        {
+          "chunk_id": "PDF001_0126",
+          "score": 0.5961414575576782
+        },
+        {
+          "chunk_id": "PDF001_0117",
+          "score": 0.5933274030685425
+        },
+        {
+          "chunk_id": "WEB002_0006",
+          "score": 0.5720442533493042
+        },
+        {
+          "chunk_id": "WEB002_0003",
+          "score": 0.5598511695861816
+        },
+        {
+          "chunk_id": "WEB005_0003",
+          "score": 0.5495283007621765
+        },
+        {
+          "chunk_id": "PDF001_0105",
+          "score": 0.5280458927154541
+        },
+        {
+          "chunk_id": "PDF001_0124",
+          "score": 0.5277522802352905
+        },
+        {
+          "chunk_id": "WEB002_0005",
+          "score": 0.5255951881408691
+        },
+        {
+          "chunk_id": "WEB005_0002",
+          "score": 0.5241000652313232
+        },
+        {
+          "chunk_id": "WEB002_0002",
+          "score": 0.5234752893447876
+        },
+        {
+          "chunk_id": "WEB002_0007",
+          "score": 0.5110862851142883
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "WEB005_0006",
+          "score": 39.792892
+        },
+        {
+          "chunk_id": "WEB009_0005",
+          "score": 38.78147
+        },
+        {
+          "chunk_id": "PDF001_0116",
+          "score": 38.14975
+        },
+        {
+          "chunk_id": "PDF001_0005",
+          "score": 37.122135
+        },
+        {
+          "chunk_id": "WEB002_0031",
+          "score": 37.003212
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0122",
+        "PDF001_0119",
+        "PDF001_0116",
+        "PDF001_0115",
+        "PDF001_0118",
+        "PDF001_0125",
+        "PDF001_0121",
+        "PDF001_0120",
+        "WEB005_0006",
+        "PDF001_0126",
+        "PDF001_0117",
+        "WEB002_0006",
+        "WEB002_0003",
+        "WEB005_0003",
+        "PDF001_0105",
+        "WEB009_0005",
+        "PDF001_0005",
+        "WEB002_0031",
+        "PDF001_0124",
+        "WEB002_0005"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0122",
+        "PDF001_0121",
+        "PDF001_0125",
+        "PDF001_0116",
+        "PDF001_0119"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0122",
+        "PDF001_0121",
+        "PDF001_0125",
+        "PDF001_0116",
+        "PDF001_0119"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "NOT_030",
+      "question_en": "I am choosing between a local-currency card and a regular credit card. The local card offers support worth 5% to 30% of spending, while the credit card requires a minimum spend in the previous month. What limits and conditions should I check for each?",
+      "translated_ko": "저는 지역 통화 카드와 일반 신용 카드 사이에서 선택하고 있습니다. 지역 카드에는 지출의 5%에서 30% 정도의 지원이 제공되며, 신용 카드에는 전 달의 최소한의 지출이 필요합니다. 각각의 한계와 조건에 대해 무엇을 확인해야합니까?",
+      "reference_question_ko": "지역화폐카드와 일반 신용카드 중 무엇을 쓸지 고민 중이에요. 지역화폐는 사용액의 5~30%를 지원하고, 신용카드는 지난달 실적을 채워야 혜택이 있다고 하네요. 두 카드에서 각각 어떤 한도와 조건을 확인해야 하나요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0123",
+        "PDF001_0124",
+        "WEB002_0006"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0123",
+          "score": 0.723421573638916
+        },
+        {
+          "chunk_id": "PDF001_0108",
+          "score": 0.7062731981277466
+        },
+        {
+          "chunk_id": "PDF001_0126",
+          "score": 0.7043504118919373
+        },
+        {
+          "chunk_id": "PDF001_0099",
+          "score": 0.7026268243789673
+        },
+        {
+          "chunk_id": "PDF001_0097",
+          "score": 0.6981228590011597
+        },
+        {
+          "chunk_id": "PDF001_0124",
+          "score": 0.690048336982727
+        },
+        {
+          "chunk_id": "PDF001_0100",
+          "score": 0.68515545129776
+        },
+        {
+          "chunk_id": "PDF001_0098",
+          "score": 0.6835922002792358
+        },
+        {
+          "chunk_id": "PDF001_0105",
+          "score": 0.6777749061584473
+        },
+        {
+          "chunk_id": "WEB002_0020",
+          "score": 0.6764914393424988
+        },
+        {
+          "chunk_id": "PDF001_0104",
+          "score": 0.6717574596405029
+        },
+        {
+          "chunk_id": "PDF001_0095",
+          "score": 0.670220136642456
+        },
+        {
+          "chunk_id": "PDF001_0109",
+          "score": 0.664309024810791
+        },
+        {
+          "chunk_id": "WEB002_0007",
+          "score": 0.662208080291748
+        },
+        {
+          "chunk_id": "WEB002_0003",
+          "score": 0.6592762470245361
+        },
+        {
+          "chunk_id": "WEB002_0030",
+          "score": 0.6587276458740234
+        },
+        {
+          "chunk_id": "WEB005_0003",
+          "score": 0.6579570770263672
+        },
+        {
+          "chunk_id": "PDF001_0107",
+          "score": 0.6563906669616699
+        },
+        {
+          "chunk_id": "WEB002_0010",
+          "score": 0.6510815620422363
+        },
+        {
+          "chunk_id": "WEB002_0002",
+          "score": 0.6502247452735901
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "WEB002_0006",
+          "score": 67.61717
+        },
+        {
+          "chunk_id": "PDF001_0126",
+          "score": 60.159943
+        },
+        {
+          "chunk_id": "WEB002_0001",
+          "score": 57.417564
+        },
+        {
+          "chunk_id": "WEB002_0002",
+          "score": 56.482334
+        },
+        {
+          "chunk_id": "WEB005_0002",
+          "score": 56.0314
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0123",
+        "PDF001_0108",
+        "PDF001_0126",
+        "PDF001_0099",
+        "PDF001_0097",
+        "PDF001_0124",
+        "PDF001_0100",
+        "PDF001_0098",
+        "PDF001_0105",
+        "WEB002_0020",
+        "PDF001_0104",
+        "PDF001_0095",
+        "PDF001_0109",
+        "WEB002_0007",
+        "WEB002_0003",
+        "WEB002_0006",
+        "WEB002_0001",
+        "WEB002_0002",
+        "WEB005_0002",
+        "WEB002_0030"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0123",
+        "PDF001_0126",
+        "PDF001_0124",
+        "PDF001_0108",
+        "PDF001_0109"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0123",
+        "PDF001_0126",
+        "PDF001_0124",
+        "PDF001_0108",
+        "PDF001_0109"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": 1,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "FRD_003",
+      "question_en": "Someone called saying I could get a tax refund and told me to stay on the line while I went to an ATM. I am at the ATM now. Should I follow their instructions?",
+      "translated_ko": "누군가 전화해서 세금 환불을 받을 수 있다고 했어요. ATM에 갔을 때 라인을 유지하라고 했어요. 지금 ATM에 있어요. 그들의 지시를 따라야 할까요?",
+      "reference_question_ko": "세금을 돌려받게 해 주겠다며 통화를 끊지 말고 ATM으로 가라고 했어요. 지금 ATM 앞인데, 상대가 시키는 대로 조작해도 될까요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0239"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0239",
+          "score": 0.6683509945869446
+        },
+        {
+          "chunk_id": "PDF001_0033",
+          "score": 0.6159906387329102
+        },
+        {
+          "chunk_id": "PDF008_0016",
+          "score": 0.6067818403244019
+        },
+        {
+          "chunk_id": "PDF001_0243",
+          "score": 0.599028468132019
+        },
+        {
+          "chunk_id": "PDF008_0015",
+          "score": 0.5981925129890442
+        },
+        {
+          "chunk_id": "PDF001_0031",
+          "score": 0.5975907444953918
+        },
+        {
+          "chunk_id": "PDF001_0269",
+          "score": 0.5971111059188843
+        },
+        {
+          "chunk_id": "PDF001_0029",
+          "score": 0.5933347344398499
+        },
+        {
+          "chunk_id": "PDF001_0069",
+          "score": 0.591245710849762
+        },
+        {
+          "chunk_id": "PDF001_0270",
+          "score": 0.5872887372970581
+        },
+        {
+          "chunk_id": "PDF001_0055",
+          "score": 0.5841708183288574
+        },
+        {
+          "chunk_id": "PDF001_0241",
+          "score": 0.5837545394897461
+        },
+        {
+          "chunk_id": "PDF001_0233",
+          "score": 0.577631413936615
+        },
+        {
+          "chunk_id": "PDF001_0035",
+          "score": 0.5748931169509888
+        },
+        {
+          "chunk_id": "PDF001_0257",
+          "score": 0.5677502155303955
+        },
+        {
+          "chunk_id": "PDF001_0244",
+          "score": 0.5668983459472656
+        },
+        {
+          "chunk_id": "PDF001_0034",
+          "score": 0.5657528042793274
+        },
+        {
+          "chunk_id": "PDF001_0028",
+          "score": 0.5645933151245117
+        },
+        {
+          "chunk_id": "PDF001_0070",
+          "score": 0.564242959022522
+        },
+        {
+          "chunk_id": "PDF006_0002",
+          "score": 0.5625234842300415
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0016",
+          "score": 47.920616
+        },
+        {
+          "chunk_id": "PDF008_0013",
+          "score": 41.01582
+        },
+        {
+          "chunk_id": "PDF008_0038",
+          "score": 39.11278
+        },
+        {
+          "chunk_id": "PDF008_0015",
+          "score": 38.999004
+        },
+        {
+          "chunk_id": "PDF008_0008",
+          "score": 37.943398
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0239",
+        "PDF001_0033",
+        "PDF008_0016",
+        "PDF001_0243",
+        "PDF008_0015",
+        "PDF001_0031",
+        "PDF001_0269",
+        "PDF001_0029",
+        "PDF001_0069",
+        "PDF001_0270",
+        "PDF001_0055",
+        "PDF001_0241",
+        "PDF001_0233",
+        "PDF001_0035",
+        "PDF001_0257",
+        "PDF008_0013",
+        "PDF008_0038",
+        "PDF008_0008",
+        "PDF001_0244",
+        "PDF001_0034"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0239",
+        "PDF001_0243",
+        "PDF006_0002",
+        "PDF001_0233",
+        "PDF008_0016"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0239",
+        "PDF001_0243",
+        "PDF001_0233",
+        "PDF008_0016",
+        "PDF001_0029"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "FRD_004",
+      "question_en": "A caller says they have my child, plays what sounds like my child's voice, and demands money immediately. What should I verify before sending anything?",
+      "translated_ko": "전화가 내 아이를 가지고 있다고 하고, 내 아이의 목소리처럼 들리는 소리를 들려주고, 즉시 돈을 요구합니다.",
+      "reference_question_ko": "아이를 데리고 있다며 전화로 아이 목소리까지 들려주고 빨리 돈을 보내라고 해요. 송금하기 전에 무엇부터 확인해야 하나요?",
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "송금 전 확인 방법이라는 핵심 질문이 누락됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0240"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0240",
+          "score": 0.7054874897003174
+        },
+        {
+          "chunk_id": "PDF001_0246",
+          "score": 0.6595815420150757
+        },
+        {
+          "chunk_id": "PDF008_0014",
+          "score": 0.6456202864646912
+        },
+        {
+          "chunk_id": "PDF001_0247",
+          "score": 0.6452940702438354
+        },
+        {
+          "chunk_id": "PDF008_0010",
+          "score": 0.6413809061050415
+        },
+        {
+          "chunk_id": "PDF008_0018",
+          "score": 0.628475546836853
+        },
+        {
+          "chunk_id": "PDF001_0268",
+          "score": 0.6254185438156128
+        },
+        {
+          "chunk_id": "PDF008_0020",
+          "score": 0.6217964887619019
+        },
+        {
+          "chunk_id": "PDF008_0013",
+          "score": 0.6212834119796753
+        },
+        {
+          "chunk_id": "PDF001_0244",
+          "score": 0.6204918622970581
+        },
+        {
+          "chunk_id": "PDF001_0267",
+          "score": 0.6175276637077332
+        },
+        {
+          "chunk_id": "PDF001_0239",
+          "score": 0.6119400858879089
+        },
+        {
+          "chunk_id": "PDF008_0021",
+          "score": 0.6080670356750488
+        },
+        {
+          "chunk_id": "PDF008_0012",
+          "score": 0.6078289151191711
+        },
+        {
+          "chunk_id": "PDF001_0269",
+          "score": 0.6076744794845581
+        },
+        {
+          "chunk_id": "PDF008_0017",
+          "score": 0.6003437042236328
+        },
+        {
+          "chunk_id": "PDF008_0011",
+          "score": 0.5967638492584229
+        },
+        {
+          "chunk_id": "PDF001_0235",
+          "score": 0.5950064659118652
+        },
+        {
+          "chunk_id": "PDF008_0077",
+          "score": 0.5929598212242126
+        },
+        {
+          "chunk_id": "PDF001_0238",
+          "score": 0.5919158458709717
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0018",
+          "score": 49.850124
+        },
+        {
+          "chunk_id": "PDF008_0013",
+          "score": 41.533127
+        },
+        {
+          "chunk_id": "PDF001_0242",
+          "score": 39.164814
+        },
+        {
+          "chunk_id": "PDF008_0021",
+          "score": 37.06966
+        },
+        {
+          "chunk_id": "PDF008_0011",
+          "score": 35.331306
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0240",
+        "PDF001_0246",
+        "PDF008_0014",
+        "PDF001_0247",
+        "PDF008_0010",
+        "PDF008_0018",
+        "PDF001_0268",
+        "PDF008_0020",
+        "PDF008_0013",
+        "PDF001_0244",
+        "PDF001_0267",
+        "PDF001_0239",
+        "PDF008_0021",
+        "PDF008_0012",
+        "PDF001_0269",
+        "PDF001_0242",
+        "PDF008_0011",
+        "PDF008_0017",
+        "PDF001_0235",
+        "PDF008_0077"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0240",
+        "PDF008_0018",
+        "PDF001_0247",
+        "PDF001_0239",
+        "PDF008_0014"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0240",
+        "PDF008_0018",
+        "PDF001_0247",
+        "PDF001_0239",
+        "PDF008_0014"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "FRD_006",
+      "question_en": "I trusted a suspicious call, sent money, and gave out personal information. Who should I contact now, and what should I ask them to do to stop the transfer?",
+      "translated_ko": "저는 의심스러운 전화를 믿었고, 돈을 보내었고, 개인 정보를 배포했습니다. 이제 누구와 연락해야 하며, 이송을 막기 위해 무엇을 해야 할까요?",
+      "reference_question_ko": "수상한 전화를 믿고 돈을 보낸 데다 개인정보도 알려 줬어요. 지금 어디에 연락해야 하고, 보낸 돈이 빠져나가지 않게 어떤 조치를 요청해야 하나요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "WEB008_0001"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF008_0010",
+          "score": 0.6991724967956543
+        },
+        {
+          "chunk_id": "PDF001_0270",
+          "score": 0.6855939626693726
+        },
+        {
+          "chunk_id": "PDF008_0017",
+          "score": 0.6762553453445435
+        },
+        {
+          "chunk_id": "WEB008_0001",
+          "score": 0.6735044121742249
+        },
+        {
+          "chunk_id": "PDF001_0241",
+          "score": 0.6716905832290649
+        },
+        {
+          "chunk_id": "PDF008_0019",
+          "score": 0.6716392040252686
+        },
+        {
+          "chunk_id": "PDF008_0051",
+          "score": 0.6665063500404358
+        },
+        {
+          "chunk_id": "PDF001_0240",
+          "score": 0.6605385541915894
+        },
+        {
+          "chunk_id": "PDF001_0247",
+          "score": 0.6564943790435791
+        },
+        {
+          "chunk_id": "PDF008_0018",
+          "score": 0.6549510955810547
+        },
+        {
+          "chunk_id": "PDF001_0257",
+          "score": 0.6533247232437134
+        },
+        {
+          "chunk_id": "PDF008_0087",
+          "score": 0.6506157517433167
+        },
+        {
+          "chunk_id": "PDF008_0030",
+          "score": 0.6503200531005859
+        },
+        {
+          "chunk_id": "PDF008_0028",
+          "score": 0.6476613283157349
+        },
+        {
+          "chunk_id": "PDF001_0246",
+          "score": 0.6468945741653442
+        },
+        {
+          "chunk_id": "PDF001_0271",
+          "score": 0.6445108652114868
+        },
+        {
+          "chunk_id": "PDF001_0233",
+          "score": 0.6424515843391418
+        },
+        {
+          "chunk_id": "PDF008_0022",
+          "score": 0.6412922739982605
+        },
+        {
+          "chunk_id": "PDF008_0088",
+          "score": 0.6378235816955566
+        },
+        {
+          "chunk_id": "PDF001_0055",
+          "score": 0.636817455291748
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0019",
+          "score": 50.14502
+        },
+        {
+          "chunk_id": "PDF008_0090",
+          "score": 45.07399
+        },
+        {
+          "chunk_id": "PDF008_0048",
+          "score": 42.306953
+        },
+        {
+          "chunk_id": "PDF008_0089",
+          "score": 40.540436
+        },
+        {
+          "chunk_id": "PDF008_0013",
+          "score": 40.285065
+        }
+      ],
+      "fused_top20": [
+        "PDF008_0010",
+        "PDF001_0270",
+        "PDF008_0017",
+        "WEB008_0001",
+        "PDF001_0241",
+        "PDF008_0019",
+        "PDF008_0051",
+        "PDF001_0240",
+        "PDF001_0247",
+        "PDF008_0018",
+        "PDF001_0257",
+        "PDF008_0087",
+        "PDF008_0030",
+        "PDF008_0028",
+        "PDF001_0246",
+        "PDF008_0090",
+        "PDF008_0048",
+        "PDF008_0089",
+        "PDF008_0013",
+        "PDF001_0271"
+      ],
+      "dense_reranked_top5": [
+        "PDF008_0019",
+        "PDF001_0240",
+        "PDF001_0270",
+        "PDF008_0010",
+        "PDF008_0017"
+      ],
+      "fusion_reranked_top5": [
+        "PDF008_0019",
+        "PDF001_0240",
+        "PDF001_0270",
+        "PDF008_0010",
+        "PDF008_0017"
+      ],
+      "dense_candidate_first_gold_rank": 4,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 4,
+      "dense_reranker_first_gold_rank": null,
+      "fusion_reranker_first_gold_rank": null
+    },
+    {
+      "question_id": "FRD_009",
+      "question_en": "I installed an app from a text offering a low-interest loan. Now they want an ID photo and an upfront fee. What are the warning signs, what should I stop doing, and what should I do with my phone?",
+      "translated_ko": "저자금 대출을 제공하는 문자 앱을 설치했습니다. 이제 주민등록 사진과 사전 수수료가 필요합니다. 경고 신호는 무엇이며, 무엇을 그만 두어야 하며, 휴대폰은 어떻게 해야 할까요?",
+      "reference_question_ko": "이자가 싼 대출을 해 준다는 문자 링크를 눌러 앱을 설치했어요. 이제 신분증 사진과 수수료까지 보내라고 합니다. 뭐가 수상한 건지, 지금 당장 무엇을 멈추고 휴대폰은 어떻게 해야 하는지 알고 싶어요.",
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "신분증 사진이 주민등록 사진으로 좁혀짐"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0247",
+        "PDF001_0248",
+        "WEB008_0001"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0248",
+          "score": 0.6717827320098877
+        },
+        {
+          "chunk_id": "PDF001_0260",
+          "score": 0.6523635387420654
+        },
+        {
+          "chunk_id": "PDF001_0262",
+          "score": 0.6463046073913574
+        },
+        {
+          "chunk_id": "PDF001_0246",
+          "score": 0.6449127793312073
+        },
+        {
+          "chunk_id": "PDF001_0255",
+          "score": 0.6325445771217346
+        },
+        {
+          "chunk_id": "PDF008_0027",
+          "score": 0.6297616362571716
+        },
+        {
+          "chunk_id": "PDF001_0046",
+          "score": 0.6269381642341614
+        },
+        {
+          "chunk_id": "PDF001_0261",
+          "score": 0.6244974136352539
+        },
+        {
+          "chunk_id": "PDF001_0247",
+          "score": 0.6243219375610352
+        },
+        {
+          "chunk_id": "PDF008_0088",
+          "score": 0.6241752505302429
+        },
+        {
+          "chunk_id": "PDF008_0065",
+          "score": 0.6239351630210876
+        },
+        {
+          "chunk_id": "PDF008_0068",
+          "score": 0.6226470470428467
+        },
+        {
+          "chunk_id": "PDF008_0066",
+          "score": 0.6167516112327576
+        },
+        {
+          "chunk_id": "PDF002_0003",
+          "score": 0.6130982637405396
+        },
+        {
+          "chunk_id": "PDF001_0251",
+          "score": 0.6123799085617065
+        },
+        {
+          "chunk_id": "PDF001_0256",
+          "score": 0.6097649335861206
+        },
+        {
+          "chunk_id": "PDF008_0048",
+          "score": 0.6089353561401367
+        },
+        {
+          "chunk_id": "PDF001_0233",
+          "score": 0.6082835793495178
+        },
+        {
+          "chunk_id": "PDF008_0067",
+          "score": 0.6076923608779907
+        },
+        {
+          "chunk_id": "PDF008_0069",
+          "score": 0.6058094501495361
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF009_0023",
+          "score": 45.81479
+        },
+        {
+          "chunk_id": "WEB002_0016",
+          "score": 39.58417
+        },
+        {
+          "chunk_id": "PDF008_0026",
+          "score": 39.548134
+        },
+        {
+          "chunk_id": "PDF009_0024",
+          "score": 37.604713
+        },
+        {
+          "chunk_id": "PDF008_0008",
+          "score": 36.721024
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0248",
+        "PDF001_0260",
+        "PDF001_0262",
+        "PDF001_0246",
+        "PDF001_0255",
+        "PDF008_0027",
+        "PDF001_0046",
+        "PDF001_0261",
+        "PDF001_0247",
+        "PDF008_0088",
+        "PDF008_0065",
+        "PDF008_0068",
+        "PDF008_0066",
+        "PDF002_0003",
+        "PDF001_0251",
+        "PDF009_0023",
+        "WEB002_0016",
+        "PDF008_0026",
+        "PDF009_0024",
+        "PDF008_0008"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0248",
+        "PDF001_0260",
+        "PDF001_0262",
+        "PDF001_0247",
+        "PDF001_0256"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0248",
+        "PDF001_0260",
+        "PDF001_0262",
+        "PDF001_0247",
+        "PDF001_0246"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "FRD_015",
+      "question_en": "My phone started acting strangely after I installed an app from a delivery-text link. Should I turn it off first, and is deleting the app enough or do I need to reset the phone?",
+      "translated_ko": "내 전화는 배달 텍스트 링크에서 앱을 설치한 후 이상하게 동작하기 시작했습니다. 먼저 그것을 끄고 앱을 삭제하는 것이 충분합니까? 아니면 전화를 재설정해야합니까?",
+      "reference_question_ko": "택배 문자의 링크를 눌러 앱을 설치한 뒤 휴대폰이 이상해졌어요. 일단 전원을 꺼야 하나요? 앱만 지우면 되는지, 휴대폰을 초기화해야 하는지도 모르겠어요.",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "WEB008_0001"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0256",
+          "score": 0.6474924087524414
+        },
+        {
+          "chunk_id": "PDF009_0028",
+          "score": 0.6174219250679016
+        },
+        {
+          "chunk_id": "PDF008_0026",
+          "score": 0.6065657138824463
+        },
+        {
+          "chunk_id": "PDF009_0022",
+          "score": 0.6046483516693115
+        },
+        {
+          "chunk_id": "PDF009_0024",
+          "score": 0.596537172794342
+        },
+        {
+          "chunk_id": "PDF001_0255",
+          "score": 0.5930078625679016
+        },
+        {
+          "chunk_id": "PDF009_0008",
+          "score": 0.5876866579055786
+        },
+        {
+          "chunk_id": "PDF008_0028",
+          "score": 0.5862259268760681
+        },
+        {
+          "chunk_id": "PDF009_0030",
+          "score": 0.5859042406082153
+        },
+        {
+          "chunk_id": "PDF009_0020",
+          "score": 0.5857320427894592
+        },
+        {
+          "chunk_id": "PDF008_0031",
+          "score": 0.5803667902946472
+        },
+        {
+          "chunk_id": "PDF008_0025",
+          "score": 0.5788678526878357
+        },
+        {
+          "chunk_id": "WEB008_0001",
+          "score": 0.5788388848304749
+        },
+        {
+          "chunk_id": "PDF002_0003",
+          "score": 0.5741678476333618
+        },
+        {
+          "chunk_id": "PDF009_0018",
+          "score": 0.5735398530960083
+        },
+        {
+          "chunk_id": "PDF009_0023",
+          "score": 0.5723382234573364
+        },
+        {
+          "chunk_id": "PDF009_0029",
+          "score": 0.5718909502029419
+        },
+        {
+          "chunk_id": "PDF008_0032",
+          "score": 0.5690839290618896
+        },
+        {
+          "chunk_id": "PDF009_0012",
+          "score": 0.5688109397888184
+        },
+        {
+          "chunk_id": "PDF009_0021",
+          "score": 0.5673428773880005
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0041",
+          "score": 41.49921
+        },
+        {
+          "chunk_id": "PDF009_0028",
+          "score": 39.517113
+        },
+        {
+          "chunk_id": "PDF008_0013",
+          "score": 38.83935
+        },
+        {
+          "chunk_id": "PDF009_0031",
+          "score": 38.286747
+        },
+        {
+          "chunk_id": "PDF008_0020",
+          "score": 37.537262
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0256",
+        "PDF009_0028",
+        "PDF008_0026",
+        "PDF009_0022",
+        "PDF009_0024",
+        "PDF001_0255",
+        "PDF009_0008",
+        "PDF008_0028",
+        "PDF009_0030",
+        "PDF009_0020",
+        "PDF008_0031",
+        "PDF008_0025",
+        "WEB008_0001",
+        "PDF002_0003",
+        "PDF009_0018",
+        "PDF008_0041",
+        "PDF008_0013",
+        "PDF009_0031",
+        "PDF008_0020",
+        "PDF009_0023"
+      ],
+      "dense_reranked_top5": [
+        "PDF008_0026",
+        "PDF008_0031",
+        "PDF009_0028",
+        "PDF008_0032",
+        "PDF008_0028"
+      ],
+      "fusion_reranked_top5": [
+        "PDF008_0026",
+        "PDF008_0031",
+        "PDF009_0028",
+        "PDF008_0028",
+        "PDF001_0256"
+      ],
+      "dense_candidate_first_gold_rank": 13,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 13,
+      "dense_reranker_first_gold_rank": null,
+      "fusion_reranker_first_gold_rank": null
+    },
+    {
+      "question_id": "FRD_016",
+      "question_en": "I never use mobile carrier billing. Can I block it for free to prevent charges from malicious text links, and where do I set that up?",
+      "translated_ko": "저는 모바일 통신사 결제를 사용하지 않습니다. 악성 문자 링크에 대한 수수료를 막기 위해 무료로 차단할 수 있을까요?",
+      "reference_question_ko": "휴대폰 소액결제를 전혀 쓰지 않아요. 문자 링크 때문에 결제되는 일을 막으려면 무료로 차단할 수 있나요? 어디에서 설정하면 되나요?",
+      "translation_risk": "MEDIUM",
+      "translation_notes": [
+        "차단 설정 위치 질문이 누락됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF009_0026"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF009_0026",
+          "score": 0.6092941761016846
+        },
+        {
+          "chunk_id": "PDF001_0255",
+          "score": 0.5801905393600464
+        },
+        {
+          "chunk_id": "PDF009_0018",
+          "score": 0.5759389400482178
+        },
+        {
+          "chunk_id": "PDF009_0025",
+          "score": 0.5718539357185364
+        },
+        {
+          "chunk_id": "PDF009_0030",
+          "score": 0.5616389513015747
+        },
+        {
+          "chunk_id": "PDF001_0248",
+          "score": 0.558985710144043
+        },
+        {
+          "chunk_id": "PDF008_0088",
+          "score": 0.5555007457733154
+        },
+        {
+          "chunk_id": "PDF001_0256",
+          "score": 0.5525980591773987
+        },
+        {
+          "chunk_id": "PDF001_0063",
+          "score": 0.5484396815299988
+        },
+        {
+          "chunk_id": "WEB008_0002",
+          "score": 0.5476173758506775
+        },
+        {
+          "chunk_id": "PDF008_0028",
+          "score": 0.5471204519271851
+        },
+        {
+          "chunk_id": "PDF002_0003",
+          "score": 0.543786883354187
+        },
+        {
+          "chunk_id": "PDF001_0254",
+          "score": 0.5416952967643738
+        },
+        {
+          "chunk_id": "PDF001_0241",
+          "score": 0.5399914979934692
+        },
+        {
+          "chunk_id": "PDF001_0046",
+          "score": 0.5394546389579773
+        },
+        {
+          "chunk_id": "WEB008_0001",
+          "score": 0.5298200845718384
+        },
+        {
+          "chunk_id": "PDF008_0031",
+          "score": 0.5259944200515747
+        },
+        {
+          "chunk_id": "PDF008_0025",
+          "score": 0.5210550427436829
+        },
+        {
+          "chunk_id": "WEB008_0003",
+          "score": 0.520219087600708
+        },
+        {
+          "chunk_id": "PDF008_0032",
+          "score": 0.5186455249786377
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF009_0026",
+          "score": 51.505642
+        },
+        {
+          "chunk_id": "PDF009_0025",
+          "score": 41.76743
+        },
+        {
+          "chunk_id": "PDF009_0014",
+          "score": 38.860294
+        },
+        {
+          "chunk_id": "WEB002_0010",
+          "score": 35.199776
+        },
+        {
+          "chunk_id": "WEB002_0017",
+          "score": 34.65476
+        }
+      ],
+      "fused_top20": [
+        "PDF009_0026",
+        "PDF001_0255",
+        "PDF009_0018",
+        "PDF009_0025",
+        "PDF009_0030",
+        "PDF001_0248",
+        "PDF008_0088",
+        "PDF001_0256",
+        "PDF001_0063",
+        "WEB008_0002",
+        "PDF008_0028",
+        "PDF002_0003",
+        "PDF001_0254",
+        "PDF001_0241",
+        "PDF001_0046",
+        "PDF009_0014",
+        "WEB002_0010",
+        "WEB002_0017",
+        "WEB008_0001",
+        "PDF008_0031"
+      ],
+      "dense_reranked_top5": [
+        "PDF009_0026",
+        "PDF001_0256",
+        "PDF009_0025",
+        "PDF001_0254",
+        "PDF008_0032"
+      ],
+      "fusion_reranked_top5": [
+        "PDF009_0026",
+        "PDF001_0256",
+        "PDF009_0025",
+        "PDF001_0254",
+        "PDF008_0028"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": 1,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "FRD_020",
+      "question_en": "I installed an app from a text link and then used my banking app. Besides deleting the suspicious app, what else should I do to protect my financial information and my contacts?",
+      "translated_ko": "저는 문자 링크에서 앱을 설치하고 은행 앱을 사용했습니다. 의심스러운 앱을 삭제하는 것 외에도 제 금융 정보와 연락처를 보호하기 위해 어떻게 해야 할까요?",
+      "reference_question_ko": "문자 링크를 통해 앱을 설치한 뒤 평소처럼 은행 앱도 썼어요. 수상한 앱을 지우는 것 말고, 금융정보와 연락처에 있는 사람들을 보호하려면 또 무엇을 해야 하나요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF009_0031"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF008_0027",
+          "score": 0.7087084054946899
+        },
+        {
+          "chunk_id": "PDF008_0041",
+          "score": 0.692518949508667
+        },
+        {
+          "chunk_id": "PDF001_0256",
+          "score": 0.6898985505104065
+        },
+        {
+          "chunk_id": "PDF009_0031",
+          "score": 0.688736081123352
+        },
+        {
+          "chunk_id": "PDF008_0031",
+          "score": 0.6883138418197632
+        },
+        {
+          "chunk_id": "PDF008_0028",
+          "score": 0.6830304861068726
+        },
+        {
+          "chunk_id": "WEB008_0001",
+          "score": 0.680203914642334
+        },
+        {
+          "chunk_id": "PDF008_0032",
+          "score": 0.6691647171974182
+        },
+        {
+          "chunk_id": "PDF001_0046",
+          "score": 0.6687003374099731
+        },
+        {
+          "chunk_id": "PDF009_0028",
+          "score": 0.6627774238586426
+        },
+        {
+          "chunk_id": "PDF008_0088",
+          "score": 0.6596096754074097
+        },
+        {
+          "chunk_id": "PDF008_0097",
+          "score": 0.6580546498298645
+        },
+        {
+          "chunk_id": "PDF001_0252",
+          "score": 0.6576293706893921
+        },
+        {
+          "chunk_id": "PDF008_0051",
+          "score": 0.650678277015686
+        },
+        {
+          "chunk_id": "PDF001_0271",
+          "score": 0.6492173671722412
+        },
+        {
+          "chunk_id": "PDF009_0022",
+          "score": 0.6487780213356018
+        },
+        {
+          "chunk_id": "PDF009_0012",
+          "score": 0.6480193138122559
+        },
+        {
+          "chunk_id": "PDF001_0255",
+          "score": 0.6469624638557434
+        },
+        {
+          "chunk_id": "PDF008_0087",
+          "score": 0.645818829536438
+        },
+        {
+          "chunk_id": "PDF002_0003",
+          "score": 0.6449651718139648
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF009_0028",
+          "score": 52.487663
+        },
+        {
+          "chunk_id": "PDF008_0090",
+          "score": 50.01637
+        },
+        {
+          "chunk_id": "PDF008_0028",
+          "score": 47.9487
+        },
+        {
+          "chunk_id": "PDF008_0032",
+          "score": 45.979248
+        },
+        {
+          "chunk_id": "PDF009_0023",
+          "score": 45.193443
+        }
+      ],
+      "fused_top20": [
+        "PDF008_0027",
+        "PDF008_0041",
+        "PDF001_0256",
+        "PDF009_0031",
+        "PDF008_0031",
+        "PDF008_0028",
+        "WEB008_0001",
+        "PDF008_0032",
+        "PDF001_0046",
+        "PDF009_0028",
+        "PDF008_0088",
+        "PDF008_0097",
+        "PDF001_0252",
+        "PDF008_0051",
+        "PDF001_0271",
+        "PDF008_0090",
+        "PDF009_0023",
+        "PDF009_0022",
+        "PDF009_0012",
+        "PDF001_0255"
+      ],
+      "dense_reranked_top5": [
+        "PDF008_0032",
+        "PDF008_0031",
+        "PDF009_0031",
+        "PDF008_0041",
+        "PDF008_0028"
+      ],
+      "fusion_reranked_top5": [
+        "PDF008_0032",
+        "PDF008_0031",
+        "PDF009_0031",
+        "PDF008_0041",
+        "PDF008_0028"
+      ],
+      "dense_candidate_first_gold_rank": 4,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 4,
+      "dense_reranker_first_gold_rank": 3,
+      "fusion_reranker_first_gold_rank": 3
+    },
+    {
+      "question_id": "FRD_021",
+      "question_en": "After sending money, I found three numbers for help: 1394, 112, and 1332. What is each number for, and which one should I call?",
+      "translated_ko": "돈 을 보낸 후, 도움 을 요청 하는 세 개의 번호 를 찾았습니다. 1394, 112, 1332. 각 번호 는 무엇 을 의미 하며, 어느 번호 를 호출 해야 합니까?",
+      "reference_question_ko": "돈을 보낸 뒤 신고할 곳을 찾았더니 1394, 112, 1332가 모두 나와요. 어디부터 전화해야 할지 모르겠는데, 각 번호는 어떤 경우에 쓰나요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF008_0095"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0257",
+          "score": 0.6205947399139404
+        },
+        {
+          "chunk_id": "PDF001_0258",
+          "score": 0.5857731103897095
+        },
+        {
+          "chunk_id": "PDF001_0302",
+          "score": 0.5832741260528564
+        },
+        {
+          "chunk_id": "PDF008_0030",
+          "score": 0.5788273215293884
+        },
+        {
+          "chunk_id": "PDF001_0241",
+          "score": 0.5765286087989807
+        },
+        {
+          "chunk_id": "PDF008_0019",
+          "score": 0.5739091634750366
+        },
+        {
+          "chunk_id": "PDF001_0247",
+          "score": 0.572492241859436
+        },
+        {
+          "chunk_id": "PDF008_0010",
+          "score": 0.5698885917663574
+        },
+        {
+          "chunk_id": "PDF001_0303",
+          "score": 0.5690145492553711
+        },
+        {
+          "chunk_id": "PDF001_0259",
+          "score": 0.5681173801422119
+        },
+        {
+          "chunk_id": "PDF008_0070",
+          "score": 0.5602803826332092
+        },
+        {
+          "chunk_id": "PDF001_0046",
+          "score": 0.5577013492584229
+        },
+        {
+          "chunk_id": "WEB008_0003",
+          "score": 0.5554400682449341
+        },
+        {
+          "chunk_id": "PDF006_0002",
+          "score": 0.5548068284988403
+        },
+        {
+          "chunk_id": "PDF008_0095",
+          "score": 0.554568886756897
+        },
+        {
+          "chunk_id": "PDF008_0096",
+          "score": 0.5544010996818542
+        },
+        {
+          "chunk_id": "PDF007_0002",
+          "score": 0.5519140362739563
+        },
+        {
+          "chunk_id": "WEB003_0003",
+          "score": 0.5513614416122437
+        },
+        {
+          "chunk_id": "PDF008_0040",
+          "score": 0.550426721572876
+        },
+        {
+          "chunk_id": "PDF001_0056",
+          "score": 0.5431904196739197
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0019",
+          "score": 41.372246
+        },
+        {
+          "chunk_id": "PDF008_0070",
+          "score": 34.54261
+        },
+        {
+          "chunk_id": "PDF008_0040",
+          "score": 33.90773
+        },
+        {
+          "chunk_id": "PDF008_0030",
+          "score": 31.311848
+        },
+        {
+          "chunk_id": "PDF008_0060",
+          "score": 26.717155
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0257",
+        "PDF001_0258",
+        "PDF001_0302",
+        "PDF008_0030",
+        "PDF001_0241",
+        "PDF008_0019",
+        "PDF001_0247",
+        "PDF008_0010",
+        "PDF001_0303",
+        "PDF001_0259",
+        "PDF008_0070",
+        "PDF001_0046",
+        "WEB008_0003",
+        "PDF006_0002",
+        "PDF008_0095",
+        "PDF008_0040",
+        "PDF008_0060",
+        "PDF008_0096",
+        "PDF007_0002",
+        "WEB003_0003"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0257",
+        "PDF008_0030",
+        "PDF008_0019",
+        "PDF008_0095",
+        "PDF008_0070"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0257",
+        "PDF008_0030",
+        "PDF008_0019",
+        "PDF008_0095",
+        "PDF008_0070"
+      ],
+      "dense_candidate_first_gold_rank": 15,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 15,
+      "dense_reranker_first_gold_rank": 4,
+      "fusion_reranker_first_gold_rank": 4
+    },
+    {
+      "question_id": "FRD_025",
+      "question_en": "Money I do not recognize appeared in my account, and a stranger says it was a mistake and wants it back in cash. Should I withdraw it and return it directly?",
+      "translated_ko": "내가 알아보지 못한 돈이 내 계좌에 나타났고, 낯선 사람이 실수였다고 말해서 현금으로 돌려주고 싶으니까요.",
+      "reference_question_ko": "모르는 돈이 통장에 들어온 뒤 낯선 사람이 실수로 보냈다며 현금으로 돌려 달라고 해요. 제가 바로 찾아서 줘도 되나요?",
+      "translation_risk": "HIGH",
+      "translation_notes": [
+        "현금으로 바로 돌려줘도 되는지라는 핵심 판단 질문이 누락됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0270"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0270",
+          "score": 0.6908881068229675
+        },
+        {
+          "chunk_id": "PDF001_0269",
+          "score": 0.6453551650047302
+        },
+        {
+          "chunk_id": "PDF001_0052",
+          "score": 0.631161093711853
+        },
+        {
+          "chunk_id": "PDF001_0243",
+          "score": 0.6306783556938171
+        },
+        {
+          "chunk_id": "PDF008_0010",
+          "score": 0.6227905750274658
+        },
+        {
+          "chunk_id": "PDF001_0031",
+          "score": 0.6175256967544556
+        },
+        {
+          "chunk_id": "PDF001_0281",
+          "score": 0.607922375202179
+        },
+        {
+          "chunk_id": "PDF001_0184",
+          "score": 0.6078075170516968
+        },
+        {
+          "chunk_id": "PDF001_0014",
+          "score": 0.6026492118835449
+        },
+        {
+          "chunk_id": "PDF001_0032",
+          "score": 0.6005390882492065
+        },
+        {
+          "chunk_id": "PDF001_0239",
+          "score": 0.6000360250473022
+        },
+        {
+          "chunk_id": "PDF001_0025",
+          "score": 0.5976229310035706
+        },
+        {
+          "chunk_id": "PDF001_0030",
+          "score": 0.5968844890594482
+        },
+        {
+          "chunk_id": "PDF001_0268",
+          "score": 0.596831202507019
+        },
+        {
+          "chunk_id": "PDF001_0218",
+          "score": 0.5900586247444153
+        },
+        {
+          "chunk_id": "PDF001_0027",
+          "score": 0.5897387862205505
+        },
+        {
+          "chunk_id": "PDF001_0191",
+          "score": 0.5877215266227722
+        },
+        {
+          "chunk_id": "PDF001_0233",
+          "score": 0.5855028033256531
+        },
+        {
+          "chunk_id": "PDF008_0047",
+          "score": 0.5851128697395325
+        },
+        {
+          "chunk_id": "PDF001_0102",
+          "score": 0.5846326351165771
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF008_0057",
+          "score": 34.104683
+        },
+        {
+          "chunk_id": "PDF008_0066",
+          "score": 32.431225
+        },
+        {
+          "chunk_id": "PDF008_0017",
+          "score": 31.488468
+        },
+        {
+          "chunk_id": "PDF008_0028",
+          "score": 28.160978
+        },
+        {
+          "chunk_id": "PDF008_0038",
+          "score": 28.016258
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0270",
+        "PDF001_0269",
+        "PDF001_0052",
+        "PDF001_0243",
+        "PDF008_0010",
+        "PDF001_0031",
+        "PDF001_0281",
+        "PDF001_0184",
+        "PDF001_0014",
+        "PDF001_0032",
+        "PDF001_0239",
+        "PDF001_0025",
+        "PDF001_0030",
+        "PDF001_0268",
+        "PDF001_0218",
+        "PDF008_0057",
+        "PDF008_0066",
+        "PDF008_0017",
+        "PDF008_0028",
+        "PDF008_0038"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0270",
+        "PDF001_0269",
+        "PDF001_0268",
+        "PDF001_0052",
+        "PDF001_0243"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0270",
+        "PDF001_0269",
+        "PDF001_0268",
+        "PDF001_0052",
+        "PDF001_0243"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    },
+    {
+      "question_id": "FRD_028",
+      "question_en": "Someone offered me money to cause a traffic accident deliberately and split the insurance payout. Should I refuse, and where can I report it?",
+      "translated_ko": "누군가가 의도적으로 교통사고를 일으켜 보험금을 분배할 수 있는 돈을 제안했습니다. 내가 거절해야 하며, 어디서 신고할 수 있을까요?",
+      "reference_question_ko": "큰돈을 벌 수 있다며 일부러 교통사고를 내고 보험금을 나누자는 제안을 받았어요. 바로 거절해야 하나요? 어디에 신고할 수 있나요?",
+      "translation_risk": "LOW",
+      "translation_notes": [
+        "핵심 retrieval intent와 주요 조건이 대체로 보존됨"
+      ],
+      "gold_chunk_ids": [
+        "PDF001_0274",
+        "PDF001_0275"
+      ],
+      "dense_top20": [
+        {
+          "chunk_id": "PDF001_0275",
+          "score": 0.6594374775886536
+        },
+        {
+          "chunk_id": "PDF001_0273",
+          "score": 0.6019262671470642
+        },
+        {
+          "chunk_id": "PDF001_0282",
+          "score": 0.5980244874954224
+        },
+        {
+          "chunk_id": "PDF001_0276",
+          "score": 0.5937929749488831
+        },
+        {
+          "chunk_id": "PDF001_0274",
+          "score": 0.59322190284729
+        },
+        {
+          "chunk_id": "PDF001_0272",
+          "score": 0.5752366781234741
+        },
+        {
+          "chunk_id": "PDF001_0271",
+          "score": 0.5730791687965393
+        },
+        {
+          "chunk_id": "PDF001_0270",
+          "score": 0.56707763671875
+        },
+        {
+          "chunk_id": "PDF001_0128",
+          "score": 0.550858199596405
+        },
+        {
+          "chunk_id": "PDF001_0269",
+          "score": 0.5481827259063721
+        },
+        {
+          "chunk_id": "PDF001_0281",
+          "score": 0.5452503561973572
+        },
+        {
+          "chunk_id": "PDF001_0172",
+          "score": 0.5419362783432007
+        },
+        {
+          "chunk_id": "PDF001_0247",
+          "score": 0.5415991544723511
+        },
+        {
+          "chunk_id": "PDF001_0255",
+          "score": 0.5215919017791748
+        },
+        {
+          "chunk_id": "PDF008_0070",
+          "score": 0.5203652381896973
+        },
+        {
+          "chunk_id": "PDF001_0265",
+          "score": 0.5199487805366516
+        },
+        {
+          "chunk_id": "PDF001_0244",
+          "score": 0.5182165503501892
+        },
+        {
+          "chunk_id": "PDF001_0239",
+          "score": 0.5178573131561279
+        },
+        {
+          "chunk_id": "PDF008_0019",
+          "score": 0.5174058079719543
+        },
+        {
+          "chunk_id": "PDF008_0030",
+          "score": 0.5168899297714233
+        }
+      ],
+      "nori_top5": [
+        {
+          "chunk_id": "PDF001_0273",
+          "score": 35.76838
+        },
+        {
+          "chunk_id": "PDF008_0038",
+          "score": 31.861572
+        },
+        {
+          "chunk_id": "PDF008_0008",
+          "score": 30.467823
+        },
+        {
+          "chunk_id": "PDF001_0271",
+          "score": 29.154762
+        },
+        {
+          "chunk_id": "PDF001_0109",
+          "score": 27.004015
+        }
+      ],
+      "fused_top20": [
+        "PDF001_0275",
+        "PDF001_0273",
+        "PDF001_0282",
+        "PDF001_0276",
+        "PDF001_0274",
+        "PDF001_0272",
+        "PDF001_0271",
+        "PDF001_0270",
+        "PDF001_0128",
+        "PDF001_0269",
+        "PDF001_0281",
+        "PDF001_0172",
+        "PDF001_0247",
+        "PDF001_0255",
+        "PDF008_0070",
+        "PDF008_0038",
+        "PDF008_0008",
+        "PDF001_0109",
+        "PDF001_0265",
+        "PDF001_0244"
+      ],
+      "dense_reranked_top5": [
+        "PDF001_0275",
+        "PDF001_0274",
+        "PDF001_0282",
+        "PDF001_0271",
+        "PDF001_0276"
+      ],
+      "fusion_reranked_top5": [
+        "PDF001_0275",
+        "PDF001_0274",
+        "PDF001_0282",
+        "PDF001_0271",
+        "PDF001_0276"
+      ],
+      "dense_candidate_first_gold_rank": 1,
+      "nori_first_gold_rank": null,
+      "fusion_candidate_first_gold_rank": 1,
+      "dense_reranker_first_gold_rank": 1,
+      "fusion_reranker_first_gold_rank": 1
+    }
+  ],
+  "provenance": {
+    "dataset_sha256": "d1cbd62fe9b4db19c435b78cbc18128dade14fc7b17cd2be55864e79e25e7f6d",
+    "chunks_sha256": "085d8ddf536741e227467bf00f5d67fa5d88b4ab396f82e91834ca6714aa1b3b",
+    "translation_artifact": "retrieval_eval_en/test_en_to_ko_translations.json",
+    "architecture_frozen_from_validation_before_test": true,
+    "test40_runs": "one fixed final architecture evaluation",
+    "post_test_tuning": false
+  }
+}

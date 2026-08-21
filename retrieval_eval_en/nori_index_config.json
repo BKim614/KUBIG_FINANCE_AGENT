@@ -1,0 +1,72 @@
+{
+  "elasticsearch_version": "8.17.0",
+  "plugin": "analysis-nori 8.17.0",
+  "index": "kubig_finance_final_400_60_validation",
+  "indexed_chunks": 563,
+  "settings_and_mapping": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0,
+      "analysis": {
+        "tokenizer": {
+          "kubig_nori_tokenizer": {
+            "type": "nori_tokenizer",
+            "decompound_mode": "mixed",
+            "discard_punctuation": true
+          }
+        },
+        "analyzer": {
+          "kubig_nori": {
+            "type": "custom",
+            "tokenizer": "kubig_nori_tokenizer",
+            "filter": [
+              "lowercase"
+            ]
+          }
+        }
+      },
+      "similarity": {
+        "kubig_bm25": {
+          "type": "BM25",
+          "k1": 1.2,
+          "b": 0.75,
+          "discount_overlaps": true
+        }
+      }
+    },
+    "mappings": {
+      "properties": {
+        "chunk_id": {
+          "type": "keyword"
+        },
+        "text": {
+          "type": "text",
+          "analyzer": "kubig_nori",
+          "search_analyzer": "kubig_nori",
+          "similarity": "kubig_bm25"
+        },
+        "doc_id": {
+          "type": "keyword"
+        },
+        "page_start": {
+          "type": "integer"
+        },
+        "page_end": {
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "analyzer_probe_tokens": [
+    "주택",
+    "청약",
+    "통장",
+    "과",
+    "외국인",
+    "외국",
+    "인",
+    "등록증",
+    "등록",
+    "증"
+  ]
+}
