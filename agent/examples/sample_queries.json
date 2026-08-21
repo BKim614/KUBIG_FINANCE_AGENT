@@ -1,0 +1,8 @@
+[
+  {"id": "en_account", "language": "en", "query": "What documents do I need to open a bank account in Korea?"},
+  {"id": "en_remittance", "language": "en", "query": "What information do I need to send money to my family overseas?"},
+  {"id": "en_cards", "language": "en", "query": "What is the difference between a debit card and a credit card in Korea?"},
+  {"id": "en_fraud", "language": "en", "query": "What should I do if I sent money after receiving a voice phishing call?"},
+  {"id": "ko_account", "language": "ko", "query": "외국인이 한국에서 통장을 만들려면 어떤 서류가 필요한가요?"},
+  {"id": "ko_fraud", "language": "ko", "query": "보이스피싱 전화를 믿고 돈을 보냈다면 지금 무엇을 해야 하나요?"}
+]
