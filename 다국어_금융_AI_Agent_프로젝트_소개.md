@@ -1,241 +1,206 @@
 # 다국어 금융 상황 이해 AI Agent
 
-## 1. 프로젝트 개요
+## 1. 프로젝트 배경
 
-국내에 체류 중인 외국인이 금융기관·공공기관의 안내문, 의심스러운 문자메시지, 또는 자신의 금융 상황을 입력하면, 공식 문서 기반 **Hybrid RAG**를 통해 핵심 조건·금액·기한·서류·위험신호를 추출하고 **"지금 할 일 / 하지 말아야 할 일"**을 근거와 함께 제시하는 Agent입니다.
+한국에서 생활하는 외국인은 계좌 개설, 카드 사용, 해외송금, 환전, 금융사기 대응처럼 일상에 꼭 필요한 금융정보를 여러 기관에서 찾아야 합니다. 관련 정보는 정부·은행·금융감독기관·공공기관의 PDF와 웹페이지에 분산되어 있고, 안내문에는 금융용어뿐 아니라 조건, 예외, 필요서류, 금액과 기한이 복합적으로 포함됩니다.
 
-**핵심 설계 원칙**: 상품 추천, 가입 판정, 실거래, 사기 확정 판단은 의도적으로 배제하고, *정보 이해 → 안전 행동 안내*에만 집중합니다. 즉, 이 Agent는 금융 상담사나 사기 탐지기가 아니라, 공식 자료를 근거로 사용자가 스스로 판단할 수 있도록 돕는 정보 이해 보조 도구입니다.
+한국어에 익숙하지 않은 사용자는 공식자료를 찾은 뒤에도 자신의 상황에 적용되는 내용을 판단하기 어렵습니다. 일반 번역은 문장의 언어를 바꾸는 데 도움을 주지만, 여러 자료의 근거를 연결해 “무엇을 확인하고, 지금 무엇을 해야 하는가”로 정리하는 것까지 보장하지 않습니다.
 
 ## 2. 문제 정의
 
-국내 체류 외국인이 겪는 금융 정보 접근의 어려움은 다음과 같이 정리됩니다.
+프로젝트가 해결하려는 핵심 문제는 다음과 같습니다.
 
-- 사기 의심 메시지에서 기관 사칭, 송금 요구, 개인정보 요구 등 위험 신호를 구분하기 어려움
-- 금융정보가 정부·은행·학교·금융감독기관 등의 PDF와 웹페이지에 분산되어 있어 한 곳에서 확인하기 어려움
-- 금융 용어, 조건문, 예외사항, 금액·기한 정보가 복잡하게 얽혀 있음
-- 한국어 안내문과 문자메시지를 정확히 해석하기 어려움
-- 일반 번역기만으로는 번역은 되어도 "그래서 지금 무엇을 해야 하는지"까지는 알기 어려움
+- **분산된 공식 금융정보:** 계좌·카드·송금·사기 대응 정보가 서로 다른 PDF와 웹페이지에 존재합니다.
+- **언어 장벽:** 한국어 금융용어와 기관별 표현은 외국인이 필요한 근거를 직접 찾기 어렵게 만듭니다.
+- **복잡한 적용 조건:** 같은 금융업무도 체류 상태, 거래 목적, 필요서류와 예외 조건에 따라 안내가 달라질 수 있습니다.
+- **금융사기 위험:** 기관 사칭, 링크 클릭 유도, 송금 및 개인정보 요구 등의 위험 신호와 대응 절차를 빠르게 파악해야 합니다.
+- **번역과 행동 사이의 간극:** 번역된 문장을 읽는 것과 자신의 상황에서 할 일·하지 말아야 할 일을 판단하는 것은 다른 문제입니다.
 
-참고 기사:
-- 조선/중앙일보 계열 보도: 외국인 대상 금융사기 관련 사례
-- 세계일보 보도: 관련 위험 신호 사례
+이 서비스는 금융상품 추천, 가입 가능 여부의 확정 판정, 실거래 수행 또는 사기 여부의 법적 확정을 목표로 하지 않습니다. 공식자료에 근거해 사용자가 정보를 이해하고 안전한 다음 행동을 판단하도록 돕는 것을 목표로 합니다.
 
-## 3. 데이터셋 구성
+## 3. 제안 서비스
 
-### A. 서울글로벌센터 「외국인 유학생 금융생활 가이드」
-- 발행: 2024년 9월 (공식 배포 페이지)
-- 언어: 한국어·영어·중국어
-- 형식: PDF
-- 내용: 외국인 유학생의 계좌, 카드, 송금, 안전한 금융생활
-- 이용조건: 공공누리 제2유형 (출처표시, 비상업적 이용, 변형 가능)
-- 활용: 핵심 사용자 대상의 기본 RAG 문서 및 한국어·영어 정답 문장 구성
+최종적으로 지향하는 사용자 경험은 다음과 같습니다.
 
-### B. 금융감독원 「외국인을 위한 금융생활 가이드북」
-- 출처: 서울외국인포털 공식 언어별 링크 모음
-- 언어: 영어, 중국어, 베트남어, 태국어, 인도네시아어, 필리핀어, 캄보디아어, 러시아어
-- 내용: 금융기초, 안전한 금융이용, 금융사기 예방
-- 활용: 다국어 금융용어 사전, 다국어 검색 실험, 안전 안내
-
-### C. 금융사기·스미싱 예방자료
-- 출처: KISA 공식 홈페이지, 경찰청 공식 홈페이지
-- 활용: 기관사칭, 링크 클릭 유도, 개인정보·송금 요구, 계좌대여 등 위험 패턴과 대응 행동 정의
-- 한계: 공개된 대규모 원문 문자 라벨 데이터가 제한적이므로, 고성능 사기 분류 모델 학습이 아니라 **공식 사례 기반 위험 신호 설명**에 사용
-
-### 현재까지 구축된 코퍼스
-- 공식 문서 총 **21개** 구축 (PDF 8개, Web 13개)
-- PDF/Web 모두 **동일한 schema**로 정리
-- 최종 코퍼스 파일 `documents.jsonl` 생성 완료
-- Chunk는 아래 3가지 버전으로 임의 생성 (Chunk Size / Overlap, 단위: 토큰)
-  - 300 / 50
-  - 400 / 60
-  - 500 / 80
-- 비교 실험 시 필요하면 `documents.jsonl`을 기반으로 원하는 Chunk Size로 재생성하여 사용 가능
-
-## 4. 모델 구조 (파이프라인)
-
-### 4.1 Query Understanding
-- 질문 유형 분류: 일반 금융 질문 / 안내문 해석 / 의심 메시지 확인
-- 의도 분류: 계좌·카드 / 송금 / 환전 / 금융사기
-- 핵심 항목 추출: 기관, 서류, 금액, 기한, 행동, 링크, 개인정보 요구
-- LLM Structured Output 또는 소형 사전학습 모델 활용 가능
-
-### 4.2 Query Normalization
-- `ARC`, `Residence Card`, `Alien Registration Card`, `외국인등록증`을 동일 개념으로 정규화
-- `wire transfer`, `send money abroad`, `remittance`를 해외송금 의도로 연결
-- 비자코드·기관명·금융용어의 표기 변형 통합
-
-### 4.3 Hybrid Retrieval
-- **BM25**: 비자코드, 금액, 서류명, 기관명처럼 정확한 토큰 검색에 강점
-- **Multilingual Embedding**: 표현이 달라도 의미가 비슷한 문장 검색
-- **Metadata Filter**: 주제, 언어, 기관, 발행일 기준 필터링
-- **Reranker**: 상위 검색 문서의 질문 적합도를 재정렬 (선택 기능)
-
-### 4.4 Financial Information Extraction
-검색된 문서와 사용자 입력으로부터 다음 정보를 구조화합니다.
-- 기관·주체
-- 필요 서류
-- 금액·한도
-- 기한
-- 필수·선택·조건부 여부
-- 금지 행동
-- 위험 신호
-- 공식 확인 채널
-
-### 4.5 Controlled Generation
-답변을 자유 생성하지 않고, 다음의 고정된 구조로 생성합니다.
-1. 입력 상황 요약
-2. 공식자료에서 확인된 내용
-3. 지금 할 일
-4. 하지 말아야 할 일
-5. 불확실한 내용
-6. 근거와 기준일
-
-### 4.6 (Optional) Grounded Output Verification
-최종 답변 생성 후 다음 항목을 검사합니다.
-- 숫자·금액·기한이 원문과 일치하는가?
-- 필수와 선택 조건이 뒤바뀌지 않았는가?
-- 근거 없는 주장이 포함되지 않았는가?
-- 답변에 제시한 링크가 실제 근거와 연결되는가?
-- 공개자료로 확정할 수 없는 내용에 "확인 필요" 표시가 있는가?
-
-검증에 실패한 항목은 근거를 다시 확인하여 한 차례 재생성합니다.
-
-## 5. 기술 스택
-
-| 구분 | 내용 |
-|---|---|
-| Frontend / Backend | Streamlit |
-| RAG / Agent | 직접 구현 |
-| Vector DB | FAISS (검토 중) |
-| PDF 파싱 | pdfplumber (표 추출 기능이 PyMuPDF 대비 강점) |
-| Chunking | Structure-aware Chunking, 300~500토큰, overlap 50~80토큰 |
-| LLM API | Gemini (무료 이용 가능, MVP 단계에서 파인튜닝 미실시) |
-| 형식 검증 | (Optional) Pydantic Schema로 형식 정의/검증 |
-
-### Hybrid Retrieval 세부 기술 검토
-- **BM25**: 어휘 매칭 알고리즘 특성상 영어 질문으로는 한국어 문서 검색이 어려움 → 영어 질문을 한국어로 번역 후 검색하는 방식 적용
-- **임베딩 모델 비교**: BGE-M3 vs Multilingual-E5 → 다국어 벤치마크에서 **BGE-M3**가 근소하게 우위
-- **융합 방식 비교**: RRF vs CC → **RRF** 채택 (튜닝이 거의 필요 없음)
-- **Reranker**: bge-reranker-v2-m3 사용 검토, 효과가 있을 때만 채택 (BGE-M3와 동일 팀 개발 cross-encoder로 시너지 기대)
-
-## 6. 평가 방법
-
-### 6.1 평가 데이터셋
-공식문서에서 답을 확인할 수 있는 문항을 자체 구축하며, **Validation set과 Test set을 각각 60문항씩 구성**합니다 (총 120문항).
-
-**카테고리별 (각 30문항):**
-- `account_card` (계좌·카드)
-- `remittance_exchange` (해외송금·환전)
-- `notice_understanding` (안내문 이해)
-- `fraud_safety` (금융사기·안전)
-
-**난이도별 (카테고리당 easy 9 / medium 15 / hard 6):**
-- `hard` 문항은 여러 문헌에서 근거가 매칭되는 문제, 정답 용어가 아닌 우회/불완전한 표현을 사용한 문제 등을 포함
-
-각 문항에는 다음 정답 정보가 함께 기록됩니다.
-- 관련 공식 문서·근거 문장
-- 기관, 서류, 금액, 기한
-- 필수 행동과 금지 행동
-- 공개자료로 확정 가능한 범위
-
-### 6.2 평가 데이터셋 스키마
-
-```json
-{
-  "id": "ACC_001",
-  "split": "validation",
-  "category": "account_card",
-  "difficulty": "easy",
-  "question": {"ko": "한국어 질문", "en": "English question"},
-  "gold_answer": "답변 예시",
-  "structured_answer": {
-    "institution": [],
-    "documents": ["외국인등록증", "여권"],
-    "amount": null,
-    "deadline": null,
-    "conditions": ["외국인등록증 발급 후 계좌개설"],
-    "required_actions": ["필요 서류를 준비해 은행 지점 방문"],
-    "prohibited_or_unsafe_actions": [],
-    "risk_signals": [],
-    "official_verification_channel": []
-  },
-  "evidence": [
-    {
-      "quote": "웹 문서에서 확인한 원문",
-      "source_type": "web",
-      "source_title": "문서 제목",
-      "institution": "기관명",
-      "source_file": "웹 JSON 파일명",
-      "source_url": "공식 웹 주소",
-      "retrieved_at": "2026-08-15",
-      "page": null,
-      "section": "관련 제목"
-    }
-  ],
-  "answerable_scope": "공식자료로 답변할 수 있는 범위"
-}
+```text
+한국어 또는 영어 금융 질문·상황 입력
+→ 공식 금융자료에서 관련 근거 검색
+→ 핵심 조건·서류·금액·기한·위험 신호 이해
+→ 지금 할 일 / 하지 말아야 할 일 안내
+→ 사용한 근거와 출처 제시
 ```
 
-**필드 설명**
-- `split`: `validation` 또는 `test` (각 60문항)
-- `category`: 4개 카테고리 중 하나 (각 30문항)
-- `difficulty`: `easy` / `medium` / `hard` (카테고리당 9 / 15 / 6문항)
-- `structured_answer`: 기관, 필요 서류, 금액·한도, 기한, 적용 조건, 필수 행동, 금지 행동, 위험 신호, 공식 확인·신고 채널을 구조화
-- `evidence`: 근거가 여러 페이지/문서에 존재할 경우 배열로 각각 기록
+예를 들어 외국인이 “한국에서 계좌를 만들 때 어떤 서류가 필요한가요?” 또는 “보이스피싱 전화를 믿고 송금했다면 어떻게 해야 하나요?”라고 질문하면, 먼저 검증된 금융 corpus에서 관련 evidence를 찾고 이후 downstream Agent가 그 근거를 이해하기 쉬운 행동 중심 답변으로 구성하는 방식입니다.
 
-현재 `rag_evaluation_dataset.jsonl` 파일명으로 테스트 데이터가 구축 완료된 상태입니다.
+현재 이 repository에서 실제 구현하고 검증한 범위는 이 흐름 중 **공식 근거를 Top-5 evidence로 검색하는 Retriever까지**입니다. 답변 생성, Agent orchestration, UI와 배포는 다음 단계의 서비스 layer입니다.
 
-### 6.3 Retrieval 평가
-- Recall@5
-- MRR@5
-- nDCG@5
+## 4. 데이터와 평가 기반
 
-**비교 실험 대상**
-- BM25
-- Dense Retrieval
-- Hybrid Retrieval
-- Hybrid + Reranker
+### 4.1 금융정보 Corpus
 
-### 6.4 정보추출 평가
-- 기관·서류·금액·기한·행동·위험신호 항목별 Precision / Recall / F1
-- JSON 구조 유효성
+정부·금융기관·공공기관의 금융 안내자료를 공통 schema로 정리했습니다.
 
-### 6.5 생성·검증 평가
-- 근거 없는 주장 비율
-- 금액·기한·조건 보존율
-- 필수 행동 누락률
-- 출처 일치율
-- "확인 필요" 표시 정확도
+| 구성 | 규모 |
+|---|---:|
+| 전체 문서 | 21 |
+| PDF | 8 |
+| Web | 13 |
+| 한국어 문서 | 15 |
+| 영어 문서 | 6 |
+| Final chunks | 563 |
 
-### 6.6 (Optional) 사용자 검증
-초기 구현은 인터뷰 없이 공식문서 기반 정답셋으로 검증합니다. MVP 완성 후 가능하다면 외국인 유학생 3~5명을 대상으로 짧은 사용성 테스트를 진행합니다.
-- 답변이 이해하기 쉬운가?
-- 다음 행동이 명확한가?
-- 일반 번역기보다 도움이 되는가?
-- 어떤 실제 상황에서 사용할 것 같은가?
+최종 chunk는 `BAAI/bge-m3` tokenizer를 이용해 400 tokens, overlap 60 조건으로 생성했습니다. 문서 단위로는 한국어 자료가 더 많지만 영어 자료도 포함하므로 corpus를 순수 한국어 corpus로 표현하지 않습니다.
 
-이는 필수 개발 의존사항이 아니라, 서비스 개선을 위한 후반 검증 단계로 둡니다.
+### 4.2 Retrieval Evaluation Dataset
 
-## 7. 역할 분담 (TO-DO)
+공식자료에서 답을 확인할 수 있는 120개 질문을 구축했습니다.
 
-| 역할 | 담당 |
-|---|---|
-| Retriever 데이터셋 수집 | 병현 |
-| RAG 챗봇 파이프라인 구축 | 민혁, 지윤 |
-| 평가 데이터셋 구축 & 평가 절차 검증 | 유한 |
+| 구성 | 규모 |
+|---|---:|
+| Validation | 80 |
+| Test | 40 |
+| Split overlap | 0 |
+| 한국어 질문 | 120 |
+| 영어 질문 | 120 |
+| 전체 evidence | 167 |
 
-## 8. 반영된 피드백
+각 question ID에는 의미상 대응하는 한국어·영어 질문과 동일한 evidence/gold mapping이 연결되어 있습니다. 카테고리는 다음 네 가지이며 각각 30문항입니다.
 
-1. **인덱싱 필요성 재검토**: 전체 데이터셋 규모가 크지 않다면 굳이 인덱싱하지 않고 전체 문서에 대해 일일이 cosine 유사도를 계산하는 방식도 고려
-2. **다국어 성능 비교**: 다른 언어로 질문했을 때 동일한 수준의 성능이 나오는지 비교 실험 필요
-3. **Agent 정체성 명확화**: 단순 RAG를 넘어 "Agent"라 부를 수 있는 근거로, RAG 검색 결과가 없을 경우 웹 검색으로 폴백하는 간단한 기능 정도는 포함
-4. **비텍스트 데이터 처리 방안**: 이미지·지도 등의 임베딩 여부(스킵 여부) 결정 필요, PDF 파싱 정확도 검토 필요, OCR 사용도 대안으로 고려
-5. **평가셋 구축 효율화**: 평가 데이터셋을 전부 수작업으로 만들기보다, 합성 데이터 생성 방식처럼 LLM을 활용해 구축
+- `account_card`: 계좌·카드
+- `remittance_exchange`: 해외송금·환전
+- `notice_understanding`: 안내문 이해
+- `fraud_safety`: 금융사기·안전
 
-## 9. 현재 진행 상황 요약
+난이도는 easy 36, medium 60, hard 24문항으로 구성됩니다. 평가에서는 candidate 단계의 Recall@20·Hit@20·MRR@20과 reranker 이후 Recall@5·Hit@5·MRR@5·nDCG@5를 사용했습니다.
 
-- 공식 문서 21개(PDF 8, Web 13) 수집 및 동일 스키마로 정리 완료
-- 최종 코퍼스(`documents.jsonl`) 생성 완료
-- Chunk 3가지 버전(300/50, 400/60, 500/80) 생성 완료
-- 평가 데이터셋(`rag_evaluation_dataset.jsonl`) 구축 완료
-- 관련 자료는 Google Drive 공유 폴더에서 확인 가능
+### 4.3 신뢰성 검증
+
+실험 전 PDF 표 추출 누락, gold evidence의 chunk 경계, 의도한 PDF 페이지 범위를 점검했습니다. 최종 400/60 corpus에서는 167개 evidence가 모두 gold chunk와 연결되며 PARTIAL, INVALID, CORPUS_ERROR, UNMATCHED는 모두 0건입니다.
+
+이 검증은 프로젝트의 주 기능이 아니라, 이후 retrieval 비교가 실제 corpus와 일관된 gold를 기준으로 수행되도록 하기 위한 reliability 절차입니다.
+
+## 5. Retriever 구축
+
+최종 Retriever는 한국어와 영어 질문에 같은 구조를 적용합니다.
+
+```mermaid
+flowchart LR
+    Q["Korean / English Query"] --> D["BAAI/bge-m3 Dense Retrieval"]
+    D --> C["Top-20 Candidates"]
+    C --> R["BAAI/bge-reranker-v2-m3"]
+    R --> E["Top-5 Evidence"]
+```
+
+BGE-M3의 multilingual representation을 이용하므로 영어 질문도 번역 없이 직접 입력합니다. Dense retrieval로 의미상 관련된 Top-20 후보를 넓게 찾은 뒤, cross-encoder reranker가 질문과 각 chunk를 다시 비교해 최종 Top-5 evidence를 정렬합니다.
+
+## 6. Retrieval Experiment Journey
+
+실험은 가능한 기술을 단순 나열하는 대신, 다음 architecture 결정을 내리기 위한 질문 순서로 진행했습니다.
+
+### 6.1 Korean Retrieval
+
+**질문:** BM25의 정확한 어휘 매칭과 Dense의 의미 검색을 결합한 Hybrid가 Dense 단독보다 더 좋은가?
+
+**비교:** BM25, BGE-M3 Dense, BM25+Dense RRF Hybrid와 reranker를 비교했습니다. 이후 동일한 Final Test40, Top-20 후보, 동일 reranker 조건에서 Dense→Reranker와 Hybrid→Reranker를 직접 평가했습니다.
+
+| Korean Test40 | Recall@20 | Hit@20 | Recall@5 | Hit@5 | MRR@5 | nDCG@5 |
+|---|---:|---:|---:|---:|---:|---:|
+| Dense→Reranker | 0.9333 | 0.9500 | 0.7792 | 0.8250 | 0.6446 | 0.6376 |
+| Hybrid→Reranker | 0.9125 | 0.9250 | 0.7958 | 0.8250 | 0.6342 | 0.6334 |
+
+Hybrid의 evidence Recall@5는 0.0167 높았지만 question-level Hit@5는 동일했습니다. Dense는 candidate Recall·Hit·MRR과 final MRR·nDCG에서 더 높았습니다. BM25가 Dense를 보완한 문항은 1개였지만 Hybrid에서 Dense의 gold 후보가 사라진 문항도 2개였습니다.
+
+**결정:** 차이가 매우 크다고 일반화하지 않으면서도, 후보 안정성·ranking quality·구조 단순성을 함께 고려해 Korean Dense→Reranker를 선택했습니다.
+
+### 6.2 English Retrieval
+
+#### 질문 1. 번역 없이 영어 질문으로 관련 근거를 찾을 수 있는가?
+
+BGE-M3 Dense를 영어 질문에 직접 적용했습니다. Test40에서 Recall@20 0.8958, Hit@20 0.9500을 기록했고, reranker 이후 Recall@5 0.8000, Hit@5 0.8750으로 강한 direct cross-lingual baseline을 확보했습니다.
+
+#### 질문 2. Sparse 또는 lexical signal이 Dense의 miss를 보완하는가?
+
+BGE-M3 Sparse는 일부 Dense miss를 찾았지만 평균 성능이 낮았습니다. Dense+Sparse RRF에서는 sparse-only hit을 살리는 과정에서 다른 Dense candidate를 잃거나, Dense를 보존하면 추가 hit을 살리지 못했습니다. 따라서 Sparse를 main path에 포함할 근거가 충분하지 않았습니다.
+
+Paired Korean question을 사용한 lexical diagnostic에서는 Dense가 놓친 사례를 찾을 수 있어 실제 번역 기반 retrieval의 가능성을 확인했습니다. 이 단계는 machine translation 성능이 아니라 translation error를 제거한 feasibility diagnostic으로 구분했습니다.
+
+#### 질문 3. 실제 English→Korean translation과 Nori BM25는 held-out 성능을 높이는가?
+
+Validation80에서 실제 NLLB 번역→Elasticsearch Nori BM25가 Dense miss 11개 중 7개를 candidate 단계에서 보완했습니다. 이를 바탕으로 Dense15+Nori5 구조를 고정한 뒤 Test40에서 평가했습니다.
+
+| English Test40 | Recall@20 | Hit@20 | Recall@5 | Hit@5 | MRR@5 | nDCG@5 |
+|---|---:|---:|---:|---:|---:|---:|
+| Dense→Reranker | 0.8958 | 0.9500 | 0.8000 | 0.8750 | 0.6863 | 0.6543 |
+| Dense15+Nori5→Reranker | 0.9125 | 0.9500 | 0.8000 | 0.8750 | 0.6988 | 0.6636 |
+
+Fusion은 Dense hit을 잃지 않았고 evidence Recall과 일부 ranking metric을 소폭 높였습니다. 그러나 Dense miss를 새 question-level candidate 또는 final hit으로 전환한 사례는 0건이었습니다. Validation의 추가 question coverage가 Test에서 재현되지 않은 것입니다.
+
+**결정:** Translation/Nori/Sparse가 본질적으로 가치가 없다고 판단한 것은 아닙니다. 다만 현재 held-out 결과에서 추가 question-level coverage가 확인되지 않았고, 번역 오류 가능성, NLLB 추론, Elasticsearch/Nori 운영과 latency를 더하는 비용을 고려해 English main path도 Dense→Reranker로 확정했습니다. Test 결과를 보고 추가 quota나 weight tuning은 하지 않았습니다.
+
+## 7. 최종 Retriever Architecture
+
+최종적으로 한국어와 영어에 동일한 architecture를 사용합니다.
+
+> **Korean / English Query → BAAI/bge-m3 Dense Top-20 → BAAI/bge-reranker-v2-m3 → Top-5 Evidence**
+
+이 구조는 다음 이유로 선택했습니다.
+
+1. BGE-M3 Dense가 한국어와 영어 모두에서 높은 candidate Hit@20을 보였습니다.
+2. Reranker가 Top-20 후보에서 질문과 직접 관련된 evidence를 Top-5로 재정렬합니다.
+3. Korean Hybrid와 English Sparse/Nori fusion의 complementary signal은 관찰됐지만 held-out에서 일관된 question-level 순이익으로 이어지지 않았습니다.
+4. 단일 multilingual retrieval path는 번역 모델과 별도 lexical infrastructure 없이 두 언어를 처리합니다.
+
+## 8. Agent 확장 구조
+
+Retriever 이후 서비스 architecture는 다음과 같이 확장할 수 있습니다.
+
+```mermaid
+flowchart LR
+    Q["User Question / Situation"] --> RET["Validated Retriever"]
+    RET --> E["Top-5 Evidence"]
+    E --> LLM["Grounded LLM / Agent"]
+    LLM --> A["Action-oriented Answer"]
+    A --> S["Source / Citation"]
+```
+
+Downstream Agent는 Top-5 evidence를 바탕으로 다음을 수행하는 방향입니다.
+
+- 질문과 같은 언어로 핵심 금융정보 설명
+- 필요서류, 금액, 기한, 조건과 예외 정리
+- 금융사기 상황에서 확인할 위험 신호와 공식 대응 행동 제시
+- 근거가 부족한 내용은 확정하지 않고 공식 기관 확인 안내
+- 답변과 실제 source/chunk citation 연결
+
+이 Agent/LLM/UI 구조는 **향후 서비스 architecture**이며, 현재 repository에서 생성 답변의 정확도나 UI 사용성을 검증 완료한 것으로 표현하지 않습니다.
+
+## 9. 기대 효과
+
+- 외국인이 여러 기관의 자료를 직접 탐색하는 시간과 부담을 줄일 수 있습니다.
+- 한국어 또는 영어 질문을 별도 routing 없이 동일한 근거 검색 구조로 처리할 수 있습니다.
+- 단순 번역을 넘어 질문과 관련된 공식 근거를 우선 제시할 수 있습니다.
+- 계좌·카드·송금·환전과 같은 일상 금융업무의 조건과 필요서류를 확인하는 데 도움을 줄 수 있습니다.
+- 금융사기 상황에서 위험 신호와 공식 대응자료에 더 빠르게 접근하도록 지원할 수 있습니다.
+
+## 10. 현재 범위와 향후 과제
+
+### 현재 완료·검증 범위
+
+```text
+금융자료 수집·정규화
+→ 400/60 chunk corpus
+→ Korean/English evaluation dataset
+→ retrieval 실험 및 architecture selection
+→ Dense Top-20 → Reranker → Top-5 Evidence
+```
+
+### 향후 별도 구현·검증 범위
+
+- Top-5 evidence를 사용하는 grounded answer generation
+- 숫자·서류·조건·기관명 및 citation 일치 검증
+- 상황별 행동 안내를 조정하는 Agent orchestration
+- 사용자 UI와 배포
+- 실제 외국인 사용자를 대상으로 한 이해도·유용성 평가
+
+## 11. 협업 및 기여
+
+본 프로젝트는 KUBIG 팀의 금융자료 수집, RAG/서비스 설계, evaluation dataset 구축 및 retrieval 검증 작업을 기반으로 수행되었습니다. 세부 기술 provenance와 historical baseline은 Git history와 `retrieval_eval/reference_baseline/`에 보존되어 있으며, 현재 repository의 source of truth는 Final 563-chunk corpus와 Korean/English canonical evaluation artifact입니다.
