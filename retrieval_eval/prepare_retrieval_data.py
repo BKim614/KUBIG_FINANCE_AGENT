@@ -26,7 +26,7 @@ from typing import Iterable, Sequence
 SCRIPT_DIR = Path(__file__).resolve().parent
 KUBIG_DIR = SCRIPT_DIR.parent
 PROJECT_DIR = KUBIG_DIR.parent
-DATASET_DIR = KUBIG_DIR / "Retriever_dataset-20260816T123809Z-1-001"
+DATASET_DIR = KUBIG_DIR / "retriever_dataset"
 DOCUMENTS_PATH = DATASET_DIR / "documents" / "documents.jsonl"
 CHUNKS_DIR = DATASET_DIR / "chunks"
 METADATA_DIR = DATASET_DIR / "metadata"

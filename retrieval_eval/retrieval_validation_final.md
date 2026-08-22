@@ -255,12 +255,12 @@ nDCG@5(0.697 vs 0.633)에서 Test가 뚜렷이 낮습니다. Validation과 Test�
 
 | 경로 | 역할 |
 |---|---|
-| `Retriever_dataset-20260816T123809Z-1-001/documents/documents.jsonl` | 최종 21개 문서(PDF002 페이지 필터 반영) |
-| `Retriever_dataset-20260816T123809Z-1-001/chunks/chunk_400_60/chunks.jsonl` | 최종 563개 400/60 chunk |
-| `Retriever_dataset-20260816T123809Z-1-001/chunks/chunk_300_50/chunks.jsonl` | 300/50 chunk(reference baseline 버전 보존, 이번 단계 미변경) |
-| `Retriever_dataset-20260816T123809Z-1-001/chunks/chunk_500_80/chunks.jsonl` | 500/80 chunk(reference baseline 버전 보존, 이번 단계 미변경) |
-| `Retriever_dataset-20260816T123809Z-1-001/metadata/corpus_statistics.json`, `chunk_statistics_400_60.json` | 최종 corpus/chunk 통계(재생성됨) |
-| `Retriever_dataset-20260816T123809Z-1-001/metadata/chunk_statistics_300_50.json`, `chunk_statistics_500_80.json`, `duplicate_report.json` | reference baseline 버전 보존(미변경) |
+| `retriever_dataset/documents/documents.jsonl` | 최종 21개 문서(PDF002 페이지 필터 반영) |
+| `retriever_dataset/chunks/chunk_400_60/chunks.jsonl` | 최종 563개 400/60 chunk |
+| `retriever_dataset/chunks/chunk_300_50/chunks.jsonl` | 300/50 chunk(reference baseline 버전 보존, 이번 단계 미변경) |
+| `retriever_dataset/chunks/chunk_500_80/chunks.jsonl` | 500/80 chunk(reference baseline 버전 보존, 이번 단계 미변경) |
+| `retriever_dataset/metadata/corpus_statistics.json`, `chunk_statistics_400_60.json` | 최종 corpus/chunk 통계(재생성됨) |
+| `retriever_dataset/metadata/chunk_statistics_300_50.json`, `chunk_statistics_500_80.json`, `duplicate_report.json` | reference baseline 버전 보존(미변경) |
 | `rag_evaluation_dataset.jsonl` | 최종 evaluation dataset(400/60 gold_chunk_ids 갱신, 300/50·500/80 필드는 reference baseline 값 보존) |
 | `retrieval_eval/prepare_retrieval_data.py` | PDF 재추출/청킹/gold 생성 파이프라인(PDF002 필터 추가된 버전) |
 | `retrieval_eval/eval_retrieval.py` | BM25/Dense/Hybrid/Reranker 평가 스크립트(reference baseline 버전과 byte 단위 동일, 미변경) |

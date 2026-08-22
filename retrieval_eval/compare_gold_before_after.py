@@ -18,7 +18,7 @@ sys.path.insert(0, str(SCRIPT_DIR))
 import eval_retrieval as er  # noqa: E402
 
 ROOT_DIR = SCRIPT_DIR.parent
-CHUNKS_PATH = ROOT_DIR / "Retriever_dataset-20260816T123809Z-1-001" / "chunks" / "chunk_400_60" / "chunks.jsonl"
+CHUNKS_PATH = ROOT_DIR / "retriever_dataset" / "chunks" / "chunk_400_60" / "chunks.jsonl"
 CACHE_DIR = SCRIPT_DIR / "cache"
 
 BEFORE_GOLD_PATH = SCRIPT_DIR / "gold_400_60_recomputed.jsonl"  # pre boundary-fix

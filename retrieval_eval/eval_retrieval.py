@@ -23,7 +23,7 @@ from typing import Sequence
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 ROOT_DIR = SCRIPT_DIR.parent
-CHUNKS_DIR = ROOT_DIR / "Retriever_dataset-20260816T123809Z-1-001" / "chunks"
+CHUNKS_DIR = ROOT_DIR / "retriever_dataset" / "chunks"
 EVAL_DATASET_PATH = ROOT_DIR / "rag_evaluation_dataset.jsonl"
 CACHE_DIR = SCRIPT_DIR / "cache"
 DEFAULT_REPORT_PATH = ROOT_DIR / "test1.md"

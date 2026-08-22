@@ -93,9 +93,9 @@ chunks에 대해 처음부터 재실행.
 
 ## STEP 8. 최종 파일
 
-- `Retriever_dataset-20260816T123809Z-1-001/documents/documents.jsonl` — 최종 documents(PDF002 필터 반영)
-- `Retriever_dataset-20260816T123809Z-1-001/chunks/chunk_400_60/chunks.jsonl` — 최종 400/60 chunks
-- `Retriever_dataset-20260816T123809Z-1-001/metadata/corpus_statistics.json`,
+- `retriever_dataset/documents/documents.jsonl` — 최종 documents(PDF002 필터 반영)
+- `retriever_dataset/chunks/chunk_400_60/chunks.jsonl` — 최종 400/60 chunks
+- `retriever_dataset/metadata/corpus_statistics.json`,
   `metadata/chunk_statistics_400_60.json` — 갱신된 통계
 - `rag_evaluation_dataset.jsonl`(KUBIG_FINANCE_final_test 루트) — 400/60 gold_chunk_ids
   최종 반영(300_50/500_80 필드는 기존 reference baseline 값 그대로 보존, 손대지 않음)

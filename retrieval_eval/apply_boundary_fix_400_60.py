@@ -11,7 +11,7 @@ from collections import Counter
 
 BASE = Path(__file__).resolve().parent
 RECOMPUTED_PATH = BASE / "gold_400_60_recomputed.jsonl"
-CHUNKS_PATH = BASE.parent / "Retriever_dataset-20260816T123809Z-1-001" / "chunks" / "chunk_400_60" / "chunks.jsonl"
+CHUNKS_PATH = BASE.parent / "retriever_dataset" / "chunks" / "chunk_400_60" / "chunks.jsonl"
 AUDIT_CSV = BASE / "gold_quality_risk_audit_400_60.csv"
 
 records = [json.loads(l) for l in open(RECOMPUTED_PATH, encoding="utf-8")]
