@@ -63,6 +63,14 @@
 
 Corpus와 evaluation dataset은 retrieval 실험 전에 extraction 범위, chunk coverage와 gold mapping을 검증했습니다. 이 과정은 데이터 오류 자체를 프로젝트 성과로 내세우기 위한 것이 아니라, 서로 다른 retrieval 구조를 신뢰할 수 있는 기준에서 비교하기 위한 준비입니다.
 
+### 5.1 Chunking 균형점 선택
+
+금융 문서의 조건, 예외, 금액, 기한은 서로 연결되어 있습니다. Chunk가 너무 작으면 필요한 문맥이 나뉘고, 너무 크면 여러 주제가 섞여 검색과 ranking의 변별력이 낮아질 수 있습니다.
+
+이를 확인하기 위해 300/50, 400/60, 500/80을 동일 Final corpus, gold, Korean Test40, Dense model과 reranker 조건에서 비교했습니다. 300/50과 400/60의 전반적인 성능은 유사했고 300/50이 일부 Top-5 지표에서 소폭 앞섰습니다. 반면 400/60은 Recall@20 공동 최고, candidate MRR 최고를 기록하면서 300/50보다 약 21% 적은 chunk를 사용했습니다. 500/80은 candidate coverage와 final ranking이 상대적으로 낮았습니다.
+
+결과적으로 400/60을 단일 metric의 최적값이 아니라, 검색 성능·문맥 보존·corpus 규모 사이의 균형점으로 선택했습니다.
+
 ## 6. Retrieval Experiment Journey
 
 ### 6.1 Korean Retrieval
@@ -107,7 +115,7 @@ flowchart LR
 
 ## 8. Chatbot / Agent Integration
 
-현재 검증된 Retriever는 챗봇의 전체 기능이 아니라 evidence를 공급하는 기반 계층입니다.
+현재 검증된 Retriever는 챗봇에 출처를 추적할 수 있는 evidence를 공급하는 기반 계층입니다.
 
 ```mermaid
 flowchart LR
@@ -126,7 +134,7 @@ flowchart LR
 - evidence로 확정할 수 없는 내용은 공식 기관 확인 안내
 - 사용한 source와 답변 citation 연결
 
-Agent orchestration, LLM generation, citation 검증, UI와 deployment는 현재 repository의 검증 완료 범위가 아니며 별도 구현·평가 대상입니다.
+이 Top-5 evidence는 향후 Agent orchestration, grounded LLM generation, citation 검증, UI와 deployment로 연결할 수 있습니다.
 
 ## 9. Expected User Experience
 

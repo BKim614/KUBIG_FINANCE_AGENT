@@ -18,14 +18,12 @@ Data → Chunking → Gold Validation
 → Dense Top-20 → Reranker → Top-5 Evidence
 ```
 
-별도 downstream 범위:
+전체 서비스에서는 이 evidence를 다음 downstream 단계로 연결할 수 있습니다.
 
 ```text
 Top-5 Evidence → Grounded LLM Generation
 → Agent Orchestration → Citation/UI → Deployment
 ```
-
-따라서 이 repository는 LLM 답변 생성, Agent 동작 또는 UI 품질을 검증했다고 주장하지 않습니다.
 
 ## Final Retriever Architecture
 
@@ -70,7 +68,17 @@ Recall은 question별 gold evidence-group coverage, Hit은 하나 이상의 gold
 
 Evaluation dataset은 `account_card`, `remittance_exchange`, `notice_understanding`, `fraud_safety` 네 카테고리로 구성되며 각각 30문항입니다. 같은 question ID의 한국어·영어 질문은 동일한 split, evidence와 gold mapping을 공유합니다.
 
-최종 400/60 corpus에서는 167개 evidence가 모두 gold chunk에 연결되며, boundary-aware validation 결과 PARTIAL, INVALID, CORPUS_ERROR, UNMATCHED는 모두 0건입니다. 이 과정은 retrieval 비교의 신뢰성과 재현성을 위한 검증이며 프로젝트의 주 기능은 아닙니다.
+최종 400/60 corpus에서는 167개 evidence가 모두 gold chunk에 연결되며, boundary-aware validation 결과 PARTIAL, INVALID, CORPUS_ERROR, UNMATCHED는 모두 0건입니다. 이 검증을 바탕으로 서로 다른 retrieval 구조를 동일하고 재현 가능한 기준에서 비교했습니다.
+
+### Chunk-size Selection
+
+300/50, 400/60, 500/80을 동일 Final 21 documents, 167 evidence gold, Korean Test40, BGE-M3 Dense와 동일 reranker 조건에서 재생성·재평가했습니다. 세 설정 모두 gold coverage 100%를 확보했으며, 재생성한 400/60 chunk와 gold는 canonical Final artifact와 일치했습니다.
+
+- 300/50과 400/60은 Recall@20 0.9333으로 같았고, 300/50이 일부 Top-5 지표에서 소폭 앞섰습니다.
+- 400/60은 candidate MRR@20이 0.6244로 가장 높았고 300/50보다 152개, 약 21% 적은 chunk로 corpus를 구성했습니다.
+- 500/80은 candidate coverage와 final ranking이 둘 다 상대적으로 낮았습니다.
+
+따라서 400/60을 모든 metric의 유일한 최적값이 아니라 **retrieval performance, candidate ranking, context granularity와 corpus 규모의 균형점**으로 유지했습니다. 세부 비교는 [`retrieval_eval/chunk_size_final_comparison.md`](retrieval_eval/chunk_size_final_comparison.md)에서 확인할 수 있습니다.
 
 ## Experiment Summary
 
@@ -94,6 +102,10 @@ Direct multilingual Dense, BGE-M3 Sparse, Dense+Sparse fusion, paired-Korean lex
 │   ├── chunks/
 │   └── metadata/
 ├── retrieval_eval/
+│   ├── chunk_size_final_artifacts/
+│   ├── chunk_size_final_comparison.md
+│   ├── results_chunk_size_final_comparison.json
+│   ├── run_chunk_size_final_comparison.py
 │   ├── reference_baseline/
 │   ├── eval_retrieval.py
 │   └── ... Korean evaluation code and artifacts
@@ -107,7 +119,7 @@ Direct multilingual Dense, BGE-M3 Sparse, Dense+Sparse fusion, paired-Korean lex
 | Path | Role |
 |---|---|
 | `retriever_dataset/documents/` | 정규화된 21개 document corpus |
-| `retriever_dataset/chunks/` | 300/50, Final 400/60, 500/80 chunk variants |
+| `retriever_dataset/chunks/` | canonical Final 400/60 chunks와 과거 development variant; Final controlled 300/50·500/80은 `retrieval_eval/chunk_size_final_artifacts/`에 별도 보존 |
 | `retriever_dataset/metadata/` | corpus 및 chunk 통계, duplicate report |
 | `rag_evaluation_dataset.jsonl` | KO/EN 질문, structured answer, evidence와 gold chunk mapping을 포함한 120문항 evaluation dataset |
 
@@ -117,6 +129,7 @@ Direct multilingual Dense, BGE-M3 Sparse, Dense+Sparse fusion, paired-Korean lex
 
 | 확인하려는 내용 | Summary / Report | Raw or detailed artifact |
 |---|---|---|
+| Final chunk-size 선정 | [`retrieval_eval/chunk_size_final_comparison.md`](retrieval_eval/chunk_size_final_comparison.md) | `retrieval_eval/results_chunk_size_final_comparison.json`, `chunk_size_final_artifacts/` |
 | Final corpus와 gold 검증 | [`retrieval_eval/retrieval_validation_final.md`](retrieval_eval/retrieval_validation_final.md) | `retrieval_eval/final_data_validation.md`, `gold_400_60_final.jsonl` |
 | Final Korean architecture 결정 | [`retrieval_eval/dense_vs_hybrid_reranker_test.md`](retrieval_eval/dense_vs_hybrid_reranker_test.md) | `retrieval_eval/results_400_60_dense_vs_hybrid_reranker_test.json` |
 | Final Validation/Test 결과 | `retrieval_eval/retrieval_validation_final.md` | `results_400_60_ko_validation.json`, `results_400_60_ko_test.json` |
@@ -143,6 +156,7 @@ Direct multilingual Dense, BGE-M3 Sparse, Dense+Sparse fusion, paired-Korean lex
 
 - `retrieval_eval/eval_retrieval.py`: BM25, Dense, Hybrid와 reranker 평가 및 evidence-group-aware metric 구현
 - `retrieval_eval/prepare_retrieval_data.py`: document extraction, chunking과 gold mapping 관련 로직
+- `retrieval_eval/run_chunk_size_final_comparison.py`: Final 300/50·400/60·500/80 chunk 재생성, gold remapping과 Dense→Reranker 비교
 - `retrieval_eval/requirements.txt`: retrieval evaluation 환경 의존성
 - `retrieval_eval/FinAgent_Retrieval_Eval_Colab.ipynb`: Colab 실행용 notebook
 - `retrieval_eval/cache/`: Final corpus dense embedding cache
