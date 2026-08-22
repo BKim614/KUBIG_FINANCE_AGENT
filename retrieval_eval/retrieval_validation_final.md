@@ -1,6 +1,6 @@
 # Retrieval 데이터 파이프라인 검증 및 보정 — 최종 정리 (400/60)
 
-이 문서는 `kangminhyeok02/KUBIG_FINANCE`(원본) → `youhan200203/KUBIG_FINANCE`(재추출) →
+이 문서는 `kangminhyeok02/KUBIG_FINANCE`(원본) → `reference baseline repository`(재추출) →
 이 repo(`KUBIG_FINANCE_final_test`, 추가 검증·보정)로 이어진 작업 전체를 한 문서로
 요약합니다. 아래 모든 수치는 이 repo에 실제로 존재하는 artifact 파일을 직접 읽어서
 확인한 값입니다(Appendix에 근거 파일 목록).
@@ -45,11 +45,11 @@ Web 소스 evidence는 거의 전부 정상 매칭되었습니다. 즉 문제는
 - quote가 chunk 경계를 넘어 두 chunk에 걸쳐 있는 경우
 - `page` 필드가 gold mapping 로직에서 전혀 사용되지 않음
 
-## 3. Changes in Youhan Version
+## 3. Changes in the 606-Chunk Reference Baseline
 
 ### 3.1 PDF 재추출
 
-`youhan200203`의 `retrieval_eval/prepare_retrieval_data.py`는 PDF 8개를
+Reference baseline repository의 `retrieval_eval/prepare_retrieval_data.py`는 PDF 8개를
 `pdfplumber.page.extract_text()`로 재추출했습니다(표 전용 추출 API는 사용하지
 않음). 2.1의 3개 표에 대해 새 `documents.jsonl`을 직접 열어 재확인한 결과, 표
 셀 값이 텍스트로 정상 포함되어 있음을 확인했습니다(`extract_tables()`를 쓰지
@@ -57,7 +57,7 @@ Web 소스 evidence는 거의 전부 정상 매칭되었습니다. 즉 문제는
 
 ### 3.2 BGE-M3 Tokenization 및 재청킹 (824 → 606)
 
-`youhan200203`는 `BAAI/bge-m3` tokenizer 기반 슬라이딩 윈도우로 300/50·400/60·
+Reference baseline repository는 `BAAI/bge-m3` tokenizer 기반 슬라이딩 윈도우로 300/50·400/60·
 500/80 3개 chunk 버전을 재생성했습니다. 400/60 기준 chunk 수는 824개→606개로
 감소했습니다.
 
@@ -76,7 +76,7 @@ Web 소스 evidence는 거의 전부 정상 매칭되었습니다. 즉 문제는
 
 ### 4.1 PDF002 Page Scope 복원
 
-`youhan200203`는 PDF002("Guide to Leading a Safe Life in Seoul", 원본 43페이지)를
+Reference baseline repository는 PDF002("Guide to Leading a Safe Life in Seoul", 원본 43페이지)를
 **43페이지 전체** 재추출하고 있었습니다. 그러나 원래 corpus 설계는 금융사기(피싱)
 관련 페이지만 발췌하는 것이었고, 실제로 `kangminhyeok02`의 `documents.jsonl`에는
 **17, 18, 19페이지만** 포함되어 있었습니다(`[Page N]` 마커 직접 grep으로 확인).
@@ -88,12 +88,12 @@ Web 소스 evidence는 거의 전부 정상 매칭되었습니다. 즉 문제는
 - PDF002 text length: 39,996자 → **3,715자**
 - 400/60 chunk 수 606 → 563(**−43**)은 **PDF002의 chunk 수 변화(46→3, −43)로 정확히
   전부 설명됨** — PDF002를 제외한 나머지 20개 문서는 chunk 수·chunk_id·text가
-  youhan 버전과 **byte 단위로 완전히 동일**함을 직접 hash 비교로 확인했습니다.
+  reference baseline 버전과 **byte 단위로 완전히 동일**함을 직접 hash 비교로 확인했습니다.
 
 ### 4.2 Gold Boundary Validation
 
 새 400/60 corpus/chunk 기준으로 167개 evidence 전체의 gold mapping을 **처음부터
-재계산**했습니다(`youhan200203`의 fuzzy fallback 로직을 그대로 재사용, 재사용
+재계산**했습니다(reference baseline repository의 fuzzy fallback 로직을 그대로 재사용, 재사용
 아님 재실행). 결과:
 
 - **167/167 matched, unmatched = 0**
@@ -118,33 +118,33 @@ Web 소스 evidence는 거의 전부 정상 매칭되었습니다. 즉 문제는
 | Gold 구성 | single 125 / multi 42 |
 | PDF002 pages | 17, 18, 19 (원본 설계 복원) |
 
-(300/50 chunks 764개, 500/80 chunks 530개는 이번 보정 대상이 아니며 youhan 버전
+(300/50 chunks 764개, 500/80 chunks 530개는 이번 보정 대상이 아니며 reference baseline 버전
 그대로 보존되어 있습니다 — 아래 10번 참고)
 
 ## 6. Validation / Test Split
 
 `rag_evaluation_dataset.jsonl`을 직접 읽어 재확인: **validation 80문항, test
-40문항, overlap 0**(question_id 집합 기준). Youhan 버전과 Final 버전의 split
+40문항, overlap 0**(question_id 집합 기준). 606-chunk baseline 버전과 Final 버전의 split
 정의(question_id → split 매핑)도 완전히 동일함을 확인했습니다. Validation은
 파이프라인 조정·chunk 크기 비교용, Test는 그 어떤 조정에도 쓰이지 않은 held-out
 평가용으로 구분됩니다.
 
-## 7. Youhan vs Final 2×2 Comparison (400/60)
+## 7. 606-chunk baseline vs Final 2×2 Comparison (400/60)
 
 | Version | Split | N | Chunks | BM25 R@20 | Dense R@20 | Hybrid R@20 | Hit@20 | Reranker R@5 | Hit@5 | MRR@5 | nDCG@5 |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Youhan | Validation | 80 | 606 | 0.726 | 0.831 | 0.915 | 0.950 | 0.784 | 0.825 | 0.703 | 0.679 |
-| Youhan | Test | 40 | 606 | 0.7492 | 0.9333 | 0.9125 | 0.925 | 0.7958 | 0.825 | 0.6279 | 0.6284 |
+| 606-chunk baseline | Validation | 80 | 606 | 0.726 | 0.831 | 0.915 | 0.950 | 0.784 | 0.825 | 0.703 | 0.679 |
+| 606-chunk baseline | Test | 40 | 606 | 0.7492 | 0.9333 | 0.9125 | 0.925 | 0.7958 | 0.825 | 0.6279 | 0.6284 |
 | Final | Validation | 80 | 563 | 0.7385 | 0.8719 | 0.9427 | 0.975 | 0.8125 | 0.850 | 0.7158 | 0.6970 |
 | **Final** | **Test** | **40** | **563** | **0.7492** | **0.9333** | **0.9125** | **0.925** | **0.7958** | **0.825** | **0.6342** | **0.6334** |
 
-**Youhan/Validation 행 주의**: 이 값은 `test_korean_only.md`(작업 디렉토리 최상위,
+**606-chunk baseline/Validation 행 주의**: 이 값은 `test_korean_only.md`(작업 디렉토리 최상위,
 어떤 repo git 이력에도 없음)에만 기록된 **reported-only 결과**입니다. 원본 JSON
-산출물이 youhan repo 어디에도 없어 재실행 검증이 불가능하며, 형식은 실제
+산출물이 reference baseline repo 어디에도 없어 재실행 검증이 불가능하며, 형식은 실제
 `eval_retrieval.py` 출력과 일치하나 100% 재현 검증은 하지 못했습니다.
 
-나머지 3행(Youhan/Test, Final/Validation, Final/Test)은 전부 이 repo 안의 실제
-JSON 파일(`comparison_youhan/retrieval_eval/results_400_60_ko_test.json`,
+나머지 3행(606-chunk baseline/Test, Final/Validation, Final/Test)은 전부 이 repo 안의 실제
+JSON 파일(`retrieval_eval/reference_baseline/606_chunk_baseline/results_400_60_ko_test.json`,
 `retrieval_eval/results_400_60_ko_validation.json`,
 `retrieval_eval/results_400_60_ko_test.json`)을 직접 읽어 확인한 값입니다.
 
@@ -182,7 +182,7 @@ Hybrid에서 Dense의 gold 후보를 잃은 사례가 2건이므로 BM25의 comp
 
 ## 8. Interpretation
 
-### 8.1 Youhan → Final, 동일 Test(40)에서의 변화
+### 8.1 606-chunk baseline → Final, 동일 Test(40)에서의 변화
 
 BM25/Dense/Hybrid의 **Recall@20·Hit@20은 소수점까지 완전히 동일**합니다
 (0.7492/0.9333/0.9125, Hit@20 0.925 등). Reranker의 Recall@5(0.7958)·Hit@5(0.825)도
@@ -199,20 +199,20 @@ nDCG@5(0.5493→0.5252), Reranker MRR@5(0.6279→0.6342)·nDCG@5(0.6284→0.6334
 
 확인된 artifact 기준으로 설명 가능한 근거:
 
-- PDF001 표 손실 복구(§3.1)는 **이미 youhan 버전에 반영되어 있었으므로**, youhan→
-  final 비교에서는 이 개선분이 나타나지 않습니다(youhan 자체가 이미 개선된
+- PDF001 표 손실 복구(§3.1)는 **이미 reference baseline 버전에 반영되어 있었으므로**, reference baseline→
+  final 비교에서는 이 개선분이 나타나지 않습니다(reference baseline 자체가 이미 개선된
   상태였음).
-- youhan→final의 실질적 corpus 변경은 **PDF002 페이지 범위 축소(§4.1)가
+- reference baseline→final의 실질적 corpus 변경은 **PDF002 페이지 범위 축소(§4.1)가
   사실상 전부**입니다.
 - PDF002는 test/validation 어느 evidence의 gold_chunk_ids에도 등장하지 않습니다
   (167개 evidence의 소스 문서 목록을 확인한 결과 PDF002는 포함되지 않음).
-- 나머지 20개 문서의 chunk는 youhan과 byte 단위로 동일하므로, BM25/Dense 인덱스가
+- 나머지 20개 문서의 chunk는 reference baseline과 byte 단위로 동일하므로, BM25/Dense 인덱스가
   이 문서들에 대해 사실상 동일한 입력을 받습니다.
 
 다만 이는 "완전히 무관하다"는 단정이 아니라, **corpus 크기가 줄면 BM25 IDF나
 Dense 상대 유사도의 미세한 재정렬이 일어날 수 있다는 점에서 §8.1의 소폭 MRR/nDCG
 변동과 정합적**이라는 정도로만 서술합니다. 검색 실행 자체의 오류 가능성을
-완전히 배제할 근거는 없으나, 두 실행(youhan/test, final/test) 모두 동일한
+완전히 배제할 근거는 없으나, 두 실행(reference baseline/test, final/test) 모두 동일한
 `eval_retrieval.py`(byte 단위 확인)로 수행되어 코드 차이에 의한 왜곡은 아닙니다.
 
 ### 8.3 Validation vs Test 차이 (Final, 동일 파이프라인)
@@ -244,7 +244,7 @@ nDCG@5(0.697 vs 0.633)에서 Test가 뚜렷이 낮습니다. Validation과 Test�
   - English → Korean translation → Nori BM25
   - English → BGE-M3 Sparse
   - English → BGE-M3 Dense
-- 300/50·500/80 chunk 버전에 대한 이번 단계의 gold boundary 재검증(현재는 youhan
+- 300/50·500/80 chunk 버전에 대한 이번 단계의 gold boundary 재검증(현재는 reference baseline
   버전 그대로 보존, 재검증되지 않음)
 - 다국어(cross-lingual) retrieval 전략 검토
 - 팀 대상 최종 발표/보고서 작성
@@ -257,13 +257,13 @@ nDCG@5(0.697 vs 0.633)에서 Test가 뚜렷이 낮습니다. Validation과 Test�
 |---|---|
 | `Retriever_dataset-20260816T123809Z-1-001/documents/documents.jsonl` | 최종 21개 문서(PDF002 페이지 필터 반영) |
 | `Retriever_dataset-20260816T123809Z-1-001/chunks/chunk_400_60/chunks.jsonl` | 최종 563개 400/60 chunk |
-| `Retriever_dataset-20260816T123809Z-1-001/chunks/chunk_300_50/chunks.jsonl` | 300/50 chunk(youhan 버전 보존, 이번 단계 미변경) |
-| `Retriever_dataset-20260816T123809Z-1-001/chunks/chunk_500_80/chunks.jsonl` | 500/80 chunk(youhan 버전 보존, 이번 단계 미변경) |
+| `Retriever_dataset-20260816T123809Z-1-001/chunks/chunk_300_50/chunks.jsonl` | 300/50 chunk(reference baseline 버전 보존, 이번 단계 미변경) |
+| `Retriever_dataset-20260816T123809Z-1-001/chunks/chunk_500_80/chunks.jsonl` | 500/80 chunk(reference baseline 버전 보존, 이번 단계 미변경) |
 | `Retriever_dataset-20260816T123809Z-1-001/metadata/corpus_statistics.json`, `chunk_statistics_400_60.json` | 최종 corpus/chunk 통계(재생성됨) |
-| `Retriever_dataset-20260816T123809Z-1-001/metadata/chunk_statistics_300_50.json`, `chunk_statistics_500_80.json`, `duplicate_report.json` | youhan 버전 보존(미변경) |
-| `rag_evaluation_dataset.jsonl` | 최종 evaluation dataset(400/60 gold_chunk_ids 갱신, 300/50·500/80 필드는 youhan 값 보존) |
+| `Retriever_dataset-20260816T123809Z-1-001/metadata/chunk_statistics_300_50.json`, `chunk_statistics_500_80.json`, `duplicate_report.json` | reference baseline 버전 보존(미변경) |
+| `rag_evaluation_dataset.jsonl` | 최종 evaluation dataset(400/60 gold_chunk_ids 갱신, 300/50·500/80 필드는 reference baseline 값 보존) |
 | `retrieval_eval/prepare_retrieval_data.py` | PDF 재추출/청킹/gold 생성 파이프라인(PDF002 필터 추가된 버전) |
-| `retrieval_eval/eval_retrieval.py` | BM25/Dense/Hybrid/Reranker 평가 스크립트(youhan 버전과 byte 단위 동일, 미변경) |
+| `retrieval_eval/eval_retrieval.py` | BM25/Dense/Hybrid/Reranker 평가 스크립트(reference baseline 버전과 byte 단위 동일, 미변경) |
 | `retrieval_eval/regenerate_400_60_only.py` | documents + 400/60 chunk 재생성 드라이버 |
 | `retrieval_eval/regenerate_gold_400_60.py` | 400/60 gold mapping 처음부터 재계산 드라이버 |
 | `retrieval_eval/apply_boundary_fix_400_60.py` | boundary-aware multi-gold 보정 드라이버 |
@@ -276,9 +276,9 @@ nDCG@5(0.697 vs 0.633)에서 Test가 뚜렷이 낮습니다. Validation과 Test�
 | `retrieval_eval/results_400_60_2x2_matrix.json` | 2×2 매트릭스 정리본 |
 | `retrieval_eval/dense_vs_hybrid_reranker_test.md` | Final/Test40 Dense→Reranker vs Hybrid→Reranker 상세 비교 및 architecture 결정 |
 | `retrieval_eval/results_400_60_dense_vs_hybrid_reranker_test.json` | 위 architecture 비교의 full-precision 지표 및 question-level 결과 |
-| `retrieval_eval/results_300_50_ko_test.json`, `results_500_80_ko_test.json`, `unmatched_evidence_*.json` | youhan 버전 보존(이번 단계 미변경, 42~43% 시절 gold 기준 stale 값 포함 가능) |
+| `retrieval_eval/results_300_50_ko_test.json`, `results_500_80_ko_test.json`, `unmatched_evidence_*.json` | reference baseline 버전 보존(이번 단계 미변경, 42~43% 시절 gold 기준 stale 값 포함 가능) |
 | `retrieval_eval/final_data_validation.md` | STEP 1~8 데이터 재생성·검증 상세 기록(이전 단계 산출물) |
 | `retrieval_eval/compare_gold_before_after.py` | gold 보정 전/후 비교 스크립트 |
-| `comparison_youhan/` | Youhan documents/606 chunks/gold를 이 repo 안에 복사해 독립적으로 재평가한 결과 일체 |
-| `retrieval_eval/FinAgent_Retrieval_Eval_Colab.ipynb` | Colab 평가 노트북(youhan 버전 보존) |
+| `retrieval_eval/reference_baseline/606_chunk_baseline/` | 606-chunk baseline documents/606 chunks/gold를 이 repo 안에 복사해 독립적으로 재평가한 결과 일체 |
+| `retrieval_eval/FinAgent_Retrieval_Eval_Colab.ipynb` | Colab 평가 노트북(reference baseline 버전 보존) |
 | `README.md` | 이 repo 전체에 대한 짧은 개요 |

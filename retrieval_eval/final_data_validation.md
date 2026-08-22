@@ -2,7 +2,7 @@
 
 작업 범위: 400/60 chunk variant만. 300/50, 500/80은 손대지 않음.
 모든 수정/실행은 `KUBIG_FINANCE_final_test` 내부에서만 수행. `KUBIG_FINANCE`,
-`KUBIG_FINANCE_youhan`은 참조만 하고 수정하지 않음.
+606-chunk reference baseline repository는 참조만 하고 수정하지 않음.
 
 ## STEP 1. PDF002 page filtering 복원
 
@@ -23,15 +23,15 @@ PDF002 필터링과 무관한, 이 환경에서 스크립트를 실행 가능하
 `retrieval_eval/regenerate_400_60_only.py` 실행 → `documents/documents.jsonl` 덮어씀.
 
 - 전체 document 수: 21 (PDF 8, Web 13)
-- PDF002 외 20개 document는 youhan repo와 **byte 단위로 완전 동일**(직접 비교 확인)
+- PDF002 외 20개 document는 reference baseline과 **byte 단위로 완전 동일**(직접 비교 확인)
 - PDF002만 39,996자 → 3,715자로 축소
 
 ## STEP 3. 400/60 chunks 재생성
 
-- 전체 chunk 수: **563** (youhan 606개에서 PDF002 chunk 46→3개로 줄어든 만큼 감소,
+- 전체 chunk 수: **563** (reference baseline 606개에서 PDF002 chunk 46→3개로 줄어든 만큼 감소,
   606-46+3=563 정확히 일치)
 - PDF001 317개, PDF002 3개(신규), PDF004 6, PDF005 5, PDF006 5, PDF007 5, PDF008 98,
-  PDF009 41 / Web 13개 문서 합계 83개 — PDF002를 제외한 나머지는 youhan과 **chunk_id,
+  PDF009 41 / Web 13개 문서 합계 83개 — PDF002를 제외한 나머지는 reference baseline과 **chunk_id,
   text 완전 동일**(직접 diff 확인, PDF001·PDF008·WEB004 각각 0건 차이)
 - 평균 토큰 301.09, 최대 400, 최소 2
 
@@ -59,7 +59,7 @@ chunks에 대해 처음부터 재실행.
 
 - Total evidence: 167 / Matched: 167 / Unmatched: **0**
 - Single gold: 155 / Multi gold(자연 발생): 12
-- Match method: normalized_exact 74, line_window 93 (youhan과 동일 분포 — 코퍼스가
+- Match method: normalized_exact 74, line_window 93 (reference baseline과 동일 분포 — 코퍼스가
   PDF002 외에는 완전히 동일하므로 예상된 결과)
 
 ## STEP 6. Boundary-aware multi-gold 보정
@@ -98,7 +98,7 @@ chunks에 대해 처음부터 재실행.
 - `Retriever_dataset-20260816T123809Z-1-001/metadata/corpus_statistics.json`,
   `metadata/chunk_statistics_400_60.json` — 갱신된 통계
 - `rag_evaluation_dataset.jsonl`(KUBIG_FINANCE_final_test 루트) — 400/60 gold_chunk_ids
-  최종 반영(300_50/500_80 필드는 기존 youhan 값 그대로 보존, 손대지 않음)
+  최종 반영(300_50/500_80 필드는 기존 reference baseline 값 그대로 보존, 손대지 않음)
 - `retrieval_eval/gold_400_60_recomputed.jsonl`, `retrieval_eval/gold_400_60_final.jsonl` —
   STEP5/STEP6 중간 산출물(작업 이력 보존용)
 - `retrieval_eval/regenerate_400_60_only.py`, `retrieval_eval/regenerate_gold_400_60.py`,
