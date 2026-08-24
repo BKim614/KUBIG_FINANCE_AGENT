@@ -4,7 +4,7 @@
 
 This experiment asks whether actual translated Nori candidates can recover English Dense misses without materially damaging the strong Dense baseline. It uses the unchanged Final 400/60 corpus (563 chunks), Final gold, Validation80 only, candidate/final depth 20/5, the evidence-group-aware metrics in `retrieval_eval/eval_retrieval.py`, and `BAAI/bge-reranker-v2-m3` with the original English query. Test40 was not translated, retrieved, reranked, or tuned.
 
-Dense and Nori Top-20 rankings and scores were reused from `results_400_60_en_translated_nori_validation.json`. Translation, Nori retrieval, Dense embedding, analyzer configuration, and BM25 were not rerun or changed. Only the unique 2,887 Validation question–chunk pairs in the Dense∪Nori pools were scored once by the reranker and reused across all variants.
+Dense and Nori Top-20 rankings and scores were reused from `results/results_400_60_en_translated_nori_validation.json`. Translation, Nori retrieval, Dense embedding, analyzer configuration, and BM25 were not rerun or changed. Only the unique 2,887 Validation question–chunk pairs in the Dense∪Nori pools were scored once by the reranker and reused across all variants.
 
 ## Fusion definitions
 

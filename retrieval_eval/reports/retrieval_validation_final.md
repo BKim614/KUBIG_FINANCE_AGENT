@@ -144,9 +144,9 @@ Reference baseline repository는 PDF002("Guide to Leading a Safe Life in Seoul",
 `eval_retrieval.py` 출력과 일치하나 100% 재현 검증은 하지 못했습니다.
 
 나머지 3행(606-chunk baseline/Test, Final/Validation, Final/Test)은 전부 이 repo 안의 실제
-JSON 파일(`retrieval_eval/reference_baseline/606_chunk_baseline/results_400_60_ko_test.json`,
-`retrieval_eval/results_400_60_ko_validation.json`,
-`retrieval_eval/results_400_60_ko_test.json`)을 직접 읽어 확인한 값입니다.
+JSON 파일(`retrieval_eval/reference_baseline/606_chunk_baseline/results/results_400_60_ko_test.json`,
+`retrieval_eval/results/results_400_60_ko_validation.json`,
+`retrieval_eval/results/results_400_60_ko_test.json`)을 직접 읽어 확인한 값입니다.
 
 ## Final Korean Retrieval Architecture
 
@@ -177,8 +177,8 @@ Hybrid에서 Dense의 gold 후보를 잃은 사례가 2건이므로 BM25의 comp
 > **BGE-M3 Dense → Top-20 → bge-reranker-v2-m3 → Top-5**
 
 상세 결과와 question-level 분석은
-`retrieval_eval/dense_vs_hybrid_reranker_test.md`, full-precision 결과는
-`retrieval_eval/results_400_60_dense_vs_hybrid_reranker_test.json`에 기록했습니다.
+`retrieval_eval/reports/dense_vs_hybrid_reranker_test.md`, full-precision 결과는
+`retrieval_eval/results/results_400_60_dense_vs_hybrid_reranker_test.json`에 기록했습니다.
 
 ## 8. Interpretation
 
@@ -229,7 +229,7 @@ nDCG@5(0.697 vs 0.633)에서 Test가 뚜렷이 낮습니다. Validation과 Test�
 - **최종 한국어 pipeline: BGE-M3 Dense top-20 → bge-reranker-v2-m3 → top-5**
 - Final/Test(40, held-out) 기준 Dense → Reranker 성능: Recall@5 **0.7792**,
   Hit@5 **0.825**, MRR@5 **0.6446**, nDCG@5 **0.6376** (출처:
-  `retrieval_eval/results_400_60_dense_vs_hybrid_reranker_test.json`)
+  `retrieval_eval/results/results_400_60_dense_vs_hybrid_reranker_test.json`)
 - Hybrid → Reranker의 Recall@5는 **0.7958**로 더 높지만, Hit@5가 동일하고 Dense가
   candidate 지표와 최종 MRR/nDCG에서 우세하며 BM25/RRF가 추가하는 복잡도를 함께
   고려해 Dense → Reranker를 최종 baseline으로 선택합니다.
@@ -267,17 +267,17 @@ nDCG@5(0.697 vs 0.633)에서 Test가 뚜렷이 낮습니다. Validation과 Test�
 | `retrieval_eval/regenerate_400_60_only.py` | documents + 400/60 chunk 재생성 드라이버 |
 | `retrieval_eval/regenerate_gold_400_60.py` | 400/60 gold mapping 처음부터 재계산 드라이버 |
 | `retrieval_eval/apply_boundary_fix_400_60.py` | boundary-aware multi-gold 보정 드라이버 |
-| `retrieval_eval/gold_400_60_recomputed.jsonl` | 보정 전(single-gold only) 중간 산출물 |
-| `retrieval_eval/gold_400_60_final.jsonl` | 보정 후 최종 gold(= `rag_evaluation_dataset.jsonl`과 동일 내용) |
-| `retrieval_eval/gold_quality_risk_audit_400_60.csv` | Risk-based 1차 audit 기록(RISK 130건 전수 + LOW_RISK 20건 표본, 총 150건) |
-| `retrieval_eval/results_400_60_ko_test.json` | Final/Test40 실행 결과 |
-| `retrieval_eval/results_400_60_ko_validation.json` | Final/Validation80 실행 결과 |
-| `retrieval_eval/results_400_60_gold_before_after_comparison.json` | gold 보정 전/후 성능 비교 |
-| `retrieval_eval/results_400_60_2x2_matrix.json` | 2×2 매트릭스 정리본 |
-| `retrieval_eval/dense_vs_hybrid_reranker_test.md` | Final/Test40 Dense→Reranker vs Hybrid→Reranker 상세 비교 및 architecture 결정 |
-| `retrieval_eval/results_400_60_dense_vs_hybrid_reranker_test.json` | 위 architecture 비교의 full-precision 지표 및 question-level 결과 |
-| `retrieval_eval/results_300_50_ko_test.json`, `results_500_80_ko_test.json`, `unmatched_evidence_*.json` | reference baseline 버전 보존(이번 단계 미변경, 42~43% 시절 gold 기준 stale 값 포함 가능) |
-| `retrieval_eval/final_data_validation.md` | STEP 1~8 데이터 재생성·검증 상세 기록(이전 단계 산출물) |
+| `retrieval_eval/gold/gold_400_60_recomputed.jsonl` | 보정 전(single-gold only) 중간 산출물 |
+| `retrieval_eval/gold/gold_400_60_final.jsonl` | 보정 후 최종 gold(= `rag_evaluation_dataset.jsonl`과 동일 내용) |
+| `retrieval_eval/gold/gold_quality_risk_audit_400_60.csv` | Risk-based 1차 audit 기록(RISK 130건 전수 + LOW_RISK 20건 표본, 총 150건) |
+| `retrieval_eval/results/results_400_60_ko_test.json` | Final/Test40 실행 결과 |
+| `retrieval_eval/results/results_400_60_ko_validation.json` | Final/Validation80 실행 결과 |
+| `retrieval_eval/results/results_400_60_gold_before_after_comparison.json` | gold 보정 전/후 성능 비교 |
+| `retrieval_eval/results/results_400_60_2x2_matrix.json` | 2×2 매트릭스 정리본 |
+| `retrieval_eval/reports/dense_vs_hybrid_reranker_test.md` | Final/Test40 Dense→Reranker vs Hybrid→Reranker 상세 비교 및 architecture 결정 |
+| `retrieval_eval/results/results_400_60_dense_vs_hybrid_reranker_test.json` | 위 architecture 비교의 full-precision 지표 및 question-level 결과 |
+| `retrieval_eval/results/results_300_50_ko_test.json`, `results/results_500_80_ko_test.json`, `results/unmatched_evidence_*.json` | reference baseline 버전 보존(이번 단계 미변경, 42~43% 시절 gold 기준 stale 값 포함 가능) |
+| `retrieval_eval/reports/final_data_validation.md` | STEP 1~8 데이터 재생성·검증 상세 기록(이전 단계 산출물) |
 | `retrieval_eval/compare_gold_before_after.py` | gold 보정 전/후 비교 스크립트 |
 | `retrieval_eval/reference_baseline/606_chunk_baseline/` | 606-chunk baseline documents/606 chunks/gold를 이 repo 안에 복사해 독립적으로 재평가한 결과 일체 |
 | `retrieval_eval/FinAgent_Retrieval_Eval_Colab.ipynb` | Colab 평가 노트북(reference baseline 버전 보존) |

@@ -78,7 +78,7 @@ Evaluation dataset은 `account_card`, `remittance_exchange`, `notice_understandi
 - 400/60은 candidate MRR@20이 0.6244로 가장 높았고 300/50보다 152개, 약 21% 적은 chunk로 corpus를 구성했습니다.
 - 500/80은 candidate coverage와 final ranking이 둘 다 상대적으로 낮았습니다.
 
-따라서 400/60을 모든 metric의 유일한 최적값이 아니라 **retrieval performance, candidate ranking, context granularity와 corpus 규모의 균형점**으로 유지했습니다. 세부 비교는 [`retrieval_eval/chunk_size_final_comparison.md`](retrieval_eval/chunk_size_final_comparison.md)에서 확인할 수 있습니다.
+따라서 400/60을 모든 metric의 유일한 최적값이 아니라 **retrieval performance, candidate ranking, context granularity와 corpus 규모의 균형점**으로 유지했습니다. 세부 비교는 [`retrieval_eval/reports/chunk_size_final_comparison.md`](retrieval_eval/reports/chunk_size_final_comparison.md)에서 확인할 수 있습니다.
 
 ## Experiment Summary
 
@@ -102,16 +102,29 @@ Direct multilingual Dense, BGE-M3 Sparse, Dense+Sparse fusion, paired-Korean lex
 │   ├── chunks/
 │   └── metadata/
 ├── retrieval_eval/
+│   ├── reports/
+│   │   ├── chunk_size_final_comparison.md
+│   │   ├── dense_vs_hybrid_reranker_test.md
+│   │   ├── final_data_validation.md
+│   │   ├── retrieval_validation_final.md
+│   │   └── initial_method_chunk_comparison.md
+│   ├── results/
+│   │   └── ... Korean evaluation result/audit JSON
+│   ├── gold/
+│   │   └── ... gold label jsonl/csv
 │   ├── chunk_size_final_artifacts/
-│   ├── chunk_size_final_comparison.md
-│   ├── results_chunk_size_final_comparison.json
-│   ├── run_chunk_size_final_comparison.py
 │   ├── reference_baseline/
 │   ├── eval_retrieval.py
-│   └── ... Korean evaluation code and artifacts
-├── retrieval_eval_en/
-│   └── ... English evaluation documents and artifacts
-└── test1.md
+│   ├── run_chunk_size_final_comparison.py
+│   └── ... Korean evaluation code
+└── retrieval_eval_en/
+    ├── reports/
+    │   └── ... English evaluation reports
+    ├── results/
+    │   └── ... English evaluation result JSON
+    ├── data/
+    │   └── ... Nori config, translation audit JSON
+    └── ... English evaluation code
 ```
 
 ### Core Data
@@ -129,28 +142,28 @@ Direct multilingual Dense, BGE-M3 Sparse, Dense+Sparse fusion, paired-Korean lex
 
 | 확인하려는 내용 | Summary / Report | Raw or detailed artifact |
 |---|---|---|
-| Final chunk-size 선정 | [`retrieval_eval/chunk_size_final_comparison.md`](retrieval_eval/chunk_size_final_comparison.md) | `retrieval_eval/results_chunk_size_final_comparison.json`, `chunk_size_final_artifacts/` |
-| Final corpus와 gold 검증 | [`retrieval_eval/retrieval_validation_final.md`](retrieval_eval/retrieval_validation_final.md) | `retrieval_eval/final_data_validation.md`, `gold_400_60_final.jsonl` |
-| Final Korean architecture 결정 | [`retrieval_eval/dense_vs_hybrid_reranker_test.md`](retrieval_eval/dense_vs_hybrid_reranker_test.md) | `retrieval_eval/results_400_60_dense_vs_hybrid_reranker_test.json` |
-| Final Validation/Test 결과 | `retrieval_eval/retrieval_validation_final.md` | `results_400_60_ko_validation.json`, `results_400_60_ko_test.json` |
-| 606-chunk baseline과 Final 비교 | `retrieval_eval/retrieval_validation_final.md` | `results_400_60_2x2_matrix.json` |
+| Final chunk-size 선정 | [`retrieval_eval/reports/chunk_size_final_comparison.md`](retrieval_eval/reports/chunk_size_final_comparison.md) | `retrieval_eval/results/results_chunk_size_final_comparison.json`, `chunk_size_final_artifacts/` |
+| Final corpus와 gold 검증 | [`retrieval_eval/reports/retrieval_validation_final.md`](retrieval_eval/reports/retrieval_validation_final.md) | `retrieval_eval/reports/final_data_validation.md`, `gold/gold_400_60_final.jsonl` |
+| Final Korean architecture 결정 | [`retrieval_eval/reports/dense_vs_hybrid_reranker_test.md`](retrieval_eval/reports/dense_vs_hybrid_reranker_test.md) | `retrieval_eval/results/results_400_60_dense_vs_hybrid_reranker_test.json` |
+| Final Validation/Test 결과 | `retrieval_eval/reports/retrieval_validation_final.md` | `results/results_400_60_ko_validation.json`, `results/results_400_60_ko_test.json` |
+| 606-chunk baseline과 Final 비교 | `retrieval_eval/reports/retrieval_validation_final.md` | `results/results_400_60_2x2_matrix.json` |
 
 ### English Retrieval
 
 | 확인하려는 내용 | Summary / Report | Raw or detailed artifact |
 |---|---|---|
-| English 최종 결정 | [`retrieval_eval_en/english_retrieval_final_summary.md`](retrieval_eval_en/english_retrieval_final_summary.md) | `results_400_60_en_dense_nori_final_test.json` |
-| 전체 실험 의사결정 흐름 | [`retrieval_eval_en/retrieval_en_progress.md`](retrieval_eval_en/retrieval_en_progress.md) | `retrieval_eval_en/results_*.json` |
-| Dense baseline | `retrieval_eval_en/en_dense_reranker_test.md` | `results_400_60_en_dense_reranker_test.json` |
-| Sparse와 Dense+Sparse | `en_sparse_reranker_test.md`, `en_dense_sparse_fusion_test.md` | 대응 `results_*.json` |
-| Translation/Nori와 fusion | `en_translated_nori_validation.md`, `en_dense_nori_fusion_validation.md`, `en_dense_nori_final_test.md` | 대응 Validation/Test JSON과 translation audit JSON |
+| English 최종 결정 | [`retrieval_eval_en/reports/english_retrieval_final_summary.md`](retrieval_eval_en/reports/english_retrieval_final_summary.md) | `results/results_400_60_en_dense_nori_final_test.json` |
+| 전체 실험 의사결정 흐름 | [`retrieval_eval_en/reports/retrieval_en_progress.md`](retrieval_eval_en/reports/retrieval_en_progress.md) | `retrieval_eval_en/results/results_*.json` |
+| Dense baseline | `retrieval_eval_en/reports/en_dense_reranker_test.md` | `results/results_400_60_en_dense_reranker_test.json` |
+| Sparse와 Dense+Sparse | `retrieval_eval_en/reports/en_sparse_reranker_test.md`, `retrieval_eval_en/reports/en_dense_sparse_fusion_test.md` | 대응 `retrieval_eval_en/results/results_*.json` |
+| Translation/Nori와 fusion | `retrieval_eval_en/reports/en_translated_nori_validation.md`, `retrieval_eval_en/reports/en_dense_nori_fusion_validation.md`, `retrieval_eval_en/reports/en_dense_nori_final_test.md` | 대응 Validation/Test JSON과 translation audit JSON |
 
 ### Historical / Development Notes
 
 | Path | Role |
 |---|---|
 | `retrieval_eval/reference_baseline/606_chunk_baseline/` | Final 563-chunk corpus 이전 historical 606-chunk baseline의 재현·비교 snapshot |
-| `test1.md` | 300/50, 400/60, 500/80 초기 chunk-setting 비교를 보존한 historical development report; 현재 final architecture의 source of truth는 아님 |
+| `retrieval_eval/reports/initial_method_chunk_comparison.md` | 300/50, 400/60, 500/80 초기 chunk-setting 비교를 보존한 historical development report (구 `test1.md`); 현재 final architecture의 source of truth는 아님 |
 
 ## Reproduction Resources
 

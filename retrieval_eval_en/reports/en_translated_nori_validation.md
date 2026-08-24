@@ -40,7 +40,7 @@ Thus this is an end-to-end translation-component evaluation; Nori misses cannot 
 - Explicit BM25: k1=1.2, b=0.75, `discount_overlaps=true`
 - One shard, zero replicas; `text` is the scored field and `chunk_id` is preserved for gold linkage
 
-The analyzer probe `주택청약통장과 외국인등록증` produced Nori morpheme/decompound tokens, confirming that the actual Nori plugin—not generic whitespace or character-bigram tokenization—was used. Exact settings and mappings are in `nori_index_config.json`.
+The analyzer probe `주택청약통장과 외국인등록증` produced Nori morpheme/decompound tokens, confirming that the actual Nori plugin—not generic whitespace or character-bigram tokenization—was used. Exact settings and mappings are in `data/nori_index_config.json`.
 
 ## Validation80 results
 
@@ -88,7 +88,7 @@ This result is **Case B**: translated Nori is too weak to replace English Dense,
 
 ## Artifacts
 
-- `retrieval_eval_en/validation_en_to_ko_translations.json`
-- `retrieval_eval_en/nori_index_config.json`
-- `retrieval_eval_en/results_400_60_en_translated_nori_validation.json`
+- `retrieval_eval_en/data/validation_en_to_ko_translations.json`
+- `retrieval_eval_en/data/nori_index_config.json`
+- `retrieval_eval_en/results/results_400_60_en_translated_nori_validation.json`
 

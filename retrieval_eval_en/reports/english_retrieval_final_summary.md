@@ -46,13 +46,13 @@ Dense-only is retained because the sealed Test showed no additional question-lev
 
 ## Main artifacts
 
-- `retrieval_eval_en/retrieval_en_progress.md`
-- `retrieval_eval_en/en_dense_reranker_test.md`
-- `retrieval_eval_en/en_sparse_reranker_test.md`
-- `retrieval_eval_en/en_dense_sparse_fusion_test.md`
-- `retrieval_eval_en/en_paired_ko_lexical_test.md`
-- `retrieval_eval_en/en_translated_nori_validation.md`
-- `retrieval_eval_en/en_dense_nori_fusion_validation.md`
-- `retrieval_eval_en/en_dense_nori_final_test.md`
-- `retrieval_eval_en/results_400_60_en_dense_nori_final_test.json`
+- `retrieval_eval_en/reports/retrieval_en_progress.md`
+- `retrieval_eval_en/reports/en_dense_reranker_test.md`
+- `retrieval_eval_en/reports/en_sparse_reranker_test.md`
+- `retrieval_eval_en/reports/en_dense_sparse_fusion_test.md`
+- `retrieval_eval_en/reports/en_paired_ko_lexical_test.md`
+- `retrieval_eval_en/reports/en_translated_nori_validation.md`
+- `retrieval_eval_en/reports/en_dense_nori_fusion_validation.md`
+- `retrieval_eval_en/reports/en_dense_nori_final_test.md`
+- `retrieval_eval_en/results/results_400_60_en_dense_nori_final_test.json`
 

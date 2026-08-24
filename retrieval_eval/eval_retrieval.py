@@ -26,7 +26,7 @@ ROOT_DIR = SCRIPT_DIR.parent
 CHUNKS_DIR = ROOT_DIR / "retriever_dataset" / "chunks"
 EVAL_DATASET_PATH = ROOT_DIR / "rag_evaluation_dataset.jsonl"
 CACHE_DIR = SCRIPT_DIR / "cache"
-DEFAULT_REPORT_PATH = ROOT_DIR / "test1.md"
+DEFAULT_REPORT_PATH = SCRIPT_DIR / "reports" / "initial_method_chunk_comparison.md"
 
 CHUNK_VARIANTS = ("300_50", "400_60", "500_80")
 CHUNK_LABELS = {
@@ -564,7 +564,7 @@ def main() -> None:
         )
         result["split"] = args.split
         result["language"] = args.lang
-        out_path = SCRIPT_DIR / f"results_{chunk_size}_{args.lang}_{args.split}.json"
+        out_path = SCRIPT_DIR / "results" / f"results_{chunk_size}_{args.lang}_{args.split}.json"
         out_path.write_text(
             json.dumps(result, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",

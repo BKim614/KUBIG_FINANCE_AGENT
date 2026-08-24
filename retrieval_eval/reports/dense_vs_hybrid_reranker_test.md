@@ -17,7 +17,7 @@
 | Dense -> Reranker | 0.9333 | 0.9500 | 0.6244 | 0.7792 | 0.8250 | 0.6446 | 0.6376 |
 | Hybrid(RRF) -> Reranker | 0.9125 | 0.9250 | 0.5415 | 0.7958 | 0.8250 | 0.6342 | 0.6334 |
 
-기존 `results_400_60_ko_test.json`의 Hybrid candidate 및 Hybrid+Reranker 지표와 이번 재실행 결과는 full precision에서 일치했습니다.
+기존 `results/results_400_60_ko_test.json`의 Hybrid candidate 및 Hybrid+Reranker 지표와 이번 재실행 결과는 full precision에서 일치했습니다.
 
 ## Query-level complementarity
 

@@ -36,11 +36,11 @@ CANONICAL_400_PATH = (
     ROOT_DIR / "retriever_dataset" / "chunks" / "chunk_400_60" / "chunks.jsonl"
 )
 DATASET_PATH = ROOT_DIR / "rag_evaluation_dataset.jsonl"
-AUDIT_PATH = SCRIPT_DIR / "gold_quality_risk_audit_400_60.csv"
-CANONICAL_400_RESULT = SCRIPT_DIR / "results_400_60_dense_vs_hybrid_reranker_test.json"
+AUDIT_PATH = SCRIPT_DIR / "gold" / "gold_quality_risk_audit_400_60.csv"
+CANONICAL_400_RESULT = SCRIPT_DIR / "results" / "results_400_60_dense_vs_hybrid_reranker_test.json"
 CANONICAL_400_CACHE = SCRIPT_DIR / "cache" / "dense_emb_400_60.npy"
 ARTIFACT_DIR = SCRIPT_DIR / "chunk_size_final_artifacts"
-RESULT_PATH = SCRIPT_DIR / "results_chunk_size_final_comparison.json"
+RESULT_PATH = SCRIPT_DIR / "results" / "results_chunk_size_final_comparison.json"
 CACHE_DIR = Path("/private/tmp/kubig_chunk_size_final_cache")
 
 VARIANTS = {

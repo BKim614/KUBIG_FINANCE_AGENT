@@ -21,7 +21,7 @@ ROOT_DIR = SCRIPT_DIR.parent
 CHUNKS_PATH = ROOT_DIR / "retriever_dataset" / "chunks" / "chunk_400_60" / "chunks.jsonl"
 CACHE_DIR = SCRIPT_DIR / "cache"
 
-BEFORE_GOLD_PATH = SCRIPT_DIR / "gold_400_60_recomputed.jsonl"  # pre boundary-fix
+BEFORE_GOLD_PATH = SCRIPT_DIR / "gold" / "gold_400_60_recomputed.jsonl"  # pre boundary-fix
 AFTER_GOLD_PATH = ROOT_DIR / "rag_evaluation_dataset.jsonl"  # final (post boundary-fix)
 
 SPLIT = "test"
@@ -90,6 +90,6 @@ out = {
         "reranker": er.evaluate_final_rankings(er.CandidateReranker.name, reranked_rankings, questions, gold_after, final_k=FINAL_K),
     },
 }
-out_path = SCRIPT_DIR / "results_400_60_gold_before_after_comparison.json"
+out_path = SCRIPT_DIR / "results" / "results_400_60_gold_before_after_comparison.json"
 out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 print(f"\n[done] -> {out_path}")

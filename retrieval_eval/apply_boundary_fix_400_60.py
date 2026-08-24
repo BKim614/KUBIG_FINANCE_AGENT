@@ -10,9 +10,9 @@ from pathlib import Path
 from collections import Counter
 
 BASE = Path(__file__).resolve().parent
-RECOMPUTED_PATH = BASE / "gold_400_60_recomputed.jsonl"
+RECOMPUTED_PATH = BASE / "gold" / "gold_400_60_recomputed.jsonl"
 CHUNKS_PATH = BASE.parent / "retriever_dataset" / "chunks" / "chunk_400_60" / "chunks.jsonl"
-AUDIT_CSV = BASE / "gold_quality_risk_audit_400_60.csv"
+AUDIT_CSV = BASE / "gold" / "gold_quality_risk_audit_400_60.csv"
 
 records = [json.loads(l) for l in open(RECOMPUTED_PATH, encoding="utf-8")]
 chunks = [json.loads(l) for l in open(CHUNKS_PATH, encoding="utf-8")]
@@ -128,7 +128,7 @@ for qid, ev_idx, case, gold_ids, missing in results:
 print()
 print("case counts:", dict(counts))
 
-with open(BASE / "gold_400_60_final.jsonl", "w", encoding="utf-8") as f:
+with open(BASE / "gold" / "gold_400_60_final.jsonl", "w", encoding="utf-8") as f:
     for record in records:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
-print(f"wrote -> {BASE / 'gold_400_60_final.jsonl'}")
+print(f"wrote -> {BASE / 'gold' / 'gold_400_60_final.jsonl'}")

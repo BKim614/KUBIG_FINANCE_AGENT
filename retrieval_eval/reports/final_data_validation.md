@@ -64,7 +64,7 @@ chunks에 대해 처음부터 재실행.
 
 ## STEP 6. Boundary-aware multi-gold 보정
 
-이전 audit(`gold_quality_risk_audit_400_60.csv`)의 PARTIAL_MULTI_GOLD_FIXABLE 33건을
+이전 audit(`gold/gold_quality_risk_audit_400_60.csv`)의 PARTIAL_MULTI_GOLD_FIXABLE 33건을
 **참고 목록(어떤 evidence를 재검토할지)**으로만 사용, chunk ID는 새로 계산된 값을 사용.
 `retrieval_eval/apply_boundary_fix_400_60.py`로 33건 전부 재검토:
 
@@ -99,7 +99,7 @@ chunks에 대해 처음부터 재실행.
   `metadata/chunk_statistics_400_60.json` — 갱신된 통계
 - `rag_evaluation_dataset.jsonl`(KUBIG_FINANCE_final_test 루트) — 400/60 gold_chunk_ids
   최종 반영(300_50/500_80 필드는 기존 reference baseline 값 그대로 보존, 손대지 않음)
-- `retrieval_eval/gold_400_60_recomputed.jsonl`, `retrieval_eval/gold_400_60_final.jsonl` —
+- `retrieval_eval/gold/gold_400_60_recomputed.jsonl`, `retrieval_eval/gold/gold_400_60_final.jsonl` —
   STEP5/STEP6 중간 산출물(작업 이력 보존용)
 - `retrieval_eval/regenerate_400_60_only.py`, `retrieval_eval/regenerate_gold_400_60.py`,
   `retrieval_eval/apply_boundary_fix_400_60.py` — 이번 작업에 사용한 재현 가능 스크립트

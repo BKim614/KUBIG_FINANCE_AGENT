@@ -2,7 +2,7 @@
 
 ## Experimental Control
 
-This experiment re-evaluates 300/50, 400/60, and 500/80 under the same Final conditions. The historical results in `test1.md` and the old `results_300_50.json` / `results_500_80.json` artifacts were not reused: those artifacts contain only 26 evaluated questions and predate the Final corpus and gold correction.
+This experiment re-evaluates 300/50, 400/60, and 500/80 under the same Final conditions. The historical results in `retrieval_eval/reports/initial_method_chunk_comparison.md` and the old `results_300_50.json` / `results_500_80.json` artifacts were not reused: those artifacts contain only 26 evaluated questions and predate the Final corpus and gold correction.
 
 - Documents: the same 21 Final documents, including PDF002 pages 17–19 only
 - Tokenizer: `BAAI/bge-m3`
@@ -89,7 +89,7 @@ Under the same Final corpus, gold mapping, Test40, Dense model, and reranker, 30
 
 ## Artifacts
 
-- Raw comparison: `retrieval_eval/results_chunk_size_final_comparison.json`
+- Raw comparison: `retrieval_eval/results/results_chunk_size_final_comparison.json`
 - Reproduction script: `retrieval_eval/run_chunk_size_final_comparison.py`
 - New Final chunks and remapped gold: `retrieval_eval/chunk_size_final_artifacts/`
 - Canonical 400/60 chunks remain at `retriever_dataset/chunks/chunk_400_60/chunks.jsonl`

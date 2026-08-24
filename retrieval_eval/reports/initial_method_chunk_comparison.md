@@ -150,5 +150,5 @@ python -m venv .venv
 .venv\Scripts\python.exe eval_retrieval.py --chunk-size 500_80 --lang ko --split test
 ```
 
-결과는 `retrieval_eval/results_{chunk_size}_{lang}_{split}.json`, 매칭 실패 evidence 상세는
-`retrieval_eval/unmatched_evidence_{chunk_size}.json`에 저장된다.
+결과는 `retrieval_eval/results/results_{chunk_size}_{lang}_{split}.json`, 매칭 실패 evidence 상세는
+`retrieval_eval/results/unmatched_evidence_{chunk_size}.json`에 저장된다.

@@ -116,7 +116,7 @@ print("match methods:", Counter(r["method"] for r in results))
 # Save the FULL records (with fresh 400_60 fields + original untouched 300_50/500_80)
 # to a separate working file for now; STEP 6/7/8 will inspect/adjust before this
 # becomes the final eval dataset.
-out_path = Path(__file__).resolve().parent / "gold_400_60_recomputed.jsonl"
+out_path = Path(__file__).resolve().parent / "gold" / "gold_400_60_recomputed.jsonl"
 with open(out_path, "w", encoding="utf-8") as f:
     for record in records:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
